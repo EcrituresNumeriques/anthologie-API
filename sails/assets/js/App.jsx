@@ -11,10 +11,9 @@ let init = {
 
 
 const reducer = function(state,action){
-  if(action.type == "toggleMaterialize"){
-    state.skillz[0].materialize = !state.skillz[0].materialize;
+  if(action.type == "toggleMaterialize" && typeof(action.index) != "undefined"){
+    state.skillz[action.index].materialize = !state.skillz[action.index].materialize;
     state.count += action.count;
-    console.log(state.skillz[0].materialize)
     return state
   }
   return state;
@@ -22,26 +21,28 @@ const reducer = function(state,action){
 
 let store = Redux.createStore(reducer,init);
 
+
+function toggleMaterialize(val){
+  console.log(!val)
+}
+
 function Header(){
   return(
     <header> Mon header {store.getState().count}</header>
   )
 }
-function toggleMaterialize(val){
-  console.log(!val)
-}
 
 function SuperCard(props){
   var index = store.getState().skillz[props.index];
   return(
-    <p onClick={()=>{store.dispatch({type:"toggleMaterialize",count:1})}}>Supercard {props.index}</p>
+    <p onClick={()=>{store.dispatch({type:"toggleMaterialize",count:1,index:props.index})}}>Supercard {props.index}</p>
   )
 }
 function SmallCard(props){
   var index = store.getState().skillz[props.index];
   var isMaterialize = index.materialize;
   return(
-    <p onClick={()=>{store.dispatch({type:"toggleMaterialize",count:3})}}>Materialize {props.index}</p>
+    <p onClick={()=>{store.dispatch({type:"toggleMaterialize",count:3,index:props.index})}}>Materialize {props.index}</p>
   )
 }
 
