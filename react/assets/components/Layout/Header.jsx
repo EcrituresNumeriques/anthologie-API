@@ -7,8 +7,8 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header className="whiteBox">
-          <div className="wrapper"><strong>Anthologie palatine</strong></div>
+      <header>
+          <div><strong>Anthologie palatine</strong></div>
       </header>
     );
   }

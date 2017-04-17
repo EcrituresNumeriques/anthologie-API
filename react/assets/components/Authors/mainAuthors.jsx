@@ -11,7 +11,7 @@ export default class mainAuthors extends Component {
   render() {
 
     return (
-      <main className="whiteBox">list of all authors</main>
+      <main>list of all authors</main>
     );
   }
 }

@@ -1,0 +1,14 @@
+/*
+Authors component
+*/
+#page > main#authorsView{
+  @extend .mainInside;
+}
+#page > main#authorsView > aside {
+  @extend .whiteBox;
+  grid-area: aside;
+}
+#page > main#authorsView > main {
+  @extend .whiteBox;
+  grid-area: content;
+}
