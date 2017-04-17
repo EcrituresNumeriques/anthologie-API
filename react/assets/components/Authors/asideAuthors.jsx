@@ -11,7 +11,7 @@ export default class AsideAuthors extends Component {
   render() {
 
     return (
-      <aside>actions for authors</aside>
+      <aside class="whiteBox">actions for authors</aside>
     );
   }
 }

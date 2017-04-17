@@ -8,20 +8,14 @@ import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from '
 import App from 'components/App/zApp';
 import Header from 'components/Layout/Header';
 import Footer from 'components/Layout/Footer';
-import AsideAuthors from 'components/Authors/asideAuthors';
-import MainAuthors from 'components/Authors/mainAuthors';
-
+import ComponentAuthors from 'components/Authors/componentAuthors'
 import NotFound from 'components/NotFound/NotFound';
 
 render(
   <div id="page">
     <Header />
     <Router history={browserHistory}>
-      <Route path="/" component={AsideAuthors} />
-      <Route path="/*" component={NotFound} />
-    </Router>
-    <Router history={browserHistory}>
-      <Route path="/" component={MainAuthors} />
+      <Route path="/" component={ComponentAuthors} />
       <Route path="/*" component={NotFound} />
     </Router>
     <Footer />

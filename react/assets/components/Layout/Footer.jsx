@@ -7,7 +7,7 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <footer>
+      <footer className="whiteBox">
         <div className="wrapper">Anthologie palatine</div>
       </footer>
     );

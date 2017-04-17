@@ -19,21 +19,21 @@ html, body {
   min-height: 100%;
   display:grid;
   grid-gap: 10px;
-  grid-template-columns:auto 300px 660px auto;
+  grid-template-columns:auto 960px auto;
   grid-template-rows:auto auto 1fr auto;
   grid-template-areas:
-    "header header header  header"
-    "...... aside  content ......"
-    "...... ...... ....... ......"
-    "footer footer footer footer ";
+    "header header  header"
+    "...... content ......"
+    "...... ....... ......"
+    "footer footer footer ";
 }
 #page > header {
   grid-area: header;
   display:grid;
   grid-gap: 10px;
-  grid-template-columns:auto 300px 660px auto;
+  grid-template-columns:auto 960px auto;
   grid-template-areas:
-    "left content content right"
+    "left content right"
 }
 #page > header > .wrapper{
   grid-area:content;
@@ -54,9 +54,9 @@ html, body {
   grid-area: header;
   display:grid;
   grid-gap: 10px;
-  grid-template-columns:auto 300px 660px auto;
+  grid-template-columns:auto 960px auto;
   grid-template-areas:
-    "left content content right"
+    "left content right"
 }
 #page > footer > .wrapper{
   grid-area:content;
@@ -73,7 +73,7 @@ html, body {
   grid-area: right;
 }
 
-#page > header,#page > aside,#page > main,#page > footer{
+.whiteBox{
   background-color:white;
   box-shadow: 0 1px 1px rgba(0,0,0,.1);
   margin: 0 0 30px;
@@ -82,13 +82,29 @@ html, body {
   border-radius: 3px;
 }
 
-#page > aside {
-  grid-area: aside;
-}
 #page > main {
   grid-area: content;
 }
+
 #page > footer{
   grid-area: footer;
   margin:0;
+}
+
+
+/*
+Authors component
+*/
+#page > main#authorsView{
+  display:grid;
+  grid-gap: 10px;
+  grid-template-columns:300px 660px;
+  grid-template-areas:
+  "aside content"
+}
+#page > main#authorsView > aside {
+  grid-area: aside;
+}
+#page > main#authorsView > main {
+  grid-area: content;
 }
