@@ -1,14 +1,12 @@
 html {
-  background-color: #f6f6f6;
+  background: #f8f8f8;
   font-family: -apple-system-body,SFUI,Helvetica Neue,Helvetica,Arial,sans-serif;
   color: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
-  background: #f8f8f8;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+html, body, #app {
   margin: 0;
   padding: 0;
   height:100%;

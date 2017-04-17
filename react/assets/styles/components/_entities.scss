@@ -1,0 +1,14 @@
+/*
+Entities component
+*/
+#page > main#entitiesView{
+  @extend .mainInside;
+}
+#page > main#entitiesView > aside {
+  @extend .whiteBox;
+  grid-area: aside;
+}
+#page > main#entitiesView > main {
+  @extend .whiteBox;
+  grid-area: content;
+}

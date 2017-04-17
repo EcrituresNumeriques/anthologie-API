@@ -9,14 +9,20 @@ import App from 'components/App/zApp';
 import Header from 'components/Layout/Header';
 import Footer from 'components/Layout/Footer';
 import ComponentAuthors from 'components/Authors/componentAuthors'
+import ComponentEntities from 'components/Entities/componentEntities'
 import NotFound from 'components/NotFound/NotFound';
 
 render(
   <div id="page">
-    <Header />
     <Router history={browserHistory}>
-      <Route path="/" component={ComponentAuthors} />
+      <Route path="/*" component={Header} />
+    </Router>
+    <Router history={browserHistory}>
+      <Route path="/entities*" component={ComponentEntities} />
+      <Route path="/authors*" component={ComponentAuthors} />
       <Route path="/*" component={NotFound} />
     </Router>
-    <Footer />
-  </div>, document.querySelector('body'));
+    <Router history={browserHistory}>
+      <Route path="/*" component={Footer} />
+    </Router>
+  </div>, document.querySelector('#app'));
