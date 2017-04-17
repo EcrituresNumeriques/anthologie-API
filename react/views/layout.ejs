@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'Anthologie Palatine' : title%></title>
+    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -29,13 +29,15 @@
     -->
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
+
     <!--STYLES END-->
   </head>
 
   <body>
+
     <%- body %>
 
+    <script src="/sails.io.js"></script>
 
 
     <!--
@@ -60,41 +62,8 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
-
-    <!--
-
-      Client-side Javascript
-      ========================
-
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
-      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
-      By default, files in your `assets/js` folder are included here
-      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
-      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
-      and concatenated into a single file.
-
-      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-      For example, here are a few things you could do:
-
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
-
-    -->
-
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/react.js"></script>
-    <script src="/js/dependencies/react2-dom.js"></script>
-    <script src="/js/dependencies/redux.js"></script>
-    <script src="/js/dependencies/require.js"></script>
-    <script src="/js/components/test.js"></script>
-    <script src="/js/zApp.js"></script>
-    <!--SCRIPTS END-->
   </body>
 </html>
