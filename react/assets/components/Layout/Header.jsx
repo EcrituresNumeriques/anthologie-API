@@ -9,12 +9,14 @@ export default class Header extends Component {
   render() {
     return (
       <header>
-          <div><strong>Anthologie palatine</strong></div>
-          <nav>
-            <Link to="/" activeStyle={{ color: 'red' }}>Home</Link>
-            <Link to="/entities" activeStyle={{ color: 'red' }}>Entities</Link>
-            <Link to="/authors" activeStyle={{ color: 'red' }}>Authors</Link>
-          </nav>
+          <div>
+            <h1>Anthologie palatine</h1>
+            <nav>
+              <Link to="/" activeStyle={{ color: 'red' }}>Home</Link>
+              <Link to="/entities" activeStyle={{ color: 'red' }}>Entities</Link>
+              <Link to="/authors" activeStyle={{ color: 'red' }}>Authors</Link>
+            </nav>
+          </div>
       </header>
     );
   }
