@@ -23,6 +23,12 @@
 module.exports.routes = {
 
   // NOTE all routes defined before the 'GET /*' will override
+  'GET /api/v1/authors':'AuthorsController.find',
+  'POST /api/v1/authors':'AuthorsController.create',
+  'GET /api/v1/authors/:id':'AuthorsController.findOne',
+  'POST /api/v1/authors/:id':'AuthorsController.update',
+
+
 
   // All GET requests are directed to the app controller which renders our app.
   'GET /*': {
