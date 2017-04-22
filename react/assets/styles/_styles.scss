@@ -79,6 +79,7 @@ html, body, #app {
     grid-template-columns:1fr 2fr;
     grid-template-areas:
     "aside content"
+    "..... content"
   }
 }
 @media ONLY screen AND (min-width:$resize-desktop){
@@ -86,5 +87,6 @@ html, body, #app {
     grid-template-columns:$aside-width $content-width;
     grid-template-areas:
     "aside content"
+    "..... content"
   }
 }
