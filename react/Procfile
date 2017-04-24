@@ -1,2 +1,2 @@
-backend: PORT=3000 sails lift
+backend: PORT=3000 nodemon app.js
 frontend: node webpackDevServer

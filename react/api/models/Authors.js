@@ -7,7 +7,15 @@
 
 module.exports = {
   tableName: 'authors',
+  autoPK: false,
   attributes: {
+
+    id_author:{
+      type:'integer',
+      primaryKey: true,
+      unique: true,
+      autoIncrement: true
+    },
     name: {
       type: 'string',
       required: false,
@@ -31,11 +39,8 @@ module.exports = {
       index: true,
       size: 11
     },
-    user_id: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    id_user: {
+      model:'Users',
     },
     group_id: {
       type: 'integer',
