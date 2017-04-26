@@ -40,13 +40,10 @@ module.exports = {
       size: 11
     },
     id_user: {
-      model:'Users',
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Groups'
     },
     born: {
       type: 'integer',

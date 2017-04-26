@@ -48,6 +48,10 @@ module.exports = {
       type: 'string',
       required: false,
       size: 45
+    },
+    groups:{
+      collection:'Groups',
+      via:'users'
     }
   }
 };
