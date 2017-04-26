@@ -1,9 +1,8 @@
 /**
- * sessionAuth
+ * ownsThis
  *
  * @module      :: Policy
- * @description :: Simple policy to allow any authenticated user
- *                 Assumes that your login action in one of your controllers sets `req.session.authenticated = true;`
+ * @description :: Check if user is either admin or the owner of the item requested
  * @docs        :: http://sailsjs.org/#!/documentation/concepts/Policies
  *
  */
