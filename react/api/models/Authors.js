@@ -42,7 +42,7 @@ module.exports = {
     id_user: {
       model:'Users',
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       index: true,
