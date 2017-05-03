@@ -27,7 +27,9 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': false,
-
+  AppController:{
+    '*':true
+  },
   AuthorsController:{
     'find':true,
     'findOne':true,
