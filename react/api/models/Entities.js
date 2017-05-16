@@ -1,32 +1,22 @@
 /**
- * Authors.js
+ * Entities.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'authors',
+  tableName: 'entities',
   autoPK: false,
   attributes: {
-    id_author:{
-      type:'integer',
-      primaryKey: true,
-      unique: true,
-      autoIncrement: true
-    },
-    name: {
-      type: 'string',
-      required: false,
-      size: 128
-    },
-    city_born_id: {
+    id: {
       type: 'integer',
-      required: false,
-      index: true,
+      required: true,
+      autoIncrement: true,
+      primaryKey: true,
       size: 11
     },
-    city_died_id: {
+    book_id: {
       type: 'integer',
       required: false,
       index: true,
@@ -38,41 +28,50 @@ module.exports = {
       index: true,
       size: 11
     },
-    id_user: {
-      model:'Users'
-    },
-    id_group: {
-      model:'Groups'
-    },
-    born: {
+    genre_id: {
       type: 'integer',
       required: false,
+      index: true,
       size: 11
     },
-    born_range: {
+    user_id: {
       type: 'integer',
       required: false,
-      size: 6
-    },
-    died: {
-      type: 'integer',
-      required: false,
+      index: true,
       size: 11
     },
-    died_range: {
+    group_id: {
+      type: 'integer',
+      required: false,
+      index: true,
+      size: 11
+    },
+    title: {
+      type: 'string',
+      required: true,
+      size: 45
+    },
+    date: {
       type: 'integer',
       required: false,
       size: 6
     },
-    activity: {
+    date_range: {
       type: 'integer',
       required: false,
       size: 6
     },
-    activity_range: {
-      type: 'integer',
-      required: false,
-      size: 6
+    deleted_at: {
+      type: 'datetime',
+      required: false
+    },
+    created_at: {
+      type: 'datetime',
+      required: false
+    },
+    updated_at: {
+      type: 'datetime',
+      required: false
     }
   }
 };
