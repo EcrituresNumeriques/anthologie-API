@@ -75,6 +75,10 @@ module.exports = {
       type: 'integer',
       required: false,
       size: 6
+    },
+    entities:{
+      collection:'Entities',
+      via:'authors'
     }
   }
 };

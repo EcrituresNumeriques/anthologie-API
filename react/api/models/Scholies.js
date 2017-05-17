@@ -33,6 +33,9 @@ module.exports = {
       collection:'Images',
       via:'scholies',
       dominant:true
+    },
+    id_entity:{
+      model:'Entities'
     }
   }
 };

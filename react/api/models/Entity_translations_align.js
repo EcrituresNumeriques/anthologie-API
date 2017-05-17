@@ -17,32 +17,18 @@ module.exports = {
       size: 11
     },
     pair: {
-      type: 'string',
-      required: true,
-      index: true,
-      size: 23
+      collection:'Entity_translations',
+      via:'alignements'
     },
     json: {
       type: 'text',
       required: true
     },
     id_user: {
-      type: 'integer',
-      required: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      size: 11
+      model:'User_Groups'
     },
-    created_at: {
-      type: 'date',
-      required: true
-    },
-    modified_at: {
-      type: 'date',
-      required: true
-    }
   }
 };

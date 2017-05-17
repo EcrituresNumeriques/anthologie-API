@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'entities',
   autoPK: false,
   attributes: {
-    id: {
+    id_entity: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,34 +17,19 @@ module.exports = {
       size: 11
     },
     id_book: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Books'
     },
     id_era: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Eras'
     },
     id_genre: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Genres'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     title: {
       type: 'string',
@@ -61,17 +46,45 @@ module.exports = {
       required: false,
       size: 6
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
+    texts:{
+      collection:'Texts',
+      via:'id_entity'
     },
-    created_at: {
-      type: 'datetime',
-      required: false
+    scholies:{
+      collection:'Scholies',
+      via:'id_entity'
     },
-    updated_at: {
-      type: 'datetime',
-      required: false
-    }
+    references:{
+      collection:'entities',
+      via:'id_entity'
+    },
+    notes:{
+     collection:'Notes',
+     via:'id_entity',
+   },
+   motifs:{
+     collection:'Motifs',
+     via:'id_entity'
+   },
+   manuscripts:{
+     collection:'Manuscripts',
+     via:'id_entity',
+     dominant:true
+   },
+   keywords:{
+     collection:'Keywords',
+     via:'entities',
+     dominant:true
+   },
+   images:{
+     collection:'images',
+     via:'entities',
+     dominant:true
+   },
+   authors:{
+     collection:'Authors',
+     via:'entities',
+     dominant:true
+   }
   }
 };

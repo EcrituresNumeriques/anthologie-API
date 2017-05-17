@@ -37,6 +37,10 @@ module.exports = {
       collection:'Images',
       via:'keywords',
       dominant:true
+    },
+    entities:{
+      collection:'Entities',
+      via:'keywords'
     }
   }
 };

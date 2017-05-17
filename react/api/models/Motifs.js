@@ -25,6 +25,9 @@ module.exports = {
     translations:{
       collection:'Motif_translations',
       via:'id_motif'
+    },
+    id_entity:{
+      model:'Entities'
     }
   }
 };

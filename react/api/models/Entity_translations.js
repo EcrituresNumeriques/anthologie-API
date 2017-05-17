@@ -9,51 +9,31 @@ module.exports = {
   tableName: 'entities_translations',
   autoPK: false,
   attributes: {
-    id: {
+    id_entity_translation: {
       type: 'integer',
       required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
+    alignements:{
+      collection:'Entity_translations_align',
+      via:'pair'
+    },
     id_entity: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Entities'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     id_language: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Languages'
     },
     text_translated: {
       type: 'text',
-      required: false
-    },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
       required: false
     }
   }

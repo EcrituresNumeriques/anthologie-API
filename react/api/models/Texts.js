@@ -25,6 +25,9 @@ module.exports = {
     translations:{
       collection:'Text_translations',
       via:'id_text'
+    },
+    id_entity:{
+      model:'Entities'
     }
   }
 };

@@ -25,6 +25,9 @@ module.exports = {
     translations:{
       collection:'Note_translations',
       via:'id_note'
+    },
+    id_entity:{
+      model:'Entities'
     }
   }
 };

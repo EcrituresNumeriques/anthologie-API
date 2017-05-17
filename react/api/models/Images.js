@@ -75,6 +75,10 @@ module.exports = {
     scholies:{
       collection:'Scholies',
       via:'images'
+    },
+    entities:{
+      collection:'Entities',
+      via:'images'
     }
   }
 };

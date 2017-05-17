@@ -35,6 +35,9 @@ module.exports = {
       collection:'Scholies',
       via:"manuscript",
       dominant:true
+    },
+    id_entity:{
+      model:'Entities'
     }
   }
 };
