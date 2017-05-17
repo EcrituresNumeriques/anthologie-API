@@ -9,12 +9,18 @@ module.exports = {
   tableName: 'keywords_families',
   autoPK: false,
   attributes: {
-    id: {
+    id_keyword_family: {
       type: 'integer',
       required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
+    },
+    id_user: {
+      model:'Users'
+    },
+    id_group: {
+      model:'User_Groups'
     },
     name: {
       type: 'string',
@@ -22,17 +28,10 @@ module.exports = {
       unique: true,
       size: 45
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    keywords:{
+      collection:'Keywords',
+      via:'families',
+      dominant:true
     }
   }
 };

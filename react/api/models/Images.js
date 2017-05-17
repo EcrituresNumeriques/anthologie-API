@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'images',
   autoPK: false,
   attributes: {
-    id: {
+    id_image: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,16 +17,10 @@ module.exports = {
       size: 11
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     date: {
       type: 'integer',
@@ -60,7 +54,27 @@ module.exports = {
     },
     authors:{
       collection: 'Authors',
-      via: 'id_author'
+      via: 'images'
+    },
+    cities:{
+      collection:'Cities',
+      via: 'images'
+    },
+    eras:{
+      collection:'Eras',
+      via: 'images'
+    },
+    keywords:{
+      collection:'Keywords',
+      via:'images'
+    },
+    manuscripts:{
+      collection:'Manuscripts',
+      via:'images'
+    },
+    scholies:{
+      collection:'Scholies',
+      via:'images'
     }
   }
 };

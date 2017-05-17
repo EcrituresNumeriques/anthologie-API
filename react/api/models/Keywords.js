@@ -9,42 +9,34 @@ module.exports = {
   tableName: 'keywords',
   autoPK: false,
   attributes: {
-    id: {
+    id_keyword: {
       type: 'integer',
       required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    keyword_family: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    families: {
+      collection:'keyword_families',
+      via:'keywords'
+    },
+    category: {
+      model:'Keyword_categories'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
+    translations:{
+      collection:'Keyword_translations',
+      via:'id_keyword'
     },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    images:{
+      collection:'Images',
+      via:'keywords',
+      dominant:true
     }
   }
 };

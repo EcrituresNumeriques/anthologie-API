@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'scholies',
   autoPK: false,
   attributes: {
-    id: {
+    id_scholie: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,28 +17,22 @@ module.exports = {
       size: 11
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
+    manuscript:{
+      model:'Manuscripts'
     },
-    created_at: {
-      type: 'datetime',
-      required: false
+    translations:{
+      collection:'Scholie_translations',
+      via:"id_scholie"
     },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    images:{
+      collection:'Images',
+      via:'scholies',
+      dominant:true
     }
   }
 };

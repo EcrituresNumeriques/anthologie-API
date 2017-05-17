@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'URId',
   autoPK: false,
   attributes: {
-    id: {
+    id_urid: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,34 +17,19 @@ module.exports = {
       size: 11
     },
     id_entity: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Entities'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     id_urid_category: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'URId_categories'
     },
     id_urid_source: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'URI_source'
     },
     value: {
       type: 'string',
@@ -55,18 +40,6 @@ module.exports = {
       type: 'string',
       required: false,
       size: 128
-    },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
     }
   }
 };

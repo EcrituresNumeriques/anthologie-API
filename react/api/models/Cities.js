@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'cities',
   autoPK: false,
   attributes: {
-    id: {
+    id_city: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,33 +17,24 @@ module.exports = {
       size: 11
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     GPS: {
       type: 'string',
       required: false,
       size: 45
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
+    images: {
+      collection:'Images',
+      via:'cities',
+      dominant:true
     },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    translations: {
+      collection:'Cities_translations',
+      via: 'id_city'
     }
   }
 };

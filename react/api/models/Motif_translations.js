@@ -9,36 +9,24 @@ module.exports = {
   tableName: 'motifs_translations',
   autoPK: false,
   attributes: {
-    id: {
+    id_motif_translation: {
       type: 'integer',
       required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    id_note: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    id_motif: {
+      model:'Motifs'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     id_language: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Languages'
     },
     title: {
       type: 'string',
@@ -47,18 +35,6 @@ module.exports = {
     },
     description: {
       type: 'text',
-      required: false
-    },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
       required: false
     }
   }

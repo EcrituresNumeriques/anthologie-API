@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'genres',
   autoPK: false,
   attributes: {
-    id: {
+    id_genre: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,28 +17,14 @@ module.exports = {
       size: 11
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    translations:{
+      collection:'Genre_translations',
+      via:'id_genre'
     }
   }
 };

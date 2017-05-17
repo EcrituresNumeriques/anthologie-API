@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'manuscripts_translations',
   autoPK: false,
   attributes: {
-    id: {
+    id_manuscript_translations: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,28 +17,16 @@ module.exports = {
       size: 11
     },
     id_manuscript: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Manuscripts'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     id_language: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Languages'
     },
     name: {
       type: 'string',
@@ -49,18 +37,6 @@ module.exports = {
       type: 'integer',
       required: false,
       size: 11
-    },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
     }
   }
 };

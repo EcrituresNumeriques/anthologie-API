@@ -17,28 +17,16 @@ module.exports = {
       size: 11
     },
     id_genre: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Genres'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     id_language: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Languages'
     },
     title: {
       type: 'string',
@@ -49,18 +37,6 @@ module.exports = {
       type: 'string',
       required: false,
       size: 45
-    },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
     }
   }
 };

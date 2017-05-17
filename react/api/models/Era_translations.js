@@ -17,28 +17,16 @@ module.exports = {
       size: 11
     },
     id_era: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Eras'
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
     id_language: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Languages'
     },
     name: {
       type: 'string',
@@ -51,18 +39,6 @@ module.exports = {
     },
     description: {
       type: 'text',
-      required: false
-    },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
       required: false
     }
   }

@@ -22,7 +22,7 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    names: {
+    translations: {
       collection:'Book_translations',
       via:'id_book'
     }

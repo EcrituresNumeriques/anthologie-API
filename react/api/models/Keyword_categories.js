@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'keywords_categories',
   autoPK: false,
   attributes: {
-    id: {
+    id_keyword_category: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -17,28 +17,18 @@ module.exports = {
       size: 11
     },
     id_user: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Users'
     },
     id_group: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'User_Groups'
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
+    translations:{
+      collection: 'Keyword_category_translations',
+      via:'id_keyword_category'
     },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    keywords:{
+      collection:'Keywords',
+      via:'category'
     }
   }
 };

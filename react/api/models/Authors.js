@@ -15,7 +15,7 @@ module.exports = {
       unique: true,
       autoIncrement: true
     },
-    names: {
+    translations: {
       collection:'Author_translations',
       via: 'id_author'
     },
