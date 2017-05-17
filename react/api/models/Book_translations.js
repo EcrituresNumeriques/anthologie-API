@@ -1,30 +1,37 @@
 /**
- * Authors_authority.js
+ * Books_translations.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'authors_authority',
+  tableName: 'books_translations',
   autoPK: false,
   attributes: {
-    id_author_authority: {
+    id_book_translation: {
       type: 'integer',
       required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    id_author: {
-      type: 'integer',
-      required: true,
-      size: 11
+    id_book: {
+      model:'Books'
     },
-    URI: {
+    id_user: {
+      model:'Users'
+    },
+    id_group: {
+      model: 'User_Groups'
+    },
+    id_language: {
+      model:'Languages'
+    },
+    name: {
       type: 'string',
       required: false,
-      size: 256
+      size: 45
     }
   }
 };

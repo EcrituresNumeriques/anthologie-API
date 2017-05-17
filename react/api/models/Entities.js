@@ -16,31 +16,31 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    book_id: {
+    id_book: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    era_id: {
+    id_era: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    genre_id: {
+    id_genre: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    user_id: {
+    id_user: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       index: true,

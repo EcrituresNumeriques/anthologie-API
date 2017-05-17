@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'entities_authors_assoc',
   autoPK: false,
   attributes: {
-    entities_id: {
+    id_entity: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    authors_id: {
+    id_author: {
       type: 'integer',
       required: true,
       primaryKey: true,

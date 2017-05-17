@@ -15,24 +15,26 @@ module.exports = {
       unique: true,
       autoIncrement: true
     },
-    name: {
-      type: 'string',
-      required: false,
-      size: 128
+    names: {
+      collection:'Author_translations',
+      via: 'id_author'
     },
-    city_born_id: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    authorities: {
+      collection : 'Author_authority',
+      via: 'id_author'
     },
-    city_died_id: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    images: {
+      collection:'Images',
+      via:'authors',
+      dominant:true
     },
-    era_id: {
+    city_born: {
+      model:'Cities'
+    },
+    city_died: {
+      model:'Cities'
+    },
+    id_era: {
       type: 'integer',
       required: false,
       index: true,
@@ -42,7 +44,7 @@ module.exports = {
       model:'Users'
     },
     id_group: {
-      model:'Groups'
+      model:'User_Groups'
     },
     born: {
       type: 'integer',

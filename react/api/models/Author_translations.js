@@ -23,9 +23,9 @@ module.exports = {
       model:'Users'
     },
     id_group: {
-      model:'Groups'
+      model:'User_Groups'
     },
-    language_id: {
+    id_language: {
       model:'Languages'
     },
     name: {

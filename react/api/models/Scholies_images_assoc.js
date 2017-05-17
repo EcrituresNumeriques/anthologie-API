@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'scholies_images_assoc',
   autoPK: false,
   attributes: {
-    scholie_id: {
+    id_scholie: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    image_id: {
+    id_image: {
       type: 'integer',
       required: true,
       primaryKey: true,

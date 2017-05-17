@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'entities_notes_assoc',
   autoPK: false,
   attributes: {
-    entities_id: {
+    id_entity: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    notes_id: {
+    id_note: {
       type: 'integer',
       required: true,
       primaryKey: true,

@@ -16,13 +16,13 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    user_id: {
+    id_user: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       index: true,

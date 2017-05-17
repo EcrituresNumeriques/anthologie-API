@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'cities_images_assoc',
   autoPK: false,
   attributes: {
-    city_id: {
+    id_city: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    image_id: {
+    id_image: {
       type: 'integer',
       required: true,
       primaryKey: true,

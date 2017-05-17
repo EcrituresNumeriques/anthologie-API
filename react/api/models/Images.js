@@ -16,13 +16,13 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    user_id: {
+    id_user: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       index: true,
@@ -58,17 +58,9 @@ module.exports = {
       required: false,
       size: 45
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    authors:{
+      collection: 'Authors',
+      via: 'id_author'
     }
   }
 };

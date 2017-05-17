@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'manuscripts_scholies_assoc',
   autoPK: false,
   attributes: {
-    manuscripts_id: {
+    id_manuscripts: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    scholies_id: {
+    id_scholie: {
       type: 'integer',
       required: true,
       primaryKey: true,

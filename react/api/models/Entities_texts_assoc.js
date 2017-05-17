@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'entities_texts_assoc',
   autoPK: false,
   attributes: {
-    entities_id: {
+    id_entity: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    texts_id: {
+    id_text: {
       type: 'integer',
       required: true,
       primaryKey: true,

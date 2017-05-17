@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'keywords_categories_assoc',
   autoPK: false,
   attributes: {
-    keywords_id: {
+    id_keyword: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    keywords_categories_id: {
+    id_keyword_category: {
       type: 'integer',
       required: true,
       primaryKey: true,

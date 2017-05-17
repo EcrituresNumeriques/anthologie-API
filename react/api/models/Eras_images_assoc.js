@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'eras_images_assoc',
   autoPK: false,
   attributes: {
-    author_id: {
+    id_author: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    image_id: {
+    id_image: {
       type: 'integer',
       required: true,
       primaryKey: true,

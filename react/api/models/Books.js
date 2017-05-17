@@ -9,36 +9,22 @@ module.exports = {
   tableName: 'books',
   autoPK: false,
   attributes: {
-    id: {
+    id_book: {
       type: 'integer',
       required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    user_id: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    id_user: {
+      model:'Users'
     },
-    group_id: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+    id_group: {
+      model:'User_Groups'
     },
-    deleted_at: {
-      type: 'datetime',
-      required: false
-    },
-    created_at: {
-      type: 'datetime',
-      required: false
-    },
-    updated_at: {
-      type: 'datetime',
-      required: false
+    names: {
+      collection:'Book_translations',
+      via:'id_book'
     }
   }
 };

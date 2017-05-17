@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'entities_images_assoc',
   autoPK: false,
   attributes: {
-    entity_id: {
+    id_entity: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    image_id: {
+    id_image: {
       type: 'integer',
       required: true,
       primaryKey: true,

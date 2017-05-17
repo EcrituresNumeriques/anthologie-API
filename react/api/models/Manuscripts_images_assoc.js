@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'manuscripts_images_assoc',
   autoPK: false,
   attributes: {
-    manuscript_id: {
+    id_manuscript: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    image_id: {
+    id_image: {
       type: 'integer',
       required: true,
       primaryKey: true,

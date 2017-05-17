@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'keywords_images_assoc',
   autoPK: false,
   attributes: {
-    keyword_id: {
+    id_keyword: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    image_id: {
+    id_image: {
       type: 'integer',
       required: true,
       primaryKey: true,

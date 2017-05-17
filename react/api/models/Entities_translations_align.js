@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'entities_translations_align',
   autoPK: false,
   attributes: {
-    align_id: {
+    id_align: {
       type: 'integer',
       required: true,
       autoIncrement: true,
@@ -26,12 +26,12 @@ module.exports = {
       type: 'text',
       required: true
     },
-    user_id: {
+    id_user: {
       type: 'integer',
       required: true,
       size: 11
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       size: 11

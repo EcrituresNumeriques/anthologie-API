@@ -16,25 +16,25 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    manuscript_id: {
+    id_manuscript: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    user_id: {
+    id_user: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    language_id: {
+    id_language: {
       type: 'integer',
       required: false,
       index: true,

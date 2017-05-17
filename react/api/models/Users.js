@@ -50,7 +50,7 @@ module.exports = {
       size: 45
     },
     groups:{
-      collection:'Groups',
+      collection:'User_Groups',
       via:'users'
     }
   }

@@ -9,13 +9,13 @@ module.exports = {
   tableName: 'entities_manuscripts_assoc',
   autoPK: false,
   attributes: {
-    entities_id: {
+    id_entity: {
       type: 'integer',
       required: true,
       primaryKey: true,
       size: 11
     },
-    manuscripts_id: {
+    id_manuscripts: {
       type: 'integer',
       required: true,
       primaryKey: true,

@@ -16,31 +16,31 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    entity_id: {
+    id_entity: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    user_id: {
+    id_user: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    group_id: {
+    id_group: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    urid_category_id: {
+    id_urid_category: {
       type: 'integer',
       required: false,
       index: true,
       size: 11
     },
-    urid_source_id: {
+    id_urid_source: {
       type: 'integer',
       required: false,
       index: true,
