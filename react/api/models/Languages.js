@@ -11,9 +11,9 @@ module.exports = {
   attributes: {
     id_language: {
       type: 'integer',
-      required: true,
-      autoIncrement: true,
       primaryKey: true,
+      unique:true,
+      autoIncrement: true,
       size: 11
     },
     name: {

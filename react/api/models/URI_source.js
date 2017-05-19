@@ -11,7 +11,6 @@ module.exports = {
   attributes: {
     id_URI_source: {
       type: 'integer',
-      required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11

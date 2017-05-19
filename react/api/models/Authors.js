@@ -35,10 +35,7 @@ module.exports = {
       model:'Cities'
     },
     id_era: {
-      type: 'integer',
-      required: false,
-      index: true,
-      size: 11
+      model:'Eras'
     },
     id_user: {
       model:'Users'

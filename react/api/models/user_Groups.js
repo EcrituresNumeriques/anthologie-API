@@ -10,7 +10,6 @@ module.exports = {
   attributes: {
     id_group: {
       type: 'integer',
-      required: true,
       autoIncrement: true,
       primaryKey: true,
       size: 11
