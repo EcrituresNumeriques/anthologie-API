@@ -30,7 +30,7 @@ export default class mainAuthors extends Component {
     return (
       <main>
         <h1>list of all authors</h1>
-        {this.authors.map((author,i)=>(<p key={i} id={author.id_author}>{author.translations[0].name}</p>))}
+        {this.authors.map((author,i)=>(<p key={i} id={author.id_author}>{author.translations.map(a => a.name).join(" / ")}</p>))}
         </main>
     );
   }
