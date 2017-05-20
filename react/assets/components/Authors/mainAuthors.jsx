@@ -8,7 +8,7 @@ export default class mainAuthors extends Component {
 
   constructor(props) {
     super(props);
-    this.authors = [{name:'loading'}];
+    this.authors = [{translations:[{name:'loading'}]}];
     this.fetchAuthors();
   }
 
@@ -19,6 +19,7 @@ export default class mainAuthors extends Component {
        return response.json();
      })
      .then(function(json){
+       console.log(json)
        that.authors = json;
        that.forceUpdate();
      });
