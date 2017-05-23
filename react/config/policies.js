@@ -26,10 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
-
-  /*
-  To be defined when the site will be live
+  '*': false,
 
 
   AppController:{
@@ -41,5 +38,4 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis']
   }
-  */
 };
