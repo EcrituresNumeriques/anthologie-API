@@ -15,19 +15,13 @@ module.exports = {
       unique: true,
       autoIncrement: true
     },
-    username: {
+    displayName: {
       type: 'string',
       required: true,
       size: 255
     },
-    email: {
-      type: 'email',
-      required: true,
-      size: 255
-    },
     roles: {
-      type: 'longtext',
-      required: true
+      type: 'longtext'
     },
     first_name: {
       type: 'string',

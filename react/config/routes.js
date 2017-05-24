@@ -29,18 +29,26 @@ module.exports.routes = {
   'POST /api/v1/authors':'AuthorsController.create',
   'GET /api/v1/authors/:id':'AuthorsController.findOne',
   'POST /api/v1/authors/:id':'AuthorsController.update',
+  'POST /api/v1/authors/:parentid/translations':{blueprint:'add', model:'authors',alias:'translations'},
+  'DELETE /api/v1/authors/:parentid/translations/:id':{blueprint:'destroy', model:'author_translations'},
 
-  //Users
+  //Users (a supprimer)
   'GET /api/v1/users':'UsersController.find',
   'POST /api/v1/users':'UsersController.create',
   'GET /api/v1/users/:id':'UsersController.findOne',
   'POST /api/v1/users/:id':'UsersController.update',
 
-  //Credentials
-  'GET /api/v1/credentials':'CredentialsController.find',
-  'POST /api/v1/credentials':'CredentialsController.create',
-  'GET /api/v1/credentials/:id':'CredentialsController.findOne',
-  'POST /api/v1/credentials/:id':'CredentialsController.update',
+  //Credentials (a supprimer)
+  'GET /api/v1/credentials':'User_CredentialsController.find',
+  'POST /api/v1/credentials':'User_CredentialsController.create',
+  'GET /api/v1/credentials/:id':'User_CredentialsController.findOne',
+  'POST /api/v1/credentials/:id':'User_CredentialsController.update',
+
+  //Register
+  'POST /api/v1/register':'User_RegisterController.newUser',
+
+  //Login
+  'POST /api/v1/login':'User_LoginController.validateLogin',
 
   //Books
   'GET /api/v1/books':'BooksController.find',

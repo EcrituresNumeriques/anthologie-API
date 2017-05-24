@@ -26,9 +26,9 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': false,
+  '*': true,
 
-
+/*
   AppController:{
     '*':true
   },
@@ -38,4 +38,5 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis']
   }
+  */
 };

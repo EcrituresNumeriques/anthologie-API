@@ -12,7 +12,7 @@ var faker = require('faker');
  */
 
 module.exports.bootstrap = function(cb) {
- let langs = [], authors = [];
+/* let langs = [], authors = [];
 
   //add five languages
   let firstFamily = faker.lorem.word(),secondFamily = faker.lorem.word();
@@ -37,7 +37,7 @@ module.exports.bootstrap = function(cb) {
 
 
   });
-
+*/
 
 
 
@@ -46,6 +46,6 @@ module.exports.bootstrap = function(cb) {
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   //Promise.all(authors).then(function(results){cb()});
-  //cb();
+  cb();
 
 };

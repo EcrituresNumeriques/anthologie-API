@@ -4,6 +4,23 @@
  * @description :: List of all way of connecting to the API
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
+ const bcrypt = require('bcrypt');
+ const SALT_WORK_FACTOR = 10;
+ const beforeSave = function(values,next){
+   if(values.password){
+     if(/\$2a\$10\$/.test(values.password)){
+       //password already a hash
+       next();
+     }
+     else{
+       //need to hash the password
+       values.password = bcrypt.hashSync(values.password,SALT_WORK_FACTOR);
+       next();
+     }
+   }
+ }
+
+
 
 module.exports = {
   autoPK:false,
@@ -15,14 +32,14 @@ module.exports = {
       autoIncrement: true
     },
     id_user: {
-      model:'Users',
+      model:'Users'
     },
-    username_canonical: {
+    username: {
       type: 'string',
       unique: true,
       size: 255
     },
-    email_canonical: {
+    email: {
       type: 'email',
       unique: true,
       size: 255
@@ -69,5 +86,8 @@ module.exports = {
       type: 'string',
       size: 255
     }
-  }
+  },
+  beforeCreate: beforeSave,
+  beforeUpdate: beforeSave,
+
 };

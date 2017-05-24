@@ -90,3 +90,24 @@ html, body, #app {
     "..... content"
   }
 }
+
+/* Common styles */
+.centeredBlock{
+  display:block;
+  margin:0 auto;
+}
+.centeredInside{
+  text-align: center;
+}
+.paddedBlock{
+  padding:1em;
+}
+.inputStandard{
+  padding:0.5em 1em;
+  margin-bottom:0.5em;
+  display:block;
+  box-shadow: 0 1px 1px #f0f0f0;
+  background-color:white;
+  text-align: left;
+  border:1px solid #f0f0f0;
+}
