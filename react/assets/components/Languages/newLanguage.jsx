@@ -31,7 +31,9 @@ export default class newLanguage extends Component {
       browserHistory.push('/languages');
       return null})
     .catch(function(error){return error})
-    .then(function(error){if(error != null){alert(error.message)};}.bind(this));
+    .then(function(error){if(error != null){
+      console.log(error.message);
+    }return null}.bind(this));
   }
 
   componentWillMount(){

@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': false,
 
 
   AppController:{
@@ -53,5 +53,11 @@ module.exports.policies = {
   User_StatusController:{
     'status':true
   },
+  Users:{
+    'update':['isLoggedIn','ownsThis']
+  },
+  User_CredentialsController:{
+    'update':['isLoggedIn','ownsThis']
+  }
 
 };

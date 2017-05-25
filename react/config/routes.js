@@ -33,15 +33,15 @@ module.exports.routes = {
   'DELETE /api/v1/authors/:parentid/translations/:id':{blueprint:'destroy', model:'author_translations'},
 
   //Users (a supprimer)
-  'GET /api/v1/users':'UsersController.find',
-  'POST /api/v1/users':'UsersController.create',
-  'GET /api/v1/users/:id':'UsersController.findOne',
+  //'GET /api/v1/users':'UsersController.find',
+  //'POST /api/v1/users':'UsersController.create',
+  //'GET /api/v1/users/:id':'UsersController.findOne',
   'POST /api/v1/users/:id':'UsersController.update',
 
   //Credentials (a supprimer)
-  'GET /api/v1/credentials':'User_CredentialsController.find',
-  'POST /api/v1/credentials':'User_CredentialsController.create',
-  'GET /api/v1/credentials/:id':'User_CredentialsController.findOne',
+  //'GET /api/v1/credentials':'User_CredentialsController.find',
+  //'POST /api/v1/credentials':'User_CredentialsController.create',
+  //'GET /api/v1/credentials/:id':'User_CredentialsController.findOne',
   'POST /api/v1/credentials/:id':'User_CredentialsController.update',
 
   //Register

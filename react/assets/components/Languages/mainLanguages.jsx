@@ -9,7 +9,7 @@ export default class mainLanguages extends Component {
 
   constructor(props) {
     super(props);
-    this.Languages = store.getState().languages;
+    this.Languages = [];
     this.fetchLanguages();
   }
 
@@ -24,18 +24,11 @@ export default class mainLanguages extends Component {
      })
      .then(function(json){
        store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
-       that.Languages = json.sort(that.keysrt('family'));
+       that.Languages = json;
        that.forceUpdate();
        return null;
      });
    }
-
-       // sort on key values
-    keysrt(key,desc) {
-      return function(a,b){
-       return desc ? ~~(a[key] < b[key]) : ~~(a[key] > b[key]);
-      }
-    }
 
     componentWillMount(){
       document.title = "Languages | anthologie";

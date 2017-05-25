@@ -18,6 +18,7 @@ export default class ComponentProfile extends Component {
 
   handleSubmit = function (e) {
     e.preventDefault();
+    let that = this;
     //get email and password
     let corps = {
       displayName:this.refs.username.value,
@@ -36,8 +37,8 @@ export default class ComponentProfile extends Component {
       if(!res.ok){throw res.json();}
       return res.json()})
     .then(function(data){
-      store.dispatch({type:"UNLOG_USER"});
-      browserHistory.push('/login');
+      store.dispatch({type:"LOG_ME_IN",payload:data});
+      that.forceUpdate();
       return null})
     .catch(function(error){return error})
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));

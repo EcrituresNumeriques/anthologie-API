@@ -13,6 +13,7 @@ export function login(state = initialState, action) {
       return Object.assign({},state,{languages:action.payload})
       break;
     case 'ADD_LANGUAGE':
+      console.log(state);
       return Object.assign({},state,{languages:state.languages.push(action.payload)})
       break;
     default:
