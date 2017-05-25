@@ -29,8 +29,8 @@ module.exports.routes = {
   'POST /api/v1/authors':'AuthorsController.create',
   'GET /api/v1/authors/:id':'AuthorsController.findOne',
   'POST /api/v1/authors/:id':'AuthorsController.update',
-  'POST /api/v1/authors/:parentid/translations':{blueprint:'add', model:'authors',alias:'translations'},
-  'DELETE /api/v1/authors/:parentid/translations/:id':{blueprint:'destroy', model:'author_translations'},
+  'POST /api/v1/authors/:parentid/translations':[{blueprint:'add', model:'authors',alias:'translations'},{policies:['isLoggedIn','populateUserInfos','ownsThis']}],
+  'DELETE /api/v1/authors/:parentid/translations/:id':[{blueprint:'destroy', model:'author_translations'},{policies:['isLoggedIn','populateUserInfos','ownsThis']}],
 
   //Users (a supprimer)
   //'GET /api/v1/users':'UsersController.find',
