@@ -5,6 +5,7 @@ import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from '
 import AsideAuthors from 'components/Authors/asideAuthors';
 import MainAuthors from 'components/Authors/mainAuthors';
 import newAuthor from 'components/Authors/newAuthor';
+import newAuthorTranslation from 'components/Authors/newAuthorTranslation';
 import specificAuthor from 'components/Authors/specificAuthor';
 
 
@@ -26,6 +27,8 @@ export default class ComponentAuthors extends Component {
         <Router history={browserHistory}>
           <Route path="/authors" component={MainAuthors} />
           <Route path="/authors/new" component={newAuthor} />
+          <Route path="/authors/newtranslation" component={newAuthorTranslation} />
+          <Route path="/authors/newtranslation/:id" component={newAuthorTranslation} />
           <Route path="/authors/:id" component={specificAuthor} />
         </Router>
       </main>

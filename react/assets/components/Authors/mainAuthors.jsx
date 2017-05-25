@@ -20,7 +20,8 @@ export default class mainAuthors extends Component {
        return response.json();
      })
      .then(function(json){
-       console.log(json)
+       //console.log(json)
+       store.dispatch({type:"UPDATE_AUTHORS",payload:json});
        that.authors = json;
        that.forceUpdate();
      });

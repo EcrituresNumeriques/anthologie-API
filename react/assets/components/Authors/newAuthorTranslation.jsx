@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 // components
 
-export default class newAuthor extends Component {
+export default class newAuthorTranslation extends Component {
 
 
   constructor(props) {
@@ -56,8 +56,11 @@ export default class newAuthor extends Component {
 
     return (
       <main>
-        <h1>Add a new author</h1>
+        <h1>Add author name translation</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
+          <select ref="language">
+            {store.getState().authors.map((author)=>(<option key={'AuthorSelect'+author.id_author} value={author.id_author}>[{author.id_author}] {author.translations.map((translation,i)=>(translation.name)).join(" / ")}</option>))}
+          </select>
           <input type="text" placeholder="Name" name="name" ref="name"/>
           <select ref="language">
             {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>[{lang.family}] {lang.name}</option>))}

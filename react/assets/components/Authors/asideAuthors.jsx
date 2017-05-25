@@ -15,6 +15,8 @@ export default class AsideAuthors extends Component {
       <aside>
         {store.getState().loggedIn && <Link to="/authors/new" className="addto" activeStyle={{ color: 'black' }}>Add new author</Link>}
         <Link to="/authors" activeStyle={{ color: 'black' }}>List all authors</Link>
+        {store.getState().loggedIn && <Link to="/authors/newtranslation" activeStyle={{ color: 'black' }}>Add a translation name</Link>}
+
       </aside>
     );
   }
