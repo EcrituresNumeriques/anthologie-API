@@ -20,7 +20,19 @@ export default class Header extends Component {
     .then(function(data){
       store.dispatch({type:'LOG_ME_IN',payload:data});
       return null})
-    .catch(()=>(null))
+    .catch(()=>(null));
+
+    fetch('/api/v1/Languages',{
+      method:'GET',
+      credentials: 'same-origin'
+    })
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(json){
+      store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
+      return null;
+    });
   }
 
   render() {

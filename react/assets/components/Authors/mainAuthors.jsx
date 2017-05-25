@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
+import {store} from '../../Redux/store'
 
 // components
 
@@ -31,7 +32,8 @@ export default class mainAuthors extends Component {
     return (
       <main>
         <h1>list of all authors</h1>
-        {this.authors.map((author,i)=>(<p key={i} id={author.id_author}>{author.translations.map(a => a.name).join(" / ")}</p>))}
+        {store.getState().loggedIn && <Link to="/authors/new" className="addto" activeStyle={{ color: 'black' }}>add new author</Link>}
+        {this.authors.map((author,i)=>(<Link to={"/authors/"+author.id_author} key={"author"+author.id_author} id={author.id_author}>{author.translations.map(a => a.name).join(" / ")}</Link>))}
         </main>
     );
   }
