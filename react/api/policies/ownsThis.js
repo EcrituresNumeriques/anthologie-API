@@ -16,7 +16,7 @@ module.exports = function(req, res, next) {
     return next();
   }
   else{
-    //find model queried
+    //find model requested
     var Model = req._sails.models[req.options.model];
     //find the instance of the model requested
     Model.findOne(req.params.id).exec(function(err,record){
