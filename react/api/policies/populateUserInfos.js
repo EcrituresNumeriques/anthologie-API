@@ -12,9 +12,9 @@ module.exports = function(req, res, next) {
     req.options.values = req.options.values || {};
 
     // Set the default `id_user` and `id_group` for "create" and "updates" blueprints
-    req.options.values.id_user = req.session.user.id;
-    req.options.values.id_group = req.session.user.activeGroup;
-
+    req.options.values.id_user = req.session.user.id_user;
+    req.options.values.id_group = req.session.user.id_group;
+    console.log(req.options);
     //jump to next policy
     next();
 };

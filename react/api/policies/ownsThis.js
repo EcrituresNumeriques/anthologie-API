@@ -11,18 +11,24 @@ module.exports = function(req, res, next) {
   // User is allowed, proceed to the next policy,
   // or if this is the last policy, the controller
 
-  if (req.session.user.isAdmin) {
+  if (req.session.user && req.session.user.admin) {
+    //User is admin, bypass check
     return next();
   }
   else{
-    // Use existing req.options.where, or initialize it to an empty object
-    req.options.where = req.options.where || {};
-    // Set the default `userId` for "find" and "update" blueprints
-    req.options.where.id_user = req.session.user.id;
-    next();
+    //find model queried
+    var Model = req._sails.models[req.options.model];
+    //find the instance of the model requested
+    Model.findOne(req.params.id).exec(function(err,record){
+      if(err){return res.forbidden({message:'Error.'})}
+      else if(!record){return res.forbidden({message:'no record found.'})}
+      else{
+        if(req.session.user && record.id_user === req.session.user.id_user){
+          //owns this, pass to the next policy
+          next();
+        }
+        else{return res.forbidden({message:'you do not own this record.'})}
+      }
+    });
   }
-
-  // User is not allowed
-  // (default res.forbidden() behavior can be overridden in `config/403.js`)
-  return res.forbidden('You need to be logged in to perform this action.');
 };

@@ -28,7 +28,7 @@ module.exports.policies = {
 
   '*': true,
 
-/*
+
   AppController:{
     '*':true
   },
@@ -37,6 +37,21 @@ module.exports.policies = {
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis']
-  }
-  */
+  },
+  LanguagesController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis']
+  },
+  User_RegisterController:{
+    'newUser':true,
+  },
+  User_LoginController:{
+    'validateLogin':true,
+  },
+  User_StatusController:{
+    'status':true
+  },
+
 };

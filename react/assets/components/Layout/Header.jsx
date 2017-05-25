@@ -7,18 +7,37 @@ export default class Header extends Component {
     super(props);
   }
 
+  componentWillMount(){
+    //check if user is already loggedIn
+    fetch("/api/v1/status",
+    {
+        method: "GET",
+        credentials: 'same-origin'
+    })
+    .then(function(res){
+      if(!res.ok){throw res.json();}
+      return res.json()})
+    .then(function(data){
+      store.dispatch({type:'LOG_ME_IN',payload:data});
+      return null})
+    .catch(()=>(null))
+  }
+
   render() {
     return (
       <header>
           <div>
             <h1>Anthologie palatine</h1>
             <nav>
-              <Link to="/" activeStyle={{ color: 'black' }}>Home</Link>
-              <Link to="/entities" activeStyle={{ color: 'black' }}>Entities</Link>
-              <Link to="/authors" activeStyle={{ color: 'black' }}>Authors</Link>
-              {!store.getState().loggedIn && <Link to="/register" activeStyle={{ color: 'black' }}>Register</Link>}
-              {!store.getState().loggedIn && <Link to="/login" activeStyle={{ color: 'black' }}>Login</Link>}
-              {store.getState().loggedIn && <Link to="/profile" activeStyle={{ color: 'black' }}>{store.getState().user.displayName}</Link>}
+              <Link to="/" activeStyle={{ 'fontWeight': 'bold' }}>Home</Link>
+              <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>
+              <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
+              <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
+              <Link to="/languages" activeStyle={{ 'fontWeight': 'bold' }}>Languages</Link>
+              <div />
+              {!store.getState().loggedIn && <Link to="/register" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Register</Link>}
+              {!store.getState().loggedIn && <Link to="/login" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Login</Link>}
+              {store.getState().loggedIn && <Link to="/profile" className="user" activeStyle={{ 'fontWeight': 'bold' }}>{store.getState().user.displayName}</Link>}
             </nav>
           </div>
       </header>

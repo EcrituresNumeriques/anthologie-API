@@ -10,7 +10,9 @@ export default class ComponentEntities extends Component {
   constructor(props) {
     super(props);
   }
-
+  componentWillMount(){
+    document.title = "Entities | anthologie";
+  }
   render() {
 
     return (

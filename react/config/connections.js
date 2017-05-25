@@ -45,7 +45,9 @@ module.exports.connections = {
     host: 'localhost',
     user: 'anthologieAPI',
     password: '3xEWiLeFI6WznAes',
-    database: 'anthologieAPI'
+    database: 'anthologieAPI',
+    charset   : 'utf8',
+    collation : 'utf8_unicode_ci'
   },
 
   /***************************************************************************

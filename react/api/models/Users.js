@@ -23,6 +23,11 @@ module.exports = {
     roles: {
       type: 'longtext'
     },
+    admin: {
+      type:'boolean',
+      required:true,
+      defaultsTo:false
+    },
     first_name: {
       type: 'string',
       required: false,

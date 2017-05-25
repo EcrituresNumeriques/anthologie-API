@@ -11,6 +11,10 @@ export default class ComponentAuthors extends Component {
     super(props);
   }
 
+  componentWillMount(){
+    document.title = "Authors | anthologie";
+  }
+
   render() {
 
     return (

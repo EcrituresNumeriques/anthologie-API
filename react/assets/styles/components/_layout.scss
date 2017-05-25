@@ -51,6 +51,20 @@
   }
 }
 
+#page > header > div > nav {
+  @extend .margedBlock;
+  @extend .flexed;
+}
+#page > header > div > nav > a{
+  @extend .fixflexedChild10;
+}
+#page > header > div > nav > a.user{
+  @extend .rightInside;
+}
+#page > header > div > nav > div {
+  @extend .spacerFlexedChild;
+}
+
 #page > footer {
   @extend .fullWidth;
   @extend .whiteBox;

@@ -26,6 +26,12 @@ module.exports = {
       type: 'string',
       required: true,
       size: 45
+    },
+    id_user:{
+      model:'Users'
+    },
+    id_group:{
+      model:'User_Groups'
     }
   }
 };

@@ -50,6 +50,9 @@ module.exports.routes = {
   //Login
   'POST /api/v1/login':'User_LoginController.validateLogin',
 
+  //status
+  'GET /api/v1/status':'User_StatusController.status',
+
   //Books
   'GET /api/v1/books':'BooksController.find',
   'POST /api/v1/books':'BooksController.create',
