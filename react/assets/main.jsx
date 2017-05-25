@@ -14,6 +14,7 @@ import ComponentLanguages from 'components/Languages/componentLanguages'
 import ComponentEntities from 'components/Entities/componentEntities'
 import ComponentLogin from 'components/Credentials/componentLogin'
 import ComponentRegister from 'components/Credentials/componentRegister'
+import ComponentProfile from 'components/Credentials/componentProfile'
 import NotFound from 'components/NotFound/NotFound';
 
 import {store} from './Redux/store'
@@ -31,6 +32,7 @@ function renderApp(){
         <Route path="/languages*" component={ComponentLanguages} />
         <Route path="/register*" component={ComponentRegister} />
         <Route path="/login*" component={ComponentLogin} />
+        <Route path="/profile" component={ComponentProfile} />
         <Route path="/*" component={NotFound} />
       </Router>
       <Router history={browserHistory}>

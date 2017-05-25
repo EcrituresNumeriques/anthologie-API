@@ -6,6 +6,9 @@ export function login(state = initialState, action) {
     case 'LOG_ME_IN':
       return Object.assign({}, state, {user:action.payload,loggedIn:true})
       break;
+    case 'UNLOG_USER':
+      return Object.assign({}, state, {user:{},loggedIn:false})
+      break;
     case 'UPDATE_LANGUAGES':
       return Object.assign({},state,{languages:action.payload})
       break;
