@@ -10,6 +10,7 @@ import App from 'components/App/zApp';
 import Header from 'components/Layout/Header';
 import Footer from 'components/Layout/Footer';
 import ComponentAuthors from 'components/Authors/componentAuthors'
+import ComponentCities from 'components/Cities/componentCities'
 import ComponentLanguages from 'components/Languages/componentLanguages'
 import ComponentEntities from 'components/Entities/componentEntities'
 import ComponentLogin from 'components/Credentials/componentLogin'
@@ -30,6 +31,7 @@ function renderApp(){
       <Router history={browserHistory}>
         <Route path="/entities*" component={ComponentEntities} />
         <Route path="/authors*" component={ComponentAuthors} />
+        <Route path="/cities*" component={ComponentCities} />
         <Route path="/languages*" component={ComponentLanguages} />
         <Route path="/register*" component={ComponentRegister} />
         <Route path="/login*" component={ComponentLogin} />

@@ -38,6 +38,12 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis']
   },
+  CitiesController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis']
+  },
   LanguagesController:{
     'find':true,
     'findOne':true,
