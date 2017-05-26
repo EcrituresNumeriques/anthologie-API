@@ -17,16 +17,7 @@ export default class newAuthorTranslation extends Component {
     e.preventDefault();
     //get email and password
     let corps = {name:this.refs.name.value,id_language:this.refs.language.value}
-    fetch("/api/v1/authors",
-    {
-        method: "POST",
-        credentials: 'same-origin'
-    })
-    .then(function(res){
-      if(!res.ok){throw res.json();}
-      return res.json()})
-    .then(function(data){
-      return fetch("/api/v1/authors/"+data.id_author+"/translations",
+    fetch("/api/v1/authors/"+data.id_author+"/translations",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -39,16 +30,11 @@ export default class newAuthorTranslation extends Component {
       .then(function(data){
         browserHistory.push('/authors');
         return null;
-      })
-    })
-    .catch(function(error){return error})
-    .then(function(error){if(error != null){
-      console.log(error.message);
-    }return null}.bind(this));
+      });
   }
 
   componentWillMount(){
-    document.title = "Add new language | anthologie";
+    document.title = "Add new author name | anthologie";
   }
 
 
