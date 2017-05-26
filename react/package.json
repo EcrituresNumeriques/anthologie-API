@@ -47,7 +47,8 @@
     "start": "nf start --wrap",
     "dev": "node webpackDevServer",
     "dist": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
-    "postinstall": "forever start app.js"
+    "postinstall": "forever start app.js",
+    "restart": "forever restart app.js"
   },
   "main": "app.js",
   "repository": {
