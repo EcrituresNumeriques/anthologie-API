@@ -16,8 +16,8 @@ export default class newAuthorTranslation extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {name:this.refs.name.value,id_language:this.refs.language.value}
-    fetch("/api/v1/authors/"+data.id_author+"/translations",
+    let corps = {id_author:this.refs.author.value,name:this.refs.name.value,id_language:this.refs.language.value}
+    fetch("/api/v1/authors/"+corps.id_author+"/translations",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -44,7 +44,7 @@ export default class newAuthorTranslation extends Component {
       <main>
         <h1>Add author name translation</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="language">
+          <select ref="author">
             {store.getState().authors.map((author)=>(<option key={'AuthorSelect'+author.id_author} value={author.id_author}>[{author.id_author}] {author.translations.map((translation,i)=>(translation.name)).join(" / ")}</option>))}
           </select>
           <input type="text" placeholder="Name" name="name" ref="name"/>
