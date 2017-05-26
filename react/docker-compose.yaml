@@ -4,9 +4,11 @@ database:
   command: mysqld --user=root --verbose
   ports:
     - "3306:3306"
+  volumes:
+    - /opt/mysqlAnthologie:/var/lib/mysql
   environment:
     MYSQL_DATABASE: "anthologieAPI"
     MYSQL_USER: "anthologieAPI"
     MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
-    MYSQL_ROOT_PASSWORD: "root"
+    MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
     MYSQL_ALLOW_EMPTY_PASSWORD: "no"
