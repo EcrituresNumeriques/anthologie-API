@@ -13,7 +13,7 @@ export default class Error extends Component {
 
     return (
       <div class="error">
-        <h1>Error</h1>
+        <h1>Errors</h1>
       </div>
     );
   }
