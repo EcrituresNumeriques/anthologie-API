@@ -7,34 +7,6 @@ export default class Header extends Component {
     super(props);
   }
 
-  componentWillMount(){
-    //check if user is already loggedIn
-    fetch("/api/v1/status",
-    {
-        method: "GET",
-        credentials: 'same-origin'
-    })
-    .then(function(res){
-      if(!res.ok){throw res.json();}
-      return res.json()})
-    .then(function(data){
-      store.dispatch({type:'LOG_ME_IN',payload:data});
-      return null})
-    .catch(()=>(null));
-
-    fetch('/api/v1/Languages',{
-      method:'GET',
-      credentials: 'same-origin'
-    })
-    .then(function(response){
-      return response.json();
-    })
-    .then(function(json){
-      store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
-      return null;
-    });
-  }
-
   render() {
     return (
       <header>

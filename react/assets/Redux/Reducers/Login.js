@@ -1,9 +1,9 @@
-const initialState = {languages:[],authors:[],cities:[],loggedIn:false};
+const initialState = {languages:[],authors:[],cities:[],languagesLookup:{},authorsLookup:{},citiesLookup:{},loggedIn:false};
 
 export function login(state = initialState, action) {
   console.log(action.type);
   let lookup = {};
-  
+
   switch (action.type) {
     case 'LOG_ME_IN':
       return Object.assign({}, state, {user:action.payload,loggedIn:true})

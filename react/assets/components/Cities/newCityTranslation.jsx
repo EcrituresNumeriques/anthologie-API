@@ -44,7 +44,7 @@ export default class newCityTranslation extends Component {
       <main>
         <h1>Add city name translation</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="city">
+          <select ref="city" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
             {store.getState().cities.map((city)=>(<option key={'CitySelect'+city.id_city} value={city.id_city}>[{city.id_city}] {city.translations.map((translation,i)=>(translation.name)).join(" / ")}</option>))}
           </select>
           <input type="text" placeholder="Name" name="name" ref="name"/>
