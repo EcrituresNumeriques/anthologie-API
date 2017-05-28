@@ -28,7 +28,7 @@ export default class newCityTranslation extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/cities');
+        browserHistory.push('/cities/'+corps.id_city);
         return null;
       });
   }

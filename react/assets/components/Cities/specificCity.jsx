@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import _ from 'lodash'
 import {store} from '../../Redux/store'
@@ -58,10 +59,15 @@ export default class specificCity extends Component {
   }
 
   deleteName = function(translation){
-    console.log('clicked',this,translation);
+    //console.log('clicked',this,translation);
+    let that = this;
     fetch('/api/v1/cities/'+translation.id_city+'/translations/'+translation.id_city_translation,    {
             method: "DELETE",
             credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/cities');
+          browserHistory.push('/cities/'+that.props.params.id);
         });
   }
 
