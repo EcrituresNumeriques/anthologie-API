@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import {store} from '../../Redux/store'
 import _ from 'lodash'
@@ -55,6 +56,19 @@ export default class specificAuthor extends Component {
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
+  deleteName = function(translation){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/authors/'+translation.id_author+'/translations/'+translation.id_author_translation,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/authors');
+          browserHistory.push('/authors/'+that.props.params.id);
+        });
+  }
+
 
 
   render() {
@@ -69,6 +83,8 @@ export default class specificAuthor extends Component {
         <h1>{this.author.translations.map(a => a.name).join(" / ")}</h1>
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID author : </label><input type="text" value={this.author.id_author} disabled="true"/></div>
+            {this.author.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'authorName'+translation.id_author_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/authors/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.author.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.author.updatedAt} disabled="true"/></div>
             {this.author.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.author.id_user.institution+'] ' + this.author.id_user.displayName} disabled="true"/></div>}

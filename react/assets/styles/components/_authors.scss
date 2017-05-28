@@ -40,6 +40,10 @@ Authors component
 #page > main#authorsView > main > form > div.inputContainerLanguage > input{
   @extend .textboxInput;
 }
+#page main#authorsView > main > form > div.inputContainerLanguage > a {
+   @extend .noLabelInput;
+   @extend .textboxInput;
+ }
 #page > main#authorsView > main > form > p.legend,#page > main#authorsView > main > form > input,#page > main#authorsView > main > form > select {
   @extend .paddedBlock;
   @extend .centeredInside;

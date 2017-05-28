@@ -30,7 +30,8 @@ module.exports.routes = {
   //'DELETE /api/v1/cities/:parentid/translations/:id':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'cities_translations'}],
 
   'POST /api/v1/authors/:parentid/translations':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'authors',alias:'translations'}],
-  'DELETE /api/v1/authors/:parentid/translations/:id':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'author_translations'}],
+  'DELETE /api/v1/authors/:parentid/translations/:id':'AuthorsController.deleteFromCollection',
+  //'DELETE /api/v1/authors/:parentid/translations/:id':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'author_translations'}],
 
 
 

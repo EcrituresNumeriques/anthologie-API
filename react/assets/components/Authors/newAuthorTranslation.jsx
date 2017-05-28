@@ -44,7 +44,7 @@ export default class newAuthorTranslation extends Component {
       <main>
         <h1>Add author name translation</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="author">
+          <select ref="author" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
             {store.getState().authors.map((author)=>(<option key={'AuthorSelect'+author.id_author} value={author.id_author}>[{author.id_author}] {author.translations.map((translation,i)=>(translation.name)).join(" / ")}</option>))}
           </select>
           <input type="text" placeholder="Name" name="name" ref="name"/>

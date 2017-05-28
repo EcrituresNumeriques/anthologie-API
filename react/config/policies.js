@@ -36,7 +36,8 @@ module.exports.policies = {
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
-    'update':['isLoggedIn','ownsThis']
+    'update':['isLoggedIn','ownsThis'],
+    'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   CitiesController:{
     'find':true,
@@ -61,7 +62,7 @@ module.exports.policies = {
     'status':true
   },
   Users:{
-    'update':['isLoggedIn','ownsThis']
+    'update':['isLoggedIn','ownsThis','protectAdmin']
   },
   User_CredentialsController:{
     'update':['isLoggedIn','ownsThis']
