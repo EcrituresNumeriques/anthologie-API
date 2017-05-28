@@ -57,6 +57,13 @@ export default class specificCity extends Component {
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
+  deleteName = function(translation){
+    console.log('clicked',this,translation);
+    fetch('/api/v1/cities/'+translation.id_city+'/translations/'+translation.id_city_translation,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        });
+  }
 
 
   render() {
@@ -72,8 +79,8 @@ export default class specificCity extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID city : </label><input type="text" value={this.city.id_city} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>GPS : </label><input placeholder="ex : 45.4991117,-73.6181167" type="text" ref="gps" defaultValue={this.city.GPS} disabled={readOnly} /></div>
-            {this.city.translations.map((translation,i)=>(<div className="inputContainerLanguage"><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/></div>))}
-            <div className="inputContainerLanguage"><Link className="addToCollection" to={'/cities/newTranslation/'+this.props.params.id}>Add a name </Link></div>
+            {this.city.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'cityName'+translation.id_city_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/cities/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.city.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.city.updatedAt} disabled="true"/></div>

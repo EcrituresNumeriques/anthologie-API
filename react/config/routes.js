@@ -24,13 +24,23 @@ module.exports.routes = {
 
   // NOTE all routes defined before the 'GET /*' will override
 
+  //Collection management
+  'POST /api/v1/cities/:parentid/translations':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'cities',alias:'translations'}],
+  'DELETE /api/v1/cities/:parentid/translations/:id':'CitiesController.deleteFromCollection',
+  //'DELETE /api/v1/cities/:parentid/translations/:id':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'cities_translations'}],
+
+  'POST /api/v1/authors/:parentid/translations':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'authors',alias:'translations'}],
+  'DELETE /api/v1/authors/:parentid/translations/:id':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'author_translations'}],
+
+
+
+
+
   //Authors
   'GET /api/v1/authors':'AuthorsController.find',
   'POST /api/v1/authors':'AuthorsController.create',
   'GET /api/v1/authors/:id':'AuthorsController.findOne',
   'POST /api/v1/authors/:id':'AuthorsController.update',
-  'POST /api/v1/authors/:parentid/translations':[{blueprint:'add', model:'authors',alias:'translations'},{policies:['isLoggedIn','populateUserInfos','ownsThis']}],
-  'DELETE /api/v1/authors/:parentid/translations/:id':[{blueprint:'destroy', model:'author_translations'},{policies:['isLoggedIn','populateUserInfos','ownsThis']}],
 
   //Users (a supprimer)
   //'GET /api/v1/users':'UsersController.find',
@@ -64,8 +74,6 @@ module.exports.routes = {
   'POST /api/v1/cities':'CitiesController.create',
   'GET /api/v1/cities/:id':'CitiesController.findOne',
   'POST /api/v1/cities/:id':'CitiesController.update',
-  'POST /api/v1/cities/:parentid/translations':[{blueprint:'add', model:'cities',alias:'translations'},{policies:['isLoggedIn','populateUserInfos','ownsThis']}],
-  'DELETE /api/v1/cities/:parentid/translations/:id':[{blueprint:'destroy', model:'cities_translations'},{policies:['isLoggedIn','populateUserInfos','ownsThis']}],
 
 
   //Entities

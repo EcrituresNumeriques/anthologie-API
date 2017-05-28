@@ -17,9 +17,11 @@ module.exports = function(req, res, next) {
   }
   else{
     //find model requested
-    var Model = req._sails.models[req.options.model];
+    let model = req.options.model || req.params.model;
+    let id = req.params.parentid || req.params.id ;
+    var Model = req._sails.models[model];
     //find the instance of the model requested
-    Model.findOne(req.params.id).exec(function(err,record){
+    Model.findOne(id).exec(function(err,record){
       if(err){return res.forbidden({message:'Error.'})}
       else if(!record){return res.forbidden({message:'no record found.'})}
       else{
