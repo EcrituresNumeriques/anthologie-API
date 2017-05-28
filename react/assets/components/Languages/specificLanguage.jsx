@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
 
+import _ from 'lodash'
 import {store} from '../../Redux/store'
 // components
 
@@ -9,7 +10,9 @@ export default class specificLanguage extends Component {
 
   constructor(props) {
     super(props);
-    this.Language = {"id_language": 0,"name": "name","family": "family","createdAt": "2017-05-24T05:55:37.000Z","updatedAt": "2017-05-24T05:55:37.000Z"};
+    let placeholder = {"id_language": 0,"name": "name","family": "family","createdAt": "2017-05-24T05:55:37.000Z","updatedAt": "2017-05-24T05:55:37.000Z"};
+    this.Language = _.get(store.getState(),'languagesLookup['+this.props.params.id+']',placeholder);
+    console.log(this.Language);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
   }

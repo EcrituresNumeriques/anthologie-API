@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
 
 import {store} from '../../Redux/store'
+import _ from 'lodash'
 // components
 
 export default class mainLanguages extends Component {
@@ -9,7 +10,7 @@ export default class mainLanguages extends Component {
 
   constructor(props) {
     super(props);
-    this.Languages = [];
+    this.Languages = _.get(store.getState(),'languages',[]);
     this.fetchLanguages();
   }
 

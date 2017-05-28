@@ -27,7 +27,7 @@ export default class newLanguage extends Component {
       if(!res.ok){throw res.json();}
       return res.json()})
     .then(function(data){
-      store.dispatch({type:'ADD_LANGUAGE',payload:data});
+      //Not needed : store.dispatch({type:'ADD_LANGUAGE',payload:data});
       browserHistory.push('/languages');
       return null})
     .catch(function(error){return error})
