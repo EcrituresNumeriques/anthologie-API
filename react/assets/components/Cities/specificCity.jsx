@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
 
+import _ from 'lodash'
 import {store} from '../../Redux/store'
 // components
 
@@ -9,7 +10,8 @@ export default class specificCity extends Component {
 
   constructor(props) {
     super(props);
-    this.city =   {"translations": [{"id_city_translation": 0,"id_city": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"cityities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_city": 0,"GPS":null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z"};
+    let placeholder = {"translations": [{"id_city_translation": 0,"id_city": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"cityities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_city": 0,"GPS":null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z"};
+    this.city = _.get(store.getState(),'citiesLookup['+this.props.params.id+']',placeholder)
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
   }

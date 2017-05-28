@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
 import {store} from '../../Redux/store'
+import _ from 'lodash'
 
 // components
 
@@ -9,7 +10,8 @@ export default class mainAuthors extends Component {
 
   constructor(props) {
     super(props);
-    this.authors = [{translations:[{name:'loading'}]}];
+    let placeholder = [{translations:[{name:'loading'}]}];
+    this.authors = _.get(store.getState(),'authors',placeholder);
     this.fetchAuthors();
   }
 
