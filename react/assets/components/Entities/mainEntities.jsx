@@ -36,7 +36,7 @@ export default class mainEntities extends Component {
       <main>
         <h1>list of all entities</h1>
         {store.getState().loggedIn && <Link to="/entities/new" className="addto" activeStyle={{ color: 'black' }}>add new entity</Link>}
-        {this.entities.map((entity,i)=>(<Link to={"/entities/"+entity.id_entity} key={"entity"+entity.id_entity} id={entity.id_entity}>{entity.translations.map(a => a.name).join(" / ")}</Link>))}
+        {this.entities.map((entity,i)=>(<Link to={"/entities/"+entity.id_entity} key={"entity"+entity.id_entity} id={entity.id_entity}>{entity.title}</Link>))}
         </main>
     );
   }

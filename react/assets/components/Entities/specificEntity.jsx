@@ -81,45 +81,13 @@ export default class specificEntity extends Component {
     }
     return (
       <main>
-        <h1>{this.entity.translations.map(a => a.name).join(" / ")}</h1>
+        <h1>{this.entity.title}</h1>
           <form onSubmit={this.handleSubmit}>
-            <div className="inputContainerLanguage"><label>ID entity : </label><input type="text" value={this.entity.id_entity} disabled="true"/></div>
-            {this.entity.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'entityName'+translation.id_entity_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
-
             <div className="inputContainerLanguage">
-              <label>Born in : </label>
-              <select ref="city_born" defaultValue={_.get(this.entity,'city_born.id_city',0)} disabled={readOnly}>
-                <option value="0">Undefined</option>
-                {store.getState().cities.map((city,i)=>(
-                  <option value={city.id_city} key={"cityName"+city.id_city}>{city.translations.map((translation)=>(translation.name)).join(" / ")}</option>
-                ))}
-              </select>
+              <label>ID entity : </label>
+              <input type="text" value={this.entity.id_entity} disabled="true"/>
             </div>
-            <div className="inputContainerLanguage">
-              <label>Birth date : </label>
-              <input type="number" ref="born" placeholder='ex. "-350" (for 350 B.C.)' defaultValue={_.get(this.entity,'born',0)} />
-              <label className="smallLabel">±</label>
-              <input type="number" ref="born_range" placeholder='ex. "50" (years)' defaultValue={_.get(this.entity,'born_range',0)}/>
-            </div>
-
-            <div className="inputContainerLanguage">
-              <label>Died in : </label>
-              <select ref="city_died" defaultValue={_.get(this.entity,'city_died.id_city',0)} disabled={readOnly}>
-                <option value="0">Undefined</option>
-                {store.getState().cities.map((city,i)=>(
-                  <option value={city.id_city} key={"cityName"+city.id_city}>{city.translations.map((translation)=>(translation.name)).join(" / ")}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="inputContainerLanguage">
-              <label>Death date : </label>
-              <input type="number" ref="died" placeholder='ex. "-310" (for 310 B.C.)' defaultValue={_.get(this.entity,'died',0)} />
-              <label className="smallLabel">±</label>
-              <input type="number" ref="died_range" placeholder='ex. "50" (years)' defaultValue={_.get(this.entity,'died_range',0)}/>
-            </div>
-
+            
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>
             {this.entity.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.entity.id_user.institution+'] ' + this.entity.id_user.displayName} disabled="true"/></div>}

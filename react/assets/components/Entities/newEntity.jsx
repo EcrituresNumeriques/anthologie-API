@@ -28,7 +28,7 @@ export default class newEntity extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/entities/'+json.id_entity);
+        browserHistory.push('/entities/'+data.id_entity);
         return null;
       })
       .catch(function(err){
@@ -50,11 +50,8 @@ export default class newEntity extends Component {
     return (
       <main>
         <h1>Add a new entity</h1>
-        <form onSubmit={this.handleSubmit} id="languageForm">
-          <input type="text" placeholder="Name" name="name" ref="name"/>
-          <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>[{lang.family}] {lang.name}</option>))}
-          </select>
+        <form onSubmit={this.handleSubmit} id="entityForm">
+          <input type="text" placeholder="Title" name="title" ref="title"/>
           <input type="submit" value="send"/>
         </form>
       </main>
