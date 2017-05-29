@@ -18,6 +18,7 @@ import ComponentRegister from 'components/Credentials/componentRegister'
 import ComponentProfile from 'components/Credentials/componentProfile'
 import NotFound from 'components/NotFound/NotFound';
 import ErrorCompo from 'components/App/Error';
+import componentHome from 'components/Home/componentHome';
 
 import {store} from './Redux/store'
 
@@ -37,7 +38,7 @@ function renderApp(){
         <Route path="/register*" component={ComponentRegister} />
         <Route path="/login*" component={ComponentLogin} />
         <Route path="/profile" component={ComponentProfile} />
-        <Route path="/*" component={ErrorCompo} />
+        <Route path="/*" component={componentHome} />
       </Router>
       <Router history={browserHistory}>
         <Route path="/*" component={Footer} />

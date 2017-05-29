@@ -11,7 +11,7 @@ export default class Header extends Component {
     return (
       <header>
           <div>
-            <h1>Anthologie palatine</h1>
+            <h1>Anthologia palatina</h1>
             <nav>
               <Link to="/" activeStyle={{ 'fontWeight': 'bold' }}>Home</Link>
               <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>

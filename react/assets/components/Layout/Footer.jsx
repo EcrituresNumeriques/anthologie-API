@@ -8,7 +8,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        <div>Anthologie palatine</div>
+        <div>Anthologia palatina</div>
       </footer>
     );
   }
