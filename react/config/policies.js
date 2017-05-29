@@ -39,6 +39,7 @@ module.exports.policies = {
     'update':['isLoggedIn','ownsThis'],
     'RemoveAuthor':['isLoggedIn','ownsThis'],
     'destroyUri':['isLoggedIn','ownsThis'],
+    'destroyTranslation':['isLoggedIn','ownsThis'],
   },
   AuthorsController:{
     'find':true,

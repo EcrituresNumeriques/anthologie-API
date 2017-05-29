@@ -36,7 +36,7 @@ Entities component
 #page > main#entitiesView > main > form {
   @extend .centeredBlock;
 }
-#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select {
+#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > form > textarea {
   @extend .inputStandard;
   @extend .centeredBlock;
 }

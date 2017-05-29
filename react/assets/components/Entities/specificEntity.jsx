@@ -81,7 +81,22 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities/'+that.props.params.id);
         });
   }
+  deleteTranslation = function(translation){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/entities/'+that.props.params.id+'/translations/'+translation.id_entity_translation,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/entities');
+          browserHistory.push('/entities/'+that.props.params.id);
+        });
+  }
 
+  componentWillMount(){
+    document.title = this.entity.title+" | anthologie";
+  }
 
 
   render() {
@@ -124,6 +139,16 @@ export default class specificEntity extends Component {
             ))}
 
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
+
+            {this.entity.translations.map((translation,i)=>(
+              <div className="inputContainerLanguage" key={'translationEntity'+translation.    id_entity_translation}>
+                <label>{i?'':'Translation : '}</label>
+                <input type="text" value={'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated} disabled="true"/>
+                {!readOnly && <button type="button" onClick={()=>this.deleteTranslation(translation)} >X</button>}
+              </div>
+            ))}
+
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newTranslation/'+this.props.params.id}>Add a translation</Link></div>}
 
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>

@@ -49,6 +49,11 @@ module.exports = {
       collection:'Texts',
       via:'id_entity'
     },
+    translations:{
+      collection:'Entity_translations',
+      via:'id_entity',
+      dominant:true
+    },
     scholies:{
       collection:'Scholies',
       via:'id_entity'
