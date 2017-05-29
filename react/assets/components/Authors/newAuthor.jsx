@@ -48,7 +48,7 @@ export default class newAuthor extends Component {
   }
 
   componentWillMount(){
-    document.title = "Add new language | anthologie";
+    document.title = "Add new author | anthologie";
   }
 
 

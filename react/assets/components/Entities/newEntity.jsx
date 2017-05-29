@@ -16,17 +16,8 @@ export default class newEntity extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {name:this.refs.name.value,id_language:this.refs.language.value}
-    fetch("/api/v1/entities",
-    {
-        method: "POST",
-        credentials: 'same-origin'
-    })
-    .then(function(res){
-      if(!res.ok){throw res.json();}
-      return res.json()})
-    .then(function(data){
-      return fetch("/api/v1/entities/"+data.id_entity+"/translations",
+    let corps = {title:this.refs.title.value}
+    fetch("/api/v1/entities/",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -37,18 +28,20 @@ export default class newEntity extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/entities');
+        browserHistory.push('/entities/'+json.id_entity);
         return null;
       })
-    })
-    .catch(function(error){return error})
-    .then(function(error){if(error != null){
-      console.log(error.message);
-    }return null}.bind(this));
+      .catch(function(err){
+        return err
+      })
+      .then(function(data){
+        console.log(data);
+        return null;
+      })
   }
 
   componentWillMount(){
-    document.title = "Add new language | anthologie";
+    document.title = "Add new entity | anthologie";
   }
 
 
