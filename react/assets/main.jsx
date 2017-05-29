@@ -94,6 +94,17 @@ resolveFirst.push(fetch('/api/v1/authors',{
   store.dispatch({type:'UPDATE_AUTHORS',payload:json});
   return null;
 }));
+resolveFirst.push(fetch('/api/v1/entities',{
+  method:'GET',
+  credentials: 'same-origin'
+})
+.then(function(response){
+  return response.json();
+})
+.then(function(json){
+  store.dispatch({type:'UPDATE_ENTITIES',payload:json});
+  return null;
+}));
 
 
 Promise.all(resolveFirst).then(renderApp).then(function(){

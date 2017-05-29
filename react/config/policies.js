@@ -32,12 +32,19 @@ module.exports.policies = {
   AppController:{
     '*':true
   },
-  AuthorsController:{
+  EntitiesController:{
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'deleteFromCollection':['isLoggedIn','ownsThis'],
+  },
+  AuthorsController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis'],
+    //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   CitiesController:{
     'find':true,

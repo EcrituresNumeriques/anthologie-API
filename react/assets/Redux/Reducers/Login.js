@@ -29,6 +29,12 @@ export function login(state = initialState, action) {
       }
       return Object.assign({},state,{languages:action.payload,languagesLookup:lookup})
       break;
+    case 'UPDATE_ENTITIES':
+      for (var i = 0, len = action.payload.length; i < len; i++) {
+        lookup[action.payload[i].id_entity] = action.payload[i];
+      }
+      return Object.assign({},state,{entities:action.payload,entitiesLookup:lookup})
+      break;
 /*
     //Not sure if needed
     case 'ADD_LANGUAGE':
