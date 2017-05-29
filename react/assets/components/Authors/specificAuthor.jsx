@@ -39,7 +39,7 @@ export default class specificAuthor extends Component {
     e.preventDefault();
     let that = this;
     //get name and family
-    let corps = {city_born:this.refs.city_born.value,city_died:this.refs.city_died.value}
+    let corps = {city_born:this.refs.city_born.value,city_died:this.refs.city_died.value, born:this.refs.born.value,born_range:this.refs.born_range.value, died:this.refs.died.value,died_range:this.refs.died_range.value}
     fetch("/api/v1/authors/"+that.props.params.id,
     {
         method: "POST",
@@ -96,6 +96,12 @@ export default class specificAuthor extends Component {
                 ))}
               </select>
             </div>
+            <div className="inputContainerLanguage">
+              <label>Birth date : </label>
+              <input type="number" ref="born" placeholder='ex. "-350" (for 350 B.C.)' defaultValue={_.get(this.author,'born',0)} />
+              <label className="smallLabel">±</label>
+              <input type="number" ref="born_range" placeholder='ex. "50" (years)' defaultValue={_.get(this.author,'born_range',0)}/>
+            </div>
 
             <div className="inputContainerLanguage">
               <label>Died in : </label>
@@ -105,6 +111,13 @@ export default class specificAuthor extends Component {
                   <option value={city.id_city} key={"cityName"+city.id_city}>{city.translations.map((translation)=>(translation.name)).join(" / ")}</option>
                 ))}
               </select>
+            </div>
+
+            <div className="inputContainerLanguage">
+              <label>Death date : </label>
+              <input type="number" ref="died" placeholder='ex. "-310" (for 310 B.C.)' defaultValue={_.get(this.author,'died',0)} />
+              <label className="smallLabel">±</label>
+              <input type="number" ref="died_range" placeholder='ex. "50" (years)' defaultValue={_.get(this.author,'died_range',0)}/>
             </div>
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.author.createdAt} disabled="true"/></div>
