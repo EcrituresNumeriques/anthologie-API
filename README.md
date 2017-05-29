@@ -22,10 +22,10 @@ API for translating old texts, using :
 - in docker-compose.yaml (mysql password/user)
 
 ## It's recommended to block mysql/redis ports so nobody can mess with your data
-``
+```
 chmod +x iptables.sh
 sudo bash iptables.sh
-``
+```
 
 ## Launch docker instances
 ###### this will spin up database for the API and redis for session management
@@ -35,14 +35,14 @@ sudo bash iptables.sh
 `npm install`
 
 ## launch sails instance
-``
+```
 npm run dist
 npm run postinstall
-``
+```
 
 ## You're done!!
 
 # developpement
 If you want to develop, the best way is to change de last step and use 
 `npm run start` instead of `npm run postinstall`
-you'll get a nice autoreload environnement for react/sails, don't forget to `npm run dist` if you plan on keepinng the compiled files up to date (so the server just needs `npm run restart` after a git pull or something)
+you'll get a nice autoreload environnement for react/sails, don't forget to `npm run dist` if you plan on keeping the compiled files up to date (so the server just needs `npm run restart` after a git pull or something)
