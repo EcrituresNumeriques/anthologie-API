@@ -82,6 +82,8 @@ export default class specificCity extends Component {
     return (
       <main>
         <h1>{this.city.translations.map(a => a.name).join(" / ")}</h1>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/cities/{this.city.id_city}</h6>
+
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID city : </label><input type="text" value={this.city.id_city} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>GPS : </label><input placeholder="ex : 45.4991117,-73.6181167" type="text" ref="gps" defaultValue={this.city.GPS} disabled={readOnly} /></div>

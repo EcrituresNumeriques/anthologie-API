@@ -82,6 +82,8 @@ export default class specificAuthor extends Component {
     return (
       <main>
         <h1>{this.author.translations.map(a => a.name).join(" / ")}</h1>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/authors/{this.author.id_author}</h6>
+
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID author : </label><input type="text" value={this.author.id_author} disabled="true"/></div>
             {this.author.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'authorName'+translation.id_author_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}

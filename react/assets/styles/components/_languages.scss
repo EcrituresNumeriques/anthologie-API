@@ -17,6 +17,11 @@ Languages component
   @extend .paddedBlock;
   @extend .centeredInside;
 }
+#page > main#LanguagesView > main > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
 #page > main#LanguagesView > main > a,#page > main#LanguagesView > aside > a {
   @extend .linklist;
 }

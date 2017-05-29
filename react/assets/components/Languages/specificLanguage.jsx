@@ -71,6 +71,7 @@ export default class specificLanguage extends Component {
     return (
       <main>
         <h1>[{this.Language.family}] {this.Language.name}</h1>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/languages/{this.Language.id_language}</h6>  
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID language : </label><input type="text" value={this.Language.id_language} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>name : </label><input type="text" ref="name" defaultValue={this.Language.name} disabled={readOnly} /></div>

@@ -35,6 +35,7 @@ export default class mainEntities extends Component {
     return (
       <main>
         <h1>list of all entities</h1>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/entities</h6>
         {store.getState().loggedIn && <Link to="/entities/new" className="addto" activeStyle={{ color: 'black' }}>add new entity</Link>}
         {this.entities.map((entity,i)=>(<Link to={"/entities/"+entity.id_entity} key={"entity"+entity.id_entity} id={entity.id_entity}>{entity.title}</Link>))}
         </main>

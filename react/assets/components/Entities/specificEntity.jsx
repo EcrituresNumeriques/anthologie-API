@@ -110,6 +110,8 @@ export default class specificEntity extends Component {
     return (
       <main>
         <h1>{this.entity.title}</h1>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/entities/{this.entity.id_entity}</h6>
+
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage">
               <label>ID entity : </label>

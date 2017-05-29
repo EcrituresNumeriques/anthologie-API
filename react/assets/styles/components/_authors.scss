@@ -24,6 +24,11 @@ Authors component
   @extend .paddedBlock;
   @extend .centeredInside;
 }
+#page > main#authorsView > main > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
 #page > main#authorsView > main > form {
   @extend .centeredBlock;
 }
