@@ -28,7 +28,7 @@ export default class newAuthorTranslation extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/authors');
+        browserHistory.push('/authors/'+corps.id_author);
         return null;
       });
   }

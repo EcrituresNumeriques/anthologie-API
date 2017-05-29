@@ -37,7 +37,7 @@ Authors component
 #page > main#authorsView > main > form > div.inputContainerLanguage > label{
   @extend .labelInput;
 }
-#page > main#authorsView > main > form > div.inputContainerLanguage > input{
+#page > main#authorsView > main > form > div.inputContainerLanguage > input,#page > main#authorsView > main > form > div.inputContainerLanguage > select{
   @extend .textboxInput;
 }
 #page main#authorsView > main > form > div.inputContainerLanguage > a {

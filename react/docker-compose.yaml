@@ -12,3 +12,7 @@ database:
     MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
     MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
     MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+redis:
+    image: redis
+    ports:
+        - "6379:6379"
