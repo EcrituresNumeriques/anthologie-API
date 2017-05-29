@@ -102,6 +102,7 @@ export default class specificEntity extends Component {
   render() {
     let update = <p className="legend">You can't update this record.</p>
     let readOnly = true;
+    console.log(JSON.stringify(this.entity));
     if((this.entity.id_user && store.getState().user && this.entity.id_user.id_user == store.getState().user.id_user) || (store.getState().user && store.getState().user.admin)){
       update = <input type="submit" value="Update"/>;
       readOnly = false;
@@ -120,7 +121,7 @@ export default class specificEntity extends Component {
               <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.entity.title} disabled={readOnly} />
             </div>
 
-            {this.entity.authors.map((author,i)=>(
+            {_.get(this.entity,'authors',[]).map((author,i)=>(
               <div className="inputContainerLanguage" key={'authorEntity'+author.id_author}>
                 <label>{i?'':'Authors : '}</label>
                 <input type="text" value={store.getState().authorsLookup[author.id_author].translations.map((translation)=>(translation.name)).join(" / ")} disabled="true"/>
@@ -130,7 +131,7 @@ export default class specificEntity extends Component {
 
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newAuthor/'+this.props.params.id}>Add an author </Link></div>}
 
-            {this.entity.uris.map((uri,i)=>(
+            {_.get(this.entity,'uris',[]).map((uri,i)=>(
               <div className="inputContainerLanguage" key={'uriEntity'+uri.id_urid}>
                 <label>{i?'':'URIs : '}</label>
                 <input type="text" value={uri.value} disabled="true"/>
@@ -140,7 +141,7 @@ export default class specificEntity extends Component {
 
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
 
-            {this.entity.translations.map((translation,i)=>(
+            {_.get(this.entity,'translations',[]).map((translation,i)=>(
               <div className="inputContainerLanguage" key={'translationEntity'+translation.    id_entity_translation}>
                 <label>{i?'':'Translation : '}</label>
                 <input type="text" value={'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated} disabled="true"/>
