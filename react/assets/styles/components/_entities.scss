@@ -24,6 +24,15 @@ Entities component
   @extend .paddedBlock;
   @extend .centeredInside;
 }
+#page > main#entitiesView > main > form>  h3 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#entitiesView > main > form>  h4 {
+  @extend .centeredBlock;
+  @extend .centeredInside;
+}
 #page > main#entitiesView > main > form {
   @extend .centeredBlock;
 }

@@ -12,7 +12,7 @@ export default class specificEntity extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = {"translations": [{"id_entity_translation": 0,"id_entity": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"entityities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_entity": 0,"born": null,"born_range": null,"died": null,"died_range": null,"activity": null,"activity_range": null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z","city_born":{"id_city":1},"city_died":{"id_city":1}};
+    let placeholder = {"texts":[],"scholies":[],"references":[],"notes":[],"motifs":[],"manuscripts":[],"keywords":[],"images":[],"authors":[],"id_user":{"id_user":1,"displayName":"admin","institution":"API"},"id_entity":1,"title":"title","date":null,"date_range":null,"createdAt":"2017-05-29T03:26:39.000Z","updatedAt":"2017-05-29T03:26:39.000Z"};
     this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +39,7 @@ export default class specificEntity extends Component {
     e.preventDefault();
     let that = this;
     //get name and family
-    let corps = {city_born:this.refs.city_born.value,city_died:this.refs.city_died.value, born:this.refs.born.value,born_range:this.refs.born_range.value, died:this.refs.died.value,died_range:this.refs.died_range.value}
+    let corps = {title:this.refs.title.value}
     fetch("/api/v1/entities/"+that.props.params.id,
     {
         method: "POST",
@@ -57,10 +57,10 @@ export default class specificEntity extends Component {
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
-  deleteName = function(translation){
+  deleteName = function(author){
     //console.log('clicked',this,translation);
     let that = this;
-    fetch('/api/v1/entities/'+translation.id_entity+'/translations/'+translation.id_entity_translation,    {
+    fetch('/api/v1/entities/'+that.props.params.id+'/authors/'+author.id_author,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
@@ -87,7 +87,22 @@ export default class specificEntity extends Component {
               <label>ID entity : </label>
               <input type="text" value={this.entity.id_entity} disabled="true"/>
             </div>
-            
+
+            <div className="inputContainerLanguage">
+              <label>title : </label>
+              <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.entity.title} disabled={readOnly} />
+            </div>
+
+            {this.entity.authors.map((author,i)=>(
+              <div className="inputContainerLanguage" key={'authorEntity'+author.id_author}>
+                <label>{i?'':'Authors : '}</label>
+                <input type="text" value={store.getState().authorsLookup[author.id_author].translations.map((translation)=>(translation.name)).join(" / ")} disabled="true"/>
+                {!readOnly && <button type="button" onClick={()=>this.deleteName(author)} >X</button>}
+              </div>
+            ))}
+
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newAuthor/'+this.props.params.id}>Add an author </Link></div>}
+
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>
             {this.entity.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.entity.id_user.institution+'] ' + this.entity.id_user.displayName} disabled="true"/></div>}
