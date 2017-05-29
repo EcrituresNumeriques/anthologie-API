@@ -13,15 +13,15 @@ database:
     MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
     MYSQL_ALLOW_EMPTY_PASSWORD: "no"
 #For Local developpement
-#phpmyadmin:
-#  image: phpmyadmin/phpmyadmin
-#  links:
-#    - database
-#  environment:
-#    PMA_HOST: database
-#    PMA_PORT: 3306
-#  ports:
-#    - '8000:80'
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  links:
+    - database
+  environment:
+    PMA_HOST: database
+    PMA_PORT: 3306
+  ports:
+    - '8000:80'
 redis:
     image: redis
     ports:

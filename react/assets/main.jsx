@@ -105,6 +105,17 @@ resolveFirst.push(fetch('/api/v1/entities',{
   store.dispatch({type:'UPDATE_ENTITIES',payload:json});
   return null;
 }));
+resolveFirst.push(fetch('/api/v1/authorities',{
+  method:'GET',
+  credentials: 'same-origin'
+})
+.then(function(response){
+  return response.json();
+})
+.then(function(json){
+  store.dispatch({type:'UPDATE_URI_SOURCE',payload:json});
+  return null;
+}));
 
 
 Promise.all(resolveFirst).then(renderApp).then(function(){

@@ -38,6 +38,10 @@ module.exports.routes = {
   'DELETE /api/v1/entities/:parentid/authors/:id':'EntitiesController.RemoveAuthor',
 
 
+  'POST /api/v1/entities/:parentid/uris':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'uris'}],
+  'DELETE /api/v1/entities/:parentid/uris/:id':'EntitiesController.destroyUri',
+
+
 
   //Authors
   'GET /api/v1/authors':'AuthorsController.find',

@@ -84,6 +84,11 @@ module.exports = {
      collection:'Authors',
      via:'entities',
      dominant:true
+   },
+   uris:{
+     collection:'URId',
+     via:'id_entity',
+     dominant:true
    }
   }
 };

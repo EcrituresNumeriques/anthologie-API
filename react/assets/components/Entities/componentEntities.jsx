@@ -7,6 +7,7 @@ import MainEntities from 'components/Entities/mainEntities';
 import newEntity from 'components/Entities/newEntity';
 import newEntityTranslation from 'components/Entities/newEntityTranslation';
 import newEntityAuthor from 'components/Entities/newEntityAuthor';
+import newEntityURI from 'components/Entities/newEntityURI';
 import specificEntity from 'components/Entities/specificEntity';
 
 
@@ -32,6 +33,8 @@ export default class ComponentEntities extends Component {
           <Route path="/entities/newtranslation/:id" component={newEntityTranslation} />
           <Route path="/entities/newAuthor" component={newEntityAuthor} />
           <Route path="/entities/newAuthor/:id" component={newEntityAuthor} />
+          <Route path="/entities/newURI" component={newEntityURI} />
+          <Route path="/entities/newURI/:id" component={newEntityURI} />
           <Route path="/entities/:id" component={specificEntity} />
         </Router>
       </main>

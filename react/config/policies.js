@@ -38,6 +38,7 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'RemoveAuthor':['isLoggedIn','ownsThis'],
+    'destroyUri':['isLoggedIn','ownsThis'],
   },
   AuthorsController:{
     'find':true,
@@ -73,6 +74,9 @@ module.exports.policies = {
   },
   User_CredentialsController:{
     'update':['isLoggedIn','ownsThis']
+  },
+  URI_sourceController:{
+    find:true,
   }
 
 };

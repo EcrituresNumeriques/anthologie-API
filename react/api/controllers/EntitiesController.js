@@ -14,6 +14,12 @@ module.exports = {
       r.save()
       res.ok(r);
     });
+  },
+  destroyUri : function (req,res){
+    URId.destroy({id_urid:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
+      if(err){return res.badRequest({success:false});}
+      return res.ok({success:true});
+    })
   }
 
 };
