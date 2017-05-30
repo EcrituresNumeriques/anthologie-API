@@ -16,6 +16,8 @@ export default class specificEntity extends Component {
     this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.translationSelected = [];
+    this.state = {alignThem:'Select 2 texts to align'}
   }
 
   fetchAPI(){
@@ -94,6 +96,37 @@ export default class specificEntity extends Component {
         });
   }
 
+  addToAlignId = function(e,translation){
+    let that = this;
+    //console.log(e,translation)
+    if(e.target.checked){
+      that.translationSelected.push(translation.id_entity_translation);
+    }
+    else{
+      let index = that.translationSelected.indexOf(translation.id_entity_translation);
+      if (index > -1) {
+          that.translationSelected.splice(index, 1);
+      }
+    }
+    if(that.translationSelected.length<2){
+      that.setState({alignThem:"Select 2 texts to align"});
+    }
+    else{
+      if(that.translationSelected.length>2){
+        that.refs['checkboxTranslation'+that.translationSelected[0]].checked = false;
+        that.translationSelected.splice(0,1);
+      }
+      that.setState({alignThem:"Align those 2 texts"});
+    }
+  }
+  sendToAlign = function(e){
+    e.preventDefault();
+    let that = this;
+    if(that.translationSelected.length == 2){
+      browserHistory.push('/entities/'+that.props.params.id+"/aligntexts/"+that.translationSelected.sort().join("/"));
+    }
+  }
+
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
   }
@@ -102,7 +135,6 @@ export default class specificEntity extends Component {
   render() {
     let update = <p className="legend">You can't update this record.</p>
     let readOnly = true;
-    console.log(JSON.stringify(this.entity));
     if((this.entity.id_user && store.getState().user && this.entity.id_user.id_user == store.getState().user.id_user) || (store.getState().user && store.getState().user.admin)){
       update = <input type="submit" value="Update"/>;
       readOnly = false;
@@ -145,13 +177,17 @@ export default class specificEntity extends Component {
 
             {_.get(this.entity,'translations',[]).map((translation,i)=>(
               <div className="inputContainerLanguage" key={'translationEntity'+translation.    id_entity_translation}>
-                <label>{i?'':'Translation : '}</label>
+                <label>{i?'':'Translations : '}</label>
+                <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
                 <input type="text" value={'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated} disabled="true"/>
-                {!readOnly && <button type="button" onClick={()=>this.deleteTranslation(translation)} >X</button>}
+                {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
               </div>
             ))}
 
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newTranslation/'+this.props.params.id}>Add a translation</Link></div>}
+            {!readOnly && <div className="inputContainerLanguage">
+              <Link className="addToCollection" onClick={(e)=>(this.sendToAlign(e))}>{this.state.alignThem}</Link>
+              <Link className="addToCollectionSide" to={'/entities/newTranslation/'+this.props.params.id}>Add a translation</Link>
+            </div>}
 
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>

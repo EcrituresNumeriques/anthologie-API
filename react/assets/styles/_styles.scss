@@ -165,7 +165,14 @@ html, body, #app {
  border-bottom:1px solid #f0f0f0;
  padding:0.5em 1em;
 }
+.noFlexInput{
+  flex:0 0 auto;
+}
 .noLabelInput{
   margin-left:calc(25% + 0.5em);
   background-color:#f0f0f0;
+}
+.secondNoLabelInput{
+  background-color:#f0f0f0;
+  border-left:white;
 }

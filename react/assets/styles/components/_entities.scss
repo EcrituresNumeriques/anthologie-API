@@ -54,10 +54,17 @@ Entities component
 #page > main#entitiesView > main > form > div.inputContainerLanguage > input,#page > main#entitiesView > main > form > div.inputContainerLanguage > select{
   @extend .textboxInput;
 }
-#page main#entitiesView > main > form > div.inputContainerLanguage > a {
+#page > main#entitiesView > main > form > div.inputContainerLanguage > input.noFlex{
+  @extend .noFlexInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > a.addToCollection {
    @extend .noLabelInput;
    @extend .textboxInput;
  }
+#page main#entitiesView > main > form > div.inputContainerLanguage > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
 #page > main#entitiesView > main > form > p.legend,#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select {
   @extend .paddedBlock;
   @extend .centeredInside;
