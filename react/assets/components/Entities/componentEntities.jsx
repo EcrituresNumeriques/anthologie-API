@@ -10,6 +10,7 @@ import newEntityAuthor from 'components/Entities/newEntityAuthor';
 import newEntityURI from 'components/Entities/newEntityURI';
 import specificEntity from 'components/Entities/specificEntity';
 import alignTextsEntity from 'components/Entities/alignTextsEntity';
+import showAlignEntity from 'components/Entities/showAlignEntity';
 
 
 
@@ -38,6 +39,7 @@ export default class ComponentEntities extends Component {
           <Route path="/entities/newURI/:id" component={newEntityURI} />
           <Route path="/entities/:id" component={specificEntity} />
           <Route path="/entities/:id/aligntexts/:first/:second" component={alignTextsEntity} />
+          <Route path="/entities/:id/showalign/:align" component={showAlignEntity} />
         </Router>
       </main>
     );

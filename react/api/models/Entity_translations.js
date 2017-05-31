@@ -15,9 +15,13 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    alignements:{
+    alignements_source:{
       collection:'Entity_translations_align',
-      via:'pair'
+      via:'source'
+    },
+    alignements_target:{
+      collection:'Entity_translations_align',
+      via:'target'
     },
     id_entity: {
       model:'Entities'

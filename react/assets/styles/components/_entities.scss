@@ -51,7 +51,7 @@ Entities component
 #page > main#entitiesView > main > form > div.inputContainerLanguage > label:not(.smallLabel){
   @extend .labelInput;
 }
-#page > main#entitiesView > main > form > div.inputContainerLanguage > input,#page > main#entitiesView > main > form > div.inputContainerLanguage > select{
+#page > main#entitiesView > main > form > div.inputContainerLanguage > input,#page > main#entitiesView > main > form > div.inputContainerLanguage > select,#page > main#entitiesView > main > form > div.inputContainerLanguage > a{
   @extend .textboxInput;
 }
 #page > main#entitiesView > main > form > div.inputContainerLanguage > input.noFlex{

@@ -20,6 +20,7 @@ export default class alignTextsEntity extends Component {
     this.highlight.bind(this);
     this.resetHighlight.bind(this);
     this.hardSelect.bind(this);
+    this.submitNewAlign.bind(this);
     this.json = [];
     this.jsonLookup = {};
     this.select = {firstText:null,secondText:false,selected:[],currentHL:[]}
@@ -122,6 +123,32 @@ export default class alignTextsEntity extends Component {
     return true;
   }
 
+  submitNewAlign(){
+    this.resetHardSelect();
+    let corps = {
+      id_entity:this.props.params.id,
+      source:this.translations[0].id_entity_translation,
+      source_lang:this.translations[0].id_language,
+      target:this.translations[1].id_entity_translation,
+      target_lang:this.translations[1].id_language,
+      json:this.json
+    }
+    let that = this;
+    fetch("/api/v1/alignements",{
+      method:'POST',
+      body: JSON.stringify(corps),
+      credentials: 'same-origin'
+    })
+    .then(function(data,err){
+      if(err)return "error";
+      return data.json();
+    })
+    .then(function(){
+      browserHistory.push('/entities/'+that.props.params.id);
+    });
+    return true;
+  }
+
   displayJSON(json){
 
     //get reference in case of change needed
@@ -203,7 +230,7 @@ export default class alignTextsEntity extends Component {
         <h1>Texts Alignement Module</h1>
         {this.displayJSON(this.json)}
         <p onClick={()=>(this.resetHardSelect())}>accept</p>
-        <button>Send</button>
+        <button onClick={()=>(this.submitNewAlign())}>Send</button>
         </main>
     );
   }

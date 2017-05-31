@@ -61,6 +61,12 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis']
   },
+  Entity_translations_alignController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis']
+  },
   User_RegisterController:{
     'newUser':true,
   },

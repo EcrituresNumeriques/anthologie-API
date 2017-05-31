@@ -189,6 +189,13 @@ export default class specificEntity extends Component {
               <Link className="addToCollectionSide" to={'/entities/newTranslation/'+this.props.params.id}>Add a translation</Link>
             </div>}
 
+            {_.get(this.entity,'alignements',[]).map((alignement,i)=>(
+              <div className="inputContainerLanguage" key={'alignementEntity'+alignement.id_align}>
+                <label>{i?'':'Alignements : '}</label>
+                <Link to={"/entities/"+alignement.id_entity+"/showalign/"+alignement.id_align}> {'['+store.getState().languagesLookup[alignement.source_lang].name+'] => ['+store.getState().languagesLookup[alignement.target_lang].name+'] by  '+alignement.id_user} </Link>
+                {!readOnly && <button type="button" onClick={()=>(this.deleteAlignement(alignement))} >X</button>}
+              </div>
+            ))}
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>

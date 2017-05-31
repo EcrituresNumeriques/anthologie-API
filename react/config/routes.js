@@ -92,6 +92,14 @@ module.exports.routes = {
   'GET /api/v1/entities/:id':'EntitiesController.findOne',
   'POST /api/v1/entities/:id':'EntitiesController.update',
 
+  //Entities
+  'GET /api/v1/alignements':'Entity_translations_alignController.find',
+  'POST /api/v1/alignements':'Entity_translations_alignController.create',
+  'GET /api/v1/alignements/:id':'Entity_translations_alignController.findOne',
+  'POST /api/v1/alignements/:id':'Entity_translations_alignController.update',
+
+
+
   //Eras
   'GET /api/v1/':'ErasController.find',
   'POST /api/v1/':'ErasController.create',

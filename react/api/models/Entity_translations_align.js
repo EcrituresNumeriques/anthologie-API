@@ -15,12 +15,23 @@ module.exports = {
       primaryKey: true,
       size: 11
     },
-    pair: {
-      collection:'Entity_translations',
-      via:'alignements'
+    id_entity:{
+      model:'Entities'
+    },
+    source:{
+      model:'Entity_translations'
+    },
+    source_lang:{
+      model:'Languages'
+    },
+    target:{
+      model:'Entity_translations'
+    },
+    target_lang:{
+      model:'Languages'
     },
     json: {
-      type: 'text',
+      type: 'json',
       required: true
     },
     id_user: {
