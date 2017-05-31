@@ -41,7 +41,7 @@ Entities component
 #page > main#entitiesView > main > form {
   @extend .centeredBlock;
 }
-#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > form > textarea {
+#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > form > textarea,#page > main#entitiesView > main > button {
   @extend .inputStandard;
   @extend .centeredBlock;
 }
@@ -65,7 +65,21 @@ Entities component
   @extend .textboxInput;
   @extend .secondNoLabelInput;
 }
-#page > main#entitiesView > main > form > p.legend,#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select {
+#page > main#entitiesView > main > form > p.legend,#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > button {
   @extend .paddedBlock;
   @extend .centeredInside;
+}
+#page > main#entitiesView > main > div.text{
+  margin-bottom:1em;
+}
+#page > main#entitiesView > main > div.text > p > span > span {
+  display:inline-block;
+  padding:0.125em 0.25em;
+  cursor:pointer;
+}
+#page > main#entitiesView > main > div.text > p > span > span.highlighted {
+  background-color:#F4FA58;
+}
+#page > main#entitiesView > main > div.text > p > span > span.select {
+  background-color:#82FA58;
 }
