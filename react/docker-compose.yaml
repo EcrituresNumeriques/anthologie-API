@@ -1,28 +1,40 @@
-database:
-  image: mysql
-  container_name: database.dev
-  command: mysqld --user=root --verbose
-  ports:
-    - "3306:3306"
-  volumes:
-    - /opt/mysqlAnthologie:/var/lib/mysql
-  environment:
-    MYSQL_DATABASE: "anthologieAPI"
-    MYSQL_USER: "anthologieAPI"
-    MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
-    MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
-    MYSQL_ALLOW_EMPTY_PASSWORD: "no"
-#For Local developpement
-#phpmyadmin:
-#  image: phpmyadmin/phpmyadmin
-#  links:
-#    - database
-#  environment:
-#    PMA_HOST: database
-#    PMA_PORT: 3306
-#  ports:
-#    - '8000:80'
-redis:
-    image: redis
+version: "3"
+services:
+  database:
+    image: mysql
+    container_name: database
+    command: mysqld --user=root --verbose
     ports:
-        - "6379:6379"
+      - "3306:3306"
+    volumes:
+      - /opt/mysqlAnthologie:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: "anthologieAPI"
+      MYSQL_USER: "anthologieAPI"
+      MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
+      MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+  backup:
+    build: ./mysql_backup
+    volumes:
+        - /opt/backup:/backup
+    links:
+        - database:mysql
+    environment:
+        MYSQL_USER: "anthologieAPI"
+        MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
+    restart: "no"
+  #For Local developpement
+  #phpmyadmin:
+  #  image: phpmyadmin/phpmyadmin
+  #  links:
+  #    - database
+  #  environment:
+  #    PMA_HOST: database
+  #    PMA_PORT: 3306
+  #  ports:
+  #    - '8000:80'
+  redis:
+      image: redis
+      ports:
+          - "6379:6379"
