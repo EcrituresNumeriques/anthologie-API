@@ -42,8 +42,11 @@ Authors component
 #page > main#authorsView > main > form > div.inputContainerLanguage > label:not(.smallLabel){
   @extend .labelInput;
 }
-#page > main#authorsView > main > form > div.inputContainerLanguage > input,#page > main#authorsView > main > form > div.inputContainerLanguage > select{
+#page > main#authorsView > main > form > div.inputContainerLanguage > input:not(.double),#page > main#authorsView > main > form > div.inputContainerLanguage > select{
   @extend .textboxInput;
+}
+#page > main#authorsView > main > form > div.inputContainerLanguage > input.double{
+  @extend .smallTextboxInput;
 }
 #page main#authorsView > main > form > div.inputContainerLanguage > a {
    @extend .noLabelInput;

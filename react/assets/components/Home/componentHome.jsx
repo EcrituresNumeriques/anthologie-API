@@ -44,7 +44,9 @@ export default class ComponentHome extends Component {
           <h2>Author pages</h2>
           <ul>
             <li>Add autocompletion search for authors</li>
-            <li>Add activity range</li>
+            <li><strike>Add activity range</strike></li>
+            <li>Add images of authors</li>
+            <li>Add all entities linked to an Author</li>
           </ul>
           <h2>Contrib page</h2>
           <ul>

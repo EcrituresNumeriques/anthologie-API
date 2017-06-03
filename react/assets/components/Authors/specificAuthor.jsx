@@ -12,7 +12,7 @@ export default class specificAuthor extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = {"translations": [{"id_author_translation": 0,"id_author": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"authorities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_author": 0,"born": null,"born_range": null,"died": null,"died_range": null,"activity": null,"activity_range": null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z","city_born":{"id_city":1},"city_died":{"id_city":1}};
+    let placeholder = {"translations": [{"id_author_translation": 0,"id_author": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"authorities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_author": 0,"born": null,"born_range": null,"died": null,"died_range": null,"activity_start": null,"activity_end": null,"activity_range": null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z","city_born":{"id_city":1},"city_died":{"id_city":1}};
     this.author = _.get(store.getState(),'authorsLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +39,29 @@ export default class specificAuthor extends Component {
     e.preventDefault();
     let that = this;
     //get name and family
-    let corps = {city_born:this.refs.city_born.value,city_died:this.refs.city_died.value, born:this.refs.born.value,born_range:this.refs.born_range.value, died:this.refs.died.value,died_range:this.refs.died_range.value}
+    let corps = {city_born:this.refs.city_born.value,city_died:this.refs.city_died.value, born:Number(this.refs.born.value),born_range:Number(this.refs.born_range.value), died:Number(this.refs.died.value),died_range:Number(this.refs.died_range.value),activity_start:Number(this.refs.activity_start.value),activity_end:Number(this.refs.activity_end.value),activity_range:Number(this.refs.activity_range.value)}
+    //Add reference to date only if specified
+    if(this.refs.born.value === ""){
+      corps.born = null;
+    }
+    if(this.refs.born_range.value === ""){
+      corps.born_range = null;
+    }
+    if(this.refs.died.value === ""){
+      corps.died = null;
+    }
+    if(this.refs.died_range.value === ""){
+      corps.died_range = null;
+    }
+    if(this.refs.activity_start.value === ""){
+      corps.activity_start = null;
+    }
+    if(this.refs.activity_end.value === ""){
+      corps.activity_end = null;
+    }
+    if(this.refs.activity_range.value === ""){
+      corps.activity_range = null;
+    }
     fetch("/api/v1/authors/"+that.props.params.id,
     {
         method: "POST",
@@ -120,6 +142,15 @@ export default class specificAuthor extends Component {
               <input type="number" ref="died" placeholder='ex. "-310" (for 310 B.C.)' defaultValue={_.get(this.author,'died',0)} />
               <label className="smallLabel">±</label>
               <input type="number" ref="died_range" placeholder='ex. "50" (years)' defaultValue={_.get(this.author,'died_range',0)}/>
+            </div>
+
+            <div className="inputContainerLanguage">
+              <label>Activity : </label>
+              <input type="number" ref="activity_start" placeholder='from' defaultValue={_.get(this.author,'activity_start',0)}  className="double"/>
+              <label className="smallLabel"> - </label>
+              <input type="number" ref="activity_end" placeholder='to' defaultValue={_.get(this.author,'activity_end',0)} className="double"/>
+              <label className="smallLabel">±</label>
+              <input type="number" ref="activity_range" placeholder='ex. "10" (years)' defaultValue={_.get(this.author,'activity_range',0)} className="double" />
             </div>
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.author.createdAt} disabled="true"/></div>
