@@ -23,6 +23,7 @@ export default class ComponentHome extends Component {
           <li>docker as service manager</li>
           <li>sails.js as backend API</li>
           <li>react as frontend</li>
+          <li><strike>Automated backups/restore using myloader/mydumper</strike></li>
         </ul>
         <h1>Roadmap:</h1>
         <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
