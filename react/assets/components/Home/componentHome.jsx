@@ -18,7 +18,7 @@ export default class ComponentHome extends Component {
         <p>You can find the source code and contribute on <a href="https://github.com/EcrituresNumeriques/anthologie-API" target="_blank">Github</a>.</p>
         <p>You can also contribute by importing texts from perseus and adding/aligning translations.</p>
         <h1>anthologie-API</h1>
-        <p>API for translating old texts, using :</p>
+        <p>API for transcribing/translating old texts, using :</p>
         <ul>
           <li>docker as service manager</li>
           <li>sails.js as backend API</li>
