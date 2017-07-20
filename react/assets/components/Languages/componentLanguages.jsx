@@ -21,11 +21,7 @@ export default class ComponentLanguages extends Component {
     return (
       <main id="LanguagesView">
         <AsideLanguages />
-        <Router history={browserHistory}>
-          <Route path="/languages" component={MainLanguages} />
-          <Route path="/languages/new" component={NewLanguage} />
-          <Route path="/languages/:id" component={SpecificLanguage} />
-        </Router>
+        {this.props.children}
       </main>
     );
   }

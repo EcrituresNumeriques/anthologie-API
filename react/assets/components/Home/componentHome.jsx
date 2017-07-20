@@ -8,10 +8,11 @@ export default class ComponentHome extends Component {
     super(props);
   }
 
-
+  componentWillMount(){
+    document.title = "Home | anthologie";
+  }
 
   render() {
-
     return (
       <main id="homeView">
         <h1>Welcome to the Anthologia</h1>

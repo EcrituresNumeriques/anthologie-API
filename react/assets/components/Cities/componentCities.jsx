@@ -24,13 +24,7 @@ export default class ComponentCities extends Component {
     return (
       <main id="citiesView">
         <AsideCities />
-        <Router history={browserHistory}>
-          <Route path="/cities" component={MainCities} />
-          <Route path="/cities/new" component={newCity} />
-          <Route path="/cities/newtranslation" component={newCityTranslation} />
-          <Route path="/cities/newtranslation/:id" component={newCityTranslation} />
-          <Route path="/cities/:id" component={specificCity} />
-        </Router>
+        {this.props.children}
       </main>
     );
   }

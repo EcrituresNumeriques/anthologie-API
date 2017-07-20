@@ -13,7 +13,7 @@ export default class Header extends Component {
           <div>
             <h1>Anthologia palatina</h1>
             <nav>
-              <Link to="/" activeStyle={{ 'fontWeight': 'bold' }}>Home</Link>
+              <Link to="/home" activeStyle={{ 'fontWeight': 'bold' }}>Home</Link>
               <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>
               <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
               <Link to="/cities" activeStyle={{ 'fontWeight': 'bold' }}>Cities</Link>

@@ -24,13 +24,7 @@ export default class ComponentAuthors extends Component {
     return (
       <main id="authorsView">
         <AsideAuthors />
-        <Router history={browserHistory}>
-          <Route path="/authors" component={MainAuthors} />
-          <Route path="/authors/new" component={newAuthor} />
-          <Route path="/authors/newtranslation" component={newAuthorTranslation} />
-          <Route path="/authors/newtranslation/:id" component={newAuthorTranslation} />
-          <Route path="/authors/:id" component={specificAuthor} />
-        </Router>
+        {this.props.children}
       </main>
     );
   }
