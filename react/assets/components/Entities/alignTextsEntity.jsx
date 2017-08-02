@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 
 import {store} from '../../Redux/store'
 import _ from 'lodash'
-import regexp from 'xregexp'
+import regexp from 'xregexp/src/index.js'
 
 // components
 
@@ -163,9 +163,9 @@ export default class alignTextsEntity extends Component {
     }
 
     //return actual HTML
-    return json.map((trans)=>(
-      <div className="text">{trans.map((line)=>(
-        <p>{line.map((mot)=>(<span>
+    return json.map((trans,k)=>(
+      <div className="text" key={"text"+k}>{trans.map((line,j)=>(
+        <p key={"line"+k+"-"+j}>{line.map((mot,i)=>(<span key={"mot"+k+"-"+j+"-"+i}>
           {(mot.t)?<span onMouseOver={(e)=>(this.highlight(mot))} onMouseLeave={()=>(this.resetHighlight())} onClick={()=>(this.hardSelect(mot))} ref={"word"+mot.pos}>{mot.t}</span>:<span>{mot.p}</span>}</span>)
         )}</p>)
       )}</div>)
