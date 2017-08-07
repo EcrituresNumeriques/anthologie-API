@@ -38,6 +38,7 @@ import newEntityURI from 'components/Entities/newEntityURI';
 import specificEntity from 'components/Entities/specificEntity';
 import alignTextsEntity from 'components/Entities/alignTextsEntity';
 import showAlignEntity from 'components/Entities/showAlignEntity';
+import editAlignTextsEntity from 'components/Entities/editAlignTextsEntity';
 
 //Languages
 import AsideLanguages from 'components/Languages/asideLanguages';
@@ -59,6 +60,7 @@ export const routes = (
       <Route path="/entities/:id" component={specificEntity} />
       <Route path="/entities/:id/aligntexts/:first/:second" component={alignTextsEntity} />
       <Route path="/entities/:id/showalign/:align" component={showAlignEntity} />
+      <Route path="/entities/:id/editalign/:align" component={editAlignTextsEntity} />
     </Route>
     <Route path="/authors" component={ComponentAuthors}>
       <IndexRoute component={MainAuthors} />

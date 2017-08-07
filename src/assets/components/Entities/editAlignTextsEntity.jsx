@@ -8,7 +8,7 @@ import regexp from 'xregexp/src/index.js'
 
 // components
 
-export default class alignTextsEntity extends Component {
+export default class editAlignTextsEntity extends Component {
 
 
   constructor(props) {
@@ -28,7 +28,7 @@ export default class alignTextsEntity extends Component {
 
   fetchAPI(){
       let that = this;
-      fetch('/api/v1/entities/'+that.props.params.id,{
+      fetch('/api/v1/alignements/'+that.props.params.align,{
         method:'GET',
         credentials: 'same-origin'
       })
@@ -36,7 +36,10 @@ export default class alignTextsEntity extends Component {
         return response.json();
       })
       .then(function(json){
-        that.entity = json;
+        that.json = json.json;
+        that.translation = [];
+        that.translations.push(json.source);
+        that.translations.push(json.target);
         //that.refs.city_born = json.city_born;
         that.forceUpdate();
         return null;
@@ -63,6 +66,8 @@ export default class alignTextsEntity extends Component {
   }
 
   hardSelect(mot){
+
+    console.log(this.select);
     //get element
     let el = this.jsonLookup[mot.pos];
 
@@ -93,6 +98,7 @@ export default class alignTextsEntity extends Component {
       else if(this.select.firstText !== el.parent){
         this.select.secondText = true;
       }
+      console.log(this.translations, el.parent);
       //calculate new h value
       this.select.currentHL[el.parent].push(el.children)
 
@@ -174,57 +180,6 @@ export default class alignTextsEntity extends Component {
   }
 
   render() {
-    this.translations = [];
-    let i;
-    for(i=0;i<this.entity.translations.length;i++){
-      if(this.entity.translations[i].id_entity_translation === Number(this.props.params.first)){
-        this.translations.push(this.entity.translations[i]);
-      }
-      if(this.entity.translations[i].id_entity_translation === Number(this.props.params.second)){
-        this.translations.push(this.entity.translations[i]);
-      }
-    }
-
-      //start jsonify texts
-      //console.log(this.first,this.second);
-      let regexAll = regexp('([\\pL]+)|\\p{P}');
-      let regexPunct = regexp('\\p{P}');
-      this.json = [];
-      let words,pos,index,match,thisEntity,h,hDefault=[];
-      //Create the default canvas for hightlighted text
-      for(i=0;i<this.translations.length;i++){
-        hDefault.push([]);
-      }
-      console.log(hDefault);
-      for(i=0;i<this.translations.length;i++){
-        words = [];
-        pos = 0;
-        index = 0;
-        _.set(this.json,'['+i+']',[]);
-      _.get(this.translations,'['+i+'].text_translated',"").split("\n")
-      .map(function(paragraphe,j){
-        _.set(words,'['+j+']',[]);
-        index = 0;
-        while(match = regexp.exec(paragraphe,regexAll,index,false)){
-          if(regexp.exec(match[0],regexPunct,0,true)){
-            thisEntity = {p:match[0]}
-          }
-          else{
-            pos++;
-            h = _.clone(hDefault);
-            h[i] = [pos];
-            thisEntity = {t:match[0],h:h,pos:"["+Number(i+1)+"]["+pos+"]",parent:i,children:pos}
-          }
-          index = match.index + match[0].length;
-          words[j].push(thisEntity);
-        }
-         return words[j];
-      });
-      this.json[i] = words;
-    }
-
-
-
     return (
       <main>
         <h1>Texts Alignement Module</h1>

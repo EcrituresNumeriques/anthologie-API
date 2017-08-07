@@ -40,6 +40,10 @@ export default class showAlignEntity extends Component {
       });
   }
 
+  editAlign(){
+    browserHistory.push('/entities/'+this.props.params.id+"/editAlign/"+this.props.params.align);
+  }
+
   highlight(mot){
     //get info from JSON in memory
     let el = this.jsonLookup[mot.pos];
@@ -90,6 +94,7 @@ export default class showAlignEntity extends Component {
       <main>
         <h1>Texts Alignement Display</h1>
         {this.displayJSON(this.json)}
+        <button onClick={()=>(this.editAlign())}>Edit</button>
         </main>
     );
   }
