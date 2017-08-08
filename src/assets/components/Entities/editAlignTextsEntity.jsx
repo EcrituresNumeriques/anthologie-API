@@ -66,8 +66,6 @@ export default class editAlignTextsEntity extends Component {
   }
 
   hardSelect(mot){
-
-    console.log(this.select);
     //get element
     let el = this.jsonLookup[mot.pos];
 
@@ -98,7 +96,6 @@ export default class editAlignTextsEntity extends Component {
       else if(this.select.firstText !== el.parent){
         this.select.secondText = true;
       }
-      console.log(this.translations, el.parent);
       //calculate new h value
       this.select.currentHL[el.parent].push(el.children)
 
@@ -140,7 +137,7 @@ export default class editAlignTextsEntity extends Component {
       json:this.json
     }
     let that = this;
-    fetch("/api/v1/alignements",{
+    fetch("/api/v1/alignements/"+this.props.params.align,{
       method:'POST',
       body: JSON.stringify(corps),
       credentials: 'same-origin'

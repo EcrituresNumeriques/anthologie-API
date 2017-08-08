@@ -95,6 +95,9 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities/'+that.props.params.id);
         });
   }
+  deleteAlignement(align){
+    console.log(align);
+  }
 
   addToAlignId = function(e,translation){
     let that = this;
