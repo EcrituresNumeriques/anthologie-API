@@ -36,7 +36,7 @@ export default class ComponentHome extends Component {
         </ul>
         <h2>Entity pages</h2>
           <ul>
-            <li>Alignement and text translation edition</li>
+            <li><strike>Alignement and text translation edition</strike></li>
             <li>Add autocompletion search for entities</li>
             <li>Add keywords endpoints access</li>
             <li>Add images endpoints access</li>
