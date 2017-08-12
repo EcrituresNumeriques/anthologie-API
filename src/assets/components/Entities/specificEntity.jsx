@@ -95,8 +95,17 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities/'+that.props.params.id);
         });
   }
-  deleteAlignement(align){
+  deleteAlignement = function(align){
     console.log(align);
+    let that = this;
+    fetch('/api/v1/alignements/'+align.id_align,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/home');
+          browserHistory.push('/entities/'+that.props.params.id);
+        });
   }
 
   addToAlignId = function(e,translation){
