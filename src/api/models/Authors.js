@@ -63,7 +63,12 @@ module.exports = {
       required: false,
       size: 6
     },
-    activity: {
+    activity_start: {
+      type: 'integer',
+      required: false,
+      size: 6
+    },
+    activity_end: {
       type: 'integer',
       required: false,
       size: 6
