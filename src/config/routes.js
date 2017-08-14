@@ -97,6 +97,7 @@ module.exports.routes = {
   'POST /api/v1/alignements':'Entity_translations_alignController.create',
   'GET /api/v1/alignements/:id':'Entity_translations_alignController.findOne',
   'POST /api/v1/alignements/:id':'Entity_translations_alignController.update',
+  'DELETE /api/v1/alignements/:id':'Entity_translations_alignController.destroy',
 
 
 

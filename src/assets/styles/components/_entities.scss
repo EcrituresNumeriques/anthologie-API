@@ -54,6 +54,10 @@ Entities component
 #page > main#entitiesView > main > form > div.inputContainerLanguage > input,#page > main#entitiesView > main > form > div.inputContainerLanguage > select,#page > main#entitiesView > main > form > div.inputContainerLanguage > a{
   @extend .textboxInput;
 }
+#page > main#entitiesView > main > form > div.inputContainerLanguage > p{
+  @extend .textboxInput;
+  @extend .clickable;
+}
 #page > main#entitiesView > main > form > div.inputContainerLanguage > input.noFlex{
   @extend .noFlexInput;
 }

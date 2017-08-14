@@ -12,8 +12,7 @@ export default class showAlignEntity extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = {"id_entity":{"id_entity":1},"source":{"id_entity_translation":1},"source_lang":{"id_language":1},"target":{"id_entity_translation":5},"target_lang":{"id_language":2},"id_user":{"id_user":1,"displayName":"Arthur","institution":"UdeM"},"id_align":1,"json":[[[{"t":"First","h":[[1],[]],"pos":"[1][1]","parent":0,"children":1}]],[[{"t":"Second","h":[[],[1]],"pos":"[2][1]","parent":1,"children":1}]]],"createdAt":"2017-05-31T06:50:14.000Z","updatedAt":"2017-05-31T06:50:14.000Z"}
-    this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
+    this.API = {json:[]};
     this.fetchAPI();
     this.translations = [];
     this.highlight.bind(this);
@@ -34,6 +33,7 @@ export default class showAlignEntity extends Component {
       })
       .then(function(json){
         that.json = json.json;
+        that.API = json;
         //that.refs.city_born = json.city_born;
         that.forceUpdate();
         return null;
@@ -93,9 +93,12 @@ export default class showAlignEntity extends Component {
     return (
       <main>
         <h1>Texts Alignement Display</h1>
-        {this.displayJSON(this.json)}
-        <button onClick={()=>(this.editAlign())}>Edit</button>
-        </main>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/alignements/{this.API.id_align}</h6>
+        {this.API.source ? <h6>source : anthologia.ecrituresnumeriques.ca/api/v1/translations/{this.API.source.id_entity_translation}</h6> : <h6>source unavailable anymore</h6>}
+        {this.API.target ? <h6>target : anthologia.ecrituresnumeriques.ca/api/v1/translations/{this.API.target.id_entity_translation}</h6> : <h6>target unavailable anymore</h6>}
+        {this.displayJSON(this.API.json)}
+        {((this.API.id_user && this.API.id_user.id_user && store.getState().user && this.API.id_user.id_user == store.getState().user.id_user) || (store.getState().user && store.getState().user.admin)) && <button onClick={()=>(this.editAlign())}>Edit</button>}
+      </main>
     );
   }
 }

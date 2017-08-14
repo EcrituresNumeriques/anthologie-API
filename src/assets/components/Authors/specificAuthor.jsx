@@ -92,6 +92,9 @@ export default class specificAuthor extends Component {
         });
   }
 
+  moveToEntity = function(entity){
+    browserHistory.push('/entities/'+entity);
+  }
 
 
   render() {
@@ -111,6 +114,7 @@ export default class specificAuthor extends Component {
             {this.author.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'authorName'+translation.id_author_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/authors/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
 
+            {this.author.entities.map((entity,i)=>(<div className="inputContainerLanguage" key={'entity'+entity.id_entity}><label>{i?'':'Author of : '}</label><p  onClick={()=>this.moveToEntity(entity.id_entity)}>{entity.title}</p></div>))}
             <div className="inputContainerLanguage">
               <label>Born in : </label>
               <select ref="city_born" defaultValue={_.get(this.author,'city_born.id_city',0)} disabled={readOnly}>

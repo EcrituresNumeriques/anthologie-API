@@ -138,6 +138,9 @@ export default class specificEntity extends Component {
       browserHistory.push('/entities/'+that.props.params.id+"/aligntexts/"+that.translationSelected.sort().join("/"));
     }
   }
+  moveToAuthor = function(author){
+    browserHistory.push('/authors/'+author);
+  }
 
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
@@ -170,7 +173,7 @@ export default class specificEntity extends Component {
             {_.get(this.entity,'authors',[]).map((author,i)=>(
               <div className="inputContainerLanguage" key={'authorEntity'+author.id_author}>
                 <label>{i?'':'Authors : '}</label>
-                <input type="text" value={store.getState().authorsLookup[author.id_author].translations.map((translation)=>(translation.name)).join(" / ")} disabled="true"/>
+                <p onClick={()=>this.moveToAuthor(author.id_author)}>{store.getState().authorsLookup[author.id_author].translations.map((translation)=>(translation.name)).join(" / ")}</p>
                 {!readOnly && <button type="button" onClick={()=>this.deleteName(author)} >X</button>}
               </div>
             ))}
