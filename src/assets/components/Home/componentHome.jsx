@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
+import {store} from '../../Redux/store'
+import _ from 'lodash'
 
 
 
 export default class ComponentHome extends Component {
   constructor(props) {
     super(props);
+    let placeholder = [{translations:[{name:'loading'}]}];
+    this.authors = _.get(store.getState(),'authors',placeholder);
+    this.cities = _.get(store.getState(),'cities',placeholder);
+    placeholder = [{title:'loading'}];
+    this.entities = _.get(store.getState(),'entities',placeholder);
   }
 
   componentWillMount(){
     document.title = "Home | anthologie";
   }
 
+   search = function(){
+     let value = document.querySelector("#selector").value;
+     browserHistory.push(value);
+   }
+
   render() {
     return (
       <main id="homeView">
+        <section>
+          <h1>Find something on the platform</h1>
+          <input list="items" type="text" id="selector"/>
+          <button onClick={()=>this.search()}>go</button>
+          <datalist id="items">
+            {this.authors.map((author,i)=>(<option key={"authorSelect"+author.id_author} value={'/authors/'+author.id_author}>author : {author.translations.map(a => a.name).join(" / ")}</option>))}
+            {this.cities.map((city,i)=>(<option key={"citySelect"+city.id_city} value={'/cities/'+city.id_city}>city : {city.translations.map(a => a.name).join(" / ")}</option>))}
+            {this.entities.map((entity,i)=>(<option key={"entitiesSelect"+entity.id_entity} value={'/entities/'+entity.id_entity}>entity : {entity.title}</option>))}
+          </datalist>
+        </section>
         <h1>Welcome to the Anthologia</h1>
         <p>You can find the source code and contribute on <a href="https://github.com/EcrituresNumeriques/anthologie-API" target="_blank">Github</a>.</p>
         <p>You can also contribute by importing texts from perseus and adding/aligning translations.</p>
@@ -48,7 +70,7 @@ export default class ComponentHome extends Component {
             <li>Add autocompletion search for authors</li>
             <li><strike>Add activity range</strike></li>
             <li>Add images of authors</li>
-            <li>Add all entities linked to an Author</li>
+            <li><strike>Add all entities linked to an Author</strike></li>
           </ul>
           <h2>Contrib page</h2>
           <ul>
