@@ -23,9 +23,86 @@ export default class ComponentHome extends Component {
      let value = document.querySelector("#selector").value;
      browserHistory.push(value);
    }
+
    perseus = function(){
      let value = document.querySelector("#perseusURI").value;
-     console.log(value);
+     //check if this is a perseus URI
+     if(value.startsWith('http://data.perseus.org/citations/'))
+     {
+       fetch('/api/v1/uris/'+encodeURIComponent(value))
+       .then(function(response){
+         return response.json();
+       })
+       .then(function(json){
+         if(json.length>0){
+           console.log(json);
+           browserHistory.push('/entities/'+json[0].id_entity.id_entity);
+         }
+         else{
+           //check if user is logged in
+           if(store.getState().user){
+             console.log("no URI found, creating new text");
+             fetch(value+'/xml')
+             .then(function(response){
+               return response.text();
+             })
+             .then(function(response){
+               //read XML and create entities + URI + authors
+               let parser = new DOMParser();
+               let xml = parser.parseFromString(response,"text/xml");
+
+               let title = xml.getElementsByTagName("cts:title")[0].childNodes[0].nodeValue + ' ' + xml.getElementsByTagName("cts:psg")[0].childNodes[0].nodeValue;
+               let text = xml.getElementsByTagName("p")[0].textContent;
+
+               //create new entity
+               let corps = {title:title}
+               fetch("/api/v1/entities/",
+                 {
+                     method: "POST",
+                     body: JSON.stringify(corps),
+                     credentials: 'same-origin'
+                 })
+                 .then(function(res){
+                   if(!res.ok){throw res.json();}
+                   return res.json()
+                 })
+                 .then(function(data){
+
+                   let resolveFirst = []
+                   //add text
+                   let corpsText = {id_entity:data.id_entity,text_translated:text,id_language:8}
+                   resolveFirst.push(
+                     fetch("/api/v1/entities/"+data.id_entity+"/translations",
+                       {
+                           method: "POST",
+                           body: JSON.stringify(corpsText),
+                           credentials: 'same-origin'
+                       })
+                       .then(function(res){
+                         if(!res.ok){throw res.json();}
+                         return res.json()
+                       })
+                   );
+                   //add URI
+
+                   browserHistory.push('/entities/'+data.id_entity);
+                   return null;
+                 })
+
+
+               console.log(title,text);
+             })
+           }
+           else{
+             alert('this URI was not found on anthologia, You need to be logged in to import it from Perseus');
+           }
+
+         }
+       });
+     }
+     else{
+        alert('not a valid Perseus URI, must be in the following format : http://data.perseus.org/citations/<URN>');
+     }
    }
 
   render() {
@@ -64,13 +141,13 @@ export default class ComponentHome extends Component {
           <h2>Home Page</h2>
           <ul>
             <li><strike>Search box for entities/text/authors/cities with autocompletion</strike></li>
-            <li>Shortcut to add a text from perseus directly from it's URI</li>
+            <li><strike>Shortcut to add a text from perseus directly from it's URI</strike></li>
             <li><strike>Access link to all endpoints of the API (for the less used endpoints)</strike></li>
           </ul>
           <h2>Entity pages</h2>
             <ul>
               <li><strike>Alignement and text translation edition</strike></li>
-              <li>Add autocompletion search for entities</li>
+              <li>Add URIs endpoints access</li>
               <li>Add keywords endpoints access</li>
               <li>Add images endpoints access</li>
               <li>Add scholies endpoints access</li>
@@ -78,8 +155,8 @@ export default class ComponentHome extends Component {
             </ul>
             <h2>Author pages</h2>
             <ul>
-              <li>Add autocompletion search for authors</li>
               <li><strike>Add activity range</strike></li>
+              <li>Add URIs endpoints access</li>
               <li>Add images of authors</li>
               <li><strike>Add all entities linked to an Author</strike></li>
             </ul>

@@ -187,6 +187,7 @@ module.exports.routes = {
 
   //URId (uri in itself)
   'GET /api/v1/uris':'URIdController.find',
+  'GET /api/v1/uris/:value':'URIdController.find',
   'POST /api/v1/uris':'URIdController.create',
   'GET /api/v1/uris/:id':'URIdController.findOne',
   'POST /api/v1/uris/:id':'URIdController.update',

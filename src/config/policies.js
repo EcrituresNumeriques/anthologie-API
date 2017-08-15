@@ -85,6 +85,12 @@ module.exports.policies = {
   },
   URI_sourceController:{
     find:true,
+  },
+  URIdController:{
+    'find':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','ownsThis']
   }
 
 };
