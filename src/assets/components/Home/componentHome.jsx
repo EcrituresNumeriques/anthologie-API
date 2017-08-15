@@ -27,7 +27,12 @@ export default class ComponentHome extends Component {
   render() {
     return (
       <main id="homeView">
-        <section>
+        <section id="welcome">
+          <h1>Welcome to the Anthologia</h1>
+          <p>You can find the source code and contribute on <a href="https://github.com/EcrituresNumeriques/anthologie-API" target="_blank">Github</a>.</p>
+          <p>You can also contribute by importing texts from perseus and adding/aligning translations.</p>
+        </section>
+        <section id="find">
           <h1>Find something on the platform</h1>
           <input list="items" type="text" id="selector"/>
           <button onClick={()=>this.search()}>go</button>
@@ -37,46 +42,44 @@ export default class ComponentHome extends Component {
             {this.entities.map((entity,i)=>(<option key={"entitiesSelect"+entity.id_entity} value={'/entities/'+entity.id_entity}>entity : {entity.title}</option>))}
           </datalist>
         </section>
-        <h1>Welcome to the Anthologia</h1>
-        <p>You can find the source code and contribute on <a href="https://github.com/EcrituresNumeriques/anthologie-API" target="_blank">Github</a>.</p>
-        <p>You can also contribute by importing texts from perseus and adding/aligning translations.</p>
-        <h1>anthologie-API</h1>
-        <p>API for transcribing/translating old texts, using :</p>
-        <ul>
-          <li>docker as service manager</li>
-          <li><strike>sails.js as backend API</strike></li>
-          <li><strike>react as frontend</strike></li>
-          <li><strike>Automated backups/restore using myloader/mydumper</strike></li>
-        </ul>
-        <h1>Roadmap:</h1>
-        <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
-        <h2>Home Page</h2>
-        <ul>
-          <li><strike>Search box for entities/text/authors/cities with autocompletion</strike></li>
-          <li>Shortcut to add a text from perseus directly from it's URI</li>
-          <li><strike>Access link to all endpoints of the API (for the less used endpoints)</strike></li>
-        </ul>
-        <h2>Entity pages</h2>
+        <section id="readme">
+          <h1>anthologie-API</h1>
           <ul>
-            <li><strike>Alignement and text translation edition</strike></li>
-            <li>Add autocompletion search for entities</li>
-            <li>Add keywords endpoints access</li>
-            <li>Add images endpoints access</li>
-            <li>Add scholies endpoints access</li>
-            <li>Add notes endpoints access</li>
+            <li>docker as service manager</li>
+            <li><strike>sails.js as backend API</strike></li>
+            <li><strike>react as frontend</strike></li>
+            <li><strike>Automated backups/restore using myloader/mydumper</strike></li>
           </ul>
-          <h2>Author pages</h2>
+          <h1>Roadmap:</h1>
+          <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
+          <h2>Home Page</h2>
           <ul>
-            <li>Add autocompletion search for authors</li>
-            <li><strike>Add activity range</strike></li>
-            <li>Add images of authors</li>
-            <li><strike>Add all entities linked to an Author</strike></li>
+            <li><strike>Search box for entities/text/authors/cities with autocompletion</strike></li>
+            <li>Shortcut to add a text from perseus directly from it's URI</li>
+            <li><strike>Access link to all endpoints of the API (for the less used endpoints)</strike></li>
           </ul>
-          <h2>Contrib page</h2>
-          <ul>
-            <li>Design a component for listing all your own contributions (for quick access)</li>
-            <li>This shall include entities, translations, alignements and scholies</li>
-          </ul>
+          <h2>Entity pages</h2>
+            <ul>
+              <li><strike>Alignement and text translation edition</strike></li>
+              <li>Add autocompletion search for entities</li>
+              <li>Add keywords endpoints access</li>
+              <li>Add images endpoints access</li>
+              <li>Add scholies endpoints access</li>
+              <li>Add notes endpoints access</li>
+            </ul>
+            <h2>Author pages</h2>
+            <ul>
+              <li>Add autocompletion search for authors</li>
+              <li><strike>Add activity range</strike></li>
+              <li>Add images of authors</li>
+              <li><strike>Add all entities linked to an Author</strike></li>
+            </ul>
+            <h2>Contrib page</h2>
+            <ul>
+              <li>Design a component for listing all your own contributions (for quick access)</li>
+              <li>This shall include entities, translations, alignements and scholies</li>
+            </ul>
+          </section>
       </main>
     );
   }
