@@ -34,7 +34,7 @@ export default class newEntityURI extends Component {
   }
 
   componentWillMount(){
-    document.title = "Add new entity name | anthologie";
+    document.title = "Add new entity URI | anthologie";
   }
 
 
@@ -49,7 +49,7 @@ export default class newEntityURI extends Component {
           </select>
           <input type="text" placeholder="URI" name="uri" ref="uri"/>
           <select ref="source">
-            <option value="0">Undefined</option>
+            <option value="1">Perseus</option>
             {store.getState().authorities.map((authority)=>(<option key={'uriauthorities'+authority.id_URI_source} value={authority.id_URI_source}>{authority.name}</option>))}
           </select>
           <input type="submit" value="send"/>

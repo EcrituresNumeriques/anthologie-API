@@ -84,6 +84,23 @@ export default class ComponentHome extends Component {
                        })
                    );
                    //add URI
+                   let corpsURI = {id_entity:data.id_entity,value:value,id_urid_source:1}
+                   resolveFirst.push(
+                     fetch("/api/v1/entities/"+data.id_entity+"/uris",
+                       {
+                           method: "POST",
+                           body: JSON.stringify(corpsURI),
+                           credentials: 'same-origin'
+                       })
+                       .then(function(res){
+                         if(!res.ok){throw res.json();}
+                         return res.json()
+                       })
+                       .then(function(data){
+                         browserHistory.push('/entities/'+corps.id_entity);
+                         return null;
+                       })
+                   )
 
                    browserHistory.push('/entities/'+data.id_entity);
                    return null;
@@ -147,7 +164,7 @@ export default class ComponentHome extends Component {
           <h2>Entity pages</h2>
             <ul>
               <li><strike>Alignement and text translation edition</strike></li>
-              <li>Add URIs endpoints access</li>
+              <li><strike>Add URIs endpoints access</strike></li>
               <li>Add keywords endpoints access</li>
               <li>Add images endpoints access</li>
               <li>Add scholies endpoints access</li>
