@@ -32,6 +32,7 @@ Login/Register component
 #page > main#homeView > section > input {
     @extend .inputStandardInline;
     @extend .centeredBlock;
+    width: calc(100% - 5em);
 }
 #page > main#homeView > section > button {
     @extend .inputStandardInline;
