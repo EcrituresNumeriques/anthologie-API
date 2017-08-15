@@ -44,17 +44,17 @@ export default class ComponentHome extends Component {
         <p>API for transcribing/translating old texts, using :</p>
         <ul>
           <li>docker as service manager</li>
-          <li>sails.js as backend API</li>
-          <li>react as frontend</li>
+          <li><strike>sails.js as backend API</strike></li>
+          <li><strike>react as frontend</strike></li>
           <li><strike>Automated backups/restore using myloader/mydumper</strike></li>
         </ul>
         <h1>Roadmap:</h1>
         <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
         <h2>Home Page</h2>
         <ul>
-          <li>Search box for entities/text/authors/cities with autocompletion</li>
+          <li><strike>Search box for entities/text/authors/cities with autocompletion</strike></li>
           <li>Shortcut to add a text from perseus directly from it's URI</li>
-          <li>Access link to all endpoints of the API (for the less used endpoints)</li>
+          <li><strike>Access link to all endpoints of the API (for the less used endpoints)</strike></li>
         </ul>
         <h2>Entity pages</h2>
           <ul>
