@@ -3,33 +3,38 @@ Login/Register component
 */
 #page > main#homeView {
   display:grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto auto;
-  grid-template-areas: "welcome readme"
-  "find readme"
-  ".. readme"
+  grid-template-areas: "readme welcome"
+  " readme find"
+  "readme perseus "
+  "readme .. "
 }
 #page > main#homeView > #welcome{
   grid-area:welcome;
-  margin-right:30px;
 }
 #page > main#homeView > #find{
   grid-area:find;
-  margin-right:30px;
+  text-align: center;
+}
+#page > main#homeView > #perseus{
+  grid-area:perseus;
+  text-align: center;
 }
 #page > main#homeView > #readme{
-  grid-area:readme
+  grid-area:readme;
+  margin-right:30px;
 }
 #page > main#homeView > section{
   @extend .whiteBox;
   @extend .paddedBlock;
 }
 #page > main#homeView > section > input {
-    @extend .inputStandard;
+    @extend .inputStandardInline;
     @extend .centeredBlock;
 }
 #page > main#homeView > section > button {
-    @extend .inputStandard;
+    @extend .inputStandardInline;
     @extend .centeredBlock;
 }
 #page > main#homeView > section > h1 {

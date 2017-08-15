@@ -23,6 +23,10 @@ export default class ComponentHome extends Component {
      let value = document.querySelector("#selector").value;
      browserHistory.push(value);
    }
+   perseus = function(){
+     let value = document.querySelector("#perseusURI").value;
+     console.log(value);
+   }
 
   render() {
     return (
@@ -42,7 +46,14 @@ export default class ComponentHome extends Component {
             {this.entities.map((entity,i)=>(<option key={"entitiesSelect"+entity.id_entity} value={'/entities/'+entity.id_entity}>entity : {entity.title}</option>))}
           </datalist>
         </section>
+        <section id="perseus">
+          <h1>Import from perseus</h1>
+          <input type="text" id="perseusURI"/>
+          <button onClick={()=>this.perseus()}>go</button>
+        </section>
         <section id="readme">
+          <h1>Roadmap:</h1>
+          <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
           <h1>anthologie-API</h1>
           <ul>
             <li>docker as service manager</li>
@@ -50,8 +61,6 @@ export default class ComponentHome extends Component {
             <li><strike>react as frontend</strike></li>
             <li><strike>Automated backups/restore using myloader/mydumper</strike></li>
           </ul>
-          <h1>Roadmap:</h1>
-          <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
           <h2>Home Page</h2>
           <ul>
             <li><strike>Search box for entities/text/authors/cities with autocompletion</strike></li>

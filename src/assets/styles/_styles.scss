@@ -122,6 +122,10 @@ html, body, #pageMeta ,#app {
   text-align: left;
   border:1px solid #f0f0f0;
 }
+.inputStandardInline{
+  @extend .inputStandard;
+  display:inline-block;
+}
 
 .flexed{
   display:flex;
