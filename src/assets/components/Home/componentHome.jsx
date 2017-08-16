@@ -165,7 +165,7 @@ export default class ComponentHome extends Component {
             <ul>
               <li><strike>Alignement and text translation edition</strike></li>
               <li><strike>Add URIs endpoints access</strike></li>
-              <li>Add keywords endpoints access</li>
+              <li><strike>Add keywords endpoints access</strike></li>
               <li>Add images endpoints access</li>
               <li>Add scholies endpoints access</li>
               <li>Add notes endpoints access</li>
@@ -173,7 +173,7 @@ export default class ComponentHome extends Component {
             <h2>Author pages</h2>
             <ul>
               <li><strike>Add activity range</strike></li>
-              <li>Add URIs endpoints access</li>
+              <li>Add authors to import Perseus</li>
               <li>Add images of authors</li>
               <li><strike>Add all entities linked to an Author</strike></li>
             </ul>
