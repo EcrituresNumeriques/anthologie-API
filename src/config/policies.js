@@ -98,6 +98,12 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'destroy':['isLoggedIn','ownsThis']
+  },
+  ContribController:{
+    'entities':['isLoggedIn'],
+    'translations':['isLoggedIn'],
+    'aligns':['isLoggedIn'],
+    'scholies':['isLoggedIn'],
   }
 
 };

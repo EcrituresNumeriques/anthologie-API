@@ -199,6 +199,12 @@ module.exports.routes = {
   'GET /api/v1/uris/:id':'URIdController.findOne',
   'POST /api/v1/uris/:id':'URIdController.update',
 
+  //Get all Contributions
+  'GET /api/v1/contrib/entities':'ContribController.entities',
+  'GET /api/v1/contrib/translations':'ContribController.translations',
+  'GET /api/v1/contrib/aligns':'ContribController.aligns',
+  'GET /api/v1/contrib/scholies':'ContribController.scholies',
+
   // All GET requests are directed to the app controller which renders our app.
   'GET /*': {
     controller: 'AppController',

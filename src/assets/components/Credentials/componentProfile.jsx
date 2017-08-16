@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { Link,browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 
 // components
@@ -10,10 +10,74 @@ export default class ComponentProfile extends Component {
   constructor(props) {
     super(props);
     this.user = store.getState().user;
+    this.contrib = {entities:[{title:'test',id_entity:1}],translations:[],aligns:[],scholies:[]};
+    this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentWillMount(){
     document.title = "Profile | anthologie";
+  }
+
+  fetchAPI(){
+      let that = this;
+      fetch('/api/v1/contrib/entities',{
+        method:'GET',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        that.contrib.entities = json;
+        //that.refs.city_born = json.city_born;
+        that.forceUpdate();
+        return null;
+      });
+
+
+      fetch('/api/v1/contrib/translations',{
+        method:'GET',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        that.contrib.translations = json;
+        //that.refs.city_born = json.city_born;
+        that.forceUpdate();
+        return null;
+      });
+
+
+      fetch('/api/v1/contrib/aligns',{
+        method:'GET',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        that.contrib.aligns = json;
+        //that.refs.city_born = json.city_born;
+        that.forceUpdate();
+        return null;
+      });
+
+
+      fetch('/api/v1/contrib/scholies',{
+        method:'GET',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        that.contrib.scholies = json;
+        //that.refs.city_born = json.city_born;
+        that.forceUpdate();
+        return null;
+      });
   }
 
   handleSubmit = function (e) {
@@ -70,7 +134,15 @@ export default class ComponentProfile extends Component {
           </form>
         </section>
         <section id="contrib">
-
+          <h1>Contributions</h1>
+          <h2>Entities</h2>
+          {this.contrib.entities.map((entity,i)=>(<Link key={"contribEntity"+entity.id_entity} to={"/entities/"+entity.id_entity}>{entity.title}</Link>))}
+          <h2>Translations</h2>
+          {this.contrib.translations.map((translation,i)=>(<Link key={"contribTranslation"+translation.id_entity_translation} to={"/entities/"+translation.id_entity}>[{store.getState().languagesLookup[translation.id_language].name}] {store.getState().entitiesLookup[translation.id_entity].title}</Link>))}
+          <h2>Alignements</h2>
+          {this.contrib.aligns.map((align,i)=>(<Link key={"contribAlign"+align.id_entity} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{store.getState().languagesLookup[align.source_lang].name}] => [{store.getState().languagesLookup[align.target_lang].name}] {store.getState().entitiesLookup[align.id_entity].title}</Link>))}
+          <h2>Scholies</h2>
+          {this.contrib.scholies.map((scholie,i)=>(<Link key={"contribScholie"+scholie.id_scholie} to={"/entities/"+scholie.id_entity+'/showScholie/'+scholie.id_scholie}>{scholie.title}</Link>))}
         </section>
       </main>
     );
