@@ -20,6 +20,7 @@ import AsideAuthors from 'components/Authors/asideAuthors';
 import MainAuthors from 'components/Authors/mainAuthors';
 import newAuthor from 'components/Authors/newAuthor';
 import newAuthorTranslation from 'components/Authors/newAuthorTranslation';
+import newAuthorImage from 'components/Authors/newAuthorImage';
 import specificAuthor from 'components/Authors/specificAuthor';
 
 //Keywords
@@ -80,6 +81,8 @@ export const routes = (
       <IndexRoute component={MainAuthors} />
       <Route path="/authors/new" component={newAuthor} />
       <Route path="/authors/newtranslation" component={newAuthorTranslation} />
+      <Route path="/authors/newimage" component={newAuthorImage} />
+      <Route path="/authors/newimage/:id" component={newAuthorImage} />
       <Route path="/authors/newtranslation/:id" component={newAuthorTranslation} />
       <Route path="/authors/:id" component={specificAuthor} />
     </Route>

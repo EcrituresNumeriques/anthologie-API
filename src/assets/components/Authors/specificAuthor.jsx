@@ -157,6 +157,15 @@ export default class specificAuthor extends Component {
               <input type="number" ref="activity_range" placeholder='ex. "10" (years)' defaultValue={_.get(this.author,'activity_range',0)} className="double" />
             </div>
 
+            <div className="inputContainerLanguage">
+              <label>Images :</label>
+              <div className="collection">
+
+                {_.get(this.author,'images',[]).map((image)=>(<a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
+                {!readOnly && <Link className="addToCollectionSide" to={'/authors/newImage/'+this.props.params.id}>Add an image </Link>}
+              </div>
+            </div>
+
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.author.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.author.updatedAt} disabled="true"/></div>
             {this.author.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.author.id_user.institution+'] ' + this.author.id_user.displayName} disabled="true"/></div>}

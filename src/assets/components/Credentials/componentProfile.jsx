@@ -132,6 +132,8 @@ export default class ComponentProfile extends Component {
         if(!res.ok){throw res.json();}
         return res.json()})
       .then(function(data){
+        browserHistory.push('/home');
+        browserHistory.push('/profile');
         alert("password updated");
         that.forceUpdate();
         return null})

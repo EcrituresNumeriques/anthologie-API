@@ -32,7 +32,7 @@ Authors component
 #page > main#authorsView > main > form {
   @extend .centeredBlock;
 }
-#page > main#authorsView > main > form > input,#page > main#authorsView > main > form > select {
+#page > main#authorsView > main > form > input,#page > main#authorsView > main > form > select,#page > main#authorsView > main > form > textarea {
   @extend .inputStandard;
   @extend .centeredBlock;
 }
@@ -59,4 +59,17 @@ Authors component
 #page > main#authorsView > main > form > p.legend,#page > main#authorsView > main > form > input,#page > main#authorsView > main > form > select {
   @extend .paddedBlock;
   @extend .centeredInside;
+}
+#page main#authorsView > main > form > div.inputContainerLanguage > div.collection > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#authorsView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem{
+  @extend .clickable;
+  @extend .paddedBlock;
+  flex:1 1 33%;
+}
+#page main#authorsView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
+  max-height: 64px;
+  max-width: 64px;
 }
