@@ -107,6 +107,13 @@ module.exports.policies = {
   },
   User_updateCredentialController:{
     updatePassword:['isLoggedIn']
+  },
+ImagesController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','ownsThis']
   }
 
 };

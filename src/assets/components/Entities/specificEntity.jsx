@@ -237,6 +237,16 @@ export default class specificEntity extends Component {
 
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newKeyword/'+this.props.params.id}>Add a Keyword </Link></div>}
 
+            <div className="inputContainerLanguage">
+              <label>Images :</label>
+              <div className="collection">
+
+                {_.get(this.entity,'images',[]).map((image)=>(<a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
+                {!readOnly && <Link className="addToCollectionSide" to={'/entities/newImage/'+this.props.params.id}>Add an image </Link>}
+              </div>
+            </div>
+
+
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>
             {this.entity.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.entity.id_user.institution+'] ' + this.entity.id_user.displayName} disabled="true"/></div>}

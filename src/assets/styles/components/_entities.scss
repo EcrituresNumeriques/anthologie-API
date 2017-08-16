@@ -69,6 +69,22 @@ Entities component
   @extend .textboxInput;
   @extend .secondNoLabelInput;
 }
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection {
+  @extend .textboxInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem{
+  @extend .clickable;
+  @extend .paddedBlock;
+  flex:1 1 33%;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
+  max-height: 64px;
+  max-width: 64px;
+}
 #page > main#entitiesView > main > form > p.legend,#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > button {
   @extend .paddedBlock;
   @extend .centeredInside;
