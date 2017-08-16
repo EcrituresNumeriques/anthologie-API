@@ -14,7 +14,7 @@ API for translating old texts, using :
 `git clone https://github.com/EcrituresNumeriques/anthologie-API.git`
 
 ## move to the correct folder
-`cd anthologie-API/react/`
+`cd anthologie-API/src/`
 
 ## modify secret and passwords
 - config/session.js (secret and redis connection, if changed)
@@ -43,6 +43,6 @@ npm run postinstall
 ## You're done!!
 
 # developpement
-If you want to develop, the best way is to change de last step and use 
+If you want to develop, the best way is to change de last step and use
 `npm run start` instead of `npm run postinstall`
 you'll get a nice autoreload environnement for react/sails, don't forget to `npm run dist` if you plan on keeping the compiled files up to date (so the server just needs `npm run restart` after a git pull or something)
