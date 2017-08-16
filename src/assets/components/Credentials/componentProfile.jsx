@@ -13,6 +13,7 @@ export default class ComponentProfile extends Component {
     this.contrib = {entities:[{title:'test',id_entity:1}],translations:[],aligns:[],scholies:[]};
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
   componentWillMount(){
     document.title = "Profile | anthologie";
@@ -109,6 +110,37 @@ export default class ComponentProfile extends Component {
   }
 
 
+  handlePassword = function (e) {
+    e.preventDefault();
+    let that = this;
+    //get email and password
+    if(this.refs.new.value != this.refs.confirm.value){
+      alert('New password and confirmation must be the same and not be empty');
+    }
+    else{
+      let corps = {
+        old:this.refs.old.value,
+        new:this.refs.new.value
+      }
+      fetch("/api/v1/credentials/password",
+      {
+          method: "POST",
+          body: JSON.stringify(corps),
+          credentials: 'same-origin'
+      })
+      .then(function(res){
+        if(!res.ok){throw res.json();}
+        return res.json()})
+      .then(function(data){
+        alert("password updated");
+        that.forceUpdate();
+        return null})
+      .catch(function(error){return error})
+      .then(function(error){if(error != null){alert(error.humanReadable)};}.bind(this));
+    }
+  }
+
+
   render() {
     if(this.user){
     return (
@@ -127,9 +159,9 @@ export default class ComponentProfile extends Component {
         <section id="password">
           <h1>Change password</h1>
           <form onSubmit={this.handlePassword} id="passwordForm">
-            <input type="oldpassword" placeholder="Old password" name="old" ref="old" autoComplete="new-password"/>
+            <input type="password" placeholder="Old password" name="old" ref="old" autoComplete="new-password"/>
             <input type="password" placeholder="New password" name="new" ref="new" autoComplete="new-password"/>
-            <input type="passwordConfirm" placeholder="Confirm new password" name="confirm" ref="confirm" autoComplete="new-password"/>
+            <input type="password" placeholder="Confirm new password" name="confirm" ref="confirm" autoComplete="new-password"/>
             <input type="submit" value="send"/>
           </form>
         </section>

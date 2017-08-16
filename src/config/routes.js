@@ -69,6 +69,7 @@ module.exports.routes = {
   //'GET /api/v1/credentials':'User_CredentialsController.find',
   //'POST /api/v1/credentials':'User_CredentialsController.create',
   //'GET /api/v1/credentials/:id':'User_CredentialsController.findOne',
+  'POST /api/v1/credentials/password':'User_updateCredentialController.updatePassword',
   'POST /api/v1/credentials/:id':'User_CredentialsController.update',
 
   //Register
