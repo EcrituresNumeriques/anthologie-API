@@ -4,6 +4,7 @@ import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from '
 import App from 'components/App/App';
 
 import ComponentAuthors from 'components/Authors/componentAuthors'
+import ComponentKeywords from 'components/Keywords/componentKeywords'
 import ComponentCities from 'components/Cities/componentCities'
 import ComponentLanguages from 'components/Languages/componentLanguages'
 import ComponentEntities from 'components/Entities/componentEntities'
@@ -21,6 +22,13 @@ import newAuthor from 'components/Authors/newAuthor';
 import newAuthorTranslation from 'components/Authors/newAuthorTranslation';
 import specificAuthor from 'components/Authors/specificAuthor';
 
+//Keywords
+import AsideKeywords from 'components/Keywords/asideKeywords';
+import MainKeywords from 'components/Keywords/mainKeywords';
+import newKeyword from 'components/Keywords/newKeyword';
+import newKeywordTranslation from 'components/Keywords/newKeywordTranslation';
+import specificKeyword from 'components/Keywords/specificKeyword';
+
 //Cities
 import AsideCities from 'components/Cities/asideCities';
 import MainCities from 'components/Cities/mainCities';
@@ -34,6 +42,7 @@ import MainEntities from 'components/Entities/mainEntities';
 import newEntity from 'components/Entities/newEntity';
 import newEntityTranslation from 'components/Entities/newEntityTranslation';
 import newEntityAuthor from 'components/Entities/newEntityAuthor';
+import newEntityKeyword from 'components/Entities/newEntityKeyword';
 import newEntityURI from 'components/Entities/newEntityURI';
 import specificEntity from 'components/Entities/specificEntity';
 import alignTextsEntity from 'components/Entities/alignTextsEntity';
@@ -55,6 +64,8 @@ export const routes = (
       <Route path="/entities/newtranslation/:id" component={newEntityTranslation} />
       <Route path="/entities/newAuthor" component={newEntityAuthor} />
       <Route path="/entities/newAuthor/:id" component={newEntityAuthor} />
+      <Route path="/entities/newKeyword" component={newEntityKeyword} />
+      <Route path="/entities/newKeyword/:id" component={newEntityKeyword} />
       <Route path="/entities/newURI" component={newEntityURI} />
       <Route path="/entities/newURI/:id" component={newEntityURI} />
       <Route path="/entities/:id" component={specificEntity} />
@@ -68,6 +79,13 @@ export const routes = (
       <Route path="/authors/newtranslation" component={newAuthorTranslation} />
       <Route path="/authors/newtranslation/:id" component={newAuthorTranslation} />
       <Route path="/authors/:id" component={specificAuthor} />
+    </Route>
+    <Route path="/keywords" component={ComponentKeywords}>
+      <IndexRoute component={MainKeywords} />
+      <Route path="/keywords/new" component={newKeyword} />
+      <Route path="/keywords/newtranslation" component={newKeywordTranslation} />
+      <Route path="/keywords/newtranslation/:id" component={newKeywordTranslation} />
+      <Route path="/keywords/:id" component={specificKeyword} />
     </Route>
     <Route path="cities" component={ComponentCities}>
       <IndexRoute component={MainCities} />

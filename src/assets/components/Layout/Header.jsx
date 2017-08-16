@@ -18,6 +18,7 @@ export default class Header extends Component {
               <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
               <Link to="/cities" activeStyle={{ 'fontWeight': 'bold' }}>Cities</Link>
               <Link to="/languages" activeStyle={{ 'fontWeight': 'bold' }}>Languages</Link>
+              <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
               <div />
               {!store.getState().loggedIn && <Link to="/register" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Register</Link>}
               {!store.getState().loggedIn && <Link to="/login" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Login</Link>}

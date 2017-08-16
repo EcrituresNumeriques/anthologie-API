@@ -179,6 +179,7 @@ export default class ComponentHome extends Component {
             </ul>
             <h2>Contrib page</h2>
             <ul>
+              <li>Change password</li>
               <li>Design a component for listing all your own contributions (for quick access)</li>
               <li>This shall include entities, translations, alignements and scholies</li>
             </ul>

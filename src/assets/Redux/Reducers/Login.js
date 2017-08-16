@@ -1,4 +1,4 @@
-const initialState = {languages:[],authors:[],cities:[],languagesLookup:{},authorsLookup:{},citiesLookup:{},loggedIn:false};
+const initialState = {languages:[],authors:[],cities:[],languagesLookup:{},authorsLookup:{},citiesLookup:{},keywords:[],loggedIn:false};
 
 export function login(state = initialState, action) {
   console.log(action.type);
@@ -40,6 +40,12 @@ export function login(state = initialState, action) {
         lookup[action.payload[i].id_URI_source] = action.payload[i];
       }
       return Object.assign({},state,{authorities:action.payload,authoritiesLookup:lookup})
+      break;
+    case 'UPDATE_KEYWORDS':
+      for (var i = 0, len = action.payload.length; i < len; i++) {
+        lookup[action.payload[i].id_keyword] = action.payload[i];
+      }
+      return Object.assign({},state,{keywords:action.payload,keywordsLookup:lookup})
       break;
 /*
     //Not sure if needed

@@ -141,6 +141,21 @@ export default class specificEntity extends Component {
   moveToAuthor = function(author){
     browserHistory.push('/authors/'+author);
   }
+  moveToKeyword = function(keyword){
+    browserHistory.push('/keywords/'+keyword);
+  }
+  deleteKeyword = function(keyword){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/entities/'+that.props.params.id+'/keywords/'+keyword.id_keyword,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/entities');
+          browserHistory.push('/entities/'+that.props.params.id);
+        });
+  }
 
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
@@ -211,6 +226,16 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>(this.deleteAlignement(alignement))} >X</button>}
               </div>
             ))}
+
+            {_.get(this.entity,'keywords',[]).map((keyword,i)=>(
+              <div className="inputContainerLanguage" key={'keywordEntity'+keyword.id_keyword}>
+                <label>{i?'':'Keywords : '}</label>
+                <p onClick={()=>this.moveToKeyword(keyword.id_keyword)}>{_.get(store.getState().keywordsLookup[keyword.id_keyword],'translations',[]).map((translation)=>(translation.title)).join(" / ")}</p>
+                {!readOnly && <button type="button" onClick={()=>this.deleteKeyword(keyword)} >X</button>}
+              </div>
+            ))}
+
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newKeyword/'+this.props.params.id}>Add a Keyword </Link></div>}
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>

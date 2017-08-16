@@ -1,0 +1,62 @@
+/*
+Authors component
+*/
+#page > main#keywordsView{
+  @extend .mainInside;
+}
+#page > main#keywordsView > aside {
+  @extend .whiteBox;
+  grid-area: aside;
+}
+#page > main#keywordsView > main {
+  @extend .whiteBox;
+  grid-area: content;
+}
+#page > main#keywordsView > main > a,#page > main#keywordsView > aside > a {
+  @extend .linklist;
+}
+#page > main#keywordsView > main > a.addto,#page > main#keywordsView > aside > a.addto {
+  @extend .linklist;
+  @extend .addTo;
+}
+#page > main#keywordsView > main > h1 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#keywordsView > main > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#keywordsView > main > form {
+  @extend .centeredBlock;
+}
+#page > main#keywordsView > main > form > input,#page > main#keywordsView > main > form > select {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage{
+  @extend .inputContainer;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > label:not(.smallLabel){
+  @extend .labelInput;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > input:not(.double),#page > main#keywordsView > main > form > div.inputContainerLanguage > select{
+  @extend .textboxInput;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > p{
+  @extend .textboxInput;
+  @extend .clickable;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > input.double{
+  @extend .smallTextboxInput;
+}
+#page main#keywordsView > main > form > div.inputContainerLanguage > a {
+   @extend .noLabelInput;
+   @extend .textboxInput;
+ }
+#page > main#keywordsView > main > form > p.legend,#page > main#keywordsView > main > form > input,#page > main#keywordsView > main > form > select {
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}

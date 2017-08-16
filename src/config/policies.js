@@ -38,8 +38,15 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'RemoveAuthor':['isLoggedIn','ownsThis'],
+    'RemoveKeyword':['isLoggedIn','ownsThis'],
     'destroyUri':['isLoggedIn','ownsThis'],
     'destroyTranslation':['isLoggedIn','ownsThis'],
+  },
+  KeywordsController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis'],
   },
   AuthorsController:{
     'find':true,

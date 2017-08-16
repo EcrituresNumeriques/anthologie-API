@@ -70,3 +70,14 @@ resolveFirst.push(fetch('/api/v1/authorities',{
   store.dispatch({type:'UPDATE_URI_SOURCE',payload:json});
   return null;
 }));
+resolveFirst.push(fetch('/api/v1/keywords',{
+  method:'GET',
+  credentials: 'same-origin'
+})
+.then(function(response){
+  return response.json();
+})
+.then(function(json){
+  store.dispatch({type:'UPDATE_KEYWORDS',payload:json});
+  return null;
+}));

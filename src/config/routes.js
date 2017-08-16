@@ -37,6 +37,13 @@ module.exports.routes = {
   'POST /api/v1/entities/:parentid/authors/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'authors'}],
   'DELETE /api/v1/entities/:parentid/authors/:id':'EntitiesController.RemoveAuthor',
 
+  'POST /api/v1/entities/:parentid/keywords':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'keywords'}],
+  'POST /api/v1/entities/:parentid/keywords/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'keywords'}],
+  'DELETE /api/v1/entities/:parentid/keywords/:id':'EntitiesController.RemoveKeyword',
+
+  'POST /api/v1/keywords/:parentid/translations':[{model:"keywords"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'keywords',alias:'translations'}],
+  'DELETE /api/v1/keywords/:parentid/translations/:id':'KeywordsController.deleteFromCollection',
+
 
   'POST /api/v1/entities/:parentid/uris':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'uris'}],
   'DELETE /api/v1/entities/:parentid/uris/:id':'EntitiesController.destroyUri',

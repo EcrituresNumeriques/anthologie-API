@@ -15,6 +15,14 @@ module.exports = {
       res.ok(r);
     });
   },
+  RemoveKeyword: function (req, res) {
+    Entities.findOne({id_entity:req.param('parentid')}).populate('keywords').exec(function(e,r){
+      if(e){return res.badRequest({message:"bad request"})}
+      r.keywords.remove(req.param('id'))
+      r.save()
+      res.ok(r);
+    });
+  },
   destroyUri : function (req,res){
     URId.destroy({id_urid:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
       if(err){return res.badRequest({success:false});}
