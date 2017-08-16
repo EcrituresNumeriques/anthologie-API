@@ -48,16 +48,30 @@ export default class ComponentProfile extends Component {
   render() {
     if(this.user){
     return (
-      <main id="monoView">
-        <h1>{this.user.displayName}</h1>
-        <form onSubmit={this.handleSubmit} id="registerForm">
-          <input type="text" placeholder="username*" name="username" ref="username" defaultValue={this.user.displayName}/>
-          <input type="text" placeholder="First name" name="firstName" ref="firstName" defaultValue={this.user.first_name}/>
-          <input type="text" placeholder="Last name" name="lastName" ref="lastName" defaultValue={this.user.last_name}/>
-          <input type="text" placeholder="Institution" name="institution" ref="institution" defaultValue={this.user.institution}/>
-          <input type="text" placeholder="Country" name="country" ref="country" defaultValue={this.user.country}/>
-          <input type="submit" value="send"/>
-        </form>
+      <main id="credView">
+        <section id="infos">
+          <h1>{this.user.displayName}</h1>
+          <form onSubmit={this.handleSubmit} id="registerForm">
+            <input type="text" placeholder="username*" name="username" ref="username" defaultValue={this.user.displayName}/>
+            <input type="text" placeholder="First name" name="firstName" ref="firstName" defaultValue={this.user.first_name}/>
+            <input type="text" placeholder="Last name" name="lastName" ref="lastName" defaultValue={this.user.last_name}/>
+            <input type="text" placeholder="Institution" name="institution" ref="institution" defaultValue={this.user.institution}/>
+            <input type="text" placeholder="Country" name="country" ref="country" defaultValue={this.user.country}/>
+            <input type="submit" value="send"/>
+          </form>
+        </section>
+        <section id="password">
+          <h1>Change password</h1>
+          <form onSubmit={this.handlePassword} id="passwordForm">
+            <input type="oldpassword" placeholder="Old password" name="old" ref="old" autoComplete="new-password"/>
+            <input type="password" placeholder="New password" name="new" ref="new" autoComplete="new-password"/>
+            <input type="passwordConfirm" placeholder="Confirm new password" name="confirm" ref="confirm" autoComplete="new-password"/>
+            <input type="submit" value="send"/>
+          </form>
+        </section>
+        <section id="contrib">
+
+        </section>
       </main>
     );
     }
