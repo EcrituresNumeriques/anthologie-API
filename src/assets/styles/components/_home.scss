@@ -25,6 +25,10 @@ Login/Register component
   grid-area:readme;
   margin-right:30px;
 }
+#page > main#homeView > #readme > a{
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
 #page > main#homeView > section{
   @extend .whiteBox;
   @extend .paddedBlock;

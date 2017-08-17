@@ -146,42 +146,17 @@ export default class ComponentHome extends Component {
           <button onClick={()=>this.perseus()}>go</button>
         </section>
         <section id="readme">
+          <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>
+          <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
+          <Link to="/cities" activeStyle={{ 'fontWeight': 'bold' }}>Cities</Link>
+          <Link to="/languages" activeStyle={{ 'fontWeight': 'bold' }}>Languages</Link>
+          <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
           <h1>Roadmap:</h1>
           <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
-          <h1>anthologie-API</h1>
-          <ul>
-            <li>docker as service manager</li>
-            <li><strike>sails.js as backend API</strike></li>
-            <li><strike>react as frontend</strike></li>
-            <li><strike>Automated backups/restore using myloader/mydumper</strike></li>
-          </ul>
-          <h2>Home Page</h2>
-          <ul>
-            <li><strike>Search box for entities/text/authors/cities with autocompletion</strike></li>
-            <li><strike>Shortcut to add a text from perseus directly from it's URI</strike></li>
-            <li><strike>Access link to all endpoints of the API (for the less used endpoints)</strike></li>
-          </ul>
-          <h2>Entity pages</h2>
             <ul>
-              <li><strike>Alignement and text translation edition</strike></li>
-              <li><strike>Add URIs endpoints access</strike></li>
-              <li><strike>Add keywords endpoints access</strike></li>
-              <li><strike>Add images endpoints access</strike></li>
               <li>Add scholies endpoints access</li>
               <li>Add notes endpoints access</li>
-            </ul>
-            <h2>Author pages</h2>
-            <ul>
-              <li><strike>Add activity range</strike></li>
               <li>Add authors to import Perseus</li>
-              <li><strike>Add images of authors</strike></li>
-              <li><strike>Add all entities linked to an Author</strike></li>
-            </ul>
-            <h2>Contrib page</h2>
-            <ul>
-              <li><strike>Change password</strike></li>
-              <li><strike>Design a component for listing all your own contributions (for quick access)</strike></li>
-              <li><strike>This shall include entities, translations, alignements and scholies</strike></li>
             </ul>
           </section>
       </main>
