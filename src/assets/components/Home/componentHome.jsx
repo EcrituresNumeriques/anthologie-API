@@ -146,11 +146,13 @@ export default class ComponentHome extends Component {
           <button onClick={()=>this.perseus()}>go</button>
         </section>
         <section id="readme">
+          <Link to="/Home" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Home</Link>
           <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>
           <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
           <Link to="/cities" activeStyle={{ 'fontWeight': 'bold' }}>Cities</Link>
           <Link to="/languages" activeStyle={{ 'fontWeight': 'bold' }}>Languages</Link>
           <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
+          <Link to="/notes" activeStyle={{ 'fontWeight': 'bold' }}>Notes</Link>
           <h1>Roadmap:</h1>
           <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
             <ul>

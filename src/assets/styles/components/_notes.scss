@@ -1,0 +1,105 @@
+/*
+Entities component
+*/
+#page > main#notesView{
+  @extend .mainInside;
+}
+#page > main#notesView > aside {
+  @extend .whiteBox;
+  grid-area: aside;
+}
+#page > main#notesView > main {
+  @extend .whiteBox;
+  grid-area: content;
+}
+#page > main#notesView > main > a,#page > main#notesView > aside > a {
+  @extend .linklist;
+}
+#page > main#notesView > main > a.addto,#page > main#notesView > aside > a.addto {
+  @extend .linklist;
+  @extend .addTo;
+}
+#page > main#notesView > main > h1 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#notesView > main > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#notesView > main > form>  h3 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#notesView > main > form>  h4 {
+  @extend .centeredBlock;
+  @extend .centeredInside;
+}
+#page > main#notesView > main > form {
+  @extend .centeredBlock;
+}
+#page > main#notesView > main > form > input,#page > main#notesView > main > form > select,#page > main#notesView > main > form > textarea,#page > main#notesView > main > button {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
+#page > main#notesView > main > form > div.inputContainerLanguage{
+  @extend .inputContainer;
+}
+#page > main#notesView > main > form > div.inputContainerLanguage > label:not(.smallLabel){
+  @extend .labelInput;
+}
+#page > main#notesView > main > form > div.inputContainerLanguage > input,#page > main#notesView > main > form > div.inputContainerLanguage > select,#page > main#notesView > main > form > div.inputContainerLanguage > a{
+  @extend .textboxInput;
+}
+#page > main#notesView > main > form > div.inputContainerLanguage > p{
+  @extend .textboxInput;
+  @extend .clickable;
+}
+#page > main#notesView > main > form > div.inputContainerLanguage > input.noFlex{
+  @extend .noFlexInput;
+}
+#page main#notesView > main > form > div.inputContainerLanguage > a.addToCollection {
+   @extend .noLabelInput;
+   @extend .textboxInput;
+ }
+#page main#notesView > main > form > div.inputContainerLanguage > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#notesView > main > form > div.inputContainerLanguage > div.collection {
+  @extend .textboxInput;
+}
+#page main#notesView > main > form > div.inputContainerLanguage > div.collection > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#notesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem{
+  @extend .clickable;
+  @extend .paddedBlock;
+  flex:1 1 33%;
+}
+#page main#notesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
+  max-height: 64px;
+  max-width: 64px;
+}
+#page > main#notesView > main > form > p.legend,#page > main#notesView > main > form > input,#page > main#notesView > main > form > select,#page > main#notesView > main > button {
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#notesView > main > div.text{
+  margin-bottom:1em;
+}
+#page > main#notesView > main > div.text > p > span > span {
+  display:inline-block;
+  padding:0.125em 0.25em;
+  cursor:pointer;
+}
+#page > main#notesView > main > div.text > p > span > span.highlighted {
+  background-color:#F4FA58;
+}
+#page > main#notesView > main > div.text > p > span > span.select {
+  background-color:#82FA58;
+}

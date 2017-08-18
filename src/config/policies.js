@@ -62,6 +62,13 @@ module.exports.policies = {
     'update':['isLoggedIn','ownsThis'],
     'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
+  NotesController:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','populateUserInfos'],
+    'update':['isLoggedIn','ownsThis'],
+    //'deleteFromCollection':['isLoggedIn','ownsThis'],
+  },
   LanguagesController:{
     'find':true,
     'findOne':true,

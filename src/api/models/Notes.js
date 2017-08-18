@@ -9,7 +9,7 @@ module.exports = {
   tableName: 'notes',
   autoPK: false,
   attributes: {
-    id_motif: {
+    id_note: {
       type: 'integer',
       autoIncrement: true,
       primaryKey: true,
@@ -24,6 +24,10 @@ module.exports = {
     translations:{
       collection:'Note_translations',
       via:'id_note'
+    },
+    title:{
+      type:'string',
+      size:64
     },
     id_entity:{
       model:'Entities'

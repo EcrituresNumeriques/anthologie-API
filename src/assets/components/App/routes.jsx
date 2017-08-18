@@ -8,6 +8,7 @@ import ComponentKeywords from 'components/Keywords/componentKeywords'
 import ComponentCities from 'components/Cities/componentCities'
 import ComponentLanguages from 'components/Languages/componentLanguages'
 import ComponentEntities from 'components/Entities/componentEntities'
+import ComponentNotes from 'components/Notes/componentNotes'
 import ComponentLogin from 'components/Credentials/componentLogin'
 import ComponentRegister from 'components/Credentials/componentRegister'
 import ComponentProfile from 'components/Credentials/componentProfile'
@@ -51,6 +52,14 @@ import alignTextsEntity from 'components/Entities/alignTextsEntity';
 import showAlignEntity from 'components/Entities/showAlignEntity';
 import editAlignTextsEntity from 'components/Entities/editAlignTextsEntity';
 
+//Notes
+import AsideNotes from 'components/Notes/asideNotes';
+import MainNotes from 'components/Notes/mainNotes';
+import newNote from 'components/Notes/newNote';
+import newNoteTranslation from 'components/Notes/newNoteTranslation';
+import newNoteImage from 'components/Notes/newNoteImage';
+import specificNote from 'components/Notes/specificNote';
+
 //Languages
 import AsideLanguages from 'components/Languages/asideLanguages';
 import MainLanguages from 'components/Languages/mainLanguages';
@@ -76,6 +85,15 @@ export const routes = (
       <Route path="/entities/:id/aligntexts/:first/:second" component={alignTextsEntity} />
       <Route path="/entities/:id/showalign/:align" component={showAlignEntity} />
       <Route path="/entities/:id/editalign/:align" component={editAlignTextsEntity} />
+    </Route>
+    <Route path="/notes" component={ComponentNotes}>
+      <IndexRoute component={MainNotes} />
+      <Route path="/notes/new" component={newNote} />
+      <Route path="/notes/newtranslation" component={newNoteTranslation} />
+      <Route path="/notes/newtranslation/:id" component={newNoteTranslation} />
+      <Route path="/notes/newimage" component={newNoteImage} />
+      <Route path="/notes/newimage/:id" component={newNoteImage} />
+      <Route path="/notes/:id" component={specificNote} />
     </Route>
     <Route path="/authors" component={ComponentAuthors}>
       <IndexRoute component={MainAuthors} />
