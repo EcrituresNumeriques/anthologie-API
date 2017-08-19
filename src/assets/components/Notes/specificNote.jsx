@@ -98,6 +98,18 @@ export default class specificNote extends Component {
                 <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.note.title} disabled={readOnly} />
               </div>
 
+              {_.get(this.note,'entities',[]).map((entity,i)=>(
+                <div className="inputContainerLanguage" key={'entityNote'+entity.id_entity}>
+                  <label>{i?'':'Entities : '}</label>
+                  <p>{entity.title}</p>
+                  {!readOnly && <button type="button" onClick={()=>(this.deleteEntities(entity))} >X</button>}
+                </div>
+              ))}
+
+              {!readOnly && <div className="inputContainerLanguage">
+                <Link className="addToCollection" to={'/notes/newEntity/'+this.props.params.id}>Add a linked entity</Link>
+              </div>}
+
 
               <div className="inputContainerLanguage">
                 <label>Images :</label>

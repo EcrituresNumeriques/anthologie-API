@@ -31,6 +31,11 @@ module.exports = {
     },
     id_entity:{
       model:'Entities'
+    },
+    images:{
+      collection:'images',
+      via:'notes',
+      dominant:true
     }
   }
 };

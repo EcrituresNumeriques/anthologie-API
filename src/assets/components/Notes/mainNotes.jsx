@@ -23,7 +23,6 @@ export default class mainNotes extends Component {
      })
      .then(function(json){
        //console.log(json)
-       store.dispatch({type:"UPDATE_ENTITIES",payload:json});
        that.notes = json;
        that.forceUpdate();
      });

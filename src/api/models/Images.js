@@ -78,6 +78,10 @@ module.exports = {
     entities:{
       collection:'Entities',
       via:'images'
+    },
+    notes:{
+      collection:'Notes',
+      via:'images'
     }
   }
 };
