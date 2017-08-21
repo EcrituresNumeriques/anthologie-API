@@ -29,8 +29,10 @@ module.exports = {
       type:'string',
       size:64
     },
-    id_entity:{
-      model:'Entities'
+    entities:{
+      collection:'Entities',
+      via:'notes',
+      dominant:true
     },
     images:{
       collection:'images',

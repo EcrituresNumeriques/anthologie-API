@@ -153,11 +153,10 @@ export default class ComponentHome extends Component {
           <Link to="/languages" activeStyle={{ 'fontWeight': 'bold' }}>Languages</Link>
           <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
           <Link to="/notes" activeStyle={{ 'fontWeight': 'bold' }}>Notes</Link>
+          <Link to="/scholies" activeStyle={{ 'fontWeight': 'bold' }}>Scholies</Link>
           <h1>Roadmap:</h1>
           <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
             <ul>
-              <li>Add scholies endpoints access</li>
-              <li>Add notes endpoints access</li>
               <li>Add authors to import Perseus</li>
             </ul>
           </section>

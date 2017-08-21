@@ -1,4 +1,4 @@
-const initialState = {languages:[],authors:[],cities:[],languagesLookup:{},authorsLookup:{},citiesLookup:{},keywords:[],loggedIn:false};
+const initialState = {languages:[],authors:[],cities:[],languagesLookup:{},authorsLookup:{},citiesLookup:{},keywords:[],notesLookup:[],scholiesLookup:[],loggedIn:false};
 
 export function login(state = initialState, action) {
   console.log(action.type);
@@ -46,6 +46,16 @@ export function login(state = initialState, action) {
         lookup[action.payload[i].id_keyword] = action.payload[i];
       }
       return Object.assign({},state,{keywords:action.payload,keywordsLookup:lookup})
+      break;
+    case 'ADD_NOTE':
+      lookup = state.notesLookup;
+      lookup[action.payload.id_note] = action.payload;
+      return Object.assign({},state,{notesLookup:lookup})
+      break;
+    case 'ADD_SCHOLIE':
+      lookup = state.scholiesLookup;
+      lookup[action.payload.id_scholie] = action.payload;
+      return Object.assign({},state,{scholiesLookup:lookup})
       break;
 /*
     //Not sure if needed

@@ -28,13 +28,19 @@ module.exports = {
       collection:'Scholie_translations',
       via:"id_scholie"
     },
-    images:{
-      collection:'Images',
+    title:{
+      type:'string',
+      size:64
+    },
+    entities:{
+      collection:'Entities',
       via:'scholies',
       dominant:true
     },
-    id_entity:{
-      model:'Entities'
+    images:{
+      collection:'images',
+      via:'scholies',
+      dominant:true
     }
   }
 };

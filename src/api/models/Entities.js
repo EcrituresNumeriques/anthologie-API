@@ -61,7 +61,7 @@ module.exports = {
     },
     scholies:{
       collection:'Scholies',
-      via:'id_entity'
+      via:'entities'
     },
     references:{
       collection:'entities',
@@ -69,7 +69,7 @@ module.exports = {
     },
     notes:{
      collection:'Notes',
-     via:'id_entity',
+     via:'entities'
    },
    motifs:{
      collection:'Motifs',

@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 // components
 
-export default class newNote extends Component {
+export default class newScholie extends Component {
 
 
   constructor(props) {
@@ -17,7 +17,7 @@ export default class newNote extends Component {
     e.preventDefault();
     //get email and password
     let corps = {title:this.refs.title.value}
-    fetch("/api/v1/notes/",
+    fetch("/api/v1/scholies/",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -28,7 +28,7 @@ export default class newNote extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/notes/'+data.id_note);
+        browserHistory.push('/scholies/'+data.id_scholie);
         return null;
       })
       .catch(function(err){
@@ -41,7 +41,7 @@ export default class newNote extends Component {
   }
 
   componentWillMount(){
-    document.title = "Add new note | anthologie";
+    document.title = "Add new scholie | anthologie";
   }
 
 
@@ -49,8 +49,8 @@ export default class newNote extends Component {
 
     return (
       <main><div>
-        <h1>Add a new note</h1>
-        <form onSubmit={this.handleSubmit} id="noteForm">
+        <h1>Add a new scholie</h1>
+        <form onSubmit={this.handleSubmit} id="scholieForm">
           <input type="text" placeholder="Title" name="title" ref="title"/>
           <input type="submit" value="send"/>
         </form>

@@ -9,6 +9,7 @@ import ComponentCities from 'components/Cities/componentCities'
 import ComponentLanguages from 'components/Languages/componentLanguages'
 import ComponentEntities from 'components/Entities/componentEntities'
 import ComponentNotes from 'components/Notes/componentNotes'
+import ComponentScholies from 'components/Scholies/componentScholies'
 import ComponentLogin from 'components/Credentials/componentLogin'
 import ComponentRegister from 'components/Credentials/componentRegister'
 import ComponentProfile from 'components/Credentials/componentProfile'
@@ -57,8 +58,18 @@ import AsideNotes from 'components/Notes/asideNotes';
 import MainNotes from 'components/Notes/mainNotes';
 import newNote from 'components/Notes/newNote';
 import newNoteTranslation from 'components/Notes/newNoteTranslation';
+import newNoteEntity from 'components/Notes/newNoteEntity';
 import newNoteImage from 'components/Notes/newNoteImage';
 import specificNote from 'components/Notes/specificNote';
+
+//Notes
+import AsideScholies from 'components/Scholies/asideScholies';
+import MainScholies from 'components/Scholies/mainScholies';
+import newScholie from 'components/Scholies/newScholie';
+import newScholieTranslation from 'components/Scholies/newScholieTranslation';
+import newScholieEntity from 'components/Scholies/newScholieEntity';
+import newScholieImage from 'components/Scholies/newScholieImage';
+import specificScholie from 'components/Scholies/specificScholie';
 
 //Languages
 import AsideLanguages from 'components/Languages/asideLanguages';
@@ -91,9 +102,20 @@ export const routes = (
       <Route path="/notes/new" component={newNote} />
       <Route path="/notes/newtranslation" component={newNoteTranslation} />
       <Route path="/notes/newtranslation/:id" component={newNoteTranslation} />
+      <Route path="/notes/newentity/:id" component={newNoteEntity} />
       <Route path="/notes/newimage" component={newNoteImage} />
       <Route path="/notes/newimage/:id" component={newNoteImage} />
       <Route path="/notes/:id" component={specificNote} />
+    </Route>
+    <Route path="/scholies" component={ComponentScholies}>
+      <IndexRoute component={MainScholies} />
+      <Route path="/scholies/new" component={newScholie} />
+      <Route path="/scholies/newtranslation" component={newScholieTranslation} />
+      <Route path="/scholies/newtranslation/:id" component={newScholieTranslation} />
+      <Route path="/scholies/newentity/:id" component={newScholieEntity} />
+      <Route path="/scholies/newimage" component={newScholieImage} />
+      <Route path="/scholies/newimage/:id" component={newScholieImage} />
+      <Route path="/scholies/:id" component={specificScholie} />
     </Route>
     <Route path="/authors" component={ComponentAuthors}>
       <IndexRoute component={MainAuthors} />

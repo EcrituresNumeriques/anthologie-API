@@ -7,7 +7,7 @@ import _ from 'lodash'
 
 // components
 
-export default class specificNote extends Component {
+export default class specificScholie extends Component {
 
 
   constructor(props) {
@@ -20,7 +20,7 @@ export default class specificNote extends Component {
 
   fetchAPI(){
       let that = this;
-      fetch('/api/v1/notes/'+that.props.params.id,{
+      fetch('/api/v1/scholies/'+that.props.params.id,{
         method:'GET',
         credentials: 'same-origin'
       })
@@ -28,10 +28,10 @@ export default class specificNote extends Component {
         return response.json();
       })
       .then(function(json){
-        that.note = json;
+        that.scholie = json;
         //that.refs.city_born = json.city_born;
         document.title = json.title+" | anthologie";
-        store.dispatch({type:'ADD_NOTE',payload:json});
+        store.dispatch({type:'ADD_SCHOLIE',payload:json});
         that.setState({loaded: true});
         that.forceUpdate();
         return null;
@@ -43,7 +43,7 @@ export default class specificNote extends Component {
     let that = this;
     //get name and family
     let corps = {title:this.refs.title.value}
-    fetch("/api/v1/notes/"+that.props.params.id,
+    fetch("/api/v1/scholies/"+that.props.params.id,
     {
         method: "POST",
         body: JSON.stringify(corps),
@@ -53,7 +53,7 @@ export default class specificNote extends Component {
       if(!res.ok){throw res.json();}
       return res.json()})
     .then(function(data){
-      that.note = data;
+      that.scholie = data;
       that.forceUpdate();
       return null})
     .catch(function(error){return error})
@@ -63,13 +63,13 @@ export default class specificNote extends Component {
   deleteTranslation = function(translation){
     //console.log('clicked',this,translation);
     let that = this;
-    fetch('/api/v1/notes/'+that.props.params.id+'/translations/'+translation.id_note_translation,    {
+    fetch('/api/v1/scholies/'+that.props.params.id+'/translations/'+translation.id_scholie_translation,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
         .then(function(data){
-          browserHistory.push('/notes');
-          browserHistory.push('/notes/'+that.props.params.id);
+          browserHistory.push('/scholies');
+          browserHistory.push('/scholies/'+that.props.params.id);
         });
   }
 
@@ -77,7 +77,7 @@ export default class specificNote extends Component {
   render() {
     let update = <p className="legend">You can't update this record.</p>
     let readOnly = true;
-    if(this.state.loaded && (this.note.id_user && store.getState().user && this.note.id_user.id_user == store.getState().user.id_user) || (store.getState().user && store.getState().user.admin)){
+    if(this.state.loaded && (this.scholie.id_user && store.getState().user && this.scholie.id_user.id_user == store.getState().user.id_user) || (store.getState().user && store.getState().user.admin)){
       update = <input type="submit" value="Update"/>;
       readOnly = false;
     }
@@ -85,22 +85,22 @@ export default class specificNote extends Component {
     if(this.state.loaded){
       content =  (
         <div>
-          <h1>{this.note.title}</h1>
-          <h6>anthologia.ecrituresnumeriques.ca/api/v1/notes/{this.note.id_note}</h6>
+          <h1>{this.scholie.title}</h1>
+          <h6>anthologia.ecrituresnumeriques.ca/api/v1/scholies/{this.scholie.id_scholie}</h6>
 
             <form onSubmit={this.handleSubmit}>
               <div className="inputContainerLanguage">
-                <label>ID note : </label>
-                <input type="text" value={this.note.id_note} disabled="true"/>
+                <label>ID scholie : </label>
+                <input type="text" value={this.scholie.id_scholie} disabled="true"/>
               </div>
 
               <div className="inputContainerLanguage">
                 <label>title : </label>
-                <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.note.title} disabled={readOnly} />
+                <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.scholie.title} disabled={readOnly} />
               </div>
 
-              {_.get(this.note,'entities',[]).map((entity,i)=>(
-                <div className="inputContainerLanguage" key={'entityNote'+entity.id_entity}>
+              {_.get(this.scholie,'entities',[]).map((entity,i)=>(
+                <div className="inputContainerLanguage" key={'entityScholie'+entity.id_entity}>
                   <label>{i?'':'Entities : '}</label>
                   <p>{entity.title}</p>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteEntities(entity))} >X</button>}
@@ -108,7 +108,7 @@ export default class specificNote extends Component {
               ))}
 
               {!readOnly && <div className="inputContainerLanguage">
-                <Link className="addToCollection" to={'/notes/newEntity/'+this.props.params.id}>Add a linked entity</Link>
+                <Link className="addToCollection" to={'/scholies/newEntity/'+this.props.params.id}>Add a linked entity</Link>
               </div>}
 
 
@@ -116,29 +116,29 @@ export default class specificNote extends Component {
                 <label>Images :</label>
                 <div className="collection">
 
-                  {_.get(this.note,'images',[]).map((image)=>(<a href={image.URL} key={"imageNote"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
-                  {!readOnly && <Link className="addToCollectionSide" to={'/notes/newImage/'+this.props.params.id}>Add an image </Link>}
+                  {_.get(this.scholie,'images',[]).map((image)=>(<a href={image.URL} key={"imageScholie"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
+                  {!readOnly && <Link className="addToCollectionSide" to={'/scholies/newImage/'+this.props.params.id}>Add an image </Link>}
                 </div>
               </div>
 
-              {_.get(this.note,'translations',[]).map((translation,i)=>(
-                <div className="inputContainerLanguage" key={'translationNote'+translation.    id_note_translation}>
+              {_.get(this.scholie,'translations',[]).map((translation,i)=>(
+                <div className="inputContainerLanguage" key={'translationScholie'+translation.    id_scholie_translation}>
                   <label>{i?'':'Translations : '}</label>
-                  <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_note_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
+                  <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_scholie_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
                   <input type="text" value={'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text} disabled="true"/>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
                 </div>
               ))}
 
               {!readOnly && <div className="inputContainerLanguage">
-                <Link className="addToCollection" to={'/notes/newTranslation/'+this.props.params.id}>Add a translation</Link>
+                <Link className="addToCollection" to={'/scholies/newTranslation/'+this.props.params.id}>Add a translation</Link>
               </div>}
 
 
 
-              <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.note.createdAt} disabled="true"/></div>
-              <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.note.updatedAt} disabled="true"/></div>
-              {this.note.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.note.id_user.institution+'] ' + this.note.id_user.displayName} disabled="true"/></div>}
+              <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.scholie.createdAt} disabled="true"/></div>
+              <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.scholie.updatedAt} disabled="true"/></div>
+              {this.scholie.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.scholie.id_user.institution+'] ' + this.scholie.id_user.displayName} disabled="true"/></div>}
               {update}
             </form>
           </div>

@@ -168,12 +168,20 @@ module.exports.routes = {
   'POST /api/v1/notes':'NotesController.create',
   'GET /api/v1/notes/:id':'NotesController.findOne',
   'POST /api/v1/notes/:id':'NotesController.update',
+  'POST /api/v1/notes/:parentid/entity/:id':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'notes',alias:'entities'}],
+  'DELETE /api/v1/notes/:parentid/entity/:id':'NotesController.removeEntity',
+  'POST /api/v1/notes/:parentid/translations':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'notes',alias:'translations'}],
+  'DELETE /api/v1/notes/:parentid/translations/:id':'NotesController.deleteTranslation',
 
   //Scholies
   'GET /api/v1/scholies':'ScholiesController.find',
   'POST /api/v1/scholies':'ScholiesController.create',
   'GET /api/v1/scholies/:id':'ScholiesController.findOne',
   'POST /api/v1/scholies/:id':'ScholiesController.update',
+  'POST /api/v1/scholies/:parentid/entity/:id':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'scholies',alias:'entities'}],
+  'DELETE /api/v1/scholies/:parentid/entity/:id':'ScholiesController.removeEntity',
+  'POST /api/v1/scholies/:parentid/translations':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'scholies',alias:'translations'}],
+  'DELETE /api/v1/scholies/:parentid/translations/:id':'ScholiesController.deleteTranslation',
 
   //Texts
   'GET /api/v1/texts':'TextsController.find',

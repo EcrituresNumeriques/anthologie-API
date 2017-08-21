@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 // components
 
-export default class newNoteTranslation extends Component {
+export default class newScholieTranslation extends Component {
 
 
   constructor(props) {
@@ -16,8 +16,8 @@ export default class newNoteTranslation extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {id_note:this.refs.note.value,text:this.refs.text.value,id_language:this.refs.language.value}
-    fetch("/api/v1/notes/"+corps.id_note+"/translations",
+    let corps = {id_scholie:this.refs.scholie.value,text:this.refs.text.value,id_language:this.refs.language.value}
+    fetch("/api/v1/scholies/"+corps.id_scholie+"/translations",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -28,13 +28,13 @@ export default class newNoteTranslation extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/notes/'+corps.id_note);
+        browserHistory.push('/scholies/'+corps.id_scholie);
         return null;
       });
   }
 
   componentWillMount(){
-    document.title = "Add new note name | anthologie";
+    document.title = "Add new scholie name | anthologie";
   }
 
 
@@ -42,10 +42,10 @@ export default class newNoteTranslation extends Component {
 
     return (
       <main><div>
-        <h1>Add note translation</h1>
+        <h1>Add scholie translation</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="note" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
-            {store.getState().notesLookup.map((note)=>(<option key={'NoteSelect'+note.id_note} value={note.id_note}>[{note.id_note}] {note.title}</option>))}
+          <select ref="scholie" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
+            {store.getState().scholiesLookup.map((scholie)=>(<option key={'ScholieSelect'+scholie.id_scholie} value={scholie.id_scholie}>[{scholie.id_scholie}] {scholie.title}</option>))}
           </select>
           <textarea ref="text"></textarea>
           <select ref="language">

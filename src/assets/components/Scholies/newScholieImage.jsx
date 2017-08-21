@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 // components
 
-export default class newNoteImage extends Component {
+export default class newScholieImage extends Component {
 
 
   constructor(props) {
@@ -16,7 +16,7 @@ export default class newNoteImage extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {notes:this.refs.note.value,URL:this.refs.URL.value,title:this.refs.title.value,credit:this.refs.credit.value,}
+    let corps = {scholies:this.refs.scholie.value,URL:this.refs.URL.value,title:this.refs.title.value,credit:this.refs.credit.value,}
     fetch("/api/v1/images",
       {
           method: "POST",
@@ -28,7 +28,7 @@ export default class newNoteImage extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/notes/'+corps.notes);
+        browserHistory.push('/scholies/'+corps.scholies);
         return null;
       });
   }
@@ -42,10 +42,10 @@ export default class newNoteImage extends Component {
 
     return (
       <main><div>
-        <h1>Add an image to note</h1>
+        <h1>Add an image to scholie</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="note" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
-            {store.getState().notesLookup.map((note)=>(<option key={'NoteSelect'+note.id_note} value={note.id_note}>[{note.id_note}] {note.title}</option>))}
+          <select ref="scholie" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
+            {store.getState().scholiesLookup.map((scholie)=>(<option key={'ScholieSelect'+scholie.id_scholie} value={scholie.id_scholie}>[{scholie.id_scholie}] {scholie.title}</option>))}
           </select>
           <input type="text" ref="URL" placeholder="URL of the image"/>
           <input type="text" ref="title" placeholder="Title of the image"/>
