@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import {store} from '../../Redux/store'
 import _ from 'lodash'
+import Links from 'components/Layout/Links.jsx'
 
 
 
@@ -145,21 +146,7 @@ export default class ComponentHome extends Component {
           <input type="text" id="perseusURI" placeholder="http://data.perseus.org/citations/urn:cts:greekLit:tlg7000.tlg001.perseus-grc1:5.6"/>
           <button onClick={()=>this.perseus()}>go</button>
         </section>
-        <section id="readme">
-          <Link to="/Home" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Home</Link>
-          <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>
-          <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
-          <Link to="/cities" activeStyle={{ 'fontWeight': 'bold' }}>Cities</Link>
-          <Link to="/languages" activeStyle={{ 'fontWeight': 'bold' }}>Languages</Link>
-          <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
-          <Link to="/notes" activeStyle={{ 'fontWeight': 'bold' }}>Notes</Link>
-          <Link to="/scholies" activeStyle={{ 'fontWeight': 'bold' }}>Scholies</Link>
-          <h1>Roadmap:</h1>
-          <h6>The API backend is not yet dockerized, designing a good deployement process is the next major step</h6>
-            <ul>
-              <li>Add authors to import Perseus</li>
-            </ul>
-          </section>
+        <Links/>
       </main>
     );
   }

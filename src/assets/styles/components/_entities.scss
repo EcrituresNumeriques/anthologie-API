@@ -5,17 +5,19 @@ Entities component
   @extend .mainInside;
 }
 #page > main#entitiesView > aside {
-  @extend .whiteBox;
   grid-area: aside;
+}
+#page > main#entitiesView > aside > section {
+  @extend .whiteBox;
 }
 #page > main#entitiesView > main {
   @extend .whiteBox;
   grid-area: content;
 }
-#page > main#entitiesView > main > a,#page > main#entitiesView > aside > a {
+#page > main#entitiesView > main > a,#page > main#entitiesView > aside > section > a {
   @extend .linklist;
 }
-#page > main#entitiesView > main > a.addto,#page > main#entitiesView > aside > a.addto {
+#page > main#entitiesView > main > a.addto,#page > main#entitiesView > aside > section > a.addto {
   @extend .linklist;
   @extend .addTo;
 }
