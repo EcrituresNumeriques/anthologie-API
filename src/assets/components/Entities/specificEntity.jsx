@@ -156,6 +156,36 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities/'+that.props.params.id);
         });
   }
+  moveToScholie = function(scholie){
+    browserHistory.push('/scholies/'+scholie);
+  }
+  deleteScholie = function(scholie){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/scholies/'+scholie.id_scholie+'/entity/'+that.props.params.id,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/entities');
+          browserHistory.push('/entities/'+that.props.params.id);
+        });
+  }
+  moveToNote = function(note){
+    browserHistory.push('/notes/'+note);
+  }
+  deleteNote = function(note){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/notes/'+note.id_note+'/entity/'+that.props.params.id,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/entities');
+          browserHistory.push('/entities/'+that.props.params.id);
+        });
+  }
 
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
@@ -246,6 +276,20 @@ export default class specificEntity extends Component {
               </div>
             </div>
 
+            {_.get(this.entity,'scholies',[]).map((scholie,i)=>(
+              <div className="inputContainerLanguage" key={'scholieEntity'+scholie.id_scholie}>
+                <label>{i?'':'Scholies : '}</label>
+                <p onClick={()=>this.moveToScholie(scholie.id_scholie)}>{scholie.title}</p>
+                {!readOnly && <button type="button" onClick={()=>this.deleteScholie(scholie)} >X</button>}
+              </div>
+            ))}
+            {_.get(this.entity,'notes',[]).map((note,i)=>(
+              <div className="inputContainerLanguage" key={'noteEntity'+note.id_note}>
+                <label>{i?'':'Notes : '}</label>
+                <p onClick={()=>this.moveToNote(note.id_note)}>{note.title}</p>
+                {!readOnly && <button type="button" onClick={()=>this.deleteNote(note)} >X</button>}
+              </div>
+            ))}
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>
