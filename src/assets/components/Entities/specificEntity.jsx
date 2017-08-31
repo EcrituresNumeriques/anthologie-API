@@ -205,7 +205,6 @@ export default class specificEntity extends Component {
       update = <input type="submit" value="Update"/>;
       readOnly = false;
     }
-    console.log(this.state.loaded?true:false);
     return (
       <main>
         <h1>{this.entity.title}</h1>
