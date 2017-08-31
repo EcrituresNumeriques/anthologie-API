@@ -18,7 +18,7 @@ export default class specificEntity extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.accordeon = this.accordeon.bind(this);
     this.translationSelected = [];
-    this.state = {alignThem:'Select 2 texts to align'}
+    this.state = {alignThem:'Select 2 texts to align',loaded:false}
   }
 
   fetchAPI(){
@@ -32,8 +32,8 @@ export default class specificEntity extends Component {
       })
       .then(function(json){
         that.entity = json;
+        that.setState({loaded:true});
         //that.refs.city_born = json.city_born;
-        that.forceUpdate();
         return null;
       });
   }
@@ -205,6 +205,7 @@ export default class specificEntity extends Component {
       update = <input type="submit" value="Update"/>;
       readOnly = false;
     }
+    console.log(this.state.loaded?true:false);
     return (
       <main>
         <h1>{this.entity.title}</h1>
@@ -218,7 +219,8 @@ export default class specificEntity extends Component {
 
             <div className="inputContainerLanguage">
               <label>title : </label>
-              <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.entity.title} disabled={readOnly} />
+              {!this.state.loaded && <p>{this.entity.title}</p>}
+              {this.state.loaded && <input placeholder="ex. : A.P. 5.1" type="text" ref="title" defaultValue={this.entity.title} disabled={readOnly} />}
             </div>
 
             {_.get(this.entity,'authors',[]).map((author,i)=>(
@@ -245,7 +247,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>
                 <label>{i?'':'Translations : '}</label>
                 <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">{'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated}</p>
+                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">{'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated}</p>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
               </div>
             ))}
