@@ -143,7 +143,7 @@ export default class ComponentHome extends Component {
         </section>
         <section id="perseus">
           <h1>Import from perseus</h1>
-          <input type="text" id="perseusURI" placeholder="http://data.perseus.org/citations/urn:cts:greekLit:tlg7000.tlg001.perseus-grc1:5.6"/>
+          <input type="text" id="perseusURI" defaultValue="http://data.perseus.org/citations/urn:cts:greekLit:tlg7000.tlg001.perseus-grc1:5.6"/>
           <button onClick={()=>this.perseus()}>go</button>
         </section>
         <Links/>
