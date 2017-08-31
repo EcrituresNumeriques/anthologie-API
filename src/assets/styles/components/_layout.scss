@@ -64,7 +64,9 @@
 #page > header > div > nav > div {
   @extend .spacerFlexedChild;
 }
-
+#page > header > div >  h1{
+  @extend .clickable;
+}
 #page > footer {
   @extend .fullWidth;
   @extend .whiteBox;

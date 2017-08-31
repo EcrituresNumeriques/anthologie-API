@@ -11,7 +11,7 @@ export default class Header extends Component {
     return (
       <header>
           <div>
-            <h1>Anthologia palatina</h1>
+            <h1 onClick={()=>browserHistory.push('/home')}>Anthologia palatina</h1>
             <nav>
               <div />
               {!store.getState().loggedIn && <Link to="/register" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Register</Link>}
