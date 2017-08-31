@@ -16,6 +16,7 @@ export default class specificEntity extends Component {
     this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.accordeon = this.accordeon.bind(this);
     this.translationSelected = [];
     this.state = {alignThem:'Select 2 texts to align'}
   }
@@ -35,6 +36,11 @@ export default class specificEntity extends Component {
         that.forceUpdate();
         return null;
       });
+  }
+
+  accordeon = function(e){
+    let that = this;
+    this.refs[e].classList.toggle("limited");
   }
 
   handleSubmit = function (e) {
@@ -236,10 +242,10 @@ export default class specificEntity extends Component {
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
 
             {_.get(this.entity,'translations',[]).map((translation,i)=>(
-              <div className="inputContainerLanguage" key={'translationEntity'+translation.    id_entity_translation}>
+              <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>
                 <label>{i?'':'Translations : '}</label>
                 <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                <input type="text" value={'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated} disabled="true"/>
+                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">{'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text_translated}</p>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
               </div>
             ))}

@@ -61,6 +61,10 @@ Entities component
   @extend .textboxInput;
   @extend .clickable;
 }
+#page > main#entitiesView > main > form > div.inputContainerLanguage > p.limited{
+  max-height: 3.5em;
+  overflow: hidden;
+}
 #page > main#entitiesView > main > form > div.inputContainerLanguage > input.noFlex{
   @extend .noFlexInput;
 }
