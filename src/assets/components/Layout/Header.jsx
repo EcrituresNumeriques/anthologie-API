@@ -13,10 +13,6 @@ export default class Header extends Component {
           <div>
             <h1>Anthologia palatina</h1>
             <nav>
-              <Link to="/home" activeStyle={{ 'fontWeight': 'bold' }}>Home</Link>
-              <Link to="/entities" activeStyle={{ 'fontWeight': 'bold' }}>Entities</Link>
-              <Link to="/authors" activeStyle={{ 'fontWeight': 'bold' }}>Authors</Link>
-              <Link to="/keywords" activeStyle={{ 'fontWeight': 'bold' }}>Keywords</Link>
               <div />
               {!store.getState().loggedIn && <Link to="/register" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Register</Link>}
               {!store.getState().loggedIn && <Link to="/login" className="user" activeStyle={{ 'fontWeight': 'bold' }}>Login</Link>}

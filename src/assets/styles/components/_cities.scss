@@ -5,17 +5,20 @@ Authors component
   @extend .mainInside;
 }
 #page > main#citiesView > aside {
-  @extend .whiteBox;
   grid-area: aside;
+}
+#page > main#citiesView > aside > section {
+  @extend .whiteBox;
+  margin-bottom: 15px;
 }
 #page > main#citiesView > main {
   @extend .whiteBox;
   grid-area: content;
 }
-#page > main#citiesView > main > a,#page > main#citiesView > aside > a {
+#page > main#citiesView > main > a,#page > main#citiesView > aside > section > a {
   @extend .linklist;
 }
-#page > main#citiesView > main > a.addto,#page > main#citiesView > aside > a.addto {
+#page > main#citiesView > main > a.addto,#page > main#citiesView > aside > section > a.addto {
   @extend .linklist;
   @extend .addTo;
 }

@@ -14,11 +14,11 @@ export default class AsideEntities extends Component {
 
     return (
       <aside>
+        <Links />
         <section id="quickLinks">
           {store.getState().loggedIn && <Link to="/entities/new" className="addto" activeStyle={{ color: 'black' }}>Add new entity</Link>}
           <Link to="/entities" activeStyle={{ color: 'black' }}>List all entities</Link>
         </section>
-        <Links />
       </aside>
     );
   }

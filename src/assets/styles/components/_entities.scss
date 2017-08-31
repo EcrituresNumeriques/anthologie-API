@@ -9,6 +9,7 @@ Entities component
 }
 #page > main#entitiesView > aside > section {
   @extend .whiteBox;
+  margin-bottom: 15px;
 }
 #page > main#entitiesView > main {
   @extend .whiteBox;

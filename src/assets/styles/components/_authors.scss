@@ -5,17 +5,20 @@ Authors component
   @extend .mainInside;
 }
 #page > main#authorsView > aside {
-  @extend .whiteBox;
   grid-area: aside;
+}
+#page > main#authorsView > aside > section {
+  @extend .whiteBox;
+  margin-bottom: 15px;
 }
 #page > main#authorsView > main {
   @extend .whiteBox;
   grid-area: content;
 }
-#page > main#authorsView > main > a,#page > main#authorsView > aside > a {
+#page > main#authorsView > main > a,#page > main#authorsView > aside > section > a {
   @extend .linklist;
 }
-#page > main#authorsView > main > a.addto,#page > main#authorsView > aside > a.addto {
+#page > main#authorsView > main > a.addto,#page > main#authorsView > aside > section > a.addto {
   @extend .linklist;
   @extend .addTo;
 }

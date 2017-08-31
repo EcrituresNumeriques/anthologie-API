@@ -5,8 +5,11 @@ Languages component
   @extend .mainInside;
 }
 #page > main#LanguagesView > aside {
-  @extend .whiteBox;
   grid-area: aside;
+}
+#page > main#LanguagesView > aside > section {
+  @extend .whiteBox;
+  margin-bottom: 15px;
 }
 #page > main#LanguagesView > main {
   @extend .whiteBox;
@@ -22,10 +25,10 @@ Languages component
   @extend .paddedBlock;
   @extend .centeredInside;
 }
-#page > main#LanguagesView > main > a,#page > main#LanguagesView > aside > a {
+#page > main#LanguagesView > main > a,#page > main#LanguagesView > aside > section > a {
   @extend .linklist;
 }
-#page > main#LanguagesView > main > a.addto,#page > main#LanguagesView > aside > a.addto {
+#page > main#LanguagesView > main > a.addto,#page > main#LanguagesView > aside > section > a.addto {
   @extend .linklist;
   @extend .addTo;
 }

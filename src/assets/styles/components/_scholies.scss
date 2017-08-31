@@ -5,17 +5,20 @@ Entities component
   @extend .mainInside;
 }
 #page > main#scholiesView > aside {
-  @extend .whiteBox;
   grid-area: aside;
+}
+#page > main#scholiesView > aside > section{
+  @extend .whiteBox;
+  margin-bottom: 15px;
 }
 #page > main#scholiesView > main {
   @extend .whiteBox;
   grid-area: content;
 }
-#page > main#scholiesView > main > div > a,#page > main#scholiesView > aside > a {
+#page > main#scholiesView > main > div > a,#page > main#scholiesView > aside > section > a {
   @extend .linklist;
 }
-#page > main#scholiesView > main > div > a.addto,#page > main#scholiesView > aside > a.addto {
+#page > main#scholiesView > main > div > a.addto,#page > main#scholiesView > aside > section > a.addto {
   @extend .linklist;
   @extend .addTo;
 }
