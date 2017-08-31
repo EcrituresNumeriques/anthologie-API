@@ -12,6 +12,7 @@ export default class ComponentHome extends Component {
     let placeholder = [{translations:[{name:'loading'}]}];
     this.authors = _.get(store.getState(),'authors',placeholder);
     this.cities = _.get(store.getState(),'cities',placeholder);
+    this.keywords = _.get(store.getState(),'keywords',placeholder);
     placeholder = [{title:'loading'}];
     this.entities = _.get(store.getState(),'entities',placeholder);
   }
@@ -139,6 +140,7 @@ export default class ComponentHome extends Component {
             {this.authors.map((author,i)=>(<option key={"authorSelect"+author.id_author} value={'/authors/'+author.id_author}>author : {author.translations.map(a => a.name).join(" / ")}</option>))}
             {this.cities.map((city,i)=>(<option key={"citySelect"+city.id_city} value={'/cities/'+city.id_city}>city : {city.translations.map(a => a.name).join(" / ")}</option>))}
             {this.entities.map((entity,i)=>(<option key={"entitiesSelect"+entity.id_entity} value={'/entities/'+entity.id_entity}>entity : {entity.title}</option>))}
+            {this.keywords.map((keyword,i)=>(<option key={"keywordsSelect"+keyword.id_keyword} value={'/keywords/'+keyword.id_keyword}>keyword : {keyword.translations.map(a => a.title).join(" / ")}</option>))}
           </datalist>
         </section>
         <section id="perseus">
