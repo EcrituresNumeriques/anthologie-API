@@ -2,73 +2,62 @@
 Login/Register component
 */
 #page > main#homeView {
-  display:grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "readme welcome"
-  " readme find"
-  "readme perseus "
-  "readme .. "
+  @extend .mainInside;
 }
-#page > main#homeView > #welcome{
-  grid-area:welcome;
+#page > main#homeView > aside{
+  grid-area:aside;
 }
-#page > main#homeView > #find{
-  grid-area:find;
-  text-align: center;
+#page > main#homeView > main{
+  grid-area:content;
 }
-#page > main#homeView > #perseus{
-  grid-area:perseus;
-  text-align: center;
+#page > main#homeView > aside{
+  @extend .whiteBox;
 }
-#page > main#homeView > #readme{
-  grid-area:readme;
-  margin-right:30px;
-}
-#page > main#homeView > #readme > a{
+#page > main#homeView > aside > #readme > a{
   @extend .linklist;
 }
-#page > main#homeView > #readme > a:hover{
+#page > main#homeView > aside > #readme > a:hover{
   background-color: #f0f0f0;
 }
-#page > main#homeView > section{
+#page > main#homeView > main > section{
   @extend .whiteBox;
   @extend .paddedBlock;
+  margin-bottom: $column-gap;
 }
-#page > main#homeView > section > input {
+#page > main#homeView > main > section > input {
     @extend .inputStandardInline;
     @extend .centeredBlock;
     width: calc(100% - 5em);
 }
-#page > main#homeView > section > button {
+#page > main#homeView > main > section > button {
     @extend .inputStandardInline;
     @extend .centeredBlock;
 }
-#page > main#homeView > section > h1 {
+#page > main#homeView > main > section > h1 {
   @extend .centeredBlock;
   @extend .paddedBlock;
   @extend .centeredInside;
 }
-#page > main#homeView > section > h2 {
+#page > main#homeView > main > section > h2 {
   @extend .centeredBlock;
   @extend .paddedBlock;
   @extend .centeredInside;
 }
-#page > main#homeView > section > h6 {
+#page > main#homeView > main > section > h6 {
   @extend .centeredBlock;
   @extend .paddedBlock;
   @extend .centeredInside;
 }
-#page > main#homeView > section > p {
+#page > main#homeView > main > section > p {
   @extend .paddedBlock;
 }
-#page > main#homeView > section > ul {
+#page > main#homeView > main > section > ul {
   @extend .paddedBlock;
 }
-#page > main#homeView > section > form {
+#page > main#homeView > main > section > form {
   @extend .centeredBlock;
 }
-#page > main#homeView > section > form > input {
+#page > main#homeView > main > section > form > input {
   @extend .inputStandard;
   @extend .centeredBlock;
 }
