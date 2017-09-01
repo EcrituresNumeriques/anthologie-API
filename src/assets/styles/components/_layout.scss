@@ -37,13 +37,7 @@
 #page > header {
   @extend .fullWidth;
   @extend .whiteBox;
-  margin-bottom: 15px;
   grid-area: header;
-}
-@media ONLY screen AND (min-width:$resize-desktop){
-  #page > header {
-    margin-bottom: 15px;
-  }
 }
 #page > header > div{
   @extend .fillWrapper;
