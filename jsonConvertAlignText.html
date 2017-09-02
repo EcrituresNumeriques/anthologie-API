@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/dojaremuni/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <textarea id="source" name="" id="" cols="30" rows="10">[]</textarea>
+  <p id="convert">convert</p>
+  <p id="json">
+
+  </p>
+<script id="jsbin-javascript">
+let convertJSON = function(){
+  let importJSON = JSON.parse(document.querySelector("#source").value)
+  let i,j,k;
+  let parent,line,children;
+  let currentWord;
+  let exportJSON = []
+
+
+  for(i=0;i<importJSON.length;i++){
+    //for each text
+    parent=i;
+    children=0;
+    exportJSON.push([]);
+    for(j=0;j<importJSON[i].length;j++){
+      //for each line, TODO TEST FOR EMPTY LINE
+        exportJSON[i].push([]);
+        for(k=0;k<importJSON[i][j].length;k++){
+          currentWord = importJSON[i][j][k];
+          if(currentWord.t){
+            currentWord.parent = parent;
+            children++;
+            currentWord.children = children
+            currentWord.pos = "["+(parent+1)+"]["+children+"]";
+          }
+          exportJSON[i][j].push(currentWord);
+        }
+      }
+    }
+
+
+  document.querySelector("#json").innerHTML = JSON.stringify(exportJSON);
+}
+document.querySelector("#convert").addEventListener("click", convertJSON);
+
+
+//convertJSON();
+</script>
+</body>
+</html>
