@@ -10,7 +10,7 @@ export default class ComponentProfile extends Component {
   constructor(props) {
     super(props);
     this.user = store.getState().user;
-    this.contrib = {entities:[{title:'test',id_entity:1}],translations:[],aligns:[],scholies:[]};
+    this.contrib = {entities:[{title:'test',id_entity:1}],translations:[],aligns:[],scholies:[],notes:[]};
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -75,6 +75,20 @@ export default class ComponentProfile extends Component {
       })
       .then(function(json){
         that.contrib.scholies = json;
+        //that.refs.city_born = json.city_born;
+        that.forceUpdate();
+        return null;
+      });
+
+      fetch('/api/v1/contrib/notes',{
+        method:'GET',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        that.contrib.notes = json;
         //that.refs.city_born = json.city_born;
         that.forceUpdate();
         return null;
@@ -177,6 +191,8 @@ export default class ComponentProfile extends Component {
           {this.contrib.aligns.map((align,i)=>(<Link key={"contribAlign"+align.id_entity} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{store.getState().languagesLookup[align.source_lang].name}] => [{store.getState().languagesLookup[align.target_lang].name}] {store.getState().entitiesLookup[align.id_entity].title}</Link>))}
           <h2>Scholies</h2>
           {this.contrib.scholies.map((scholie,i)=>(<Link key={"contribScholie"+scholie.id_scholie} to={"/entities/"+scholie.id_entity+'/showScholie/'+scholie.id_scholie}>{scholie.title}</Link>))}
+          <h2>Notes</h2>
+          {this.contrib.notes.map((note,i)=>(<Link key={"contribNote"+note.id_note} to={"/notes/"+note.id_note}>{note.title}</Link>))}
         </section>
       </main>
     );

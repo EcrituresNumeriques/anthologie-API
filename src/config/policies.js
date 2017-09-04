@@ -118,6 +118,7 @@ module.exports.policies = {
     'translations':['isLoggedIn'],
     'aligns':['isLoggedIn'],
     'scholies':['isLoggedIn'],
+    'notes':['isLoggedIn'],
   },
   User_updateCredentialController:{
     updatePassword:['isLoggedIn']

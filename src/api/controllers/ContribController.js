@@ -29,5 +29,11 @@ module.exports = {
       if (err) {return res.serverError(err);}
       res.json(scholies);
     })
+  },
+  notes: function (req, res) {
+    Notes.find({id_user:req.session.user.id_user}).exec(function(err,notes){
+      if (err) {return res.serverError(err);}
+      res.json(notes);
+    })
   }
 };

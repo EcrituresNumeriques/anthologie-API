@@ -213,6 +213,7 @@ module.exports.routes = {
   'GET /api/v1/contrib/translations':'ContribController.translations',
   'GET /api/v1/contrib/aligns':'ContribController.aligns',
   'GET /api/v1/contrib/scholies':'ContribController.scholies',
+  'GET /api/v1/contrib/notes':'ContribController.notes',
 
   // All GET requests are directed to the app controller which renders our app.
   'GET /*': {
