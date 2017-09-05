@@ -1,4 +1,6 @@
 import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
+import {store} from '../../Redux/store'
+
 
 export let perseus = function(){
   let value = document.querySelector("#perseusURI").value;
