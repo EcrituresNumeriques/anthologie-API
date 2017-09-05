@@ -39,12 +39,12 @@ let convertJSON = function(){
         exportJSON[i].push([]);
         for(k=0;k<importJSON[i][j].length;k++){
           currentWord = importJSON[i][j][k];
-          if(currentWord.t){
+//          if(currentWord.t){
             currentWord.parent = parent;
             children++;
             currentWord.children = children
             currentWord.pos = "["+(parent+1)+"]["+children+"]";
-          }
+//          }
           exportJSON[i][j].push(currentWord);
         }
       }

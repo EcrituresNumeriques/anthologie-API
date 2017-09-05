@@ -3,6 +3,7 @@ import Router, { Link, RouteHandler } from 'react-router';
 import { browserHistory } from 'react-router';
 
 import {store} from '../../Redux/store'
+import {perseus} from 'components/App/Functions.jsx'
 // components
 
 export default class newEntity extends Component {
@@ -10,7 +11,10 @@ export default class newEntity extends Component {
 
   constructor(props) {
     super(props);
+    this.perseus = perseus;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleCheckboxChange = this.toggleCheckboxChange.bind(this);
+    this.state = {NotPerseus:false};
   }
 
   handleSubmit = function (e) {
@@ -43,6 +47,9 @@ export default class newEntity extends Component {
   componentWillMount(){
     document.title = "Add new entity | anthologie";
   }
+  toggleCheckboxChange = function() {
+    this.setState({NotPerseus:!this.state.NotPerseus});
+  }
 
 
   render() {
@@ -50,10 +57,15 @@ export default class newEntity extends Component {
     return (
       <main>
         <h1>Add a new entity</h1>
-        <form onSubmit={this.handleSubmit} id="entityForm">
+        <div id="fetchPerseus">
+          <input type="text" id="perseusURI" defaultValue="http://data.perseus.org/citations/urn:cts:greekLit:tlg7000.tlg001.perseus-grc1:5.6"/>
+          <button onClick={()=>this.perseus()}>fetch</button>
+        </div>
+        <p className="disclaimer"><input type="checkbox" checked={this.state.NotPerseus} onChange={this.toggleCheckboxChange}/>This text is not on Perseus and I still want to add it</p>
+        {this.state.NotPerseus && <form id="entityForm">
           <input type="text" placeholder="Title" name="title" ref="title"/>
-          <input type="submit" value="send"/>
-        </form>
+          <button onClick={this.handleSubmit}>go</button>
+        </form>}
       </main>
     );
   }
