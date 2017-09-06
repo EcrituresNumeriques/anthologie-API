@@ -256,12 +256,12 @@ export default class specificEntity extends Component {
 
             {_.get(this.entity,'drafts',[]).map((draft,i)=>(
               <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
-                <label>{i?'':'Drafts : '}</label>
-                <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">{'['+store.getState().languagesLookup[draft.id_language].name+'] '}<Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
-                {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
-
-                </p>
-                {!readOnly && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
+                {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <label>{i?'':'Drafts : '}</label>}
+                {_.get(store.getState(),'user.id_user',-1) === draft.id_user &&
+                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">{'['+store.getState().languagesLookup[draft.id_language].name+'] '}<Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
+                  {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
+                  </p>}
+                {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
               </div>
             ))}
 
