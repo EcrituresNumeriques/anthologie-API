@@ -101,6 +101,18 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities/'+that.props.params.id);
         });
   }
+  deleteDraft = function(draft){
+    console.log(draft);
+    let that = this;
+    fetch('/api/v1/entities/'+that.props.params.id+'/drafts/'+draft.id_entity_draft,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/entities');
+          browserHistory.push('/entities/'+that.props.params.id);
+        });
+  }
   deleteAlignement = function(align){
     console.log(align);
     let that = this;
@@ -241,6 +253,20 @@ export default class specificEntity extends Component {
             ))}
 
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
+
+            {_.get(this.entity,'drafts',[]).map((draft,i)=>(
+              <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
+                <label>{i?'':'Drafts : '}</label>
+                <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">{'['+store.getState().languagesLookup[draft.id_language].name+'] '}<Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
+                {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
+
+                </p>
+                {!readOnly && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
+              </div>
+            ))}
+
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newdraft/'+this.props.params.id}>Add a Draft </Link></div>}
+
 
             {_.get(this.entity,'translations',[]).map((translation,i)=>(
               <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>

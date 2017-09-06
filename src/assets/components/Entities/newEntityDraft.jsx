@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 // components
 
-export default class newEntityTranslation extends Component {
+export default class newEntityDraft extends Component {
 
 
   constructor(props) {
@@ -17,7 +17,7 @@ export default class newEntityTranslation extends Component {
     e.preventDefault();
     //get email and password
     let corps = {id_entity:this.refs.entity.value,text_translated:this.refs.text.value,id_language:this.refs.language.value}
-    fetch("/api/v1/entities/"+corps.id_entity+"/translations",
+    fetch("/api/v1/entities/"+corps.id_entity+"/drafts",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -34,7 +34,7 @@ export default class newEntityTranslation extends Component {
   }
 
   componentWillMount(){
-    document.title = "Add new entity translation | anthologie";
+    document.title = "Add new entity draft | anthologie";
   }
 
 
@@ -42,7 +42,7 @@ export default class newEntityTranslation extends Component {
 
     return (
       <main>
-        <h1>Add entity translation</h1>
+        <h1>Add entity draft</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <select ref="entity" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
             {store.getState().entities.map((entity)=>(<option key={'EntitySelect'+entity.id_entity} value={entity.id_entity}>[{entity.id_entity}] {entity.title}</option>))}

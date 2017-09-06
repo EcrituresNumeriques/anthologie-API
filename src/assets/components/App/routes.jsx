@@ -44,6 +44,8 @@ import AsideEntities from 'components/Entities/asideEntities';
 import MainEntities from 'components/Entities/mainEntities';
 import newEntity from 'components/Entities/newEntity';
 import newEntityTranslation from 'components/Entities/newEntityTranslation';
+import newEntityDraft from 'components/Entities/newEntityDraft';
+import editEntityDraft from 'components/Entities/editEntityDraft';
 import newEntityImage from 'components/Entities/newEntityImage';
 import newEntityAuthor from 'components/Entities/newEntityAuthor';
 import newEntityKeyword from 'components/Entities/newEntityKeyword';
@@ -84,6 +86,9 @@ export const routes = (
       <Route path="/entities/new" component={newEntity} />
       <Route path="/entities/newtranslation" component={newEntityTranslation} />
       <Route path="/entities/newtranslation/:id" component={newEntityTranslation} />
+      <Route path="/entities/newdraft" component={newEntityDraft} />
+      <Route path="/entities/newdraft/:id" component={newEntityDraft} />
+      <Route path="/entities/draft/:draft" component={editEntityDraft} />
       <Route path="/entities/newimage" component={newEntityImage} />
       <Route path="/entities/newimage/:id" component={newEntityImage} />
       <Route path="/entities/newAuthor" component={newEntityAuthor} />

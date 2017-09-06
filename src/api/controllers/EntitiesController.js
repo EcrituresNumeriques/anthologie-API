@@ -34,6 +34,12 @@ module.exports = {
       if(err){return res.badRequest({success:false});}
       return res.ok({success:true});
     })
+  },
+  destroyDraft : function (req,res){
+    Entity_drafts.destroy({id_entity_draft:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
+      if(err){return res.badRequest({success:false});}
+      return res.ok({success:true});
+    })
   }
 
 };

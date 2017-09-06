@@ -54,6 +54,11 @@ module.exports = {
       via:'id_entity',
       dominant:true
     },
+    drafts:{
+      collection:'Entity_drafts',
+      via:'id_entity',
+      dominant:true
+    },
     alignements:{
       collection:'Entity_translations_align',
       via:'id_entity',

@@ -41,6 +41,12 @@ module.exports.policies = {
     'RemoveKeyword':['isLoggedIn','ownsThis'],
     'destroyUri':['isLoggedIn','ownsThis'],
     'destroyTranslation':['isLoggedIn','ownsThis'],
+    'destroyDraft':['isLoggedIn','ownsThis'],
+  },
+  Entity_draftsController:{
+    'find':true,
+    'findOne':true,
+    'update':['isLoggedIn','ownsThis'],
   },
   KeywordsController:{
     'find':true,

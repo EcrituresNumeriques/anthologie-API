@@ -51,7 +51,13 @@ module.exports.routes = {
   'POST /api/v1/entities/:parentid/translations':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'translations'}],
   'DELETE /api/v1/entities/:parentid/translations/:id':'EntitiesController.destroyTranslation',
 
+  'POST /api/v1/entities/:parentid/drafts':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'drafts'}],
+  'DELETE /api/v1/entities/:parentid/drafts/:id':'EntitiesController.destroyDraft',
 
+  //drafts
+  'GET /api/v1/drafts':'Entity_draftsController.find',
+  'GET /api/v1/drafts/:id':'Entity_draftsController.findOne',
+  'POST /api/v1/drafts/:id':'Entity_draftsController.update',
 
   //Authors
   'GET /api/v1/authors':'AuthorsController.find',

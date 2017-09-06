@@ -56,9 +56,15 @@ Entities component
 #page > main#entitiesView > main > p.disclaimer {
   margin:2em 0;
 }
-#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > form > textarea,#page > main#entitiesView > main > button,#page > main#entitiesView > main > form > button {
+#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > button,#page > main#entitiesView > main > form > button {
   @extend .inputStandard;
   @extend .centeredBlock;
+}
+#page > main#entitiesView > main > form > textarea{
+  @extend .inputStandard;
+  @extend .centeredBlock;
+  width:100%;
+  min-height:8em;
 }
 #page > main#entitiesView > main > form > div.inputContainerLanguage{
   @extend .inputContainer;
