@@ -16,6 +16,7 @@ export default class specificEntity extends Component {
     this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.moveToEntity = this.moveToEntity.bind(this);
     this.accordeon = this.accordeon.bind(this);
     this.translationSelected = [];
     this.state = {alignThem:'Select 2 texts to align',loaded:false}
@@ -159,6 +160,11 @@ export default class specificEntity extends Component {
   moveToAuthor = function(author){
     browserHistory.push('/authors/'+author);
   }
+  moveToEntity = function(entity){
+    browserHistory.push('/entities/'+entity);
+    this.props.params.id = entity;
+    this.setState({loaded:false});
+  }
   moveToKeyword = function(keyword){
     browserHistory.push('/keywords/'+keyword);
   }
@@ -207,6 +213,19 @@ export default class specificEntity extends Component {
 
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    if(this.props.params.id != nextProps.params.id){
+      this.props.params.id = nextProps.params.id;
+      this.setState({loaded:false});
+    }
+  }
+
+  componentDidUpdate(){
+    if(!this.state.loaded){
+      this.fetchAPI();
+    }
   }
 
 
@@ -324,6 +343,16 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteNote(note)} >X</button>}
               </div>
             ))}
+
+            {_.get(this.entity,'internalRef_targets',[]).map((ref,i)=>(
+              <div className="inputContainerLanguage" key={'refEntity'+ref.id_entity}>
+                <label>{i?'':'Internal References : '}</label>
+                <p onClick={()=>this.moveToEntity(ref.id_entity)}>{ref.title}</p>
+                {!readOnly && <button type="button" onClick={()=>this.deleteRef(ref)} >X</button>}
+              </div>
+            ))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newInternalRef/'+this.props.params.id}>Add an internal reference </Link></div>}
+
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>

@@ -48,6 +48,8 @@ import newEntityDraft from 'components/Entities/newEntityDraft';
 import editEntityDraft from 'components/Entities/editEntityDraft';
 import newEntityImage from 'components/Entities/newEntityImage';
 import newEntityAuthor from 'components/Entities/newEntityAuthor';
+import newEntityInternalRef from 'components/Entities/newEntityInternalRef';
+import newEntityExternalRef from 'components/Entities/newEntityExternalRef';
 import newEntityKeyword from 'components/Entities/newEntityKeyword';
 import newEntityURI from 'components/Entities/newEntityURI';
 import specificEntity from 'components/Entities/specificEntity';
@@ -93,6 +95,8 @@ export const routes = (
       <Route path="/entities/newimage/:id" component={newEntityImage} />
       <Route path="/entities/newAuthor" component={newEntityAuthor} />
       <Route path="/entities/newAuthor/:id" component={newEntityAuthor} />
+      <Route path="/entities/newInternalRef/:id" component={newEntityInternalRef} />
+      <Route path="/entities/newExternalRef/:id" component={newEntityExternalRef} />
       <Route path="/entities/newKeyword" component={newEntityKeyword} />
       <Route path="/entities/newKeyword/:id" component={newEntityKeyword} />
       <Route path="/entities/newURI" component={newEntityURI} />

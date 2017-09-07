@@ -54,6 +54,11 @@ module.exports.routes = {
   'POST /api/v1/entities/:parentid/drafts':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'drafts'}],
   'DELETE /api/v1/entities/:parentid/drafts/:id':'EntitiesController.destroyDraft',
 
+  //Internal references
+  'POST /api/v1/entities/:parentid/internalref/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'internalRef_targets'}],
+  'DELETE /api/v1/entities/:parentid/internalref/:id':'EntitiesController.RemoveReference',
+
+
   //drafts
   'GET /api/v1/drafts':'Entity_draftsController.find',
   'GET /api/v1/drafts/:id':'Entity_draftsController.findOne',

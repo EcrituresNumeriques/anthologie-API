@@ -23,6 +23,14 @@ module.exports = {
       res.ok(r);
     });
   },
+  RemoveReference: function (req, res) {
+    Entities.findOne({id_entity:req.param('parentid')}).populate('internalRef_targets').exec(function(e,r){
+      if(e){return res.badRequest({message:"bad request"})}
+      r.internalRef_targets.remove(req.param('id'))
+      r.save()
+      res.ok(r);
+    });
+  },
   destroyUri : function (req,res){
     URId.destroy({id_urid:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
       if(err){return res.badRequest({success:false});}

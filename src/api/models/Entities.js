@@ -104,6 +104,20 @@ module.exports = {
      collection:'URId',
      via:'id_entity',
      dominant:true
+   },
+   internalRef_sources:{
+     collection:'Entities',
+     via:'internalRef_targets'
+   },
+   internalRef_targets:{
+     collection:'Entities',
+     via:'internalRef_sources',
+     dominant:true
+   },
+   externalRef:{
+     collection:'ExternalRef',
+     via:'id_entity',
+     dominant:true,
    }
   }
 };
