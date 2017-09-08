@@ -60,6 +60,9 @@ Entities component
   @extend .inputStandard;
   @extend .centeredBlock;
 }
+#page > main#entitiesView > main > form > input.expanded{
+  width:100%;
+}
 #page > main#entitiesView > main > form > textarea{
   @extend .inputStandard;
   @extend .centeredBlock;

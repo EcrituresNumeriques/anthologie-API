@@ -27,9 +27,11 @@ module.exports = {
     id_language: {
       model:'Languages'
     },
+    title:{
+      type: 'text',
+    },
     url: {
       type: 'text',
-      required: false
     }
   }
 };

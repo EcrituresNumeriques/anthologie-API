@@ -48,6 +48,12 @@ module.exports = {
       if(err){return res.badRequest({success:false});}
       return res.ok({success:true});
     })
+  },
+  destroyReference : function (req,res){
+    Entity_externalRefs.destroy({id_entity_external:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
+      if(err){return res.badRequest({success:false});}
+      return res.ok({success:true});
+    })
   }
 
 };

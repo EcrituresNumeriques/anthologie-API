@@ -115,7 +115,7 @@ module.exports = {
      dominant:true
    },
    externalRef:{
-     collection:'ExternalRef',
+     collection:'Entity_externalRefs',
      via:'id_entity',
      dominant:true,
    }

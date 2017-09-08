@@ -221,6 +221,17 @@ export default class specificEntity extends Component {
           that.setState({loaded:false});
         });
   }
+  deleteExRef = function(ref){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/entities/'+that.props.params.id+'/externalref/'+ref.id_entity_external,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          that.setState({loaded:false});
+        });
+  }
 
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
@@ -363,6 +374,15 @@ export default class specificEntity extends Component {
               </div>
             ))}
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newInternalRef/'+this.props.params.id}>Add an internal reference </Link></div>}
+
+            {_.get(this.entity,'externalRef',[]).map((ref,i)=>(
+              <div className="inputContainerLanguage" key={'refExEntity'+ref.id_entity}>
+                <label>{i?'':'External References : '}</label>
+                <a href={ref.url} target="_blank">{ref.title}</a>
+                {!readOnly && <button type="button" onClick={()=>this.deleteExRef(ref)} >X</button>}
+              </div>
+            ))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newExternalRef/'+this.props.params.id}>Add an external reference </Link></div>}
 
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>

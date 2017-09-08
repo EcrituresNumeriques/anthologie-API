@@ -43,6 +43,7 @@ module.exports.policies = {
     'destroyUri':['isLoggedIn','ownsThis'],
     'destroyTranslation':['isLoggedIn','ownsThis'],
     'destroyDraft':['isLoggedIn','ownsThis'],
+    'destroyReference':['isLoggedIn','ownsThis'],
   },
   Entity_draftsController:{
     'find':true,
