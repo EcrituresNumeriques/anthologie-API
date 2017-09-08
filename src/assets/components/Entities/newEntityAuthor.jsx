@@ -77,7 +77,7 @@ export default class newEntityAuthor extends Component {
 
     return (
       <main>
-        <h1>Add entity name translation</h1>
+        <h1>Add an author</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <select ref="entity" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
             {store.getState().entities.map((entity)=>(

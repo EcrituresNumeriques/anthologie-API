@@ -358,6 +358,8 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteScholie(scholie)} >X</button>}
               </div>
             ))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newScholie/'+this.props.params.id}>Add a scholie </Link></div>}
+
             {_.get(this.entity,'notes',[]).map((note,i)=>(
               <div className="inputContainerLanguage" key={'noteEntity'+note.id_note}>
                 <label>{i?'':'Notes : '}</label>
@@ -365,6 +367,8 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteNote(note)} >X</button>}
               </div>
             ))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newNote/'+this.props.params.id}>Add a note </Link></div>}
+
 
             {_.get(this.entity,'internalRef_targets',[]).map((ref,i)=>(
               <div className="inputContainerLanguage" key={'refEntity'+ref.id_entity}>
@@ -378,7 +382,7 @@ export default class specificEntity extends Component {
             {_.get(this.entity,'externalRef',[]).map((ref,i)=>(
               <div className="inputContainerLanguage" key={'refExEntity'+ref.id_entity}>
                 <label>{i?'':'External References : '}</label>
-                <a href={ref.url} target="_blank">{ref.title}</a>
+                <a href={ref.url} target="_blank">{ref.title} ({ref.url})</a>
                 {!readOnly && <button type="button" onClick={()=>this.deleteExRef(ref)} >X</button>}
               </div>
             ))}
