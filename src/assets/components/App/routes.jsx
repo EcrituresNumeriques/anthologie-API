@@ -15,6 +15,7 @@ import ComponentRegister from 'components/Credentials/componentRegister'
 import ComponentProfile from 'components/Credentials/componentProfile'
 import NotFound from 'components/NotFound/NotFound';
 import ErrorCompo from 'components/App/Error';
+import componentSoloblock from 'components/App/componentSoloblock';
 import componentHome from 'components/Home/componentHome';
 
 //Authors
@@ -106,9 +107,6 @@ export const routes = (
       <Route path="/entities/newURI" component={newEntityURI} />
       <Route path="/entities/newURI/:id" component={newEntityURI} />
       <Route path="/entities/:id" component={specificEntity} />
-      <Route path="/entities/:id/aligntexts/:first/:second" component={alignTextsEntity} />
-      <Route path="/entities/:id/showalign/:align" component={showAlignEntity} />
-      <Route path="/entities/:id/editalign/:align" component={editAlignTextsEntity} />
     </Route>
     <Route path="/notes" component={ComponentNotes}>
       <IndexRoute component={MainNotes} />
@@ -162,6 +160,11 @@ export const routes = (
     <Route path="login" component={ComponentLogin} />
     <Route path="profile" component={ComponentProfile} />
     <Route path="home" component={componentHome} />
+    <Route component={componentSoloblock}>
+      <Route path="/entities/:id/aligntexts/:first/:second" component={alignTextsEntity} />
+      <Route path="/entities/:id/showalign/:align" component={showAlignEntity} />
+      <Route path="/entities/:id/editalign/:align" component={editAlignTextsEntity} />
+    </Route>
     <IndexRedirect to="home"/>
   </Route>
 )
