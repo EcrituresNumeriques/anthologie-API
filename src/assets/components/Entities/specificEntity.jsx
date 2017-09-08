@@ -210,6 +210,17 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities/'+that.props.params.id);
         });
   }
+  deleteRef = function(ref){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/entities/'+that.props.params.id+'/internalref/'+ref.id_entity,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          that.setState({loaded:false});
+        });
+  }
 
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
