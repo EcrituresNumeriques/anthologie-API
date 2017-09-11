@@ -327,7 +327,7 @@ export default class specificEntity extends Component {
             {_.get(this.entity,'alignements',[]).map((alignement,i)=>(
               <div className="inputContainerLanguage" key={'alignementEntity'+alignement.id_align}>
                 <label>{i?'':'Alignements : '}</label>
-                <Link to={"/entities/"+alignement.id_entity+"/showalign/"+alignement.id_align}> {'['+store.getState().languagesLookup[alignement.source_lang].name+'] => ['+store.getState().languagesLookup[alignement.target_lang].name+'] by  '+alignement.id_user} </Link>
+                <Link to={"/entities/"+alignement.id_entity+"/showalign/"+alignement.id_align}> {'['+store.getState().languagesLookup[alignement.source_lang].name+'] => ['+store.getState().languagesLookup[alignement.target_lang].name+'] by  '+ store.getState().usersLookup[alignement.id_user].displayName} </Link>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteAlignement(alignement))} >X</button>}
               </div>
             ))}

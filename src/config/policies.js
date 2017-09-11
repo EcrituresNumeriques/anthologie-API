@@ -137,6 +137,9 @@ ImagesController:{
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'destroy':['isLoggedIn','ownsThis']
+  },
+  UsersController:{
+    'listNames':true,
   }
 
 };

@@ -124,10 +124,10 @@ module.exports.routes = {
 
 
   //Eras
-  'GET /api/v1/':'ErasController.find',
-  'POST /api/v1/':'ErasController.create',
-  'GET /api/v1//:id':'ErasController.findOne',
-  'POST /api/v1//:id':'ErasController.update',
+  'GET /api/v1/areas':'ErasController.find',
+  'POST /api/v1/areas':'ErasController.create',
+  'GET /api/v1/areas/:id':'ErasController.findOne',
+  'POST /api/v1/areas/:id':'ErasController.update',
 
   //Genres
   'GET /api/v1/genres':'GenresController.find',
@@ -228,6 +228,9 @@ module.exports.routes = {
   'GET /api/v1/contrib/aligns':'ContribController.aligns',
   'GET /api/v1/contrib/scholies':'ContribController.scholies',
   'GET /api/v1/contrib/notes':'ContribController.notes',
+
+  //Get users
+  'GET /api/v1/users':'UsersController.listNames',
 
   // All GET requests are directed to the app controller which renders our app.
   'GET /*': {

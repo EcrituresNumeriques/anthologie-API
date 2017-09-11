@@ -47,6 +47,12 @@ export function login(state = initialState, action) {
       }
       return Object.assign({},state,{keywords:action.payload,keywordsLookup:lookup})
       break;
+    case 'UPDATE_USERS':
+      for (var i = 0, len = action.payload.length; i < len; i++) {
+        lookup[action.payload[i].id_user] = action.payload[i];
+      }
+      return Object.assign({},state,{users:action.payload,usersLookup:lookup})
+      break;
     case 'ADD_NOTE':
       lookup = state.notesLookup;
       lookup[action.payload.id_note] = action.payload;
