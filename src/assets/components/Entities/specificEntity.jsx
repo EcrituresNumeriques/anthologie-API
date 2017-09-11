@@ -67,30 +67,35 @@ export default class specificEntity extends Component {
   }
 
   deleteName = function(author){
-    //console.log('clicked',this,translation);
-    let that = this;
-    fetch('/api/v1/entities/'+that.props.params.id+'/authors/'+author.id_author,    {
-            method: "DELETE",
-            credentials: 'same-origin'
-        })
-        .then(function(data){
-          browserHistory.push('/entities');
-          browserHistory.push('/entities/'+that.props.params.id);
-        });
+    if (confirm('Are you sure you want to unlink this author?')) {
+      //console.log('clicked',this,translation);
+      let that = this;
+      fetch('/api/v1/entities/'+that.props.params.id+'/authors/'+author.id_author,    {
+              method: "DELETE",
+              credentials: 'same-origin'
+          })
+          .then(function(data){
+            browserHistory.push('/entities');
+            browserHistory.push('/entities/'+that.props.params.id);
+          });
+    }
   }
   deleteUri = function(uri){
-    //console.log('clicked',this,translation);
-    let that = this;
-    fetch('/api/v1/entities/'+that.props.params.id+'/uris/'+uri.id_urid,    {
-            method: "DELETE",
-            credentials: 'same-origin'
-        })
-        .then(function(data){
-          browserHistory.push('/entities');
-          browserHistory.push('/entities/'+that.props.params.id);
-        });
+    if (confirm('Are you sure you want to delete this URI?')) {
+      //console.log('clicked',this,translation);
+      let that = this;
+      fetch('/api/v1/entities/'+that.props.params.id+'/uris/'+uri.id_urid,    {
+              method: "DELETE",
+              credentials: 'same-origin'
+          })
+          .then(function(data){
+            browserHistory.push('/entities');
+            browserHistory.push('/entities/'+that.props.params.id);
+          });
+    }
   }
   deleteTranslation = function(translation){
+        if (confirm('Are you sure you want to delete this version?')) {
     //console.log('clicked',this,translation);
     let that = this;
     fetch('/api/v1/entities/'+that.props.params.id+'/translations/'+translation.id_entity_translation,    {
@@ -101,9 +106,10 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities');
           browserHistory.push('/entities/'+that.props.params.id);
         });
+      }
   }
   deleteDraft = function(draft){
-    console.log(draft);
+        if (confirm('Are you sure you want to delete this draft?')) {
     let that = this;
     fetch('/api/v1/entities/'+that.props.params.id+'/drafts/'+draft.id_entity_draft,    {
             method: "DELETE",
@@ -113,8 +119,10 @@ export default class specificEntity extends Component {
           browserHistory.push('/entities');
           browserHistory.push('/entities/'+that.props.params.id);
         });
+      }
   }
   deleteAlignement = function(align){
+        if (confirm('Are you sure you want to delete this alignement?')) {
     console.log(align);
     let that = this;
     fetch('/api/v1/alignements/'+align.id_align,    {
@@ -125,6 +133,7 @@ export default class specificEntity extends Component {
           browserHistory.push('/home');
           browserHistory.push('/entities/'+that.props.params.id);
         });
+      }
   }
 
   addToAlignId = function(e,translation){
