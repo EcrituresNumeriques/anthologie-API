@@ -10,10 +10,12 @@ export default class editEntityDraft extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {loaded:false};
+    this.state = {loaded:false,readyToPublish:false};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.draft = {};
     this.fetchAPI();
+    this.toggleCheckboxChange = this.toggleCheckboxChange.bind(this);
+    this.newVersion = this.newVersion.bind(this);
   }
 
   handleSubmit = function (e) {
@@ -33,6 +35,36 @@ export default class editEntityDraft extends Component {
       })
       .then(function(data){
         browserHistory.push('/entities/'+that.draft.id_entity.id_entity);
+        return null;
+      });
+  }
+  toggleCheckboxChange = function() {
+    this.setState({readyToPublish:!this.state.readyToPublish});
+  }
+  newVersion = function(){
+    let that = this;
+    //send new translation
+    let corps = {text_translated:that.refs.text.value,id_language:that.refs.language.value}
+    fetch("/api/v1/entities/"+that.draft.id_entity.id_entity+"/translations",
+      {
+          method: "POST",
+          body: JSON.stringify(corps),
+          credentials: 'same-origin'
+      })
+      .then(function(res){
+        if(!res.ok){throw res.json();}
+        return res.json()
+      })
+      .then(function(data){
+        //delete this draft
+        fetch('/api/v1/entities/'+that.draft.id_entity.id_entity+'/drafts/'+that.draft.id_entity_draft,    {
+                method: "DELETE",
+                credentials: 'same-origin'
+            })
+            .then(function(data){
+              browserHistory.push('/entities/'+that.draft.id_entity.id_entity);
+              return null;
+            });
         return null;
       });
   }
@@ -75,6 +107,16 @@ export default class editEntityDraft extends Component {
               </select>
           <input type="submit" value="send"/>
         </form>
+      }
+      {
+        this.state.loaded &&
+        <div>
+          <input type="checkbox" checked={this.state.readyToPublish} onChange={this.toggleCheckboxChange} id="readyToPublish"/>
+          <label for="readyToPublish"> I want to publish this draft as a new version of the entity (and delete this draft in the process).</label>
+          {this.state.readyToPublish &&
+            <button onClick={this.newVersion}>I understand that and want to publish this draft.</button>
+          }
+        </div>
       }
       </main>
     );

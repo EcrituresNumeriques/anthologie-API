@@ -131,3 +131,7 @@ Entities component
 #page > main#entitiesView > main > div.text > p > span > span.select {
   background-color:#82FA58;
 }
+#page > main#entitiesView > main > div > button {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
