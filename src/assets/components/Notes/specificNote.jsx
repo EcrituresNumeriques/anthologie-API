@@ -72,6 +72,9 @@ export default class specificNote extends Component {
           browserHistory.push('/notes/'+that.props.params.id);
         });
   }
+  moveToEntity = function(entity){
+    browserHistory.push('/entities/'+entity);
+  }
 
 
   render() {
@@ -102,7 +105,7 @@ export default class specificNote extends Component {
               {_.get(this.note,'entities',[]).map((entity,i)=>(
                 <div className="inputContainerLanguage" key={'entityNote'+entity.id_entity}>
                   <label>{i?'':'Entities : '}</label>
-                  <p>{entity.title}</p>
+                  <p onClick={()=>this.moveToEntity(entity.id_entity)}>{entity.title}</p>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteEntities(entity))} >X</button>}
                 </div>
               ))}
