@@ -75,6 +75,8 @@ module.exports.policies = {
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
+    'removeEntity':['isLoggedIn','ownsThis'],
+    'deleteTranslation':['isLoggedIn','ownsThis'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   ScholiesController:{
@@ -82,6 +84,8 @@ module.exports.policies = {
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
+    'removeEntity':['isLoggedIn','ownsThis'],
+    'deleteTranslation':['isLoggedIn','ownsThis'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   LanguagesController:{

@@ -72,6 +72,18 @@ export default class specificScholie extends Component {
           browserHistory.push('/scholies/'+that.props.params.id);
         });
   }
+  deleteEntities = function(entity){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/scholies/'+that.props.params.id+'/entity/'+entity.id_entity,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/scholies');
+          browserHistory.push('/scholies/'+that.props.params.id);
+        });
+  }
   moveToEntity = function(entity){
     browserHistory.push('/entities/'+entity);
   }

@@ -72,6 +72,18 @@ export default class specificNote extends Component {
           browserHistory.push('/notes/'+that.props.params.id);
         });
   }
+  deleteEntities = function(entity){
+    //console.log('clicked',this,translation);
+    let that = this;
+    fetch('/api/v1/notes/'+that.props.params.id+'/entity/'+entity.id_entity,    {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          browserHistory.push('/notes');
+          browserHistory.push('/notes/'+that.props.params.id);
+        });
+  }
   moveToEntity = function(entity){
     browserHistory.push('/entities/'+entity);
   }

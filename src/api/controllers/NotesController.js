@@ -8,7 +8,7 @@
 module.exports = {
 
   removeEntity: function (req, res) {
-    Notes.findOne({id_entity:req.param('parentid')}).populate('entities').exec(function(e,r){
+    Notes.findOne({id_note:req.param('parentid')}).populate('entities').exec(function(e,r){
       if(e){return res.badRequest({message:"bad request"})}
       r.entities.remove(req.param('id'))
       r.save()
