@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router, { Link, RouteHandler } from 'react-router';
 import { browserHistory } from 'react-router';
 
+import {languagesList} from 'components/Languages/listLanguages.js';
 import {store} from '../../Redux/store'
 // components
 
@@ -48,7 +49,9 @@ export default class newLanguage extends Component {
         <h1>Add a new Language</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <input type="text" placeholder="Name" name="name" ref="name"/>
-          <input type="text" placeholder="Family" name="family" ref="family"/>
+          <select name="family" ref="family">
+            {languagesList.map((lang,i)=>(<option key={"language"+i} value={lang.nativeName}>{lang.nativeName}</option>))}
+          </select>
           <input type="submit" value="send"/>
         </form>
       </main>
