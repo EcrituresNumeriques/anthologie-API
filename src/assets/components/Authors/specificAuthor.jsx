@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 import _ from 'lodash'
 
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class specificAuthor extends Component {
@@ -111,7 +112,7 @@ export default class specificAuthor extends Component {
 
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID author : </label><input type="text" value={this.author.id_author} disabled="true"/></div>
-            {this.author.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'authorName'+translation.id_author_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
+            {this.author.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'authorName'+translation.id_author_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  displayLang(store.getState().languagesLookup[translation.id_language])+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/authors/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
 
             {this.author.entities.map((entity,i)=>(<div className="inputContainerLanguage" key={'entity'+entity.id_entity}><label>{i?'':'Author of : '}</label><p  onClick={()=>this.moveToEntity(entity.id_entity)}>{entity.title}</p></div>))}

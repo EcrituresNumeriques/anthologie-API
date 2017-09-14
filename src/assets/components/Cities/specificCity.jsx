@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 
 import _ from 'lodash'
 import {store} from '../../Redux/store'
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class specificCity extends Component {
@@ -87,7 +88,7 @@ export default class specificCity extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID city : </label><input type="text" value={this.city.id_city} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>GPS : </label><input placeholder="ex : 45.4991117,-73.6181167" type="text" ref="gps" defaultValue={this.city.GPS} disabled={readOnly} /></div>
-            {this.city.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'cityName'+translation.id_city_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
+            {this.city.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'cityName'+translation.id_city_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  displayLang(store.getState().languagesLookup[translation.id_language])+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/cities/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.city.createdAt} disabled="true"/></div>

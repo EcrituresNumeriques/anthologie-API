@@ -1,4 +1,28 @@
 export const languagesList = [
+{
+ "code": "el",
+ "name": "Greek, Modern",
+ "nativeName": "Ελληνικά"
+},
+{
+ "code": "fr",
+ "name": "French",
+ "nativeName": "français"
+},
+{
+ "code": "it",
+ "name": "Italian",
+ "nativeName": "Italiano"
+},
+{
+ "code": "en",
+ "name": "English",
+ "nativeName": "English"
+},
+{
+  "nativeName":"---------------",
+  disabled:true
+},
  {
   "code": "om",
   "name": "Oromo",
@@ -85,11 +109,6 @@ export const languagesList = [
   "nativeName": "Ekakairũ Naoero"
  },
  {
-  "code": "en",
-  "name": "English",
-  "nativeName": "English"
- },
- {
   "code": "eo",
   "name": "Esperanto",
   "nativeName": "Esperanto"
@@ -158,11 +177,6 @@ export const languagesList = [
   "code": "ia",
   "name": "Interlingua",
   "nativeName": "Interlingua"
- },
- {
-  "code": "it",
-  "name": "Italian",
-  "nativeName": "Italiano"
  },
  {
   "code": "ik",
@@ -475,11 +489,6 @@ export const languagesList = [
   "nativeName": "faka Tonga"
  },
  {
-  "code": "fr",
-  "name": "French",
-  "nativeName": "français"
- },
- {
   "code": "fo",
   "name": "Faroese",
   "nativeName": "føroyskt"
@@ -603,11 +612,6 @@ export const languagesList = [
   "code": "cs",
   "name": "Czech",
   "nativeName": "česky, čeština"
- },
- {
-  "code": "el",
-  "name": "Greek, Modern",
-  "nativeName": "Ελληνικά"
  },
  {
   "code": "be",

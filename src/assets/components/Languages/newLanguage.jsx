@@ -17,7 +17,7 @@ export default class newLanguage extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {name:this.refs.name.value,family:this.refs.family.value}
+    let corps = {name:this.refs.name.value,family:this.refs.family.value, edition:this.refs.edition.value}
     fetch("/api/v1/languages",
     {
         method: "POST",
@@ -48,10 +48,11 @@ export default class newLanguage extends Component {
       <main>
         <h1>Add a new Language</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <input type="text" placeholder="Name" name="name" ref="name"/>
           <select name="family" ref="family">
-            {languagesList.map((lang,i)=>(<option key={"language"+i} value={lang.nativeName}>{lang.nativeName}</option>))}
+            {languagesList.map((lang,i)=>(<option key={"language"+i} value={lang.nativeName} disabled={!!lang.disabled}>{lang.nativeName}</option>))}
           </select>
+          <input type="text" className="full" placeholder="Type (modern, ancient, litteral, etc)" name="name" ref="name"/>
+          <input type="text" className="full" placeholder="Edition (your institution, research group, etc) - optional" name="edition" ref="edition"/>
           <input type="submit" value="send"/>
         </form>
       </main>

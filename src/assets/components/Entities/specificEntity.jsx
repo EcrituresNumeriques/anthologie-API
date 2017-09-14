@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 import _ from 'lodash'
 
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class specificEntity extends Component {
@@ -308,7 +309,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <label>{i?'':'Drafts : '}</label>}
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user &&
-                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">{'['+store.getState().languagesLookup[draft.id_language].name+'] '}<Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
+                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">{'['+displayLang(store.getState().languagesLookup[draft.id_language])+'] '}<Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
                   {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
                   </p>}
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
@@ -322,7 +323,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>
                 <label>{i?'':'Translations : '}</label>
                 <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">{'['+store.getState().languagesLookup[translation.id_language].name+'] '}
+                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">{'['+displayLang(store.getState().languagesLookup[translation.id_language])+'] '}
                   {translation.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+translation.id_entity_translation+"-"+i}><br/>{item}</span>))}</p>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
               </div>
@@ -336,7 +337,7 @@ export default class specificEntity extends Component {
             {_.get(this.entity,'alignements',[]).map((alignement,i)=>(
               <div className="inputContainerLanguage" key={'alignementEntity'+alignement.id_align}>
                 <label>{i?'':'Alignements : '}</label>
-                <Link to={"/entities/"+alignement.id_entity+"/showalign/"+alignement.id_align}> {'['+store.getState().languagesLookup[alignement.source_lang].name+'] => ['+store.getState().languagesLookup[alignement.target_lang].name+'] by  '+ store.getState().usersLookup[alignement.id_user].displayName} </Link>
+                <Link to={"/entities/"+alignement.id_entity+"/showalign/"+alignement.id_align}> {'['+displayLang(store.getState().languagesLookup[alignement.source_lang])+'] => ['+displayLang(store.getState().languagesLookup[alignement.target_lang])+'] by  '+ store.getState().usersLookup[alignement.id_user].displayName} </Link>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteAlignement(alignement))} >X</button>}
               </div>
             ))}

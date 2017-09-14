@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link,browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 
@@ -186,9 +187,9 @@ export default class ComponentProfile extends Component {
           <h2>Entities</h2>
           {this.contrib.entities.map((entity,i)=>(<Link key={"contribEntity"+entity.id_entity} to={"/entities/"+entity.id_entity}>{entity.title}</Link>))}
           <h2>Translations</h2>
-          {this.contrib.translations.map((translation,i)=>(<Link key={"contribTranslation"+translation.id_entity_translation} to={"/entities/"+translation.id_entity}>[{store.getState().languagesLookup[translation.id_language].name}] {store.getState().entitiesLookup[translation.id_entity].title}</Link>))}
+          {this.contrib.translations.map((translation,i)=>(<Link key={"contribTranslation"+translation.id_entity_translation} to={"/entities/"+translation.id_entity}>[{displayLang(store.getState().languagesLookup[translation.id_language])}] {store.getState().entitiesLookup[translation.id_entity].title}</Link>))}
           <h2>Alignements</h2>
-          {this.contrib.aligns.map((align,i)=>(<Link key={"contribAlign"+align.id_entity} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{store.getState().languagesLookup[align.source_lang].name}] => [{store.getState().languagesLookup[align.target_lang].name}] {store.getState().entitiesLookup[align.id_entity].title}</Link>))}
+          {this.contrib.aligns.map((align,i)=>(<Link key={"contribAlign"+align.id_align} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{displayLang(store.getState().languagesLookup[align.source_lang])}] => [{displayLang(store.getState().languagesLookup[align.target_lang])}] {store.getState().entitiesLookup[align.id_entity].title}</Link>))}
           <h2>Scholies</h2>
           {this.contrib.scholies.map((scholie,i)=>(<Link key={"contribScholie"+scholie.id_scholie} to={"/entities/"+scholie.id_entity+'/showScholie/'+scholie.id_scholie}>{scholie.title}</Link>))}
           <h2>Notes</h2>

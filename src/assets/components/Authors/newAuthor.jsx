@@ -3,6 +3,7 @@ import Router, { Link, RouteHandler } from 'react-router';
 import { browserHistory } from 'react-router';
 
 import {store} from '../../Redux/store'
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class newAuthor extends Component {
@@ -60,7 +61,7 @@ export default class newAuthor extends Component {
         <form onSubmit={this.handleSubmit} id="languageForm">
           <input type="text" placeholder="Name" name="name" ref="name"/>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>[{lang.family}] {lang.name}</option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
           <input type="submit" value="send"/>
         </form>

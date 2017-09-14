@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import {store} from '../../Redux/store'
 import _ from 'lodash'
 
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class specificScholie extends Component {
@@ -140,7 +141,7 @@ export default class specificScholie extends Component {
                 <div className="inputContainerLanguage" key={'translationScholie'+translation.    id_scholie_translation}>
                   <label>{i?'':'Translations : '}</label>
                   <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_scholie_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                  <input type="text" value={'['+store.getState().languagesLookup[translation.id_language].name+'] '+translation.text} disabled="true"/>
+                  <input type="text" value={'['+displayLang(store.getState().languagesLookup[translation.id_language])+'] '+translation.text} disabled="true"/>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
                 </div>
               ))}

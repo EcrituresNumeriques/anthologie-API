@@ -3,6 +3,7 @@ import Router, { Link, RouteHandler } from 'react-router';
 import { browserHistory } from 'react-router';
 
 import {store} from '../../Redux/store'
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class editEntityDraft extends Component {
@@ -103,7 +104,7 @@ export default class editEntityDraft extends Component {
               <textarea ref="text" defaultValue={this.draft.text_translated}>
               </textarea>
               <select ref="language" defaultValue={this.draft.id_language.id_language}>
-                {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>[{lang.family}] {lang.name}</option>))}
+                {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
               </select>
           <input type="submit" value="send"/>
         </form>

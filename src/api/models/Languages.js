@@ -19,7 +19,10 @@ module.exports = {
     name: {
       type: 'string',
       required: true,
-      unique: true,
+      size: 45
+    },
+    edition: {
+      type: 'string',
       size: 45
     },
     family: {

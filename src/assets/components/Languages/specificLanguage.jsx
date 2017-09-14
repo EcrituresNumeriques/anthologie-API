@@ -3,6 +3,7 @@ import Router, { Link, RouteHandler } from 'react-router';
 
 import _ from 'lodash'
 import {store} from '../../Redux/store'
+import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
 export default class specificLanguage extends Component {
@@ -30,6 +31,7 @@ export default class specificLanguage extends Component {
         that.Language = json;
         that.refs.name.value = json.name;
         that.refs.family.value = json.family;
+        that.refs.edition.value = json.edition;
         that.forceUpdate();
         return null;
       });
@@ -39,7 +41,7 @@ export default class specificLanguage extends Component {
     e.preventDefault();
     let that = this;
     //get name and family
-    let corps = {name:this.refs.name.value,family:this.refs.family.value}
+    let corps = {name:this.refs.name.value,family:this.refs.family.value,edition:this.refs.edition.value}
     fetch("/api/v1/languages/"+that.props.params.id,
     {
         method: "POST",
@@ -53,6 +55,7 @@ export default class specificLanguage extends Component {
       that.Language = data;
       that.refs.name.value = data.name;
       that.refs.family.value = data.family;
+      that.refs.edition.value = data.edition;
       that.forceUpdate();
       return null})
     .catch(function(error){return error})
@@ -70,12 +73,13 @@ export default class specificLanguage extends Component {
     }
     return (
       <main>
-        <h1>[{this.Language.family}] {this.Language.name}</h1>
+        <h1>{displayLang(this.Language)}</h1>
         <h6>anthologia.ecrituresnumeriques.ca/api/v1/languages/{this.Language.id_language}</h6>
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID language : </label><input type="text" value={this.Language.id_language} disabled="true"/></div>
-            <div className="inputContainerLanguage"><label>name : </label><input type="text" ref="name" defaultValue={this.Language.name} disabled={readOnly} /></div>
             <div className="inputContainerLanguage"><label>family : </label><input type="text" ref="family" defaultValue={this.Language.family} disabled={readOnly} /></div>
+            <div className="inputContainerLanguage"><label>Type : </label><input type="text" ref="name" defaultValue={this.Language.name} disabled={readOnly} /></div>
+            <div className="inputContainerLanguage"><label>Edition : </label><input type="text" ref="edition" defaultValue={this.Language.edition} disabled={readOnly} /></div>
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.Language.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.Language.updatedAt} disabled="true"/></div>
             {this.Language.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.Language.id_user.institution+'] ' + this.Language.id_user.displayName} disabled="true"/></div>}

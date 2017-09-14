@@ -39,9 +39,13 @@ Languages component
   @extend .inputStandard;
   @extend .centeredBlock;
 }
+#page > main#LanguagesView > main > form > input.full{
+  width:100%;
+}
 #page > main#LanguagesView > main > form > select {
   @extend .inputStandard;
   @extend .centeredBlock;
+  width:100%;
 }
 #page > main#LanguagesView > main > form > div.inputContainerLanguage{
   @extend .inputContainer;

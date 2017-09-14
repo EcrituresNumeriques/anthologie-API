@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 
 import {store} from '../../Redux/store'
 import _ from 'lodash'
+import {displayLang} from 'helpers/displayLang.jsx'
 
 // components
 
@@ -67,7 +68,7 @@ export default class specificKeyword extends Component {
 
           <form>
             <div className="inputContainerLanguage"><label>ID keyword : </label><input type="text" value={this.keyword.id_keyword} disabled="true"/></div>
-            {this.keyword.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'keywordName'+translation.id}><label>{i?'':'Titles : '}</label><input type="text" value={'['+  store.getState().languagesLookup[translation.id_language].name+'] '+translation.title} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
+            {this.keyword.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'keywordName'+translation.id}><label>{i?'':'Titles : '}</label><input type="text" value={'['+  displayLang(store.getState().languagesLookup[translation.id_language])+'] '+translation.title} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/keywords/newTranslation/'+this.props.params.id}>Add a title </Link></div>}
 
             {this.keyword.entities.map((entity,i)=>(<div className="inputContainerLanguage" key={'entity'+entity.id_entity}><label>{i?'':'Keyword of : '}</label><p  onClick={()=>this.moveToEntity(entity.id_entity)}>{entity.title}</p></div>))}
