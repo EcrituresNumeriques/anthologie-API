@@ -47,6 +47,7 @@ import newEntity from 'components/Entities/newEntity';
 import newEntityTranslation from 'components/Entities/newEntityTranslation';
 import newEntityDraft from 'components/Entities/newEntityDraft';
 import editEntityDraft from 'components/Entities/editEntityDraft';
+import newEntityImageManuscript from 'components/Entities/newEntityImageManuscript';
 import newEntityImage from 'components/Entities/newEntityImage';
 import newEntityAuthor from 'components/Entities/newEntityAuthor';
 import newEntityScholie from 'components/Entities/newEntityScholie';
@@ -96,6 +97,8 @@ export const routes = (
       <Route path="/entities/draft/:draft" component={editEntityDraft} />
       <Route path="/entities/newimage" component={newEntityImage} />
       <Route path="/entities/newimage/:id" component={newEntityImage} />
+      <Route path="/entities/newImageManuscript" component={newEntityImageManuscript} />
+      <Route path="/entities/newImageManuscript/:id" component={newEntityImageManuscript} />
       <Route path="/entities/newAuthor" component={newEntityAuthor} />
       <Route path="/entities/newAuthor/:id" component={newEntityAuthor} />
       <Route path="/entities/newScholie/:id" component={newEntityScholie} />

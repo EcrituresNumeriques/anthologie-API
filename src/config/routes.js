@@ -168,12 +168,6 @@ module.exports.routes = {
   'GET /api/v1/languages/:id':'Languages.findOne',
   'POST /api/v1/languages/:id':'Languages.update',
 
-  //Manuscripts
-  'GET /api/v1/manuscripts':'ManuscriptsController.find',
-  'POST /api/v1/manuscripts':'ManuscriptsController.create',
-  'GET /api/v1/manuscripts/:id':'ManuscriptsController.findOne',
-  'POST /api/v1/manuscripts/:id':'ManuscriptsController.update',
-
   //Motifs
   'GET /api/v1/motifs':'MotifsController.find',
   'POST /api/v1/motifs':'MotifsController.create',

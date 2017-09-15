@@ -80,11 +80,6 @@ module.exports = {
      collection:'Motifs',
      via:'id_entity'
    },
-   manuscripts:{
-     collection:'Manuscripts',
-     via:'id_entity',
-     dominant:true
-   },
    keywords:{
      collection:'Keywords',
      via:'entities',
@@ -93,6 +88,11 @@ module.exports = {
    images:{
      collection:'images',
      via:'entities',
+     dominant:true
+   },
+   imagesManuscript:{
+     collection:'images',
+     via:'manuscripts',
      dominant:true
    },
    authors:{

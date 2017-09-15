@@ -67,10 +67,6 @@ module.exports = {
       collection:'Keywords',
       via:'images'
     },
-    manuscripts:{
-      collection:'Manuscripts',
-      via:'images'
-    },
     scholies:{
       collection:'Scholies',
       via:'images'
@@ -78,6 +74,10 @@ module.exports = {
     entities:{
       collection:'Entities',
       via:'images'
+    },
+    manuscripts:{
+      collection:'Entities',
+      via:'imagesManuscript'
     },
     notes:{
       collection:'Notes',

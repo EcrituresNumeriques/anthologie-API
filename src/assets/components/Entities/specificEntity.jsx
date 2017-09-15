@@ -305,6 +305,15 @@ export default class specificEntity extends Component {
 
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
 
+            <div className="inputContainerLanguage">
+              <label>Manuscripts :</label>
+              <div className="collection">
+
+                {_.get(this.entity,'imagesManuscript',[]).map((image)=>(<a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
+                {!readOnly && <Link className="addToCollectionSide" to={'/entities/newImageManuscript/'+this.props.params.id}>Add an image </Link>}
+              </div>
+            </div>
+
             {_.get(this.entity,'drafts',[]).map((draft,i)=>(
               <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <label>{i?'':'Drafts : '}</label>}

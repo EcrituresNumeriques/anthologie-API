@@ -21,9 +21,6 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    manuscript:{
-      model:'Manuscripts'
-    },
     translations:{
       collection:'Scholie_translations',
       via:"id_scholie"
