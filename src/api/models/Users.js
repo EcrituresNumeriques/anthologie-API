@@ -48,6 +48,11 @@ module.exports = {
       required: false,
       size: 45
     },
+    defaultEdition:{
+      type: 'string',
+      required: false,
+      size: 45
+    },
     groups:{
       collection:'User_Groups',
       via:'users'

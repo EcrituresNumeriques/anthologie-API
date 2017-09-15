@@ -309,7 +309,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <label>{i?'':'Drafts : '}</label>}
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user &&
-                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">{'['+displayLang(store.getState().languagesLookup[draft.id_language])+'] '}<Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
+                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">[{displayLang(store.getState().languagesLookup[draft.id_language])}{draft.edition?' ('+draft.edition+')':''}] <Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
                   {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
                   </p>}
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
@@ -323,7 +323,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>
                 <label>{i?'':'Translations : '}</label>
                 <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">{'['+displayLang(store.getState().languagesLookup[translation.id_language])+'] '}
+                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}{translation.edition?' ('+translation.edition+')':''}]
                   {translation.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+translation.id_entity_translation+"-"+i}><br/>{item}</span>))}</p>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
               </div>

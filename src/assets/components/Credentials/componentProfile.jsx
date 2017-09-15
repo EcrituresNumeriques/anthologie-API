@@ -15,6 +15,7 @@ export default class ComponentProfile extends Component {
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.logout = this.logout.bind(this);
   }
   componentWillMount(){
     document.title = "Profile | anthologie";
@@ -105,7 +106,8 @@ export default class ComponentProfile extends Component {
       first_name:this.refs.firstName.value,
       last_name:this.refs.lastName.value,
       institution:this.refs.institution.value,
-      country:this.refs.country.value
+      country:this.refs.country.value,
+      defaultEdition:this.refs.defaultEdition.value,
     }
     fetch("/api/v1/users/"+this.user.id_user,
     {
@@ -119,11 +121,27 @@ export default class ComponentProfile extends Component {
     .then(function(data){
       store.dispatch({type:"LOG_ME_IN",payload:data});
       that.forceUpdate();
+      alert('Informations updated!');
       return null})
     .catch(function(error){return error})
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
+  logout = function(e){
+      e.preventDefault();
+      fetch("/api/v1/logout",
+      {
+          method: "POST",
+          credentials: 'same-origin'
+      })
+      .then(function(res){
+        if(!res.ok){throw res.json();}
+        return res.json()})
+      .then(function(data){
+        store.dispatch({type:'UNLOG_USER'})
+        browserHistory.push('/home');
+        return null})
+  }
 
   handlePassword = function (e) {
     e.preventDefault();
@@ -170,6 +188,7 @@ export default class ComponentProfile extends Component {
             <input type="text" placeholder="Last name" name="lastName" ref="lastName" defaultValue={this.user.last_name}/>
             <input type="text" placeholder="Institution" name="institution" ref="institution" defaultValue={this.user.institution}/>
             <input type="text" placeholder="Country" name="country" ref="country" defaultValue={this.user.country}/>
+            <input type="text" placeholder="Default Edition" name="defaultEdition" ref="defaultEdition" defaultValue={this.user.defaultEdition}/>
             <input type="submit" value="send"/>
           </form>
         </section>
@@ -180,6 +199,12 @@ export default class ComponentProfile extends Component {
             <input type="password" placeholder="New password" name="new" ref="new" autoComplete="new-password"/>
             <input type="password" placeholder="Confirm new password" name="confirm" ref="confirm" autoComplete="new-password"/>
             <input type="submit" value="send"/>
+          </form>
+        </section>
+        <section id="logout">
+          <h1>Log out</h1>
+          <form onSubmit={this.logout} id="passwordForm">
+            <input type="submit" value="logout"/>
           </form>
         </section>
         <section id="contrib">

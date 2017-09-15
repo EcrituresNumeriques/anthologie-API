@@ -17,7 +17,7 @@ export default class newScholieTranslation extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {id_scholie:this.refs.scholie.value,text:this.refs.text.value,id_language:this.refs.language.value}
+    let corps = {id_scholie:this.refs.scholie.value,text:this.refs.text.value,id_language:this.refs.language.value,edition:this.refs.edition.value}
     fetch("/api/v1/scholies/"+corps.id_scholie+"/translations",
       {
           method: "POST",
@@ -52,6 +52,7 @@ export default class newScholieTranslation extends Component {
           <select ref="language">
             {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
+          <input ref="edition" placeholder="Edition of this version" defaultValue={store.getState().user && store.getState().user.defaultEdition?store.getState().user.defaultEdition:''}/>
           <input type="submit" value="send"/>
         </form>
       </div></main>

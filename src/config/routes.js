@@ -77,7 +77,7 @@ module.exports.routes = {
   //'GET /api/v1/users':'UsersController.find',
   //'POST /api/v1/users':'UsersController.create',
   //'GET /api/v1/users/:id':'UsersController.findOne',
-  'POST /api/v1/users/:id':'UsersController.update',
+  'POST /api/v1/users/:id':'UsersController.updateInfos',
 
   //Credentials (a supprimer)
   //'GET /api/v1/credentials':'User_CredentialsController.find',
@@ -91,6 +91,9 @@ module.exports.routes = {
 
   //Login
   'POST /api/v1/login':'User_LoginController.validateLogin',
+
+  //logout user
+  'POST /api/v1/logout':'User_LoginController.logout',
 
   //status
   'GET /api/v1/status':'User_StatusController.status',

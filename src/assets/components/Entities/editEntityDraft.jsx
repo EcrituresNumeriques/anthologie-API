@@ -23,7 +23,7 @@ export default class editEntityDraft extends Component {
     e.preventDefault();
     //get email and password
     let that = this;
-    let corps = {text_translated:this.refs.text.value,id_language:this.refs.language.value}
+    let corps = {text_translated:this.refs.text.value,id_language:this.refs.language.value,edition:that.refs.edition.value}
     fetch("/api/v1/drafts/"+this.props.params.draft,
       {
           method: "POST",
@@ -45,7 +45,7 @@ export default class editEntityDraft extends Component {
   newVersion = function(){
     let that = this;
     //send new translation
-    let corps = {text_translated:that.refs.text.value,id_language:that.refs.language.value}
+    let corps = {text_translated:that.refs.text.value,id_language:that.refs.language.value,edition:that.refs.edition.value}
     fetch("/api/v1/entities/"+that.draft.id_entity.id_entity+"/translations",
       {
           method: "POST",
@@ -106,6 +106,7 @@ export default class editEntityDraft extends Component {
               <select ref="language" defaultValue={this.draft.id_language.id_language}>
                 {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
               </select>
+              <input ref="edition" placeholder="Edition of this version" defaultValue={this.draft.edition}/>
           <input type="submit" value="send"/>
         </form>
       }

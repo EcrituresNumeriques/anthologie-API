@@ -21,10 +21,6 @@ module.exports = {
       required: true,
       size: 45
     },
-    edition: {
-      type: 'string',
-      size: 45
-    },
     family: {
       type: 'string',
       required: true,

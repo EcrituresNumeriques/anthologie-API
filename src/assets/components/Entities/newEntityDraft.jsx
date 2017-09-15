@@ -17,7 +17,7 @@ export default class newEntityDraft extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {id_entity:this.refs.entity.value,text_translated:this.refs.text.value,id_language:this.refs.language.value}
+    let corps = {id_entity:this.refs.entity.value,text_translated:this.refs.text.value,id_language:this.refs.language.value,edition:this.refs.edition.value}
     fetch("/api/v1/entities/"+corps.id_entity+"/drafts",
       {
           method: "POST",
@@ -52,6 +52,7 @@ export default class newEntityDraft extends Component {
           <select ref="language">
             {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
+          <input ref="edition" placeholder="Edition of this version" defaultValue={store.getState().user && store.getState().user.defaultEdition?store.getState().user.defaultEdition:''}/>
           <input type="submit" value="send"/>
         </form>
       </main>

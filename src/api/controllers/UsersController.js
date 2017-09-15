@@ -18,9 +18,19 @@ module.exports = {
           delete u.country;
           delete u.createdAt;
           delete u.updatedAt;
+          delete u.defaultEdition;
         }
       );
       return res.json(users);
+    });
+  },
+  updateInfos: function(req,res){
+
+    let id = req.params.parentid || req.params.id ;
+    Users.update({id_user:id},req.body).exec(function afterwards(err, updated){
+      if (err) { return res.error({message:'error update'});}
+      req.session.user = updated[0];
+      return res.json(updated[0]);
     });
   }
 };

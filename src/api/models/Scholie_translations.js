@@ -31,5 +31,9 @@ module.exports = {
       type: 'text',
       required: false
     },
+    edition: {
+      type: 'text',
+      required: false
+    }
   }
 };

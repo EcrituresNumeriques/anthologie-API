@@ -106,12 +106,10 @@ module.exports.policies = {
   },
   User_LoginController:{
     'validateLogin':true,
+    'logout':['isLoggedIn']
   },
   User_StatusController:{
     'status':true
-  },
-  Users:{
-    'update':['isLoggedIn','ownsThis','protectAdmin']
   },
   User_CredentialsController:{
     'update':['isLoggedIn','ownsThis']
@@ -144,6 +142,7 @@ ImagesController:{
   },
   UsersController:{
     'listNames':true,
+    'updateInfos':['isLoggedIn','ownsThis','protectAdmin']
   }
 
 };

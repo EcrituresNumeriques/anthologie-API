@@ -23,5 +23,9 @@ module.exports = {
               res.badRequest({'humanReadable':'email or password invalid'});
             }
         });
-  }
+  },
+  logout: function(req,res){
+        req.session.user = undefined;
+        res.ok({message:'logged out!'});
+      }
 };

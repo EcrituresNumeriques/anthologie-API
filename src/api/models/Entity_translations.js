@@ -38,6 +38,10 @@ module.exports = {
     text_translated: {
       type: 'text',
       required: false
+    },
+    edition: {
+      type: 'text',
+      required: false
     }
   }
 };
