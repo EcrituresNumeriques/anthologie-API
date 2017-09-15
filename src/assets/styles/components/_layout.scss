@@ -74,6 +74,7 @@
 }
 #page > footer > div{
   @extend .fillWrapper;
+  text-align: center;
 }
 @media ONLY screen AND (min-width:$resize-desktop){
   #page > footer::before{
