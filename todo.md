@@ -5,7 +5,7 @@
 
 ## general
 - translation => versions sur toute la plateforme + api
-- Preload UI
+- ~~Preload UI~~
 - passer tous les fetchs dans les states de components
 - ajouter tous les fetchs au store redux
 - ajouter une UI pour fetch
