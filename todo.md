@@ -3,8 +3,8 @@
 - allignement avec semantic web (version 2.0)
 - ajouter uri pour villes, auteurs, mots-clés etc.
 ### Home
-- possibilité d'éditer le texte de welcome (même très geek, c'est moi qui va le faire - sur github par ex?)
-- ajout de licence partout (je peux le faire sur github?)
+~~- possibilité d'éditer le texte de welcome (même très geek, c'est moi qui va le faire - sur github par ex?)~~
+~~- ajout de licence partout (je peux le faire sur github?)~~
 
 ### Entities
 - recherche dans la page entités (la même que dans la home)
