@@ -3,15 +3,15 @@
 - allignement avec semantic web (version 2.0)
 - ajouter uri pour villes, auteurs, mots-clés etc.
 ### Home
-~~- possibilité d'éditer le texte de welcome (même très geek, c'est moi qui va le faire - sur github par ex?)~~
-~~- ajout de licence partout (je peux le faire sur github?)~~
+- ~~possibilité d'éditer le texte de welcome (même très geek, c'est moi qui va le faire - sur github par ex?)~~
+- ~~ajout de licence partout (je peux le faire sur github?)~~
 
 ### Entities
 - recherche dans la page entités (la même que dans la home)
 
 - possibilité d'effacer les entités?
 
-- classer par défault les entités par ordre alphabétique
+- ~~classer par défault les entités par ordre alphabétique~~
 - add draft: il faut pouvoir spécifier l'édition et il faut ensuite afficher l'auteur (user qui a créé le texte)
 - Pour "add draft", ce serait pas mal d'avoir le texte grec à côté, sur la droite X
 - add keyword autocompletion (select keyword) - ou liste par famille, ou mieux: les deux: d'abord je choisi la famille et puis autocomplétion ou liste compl;ete si je n'cris rien
@@ -44,12 +44,13 @@
 
 
 ### Langues
-- Séparer langues et versions --> langues et occurences X
+- ~~Séparer langues et versions --> langues et occurences X~~
 - possibilité d'effacer
-- reprendre d'une liste
+- ~~reprendre d'une liste~~
 - pas possibilité de créer pour utilisateur normal
-- possibilité de créer édition pour user normal mais pas langue
-- Ajouter images du manuscrit, de façon standardisée. Est-ce qu'on aligne le manuscrit et le texte X
+- ~~possibilité de créer édition pour user normal mais pas langue~~
+- ~~Ajouter images du manuscrit, de façon standardisée.~~
+- Est-ce qu'on aligne le manuscrit et le texte X?
 
 ### Contributions
 - Possibilité d'effacer depuis la page des contributions
@@ -58,7 +59,7 @@ Question: comment tu l'avais importées?
 - problèmes coordonnées gps... il n'y a pas NSEW!
 
 ### Champs à ajouter
-- images manuscrit
+- ~~images manuscrit~~
 - Possibilité d'ajouter des enregistrement
 
 - possibilité de monitorer l'activité - qui a fait quoi dernièrement pour admin
