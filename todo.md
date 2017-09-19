@@ -60,7 +60,7 @@
 - ~~Séparer langues et versions --> langues et occurences X~~
 - possibilité d'effacer
 - ~~reprendre d'une liste~~
-- pas possibilité de créer pour utilisateur normal
+- ~~pas possibilité de créer pour utilisateur normal~~
 - ~~possibilité de créer édition pour user normal mais pas langue~~
 - ~~Ajouter images du manuscrit, de façon standardisée.~~
 - Est-ce qu'on aligne le manuscrit et le texte X?
