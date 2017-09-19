@@ -91,8 +91,8 @@ module.exports.policies = {
   LanguagesController:{
     'find':true,
     'findOne':true,
-    'create':['isLoggedIn','populateUserInfos'],
-    'update':['isLoggedIn','ownsThis']
+    'create':['isLoggedIn','isAdmin','populateUserInfos'],
+    'update':['isLoggedIn','isAdmin','ownsThis']
   },
   Entity_translations_alignController:{
     'find':true,

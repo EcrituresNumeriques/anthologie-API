@@ -1,5 +1,14 @@
 const initialState = {languages:[],authors:[],cities:[],languagesLookup:{},authorsLookup:{},citiesLookup:{},keywords:[],notesLookup:[],scholiesLookup:[],loggedIn:false};
 
+let sortByTitle = function(a, b) {
+  var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+  var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {return -1;}
+  if (nameA > nameB) {return 1;}
+  return 0;
+}
+
+
 export function login(state = initialState, action) {
   console.log(action.type);
   let lookup = {};
@@ -33,6 +42,7 @@ export function login(state = initialState, action) {
       for (var i = 0, len = action.payload.length; i < len; i++) {
         lookup[action.payload[i].id_entity] = action.payload[i];
       }
+      action.payload.sort(sortByTitle);
       return Object.assign({},state,{entities:action.payload,entitiesLookup:lookup})
       break;
     case 'UPDATE_URI_SOURCE':

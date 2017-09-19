@@ -16,7 +16,7 @@ export default class AsideLanguages extends Component {
       <aside>
         <Links/>
         <section>
-          {store.getState().loggedIn && <Link to="/languages/new" className="addto" activeStyle={{ color: 'black' }}>Add new language</Link>}
+          {store.getState().loggedIn && store.getState().user.admin && <Link to="/languages/new" className="addto" activeStyle={{ color: 'black' }}>Add new language</Link>}
           <Link to="/languages" activeStyle={{ color: 'black' }}>List all languages</Link>
         </section>
       </aside>
