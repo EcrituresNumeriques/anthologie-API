@@ -16,6 +16,7 @@ export default class ComponentLinks extends Component {
           <Link to="/authors" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Authors</Link>
           <Link to="/cities" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Cities</Link>
           <Link to="/languages" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Languages</Link>
+          <Link to="/keywordCategories" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Keyword Categories</Link>
           <Link to="/keywords" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Keywords</Link>
           <Link to="/notes" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Notes</Link>
           <Link to="/scholies" activeStyle={{ 'backgroundColor': '#f0f0f0' }}>Scholies</Link>

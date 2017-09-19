@@ -143,6 +143,12 @@ ImagesController:{
   UsersController:{
     'listNames':true,
     'updateInfos':['isLoggedIn','ownsThis','protectAdmin']
+  },
+  Keyword_Categories:{
+    'find':true,
+    'findOne':true,
+    'create':['isLoggedIn','isAdmin','populateUserInfos'],
+    'update':['isLoggedIn','isAdmin','ownsThis']
   }
 
 };

@@ -21,6 +21,11 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
+    title:{
+      type:'string',
+      size:45,
+      unique:true
+    },
     translations:{
       collection: 'Keyword_category_translations',
       via:'id_keyword_category'

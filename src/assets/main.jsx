@@ -32,6 +32,7 @@ function loadApp(){
       <li className="waiting entities">loading entities</li>
       <li className="waiting authorities">loading authorities</li>
       <li className="waiting keywords">loading keywords</li>
+      <li className="waiting keywordCategories">loading keywords</li>
       <li className="waiting users">loading users</li>
     </ul>
   </div>

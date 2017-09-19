@@ -5,6 +5,7 @@ import App from 'components/App/App';
 
 import ComponentAuthors from 'components/Authors/componentAuthors'
 import ComponentKeywords from 'components/Keywords/componentKeywords'
+import ComponentKeywordCategories from 'components/KeywordCategories/componentKeywordCategories'
 import ComponentCities from 'components/Cities/componentCities'
 import ComponentLanguages from 'components/Languages/componentLanguages'
 import ComponentEntities from 'components/Entities/componentEntities'
@@ -32,6 +33,12 @@ import MainKeywords from 'components/Keywords/mainKeywords';
 import newKeyword from 'components/Keywords/newKeyword';
 import newKeywordTranslation from 'components/Keywords/newKeywordTranslation';
 import specificKeyword from 'components/Keywords/specificKeyword';
+
+//Categories keywords
+import AsideKeywordCategories from 'components/KeywordCategories/asideKeywordCategories';
+import MainKeywordCategories from 'components/KeywordCategories/mainKeywordCategories';
+import specificKeywordCategory from 'components/KeywordCategories/specificKeywordCategory';
+import newKeywordCategory from 'components/KeywordCategories/newKeywordCategory';
 
 //Cities
 import AsideCities from 'components/Cities/asideCities';
@@ -139,6 +146,11 @@ export const routes = (
       <Route path="/authors/newimage/:id" component={newAuthorImage} />
       <Route path="/authors/newtranslation/:id" component={newAuthorTranslation} />
       <Route path="/authors/:id" component={specificAuthor} />
+    </Route>
+    <Route path="/keywordCategories" component={ComponentKeywordCategories}>
+      <IndexRoute component={MainKeywordCategories} />
+      <Route path="/keywordCategories/new" component={newKeywordCategory} />
+      <Route path="/keywordCategories/:id" component={specificKeywordCategory} />
     </Route>
     <Route path="/keywords" component={ComponentKeywords}>
       <IndexRoute component={MainKeywords} />

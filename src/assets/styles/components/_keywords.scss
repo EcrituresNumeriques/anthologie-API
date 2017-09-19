@@ -63,3 +63,13 @@ Authors component
   @extend .paddedBlock;
   @extend .centeredInside;
 }
+#page > main#keywordsView > main > form > div.inputContainerLanguage > div {
+  flex:1 1 50%;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > div > label {
+  @extend .clickable;
+  @extend .textboxInput;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > div > label > input{
+  margin-right:0.5em;
+}

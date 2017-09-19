@@ -101,3 +101,15 @@ resolveFirst.push(fetch('/api/v1/users',{
   store.dispatch({type:'UPDATE_USERS',payload:json});
   return null;
 }));
+resolveFirst.push(fetch('/api/v1/keyword_categories',{
+  method:'GET',
+  credentials: 'same-origin'
+})
+.then(function(response){
+  return response.json();
+})
+.then(function(json){
+  document.querySelector(".keywordCategories.waiting").classList.add("success");
+  store.dispatch({type:'UPDATE_KEYWORDCAT',payload:json});
+  return null;
+}));
