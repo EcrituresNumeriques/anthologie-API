@@ -45,10 +45,10 @@
 - possibilité d'afficher le scholie et de l'éditer - on ne peut pas afficher le texte iDEM POUR NOTES
 ### Keywords
 - impossibilité d'effacer le titre du keyword
-- * Catégories de mots-clés : genre, mètre, personnes citées, personnages, thème, ville, ... Famille de mots-clés et catégories de mots-clés --> à y réfléchir
+- ~~* Catégories de mots-clés : genre, mètre, personnes citées, personnages, thème, ville, ... Famille de mots-clés et catégories de mots-clés --> à y réfléchir~~
 - lister par catégorie et puis ordre alphabétique. Peut-être catégories qui s'ouvrent seulement si on clique (donc on voit d'abord la liste des catégories et si on clique on ouvre la liste des mots)
-- admin: crée familles
-- normal user: crée mots-clés dans famille
+- ~~admin: crée familles~~
+- ~~normal user: crée mots-clés dans famille~~
 
 
 ## bugs
