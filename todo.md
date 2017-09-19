@@ -25,7 +25,7 @@
 - possibilité d'effacer les entités? (3h)
 
 - ~~classer par défault les entités par ordre alphabétique~~
-- add draft: il faut pouvoir spécifier l'édition et il faut ensuite afficher l'auteur (user qui a créé le texte) (4h)
+- add draft: il faut pouvoir spécifier l'édition et il faut ensuite afficher l'auteur (user qui a créé le texte) (2h)
 - Pour "add draft", ce serait pas mal d'avoir le texte grec à côté, sur la droite X (4h)
 - add keyword autocompletion (select keyword) - ou liste par famille, ou mieux: les deux: d'abord je choisi la famille et puis autocomplétion ou liste compl;ete si je n'cris rien (3h)
 
