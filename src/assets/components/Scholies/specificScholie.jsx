@@ -6,6 +6,7 @@ import {store} from '../../Redux/store'
 import _ from 'lodash'
 
 import {displayLang} from 'helpers/displayLang.jsx'
+import {nl2br} from 'helpers/nl2br.jsx';
 // components
 
 export default class specificScholie extends Component {
@@ -88,6 +89,10 @@ export default class specificScholie extends Component {
   moveToEntity = function(entity){
     browserHistory.push('/entities/'+entity);
   }
+  accordeon = function(e){
+    let that = this;
+    this.refs[e].classList.toggle("limited");
+  }
 
 
   render() {
@@ -140,8 +145,7 @@ export default class specificScholie extends Component {
               {_.get(this.scholie,'translations',[]).map((translation,i)=>(
                 <div className="inputContainerLanguage" key={'translationScholie'+translation.    id_scholie_translation}>
                   <label>{i?'':'Translations : '}</label>
-                  <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_scholie_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                  <input type="text" value={'['+displayLang(store.getState().languagesLookup[translation.id_language])+'] '+translation.text} disabled="true"/>
+                  <p ref={'translationParagraphScholie'+translation.id_scholie_translation} onDoubleClick={()=>this.accordeon('translationParagraphScholie'+translation.id_scholie_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}] by {store.getState().usersLookup[translation.id_user].displayName} {nl2br(translation.text)}</p>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
                 </div>
               ))}

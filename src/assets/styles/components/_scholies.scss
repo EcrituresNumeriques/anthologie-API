@@ -84,6 +84,10 @@ Entities component
   @extend .paddedBlock;
   flex:1 1 33%;
 }
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > p.limited{
+  max-height: 3.5em;
+  overflow: hidden;
+}
 #page main#scholiesView > main > div > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
   max-height: 64px;
   max-width: 64px;
