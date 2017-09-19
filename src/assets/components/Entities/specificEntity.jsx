@@ -332,7 +332,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>
                 <label>{i?'':'Translations : '}</label>
                 <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}{translation.edition?' ('+translation.edition+')':''}]
+                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}{translation.edition?' ('+translation.edition+')':''}] by {store.getState().usersLookup[translation.id_user].displayName}
                   {translation.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+translation.id_entity_translation+"-"+i}><br/>{item}</span>))}</p>
                 {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
               </div>

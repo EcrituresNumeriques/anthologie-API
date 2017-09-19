@@ -72,6 +72,10 @@ Entities component
   @extend .textboxInput;
   @extend .secondNoLabelInput;
 }
+#page main#notesView > main > div > form > div.inputContainerLanguage > p.limited{
+  max-height: 3.5em;
+  overflow: hidden;
+}
 #page main#notesView > main > div > form > div.inputContainerLanguage > div.collection {
   @extend .textboxInput;
 }
