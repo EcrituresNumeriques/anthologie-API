@@ -2,6 +2,19 @@
 
 - allignement avec semantic web (version 2.0)
 - ajouter uri pour villes, auteurs, mots-clés etc.
+
+## general
+- translation => versions sur toute la plateforme + api
+- Preload UI
+- passer tous les fetchs dans les states de components
+- ajouter tous les fetchs au store redux
+- ajouter une UI pour fetch
+- fractionner tous les components "specific" en meta components plus restreints (notes, versions, etc etc) pour faciliter la maintenance du code
+- ajouter une policy pour log toute l'activité de l'API
+- ajouter les collections de translations, entities, etc dans le model Users
+- ajouter une UI pour /users et mettre mes contribs dedans
+
+
 ### Home
 - ~~possibilité d'éditer le texte de welcome (même très geek, c'est moi qui va le faire - sur github par ex?)~~
 - ~~ajout de licence partout (je peux le faire sur github?)~~
