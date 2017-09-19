@@ -7,7 +7,7 @@
 - translation => versions sur toute la plateforme + api
 - ~~Preload UI~~
 - passer tous les fetchs dans les states de components
-- ajouter tous les fetchs au store redux
+- ajouter tous les fetchs au store redux (pre-étape nécessaire pour regler tous les problemes d'ajouts non pris en compte immediatement par la plateforme).
 - ajouter une UI pour fetch
 - fractionner tous les components "specific" en meta components plus restreints (notes, versions, etc etc) pour faciliter la maintenance du code
 - ajouter une policy pour log toute l'activité de l'API
