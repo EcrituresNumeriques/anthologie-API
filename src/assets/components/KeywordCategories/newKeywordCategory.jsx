@@ -35,7 +35,7 @@ export default class newKeywordCategory extends Component {
   }
 
   componentWillMount(){
-    document.title = "Add new keyword | anthologie";
+    document.title = "Add new keyword Category | anthologie";
   }
 
 
@@ -43,7 +43,7 @@ export default class newKeywordCategory extends Component {
 
     return (
       <main>
-        <h1>Add a new Keyword</h1>
+        <h1>Add a new Keyword Category</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <input type="text" placeholder="Title" name="title" ref="title"/>
           <input type="submit" value="send"/>

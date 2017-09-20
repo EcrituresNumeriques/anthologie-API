@@ -28,14 +28,16 @@ export default class mainKeywordCategories extends Component {
        that.forceUpdate();
      });
    }
-
+   componentWillMount(){
+     document.title = "keyword Categories | anthologie";
+   }
 
   render() {
 
     return (
       <main>
         <h1>list of all keywords</h1>
-        <h6>anthologia.ecrituresnumeriques.ca/api/v1/keywords</h6>
+        <h6>anthologia.ecrituresnumeriques.ca/api/v1/keyword_categories</h6>
 
         {store.getState().loggedIn && <Link to="/keywordCategories/new" className="addto" activeStyle={{ color: 'black' }}>add new Category</Link>}
         {this.keywords.map((keyword,i)=>(<Link to={"/keywordCategories/"+keyword.id_keyword_category} key={"keyword"+keyword.id_keyword_category} id={keyword.id_keyword_category}>{keyword.title}</Link>))}
