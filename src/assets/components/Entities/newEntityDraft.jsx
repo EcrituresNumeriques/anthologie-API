@@ -50,7 +50,7 @@ export default class newEntityDraft extends Component {
           </select>
           <textarea ref="text"></textarea>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageVersion'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
           <input ref="edition" placeholder="Edition of this version" defaultValue={store.getState().user && store.getState().user.defaultEdition?store.getState().user.defaultEdition:''}/>
           <input type="submit" value="send"/>

@@ -42,7 +42,7 @@ export default class newNoteEntity extends Component {
 
     return (
       <main><div>
-        <h1>Add note translation</h1>
+        <h1>Add note version</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <select ref="note" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
             {store.getState().notesLookup.map((note)=>(<option key={'NoteSelect'+note.id_note} value={note.id_note}>[{note.id_note}] {note.title}</option>))}

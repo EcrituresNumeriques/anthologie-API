@@ -12,14 +12,14 @@ module.exports = {
       res.json(entities);
     })
   },
-  translations: function (req, res) {
-    Entity_translations.find({id_user:req.session.user.id_user}).exec(function(err,translations){
+  versions: function (req, res) {
+    Entity_versions.find({id_user:req.session.user.id_user}).exec(function(err,versions){
       if (err) {return res.serverError(err);}
-      res.json(translations);
+      res.json(versions);
     })
   },
   aligns: function (req, res) {
-    Entity_translations_align.find({id_user:req.session.user.id_user}).exec(function(err,aligns){
+    Entity_versions_align.find({id_user:req.session.user.id_user}).exec(function(err,aligns){
       if (err) {return res.serverError(err);}
       res.json(aligns);
     })

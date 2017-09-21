@@ -5,7 +5,7 @@ import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from '
 import AsideCities from 'components/Cities/asideCities';
 import MainCities from 'components/Cities/mainCities';
 import newCity from 'components/Cities/newCity';
-import newCityTranslation from 'components/Cities/newCityTranslation';
+import newCityVersion from 'components/Cities/newCityVersion';
 import specificCity from 'components/Cities/specificCity';
 
 

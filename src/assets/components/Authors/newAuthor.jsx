@@ -27,7 +27,7 @@ export default class newAuthor extends Component {
       if(!res.ok){throw res.json();}
       return res.json()})
     .then(function(data){
-      return fetch("/api/v1/authors/"+data.id_author+"/translations",
+      return fetch("/api/v1/authors/"+data.id_author+"/versions",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -61,7 +61,7 @@ export default class newAuthor extends Component {
         <form onSubmit={this.handleSubmit} id="languageForm">
           <input type="text" placeholder="Name" name="name" ref="name"/>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageVersion'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
           <input type="submit" value="send"/>
         </form>

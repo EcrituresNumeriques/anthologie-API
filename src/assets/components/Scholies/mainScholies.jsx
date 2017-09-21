@@ -10,7 +10,7 @@ export default class mainScholies extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = [{title:"loading",translations:[{name:'loading'}]}];
+    let placeholder = [{title:"loading",versions:[{name:'loading'}]}];
     this.scholies = _.get(store.getState(),'scholies',placeholder);
     this.fetchScholies();
   }

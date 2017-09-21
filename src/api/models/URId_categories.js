@@ -21,8 +21,8 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    translations:{
-      collection:'URId_category_translations',
+    versions:{
+      collection:'URId_category_versions',
       via:'id_urid_category'
     },
     uris:{

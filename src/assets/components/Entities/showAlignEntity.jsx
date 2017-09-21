@@ -14,7 +14,7 @@ export default class showAlignEntity extends Component {
     super(props);
     this.API = {json:[]};
     this.fetchAPI();
-    this.translations = [];
+    this.versions = [];
     this.highlight.bind(this);
     this.resetHighlight.bind(this);
     this.json = [];
@@ -94,8 +94,8 @@ export default class showAlignEntity extends Component {
       <main>
         <h1>Texts Alignement Display</h1>
         <h6>anthologia.ecrituresnumeriques.ca/api/v1/alignements/{this.API.id_align}</h6>
-        {this.API.source ? <h6>source : anthologia.ecrituresnumeriques.ca/api/v1/translations/{this.API.source.id_entity_translation}</h6> : <h6>source unavailable anymore</h6>}
-        {this.API.target ? <h6>target : anthologia.ecrituresnumeriques.ca/api/v1/translations/{this.API.target.id_entity_translation}</h6> : <h6>target unavailable anymore</h6>}
+        {this.API.source ? <h6>source : anthologia.ecrituresnumeriques.ca/api/v1/versions/{this.API.source.id_entity_version}</h6> : <h6>source unavailable anymore</h6>}
+        {this.API.target ? <h6>target : anthologia.ecrituresnumeriques.ca/api/v1/versions/{this.API.target.id_entity_version}</h6> : <h6>target unavailable anymore</h6>}
         {this.displayJSON(this.API.json)}
         {((this.API.id_user && this.API.id_user.id_user && store.getState().user && this.API.id_user.id_user == store.getState().user.id_user) || (store.getState().user && store.getState().user.admin)) && <button onClick={()=>(this.editAlign())}>Edit</button>}
       </main>

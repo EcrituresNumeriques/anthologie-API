@@ -10,7 +10,7 @@ export default class mainEntities extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = [{translations:[{name:'loading'}]}];
+    let placeholder = [{versions:[{name:'loading'}]}];
     this.entities = _.get(store.getState(),'entities',placeholder);
     this.fetchEntities();
   }

@@ -50,7 +50,7 @@ export let perseus = function(){
                 //add text
                 let corpsText = {id_entity:data.id_entity,text_translated:text,id_language:8}
                 resolveFirst.push(
-                  fetch("/api/v1/entities/"+data.id_entity+"/translations",
+                  fetch("/api/v1/entities/"+data.id_entity+"/versions",
                     {
                         method: "POST",
                         body: JSON.stringify(corpsText),

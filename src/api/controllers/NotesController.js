@@ -15,8 +15,8 @@ module.exports = {
       res.ok(r);
     });
   },
-  deleteTranslation: function (req, res) {
-    Note_translations.destroy({id_note_translation:req.param('id'),id_note:req.param('parentid')}).exec(function(err){
+  deleteVersion: function (req, res) {
+    Note_versions.destroy({id_note_version:req.param('id'),id_note:req.param('parentid')}).exec(function(err){
       if(err){return res.badRequest({success:false});}
       return res.ok({success:true});
     })

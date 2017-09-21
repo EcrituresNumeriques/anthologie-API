@@ -12,7 +12,7 @@ export default class specificCity extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = {"translations": [{"id_city_translation": 0,"id_city": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"cityities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_city": 0,"GPS":null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z"};
+    let placeholder = {"versions": [{"id_city_version": 0,"id_city": 0,"id_user": 0,"id_group": 0,"id_language": 1,"name": "loading",}],"cityities": [],"images": [],  "entities": [],"id_user": {"id_user": 0,"displayName": "Admin","institution": "Anthologie","country": "Canada","createdAt": "2017-05-24T14:18:59.000Z","updatedAt": "2017-05-25T06:30:46.000Z"},"id_city": 0,"GPS":null,"createdAt": "2017-05-25T07:38:26.000Z","updatedAt": "2017-05-25T07:38:26.000Z"};
     this.city = _.get(store.getState(),'citiesLookup['+this.props.params.id+']',placeholder)
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,10 +59,10 @@ export default class specificCity extends Component {
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
-  deleteName = function(translation){
-    //console.log('clicked',this,translation);
+  deleteName = function(version){
+    //console.log('clicked',this,version);
     let that = this;
-    fetch('/api/v1/cities/'+translation.id_city+'/translations/'+translation.id_city_translation,    {
+    fetch('/api/v1/cities/'+version.id_city+'/versions/'+version.id_city_version,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
@@ -82,14 +82,14 @@ export default class specificCity extends Component {
     }
     return (
       <main>
-        <h1>{this.city.translations.map(a => a.name).join(" / ")}</h1>
+        <h1>{this.city.versions.map(a => a.name).join(" / ")}</h1>
         <h6>anthologia.ecrituresnumeriques.ca/api/v1/cities/{this.city.id_city}</h6>
 
           <form onSubmit={this.handleSubmit}>
             <div className="inputContainerLanguage"><label>ID city : </label><input type="text" value={this.city.id_city} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>GPS : </label><input placeholder="ex : 45.4991117,-73.6181167" type="text" ref="gps" defaultValue={this.city.GPS} disabled={readOnly} /></div>
-            {this.city.translations.map((translation,i)=>(<div className="inputContainerLanguage" key={'cityName'+translation.id_city_translation}><label>{i?'':'names : '}</label><input type="text" value={'['+  displayLang(store.getState().languagesLookup[translation.id_language])+'] '+translation.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(translation)} >X</button>}</div>))}
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/cities/newTranslation/'+this.props.params.id}>Add a name </Link></div>}
+            {this.city.versions.map((version,i)=>(<div className="inputContainerLanguage" key={'cityName'+version.id_city_version}><label>{i?'':'names : '}</label><input type="text" value={'['+  displayLang(store.getState().languagesLookup[version.id_language])+'] '+version.name} disabled="true"/>{!readOnly && <button type="button" onClick={()=>this.deleteName(version)} >X</button>}</div>))}
+            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/cities/newVersion/'+this.props.params.id}>Add a name </Link></div>}
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.city.createdAt} disabled="true"/></div>
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.city.updatedAt} disabled="true"/></div>

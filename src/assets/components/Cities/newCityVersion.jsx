@@ -6,7 +6,7 @@ import {store} from '../../Redux/store'
 import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
-export default class newAuthorTranslation extends Component {
+export default class newCityVersion extends Component {
 
 
   constructor(props) {
@@ -17,8 +17,8 @@ export default class newAuthorTranslation extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {id_author:this.refs.author.value,name:this.refs.name.value,id_language:this.refs.language.value}
-    fetch("/api/v1/authors/"+corps.id_author+"/translations",
+    let corps = {id_city:this.refs.city.value,name:this.refs.name.value,id_language:this.refs.language.value}
+    fetch("/api/v1/cities/"+corps.id_city+"/versions",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -29,13 +29,13 @@ export default class newAuthorTranslation extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/authors/'+corps.id_author);
+        browserHistory.push('/cities/'+corps.id_city);
         return null;
       });
   }
 
   componentWillMount(){
-    document.title = "Add new author name | anthologie";
+    document.title = "Add new city name | anthologie";
   }
 
 
@@ -43,14 +43,14 @@ export default class newAuthorTranslation extends Component {
 
     return (
       <main>
-        <h1>Add author name translation</h1>
+        <h1>Add city name version</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="author" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
-            {store.getState().authors.map((author)=>(<option key={'AuthorSelect'+author.id_author} value={author.id_author}>[{author.id_author}] {author.translations.map((translation,i)=>(translation.name)).join(" / ")}</option>))}
+          <select ref="city" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
+            {store.getState().cities.map((city)=>(<option key={'CitySelect'+city.id_city} value={city.id_city}>[{city.id_city}] {city.versions.map((version,i)=>(version.name)).join(" / ")}</option>))}
           </select>
           <input type="text" placeholder="Name" name="name" ref="name"/>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageVersion'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
           <input type="submit" value="send"/>
         </form>

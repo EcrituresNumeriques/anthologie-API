@@ -14,8 +14,8 @@ module.exports = {
       res.ok(r);
     });
   },
-  deleteTranslation: function (req, res) {
-    Scholie_translations.destroy({id_scholie_translation:req.param('id'),id_scholie:req.param('parentid')}).exec(function(err){
+  deleteVersion: function (req, res) {
+    Scholie_versions.destroy({id_scholie_version:req.param('id'),id_scholie:req.param('parentid')}).exec(function(err){
       if(err){return res.badRequest({success:false});}
       return res.ok({success:true});
     })

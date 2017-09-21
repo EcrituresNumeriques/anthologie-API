@@ -37,8 +37,8 @@ module.exports = {
       return res.ok({success:true});
     })
   },
-  destroyTranslation : function (req,res){
-    Entity_translations.destroy({id_entity_translation:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
+  destroyVersion : function (req,res){
+    Entity_versions.destroy({id_entity_version:req.param('id'),id_entity:req.param('parentid')}).exec(function(err){
       if(err){return res.badRequest({success:false});}
       return res.ok({success:true});
     })

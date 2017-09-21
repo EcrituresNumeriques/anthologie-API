@@ -18,7 +18,7 @@ export default class AsideKeywords extends Component {
         <section>
           {store.getState().loggedIn && <Link to="/keywords/new" className="addto" activeStyle={{ color: 'black' }}>Add new Keyword</Link>}
           <Link to="/keywords" activeStyle={{ color: 'black' }}>List all keywords</Link>
-          {store.getState().loggedIn && <Link to="/keywords/newtranslation" activeStyle={{ color: 'black' }}>Add a translation name</Link>}
+          {store.getState().loggedIn && <Link to="/keywords/newversion" activeStyle={{ color: 'black' }}>Add a version name</Link>}
         </section>
       </aside>
     );

@@ -1,38 +1,22 @@
 /**
- * Entities_translations_align.js
+ * Motifs_s.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'entities_translations_align',
+  tableName: 'motifs_versions',
   autoPK: false,
   attributes: {
-    id_align: {
+    id_motif_version: {
       type: 'integer',
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    id_entity:{
-      model:'Entities'
-    },
-    source:{
-      model:'Entity_translations'
-    },
-    source_lang:{
-      model:'Languages'
-    },
-    target:{
-      model:'Entity_translations'
-    },
-    target_lang:{
-      model:'Languages'
-    },
-    json: {
-      type: 'json',
-      required: true
+    id_motif: {
+      model:'Motifs'
     },
     id_user: {
       model:'Users'
@@ -40,5 +24,17 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
+    id_language: {
+      model:'Languages'
+    },
+    title: {
+      type: 'string',
+      required: false,
+      size: 45
+    },
+    description: {
+      type: 'text',
+      required: false
+    }
   }
 };

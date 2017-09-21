@@ -23,7 +23,7 @@ import componentHome from 'components/Home/componentHome';
 import AsideAuthors from 'components/Authors/asideAuthors';
 import MainAuthors from 'components/Authors/mainAuthors';
 import newAuthor from 'components/Authors/newAuthor';
-import newAuthorTranslation from 'components/Authors/newAuthorTranslation';
+import newAuthorVersion from 'components/Authors/newAuthorVersion';
 import newAuthorImage from 'components/Authors/newAuthorImage';
 import specificAuthor from 'components/Authors/specificAuthor';
 
@@ -31,7 +31,7 @@ import specificAuthor from 'components/Authors/specificAuthor';
 import AsideKeywords from 'components/Keywords/asideKeywords';
 import MainKeywords from 'components/Keywords/mainKeywords';
 import newKeyword from 'components/Keywords/newKeyword';
-import newKeywordTranslation from 'components/Keywords/newKeywordTranslation';
+import newKeywordVersion from 'components/Keywords/newKeywordVersion';
 import specificKeyword from 'components/Keywords/specificKeyword';
 
 //Categories keywords
@@ -44,14 +44,14 @@ import newKeywordCategory from 'components/KeywordCategories/newKeywordCategory'
 import AsideCities from 'components/Cities/asideCities';
 import MainCities from 'components/Cities/mainCities';
 import newCity from 'components/Cities/newCity';
-import newCityTranslation from 'components/Cities/newCityTranslation';
+import newCityVersion from 'components/Cities/newCityVersion';
 import specificCity from 'components/Cities/specificCity';
 
 //Entities
 import AsideEntities from 'components/Entities/asideEntities';
 import MainEntities from 'components/Entities/mainEntities';
 import newEntity from 'components/Entities/newEntity';
-import newEntityTranslation from 'components/Entities/newEntityTranslation';
+import newEntityVersion from 'components/Entities/newEntityVersion';
 import newEntityDraft from 'components/Entities/newEntityDraft';
 import editEntityDraft from 'components/Entities/editEntityDraft';
 import newEntityImageManuscript from 'components/Entities/newEntityImageManuscript';
@@ -72,7 +72,7 @@ import editAlignTextsEntity from 'components/Entities/editAlignTextsEntity';
 import AsideNotes from 'components/Notes/asideNotes';
 import MainNotes from 'components/Notes/mainNotes';
 import newNote from 'components/Notes/newNote';
-import newNoteTranslation from 'components/Notes/newNoteTranslation';
+import newNoteVersion from 'components/Notes/newNoteVersion';
 import newNoteEntity from 'components/Notes/newNoteEntity';
 import newNoteImage from 'components/Notes/newNoteImage';
 import specificNote from 'components/Notes/specificNote';
@@ -81,7 +81,7 @@ import specificNote from 'components/Notes/specificNote';
 import AsideScholies from 'components/Scholies/asideScholies';
 import MainScholies from 'components/Scholies/mainScholies';
 import newScholie from 'components/Scholies/newScholie';
-import newScholieTranslation from 'components/Scholies/newScholieTranslation';
+import newScholieVersion from 'components/Scholies/newScholieVersion';
 import newScholieEntity from 'components/Scholies/newScholieEntity';
 import newScholieImage from 'components/Scholies/newScholieImage';
 import specificScholie from 'components/Scholies/specificScholie';
@@ -97,8 +97,8 @@ export const routes = (
     <Route path="/entities" component={ComponentEntities}>
       <IndexRoute component={MainEntities} />
       <Route path="/entities/new" component={newEntity} />
-      <Route path="/entities/newtranslation" component={newEntityTranslation} />
-      <Route path="/entities/newtranslation/:id" component={newEntityTranslation} />
+      <Route path="/entities/newversion" component={newEntityVersion} />
+      <Route path="/entities/newversion/:id" component={newEntityVersion} />
       <Route path="/entities/newdraft" component={newEntityDraft} />
       <Route path="/entities/newdraft/:id" component={newEntityDraft} />
       <Route path="/entities/draft/:draft" component={editEntityDraft} />
@@ -121,8 +121,8 @@ export const routes = (
     <Route path="/notes" component={ComponentNotes}>
       <IndexRoute component={MainNotes} />
       <Route path="/notes/new" component={newNote} />
-      <Route path="/notes/newtranslation" component={newNoteTranslation} />
-      <Route path="/notes/newtranslation/:id" component={newNoteTranslation} />
+      <Route path="/notes/newversion" component={newNoteVersion} />
+      <Route path="/notes/newversion/:id" component={newNoteVersion} />
       <Route path="/notes/newentity/:id" component={newNoteEntity} />
       <Route path="/notes/newimage" component={newNoteImage} />
       <Route path="/notes/newimage/:id" component={newNoteImage} />
@@ -131,8 +131,8 @@ export const routes = (
     <Route path="/scholies" component={ComponentScholies}>
       <IndexRoute component={MainScholies} />
       <Route path="/scholies/new" component={newScholie} />
-      <Route path="/scholies/newtranslation" component={newScholieTranslation} />
-      <Route path="/scholies/newtranslation/:id" component={newScholieTranslation} />
+      <Route path="/scholies/newversion" component={newScholieVersion} />
+      <Route path="/scholies/newversion/:id" component={newScholieVersion} />
       <Route path="/scholies/newentity/:id" component={newScholieEntity} />
       <Route path="/scholies/newimage" component={newScholieImage} />
       <Route path="/scholies/newimage/:id" component={newScholieImage} />
@@ -141,10 +141,10 @@ export const routes = (
     <Route path="/authors" component={ComponentAuthors}>
       <IndexRoute component={MainAuthors} />
       <Route path="/authors/new" component={newAuthor} />
-      <Route path="/authors/newtranslation" component={newAuthorTranslation} />
+      <Route path="/authors/newversion" component={newAuthorVersion} />
       <Route path="/authors/newimage" component={newAuthorImage} />
       <Route path="/authors/newimage/:id" component={newAuthorImage} />
-      <Route path="/authors/newtranslation/:id" component={newAuthorTranslation} />
+      <Route path="/authors/newversion/:id" component={newAuthorVersion} />
       <Route path="/authors/:id" component={specificAuthor} />
     </Route>
     <Route path="/keywordCategories" component={ComponentKeywordCategories}>
@@ -155,15 +155,15 @@ export const routes = (
     <Route path="/keywords" component={ComponentKeywords}>
       <IndexRoute component={MainKeywords} />
       <Route path="/keywords/new" component={newKeyword} />
-      <Route path="/keywords/newtranslation" component={newKeywordTranslation} />
-      <Route path="/keywords/newtranslation/:id" component={newKeywordTranslation} />
+      <Route path="/keywords/newversion" component={newKeywordVersion} />
+      <Route path="/keywords/newversion/:id" component={newKeywordVersion} />
       <Route path="/keywords/:id" component={specificKeyword} />
     </Route>
     <Route path="cities" component={ComponentCities}>
       <IndexRoute component={MainCities} />
       <Route path="/cities/new" component={newCity} />
-      <Route path="/cities/newtranslation" component={newCityTranslation} />
-      <Route path="/cities/newtranslation/:id" component={newCityTranslation} />
+      <Route path="/cities/newversion" component={newCityVersion} />
+      <Route path="/cities/newversion/:id" component={newCityVersion} />
       <Route path="/cities/:id" component={specificCity} />
     </Route>
     <Route path="languages" component={ComponentLanguages}>

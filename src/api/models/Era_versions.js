@@ -1,19 +1,22 @@
 /**
- * Texts.js
+ * Eras_s.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'texts',
+  tableName: 'eras_versions',
   autoPK: false,
   attributes: {
-    id_text: {
+    id_era_version: {
       type: 'integer',
       autoIncrement: true,
       primaryKey: true,
       size: 11
+    },
+    id_era: {
+      model:'Eras'
     },
     id_user: {
       model:'Users'
@@ -21,12 +24,21 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    translations:{
-      collection:'Text_translations',
-      via:'id_text'
+    id_language: {
+      model:'Languages'
     },
-    id_entity:{
-      model:'Entities'
+    name: {
+      type: 'string',
+      required: false,
+      size: 45
+    },
+    culture_centers: {
+      type: 'text',
+      required: false
+    },
+    description: {
+      type: 'text',
+      required: false
     }
   }
 };

@@ -11,7 +11,7 @@ export default class ComponentProfile extends Component {
   constructor(props) {
     super(props);
     this.user = store.getState().user;
-    this.contrib = {entities:[{title:'test',id_entity:1}],translations:[],aligns:[],scholies:[],notes:[]};
+    this.contrib = {entities:[{title:'test',id_entity:1}],versions:[],aligns:[],scholies:[],notes:[]};
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -38,7 +38,7 @@ export default class ComponentProfile extends Component {
       });
 
 
-      fetch('/api/v1/contrib/translations',{
+      fetch('/api/v1/contrib/versions',{
         method:'GET',
         credentials: 'same-origin'
       })
@@ -46,7 +46,7 @@ export default class ComponentProfile extends Component {
         return response.json();
       })
       .then(function(json){
-        that.contrib.translations = json;
+        that.contrib.versions = json;
         //that.refs.city_born = json.city_born;
         that.forceUpdate();
         return null;
@@ -211,8 +211,8 @@ export default class ComponentProfile extends Component {
           <h1>Contributions</h1>
           <h2>Entities</h2>
           {this.contrib.entities.map((entity,i)=>(<Link key={"contribEntity"+entity.id_entity} to={"/entities/"+entity.id_entity}>{entity.title}</Link>))}
-          <h2>Translations</h2>
-          {this.contrib.translations.map((translation,i)=>(<Link key={"contribTranslation"+translation.id_entity_translation} to={"/entities/"+translation.id_entity}>[{displayLang(store.getState().languagesLookup[translation.id_language])}] {store.getState().entitiesLookup[translation.id_entity].title}</Link>))}
+          <h2>Versions</h2>
+          {this.contrib.versions.map((version,i)=>(<Link key={"contribVersion"+version.id_entity_version} to={"/entities/"+version.id_entity}>[{displayLang(store.getState().languagesLookup[version.id_language])}] {store.getState().entitiesLookup[version.id_entity].title}</Link>))}
           <h2>Alignements</h2>
           {this.contrib.aligns.map((align,i)=>(<Link key={"contribAlign"+align.id_align} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{displayLang(store.getState().languagesLookup[align.source_lang])}] => [{displayLang(store.getState().languagesLookup[align.target_lang])}] {store.getState().entitiesLookup[align.id_entity].title}</Link>))}
           <h2>Scholies</h2>

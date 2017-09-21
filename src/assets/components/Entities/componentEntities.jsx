@@ -4,7 +4,7 @@ import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from '
 // components
 import AsideEntities from 'components/Entities/asideEntities';
 import newEntity from 'components/Entities/newEntity';
-import newEntityTranslation from 'components/Entities/newEntityTranslation';
+import newEntityVersion from 'components/Entities/newEntityVersion';
 import newEntityAuthor from 'components/Entities/newEntityAuthor';
 import newEntityURI from 'components/Entities/newEntityURI';
 import specificEntity from 'components/Entities/specificEntity';

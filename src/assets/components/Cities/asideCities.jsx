@@ -18,7 +18,7 @@ export default class AsideCities extends Component {
         <section>
           {store.getState().loggedIn && <Link to="/cities/new" className="addto" activeStyle={{ color: 'black' }}>Add new city</Link>}
           <Link to="/cities" activeStyle={{ color: 'black' }}>List all cities</Link>
-          {store.getState().loggedIn && <Link to="/cities/newtranslation" activeStyle={{ color: 'black' }}>Add a translation name</Link>}
+          {store.getState().loggedIn && <Link to="/cities/newversion" activeStyle={{ color: 'black' }}>Add a version name</Link>}
         </section>
       </aside>
     );

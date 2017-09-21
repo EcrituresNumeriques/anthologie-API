@@ -31,8 +31,8 @@ module.exports = {
       required: false,
       size: 6
     },
-    translations:{
-      collection: 'Era_translations',
+    versions:{
+      collection: 'Era_versions',
       via: 'id_era'
     },
     images:{

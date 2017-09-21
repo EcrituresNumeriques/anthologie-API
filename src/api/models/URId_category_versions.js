@@ -1,22 +1,22 @@
 /**
- * Motifs_translations.js
+ * URId_categories_.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'motifs_translations',
+  tableName: 'URId_categories_version',
   autoPK: false,
   attributes: {
-    id_motif_translation: {
+    id_urid_category_version: {
       type: 'integer',
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    id_motif: {
-      model:'Motifs'
+    id_urid_category: {
+      model:'URId_categories'
     },
     id_user: {
       model:'Users'
@@ -27,14 +27,10 @@ module.exports = {
     id_language: {
       model:'Languages'
     },
-    title: {
+    label: {
       type: 'string',
       required: false,
       size: 45
-    },
-    description: {
-      type: 'text',
-      required: false
     }
   }
 };

@@ -62,10 +62,10 @@ export default class specificScholie extends Component {
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
-  deleteTranslation = function(translation){
-    //console.log('clicked',this,translation);
+  deleteVersion = function(version){
+    //console.log('clicked',this,version);
     let that = this;
-    fetch('/api/v1/scholies/'+that.props.params.id+'/translations/'+translation.id_scholie_translation,    {
+    fetch('/api/v1/scholies/'+that.props.params.id+'/versions/'+version.id_scholie_version,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
@@ -75,7 +75,7 @@ export default class specificScholie extends Component {
         });
   }
   deleteEntities = function(entity){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/scholies/'+that.props.params.id+'/entity/'+entity.id_entity,    {
             method: "DELETE",
@@ -142,16 +142,16 @@ export default class specificScholie extends Component {
                 </div>
               </div>
 
-              {_.get(this.scholie,'translations',[]).map((translation,i)=>(
-                <div className="inputContainerLanguage" key={'translationScholie'+translation.    id_scholie_translation}>
-                  <label>{i?'':'Translations : '}</label>
-                  <p ref={'translationParagraphScholie'+translation.id_scholie_translation} onDoubleClick={()=>this.accordeon('translationParagraphScholie'+translation.id_scholie_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}] by {store.getState().usersLookup[translation.id_user].displayName} {nl2br(translation.text)}</p>
-                  {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
+              {_.get(this.scholie,'versions',[]).map((version,i)=>(
+                <div className="inputContainerLanguage" key={'versionScholie'+version.    id_scholie_version}>
+                  <label>{i?'':'Versions : '}</label>
+                  <p ref={'versionParagraphScholie'+version.id_scholie_version} onDoubleClick={()=>this.accordeon('versionParagraphScholie'+version.id_scholie_version)} className="limited">[{displayLang(store.getState().languagesLookup[version.id_language])}] by {store.getState().usersLookup[version.id_user].displayName} {nl2br(version.text)}</p>
+                  {!readOnly && <button type="button" onClick={()=>(this.deleteVersion(version))} >X</button>}
                 </div>
               ))}
 
               {!readOnly && <div className="inputContainerLanguage">
-                <Link className="addToCollection" to={'/scholies/newTranslation/'+this.props.params.id}>Add a translation</Link>
+                <Link className="addToCollection" to={'/scholies/newVersion/'+this.props.params.id}>Add a version</Link>
               </div>}
 
 

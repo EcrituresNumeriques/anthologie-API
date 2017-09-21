@@ -45,7 +45,7 @@ export default class newAuthorImage extends Component {
         <h1>Add an image to an author</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <select ref="author" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
-            {store.getState().authors.map((author)=>(<option key={'AuthorSelect'+author.id_author} value={author.id_author}>[{author.id_author}] {author.translations.map((translation)=>(translation.name)).join(" / ")}</option>))}
+            {store.getState().authors.map((author)=>(<option key={'AuthorSelect'+author.id_author} value={author.id_author}>[{author.id_author}] {author.versions.map((version)=>(version.name)).join(" / ")}</option>))}
           </select>
           <input type="text" ref="URL" placeholder="URL of the image"/>
           <input type="text" ref="title" placeholder="Title of the image"/>

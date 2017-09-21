@@ -1,22 +1,22 @@
 /**
- * URId_categories_translation.js
+ * Cities_versions.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'URId_categories_translation',
+  tableName: 'cities_versions',
   autoPK: false,
   attributes: {
-    id_urid_category_translation: {
+    id_city_version: {
       type: 'integer',
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    id_urid_category: {
-      model:'URId_categories'
+    id_city: {
+      model:"Cities"
     },
     id_user: {
       model:'Users'
@@ -27,10 +27,19 @@ module.exports = {
     id_language: {
       model:'Languages'
     },
-    label: {
+    name: {
       type: 'string',
       required: false,
       size: 45
+    },
+    current_name: {
+      type: 'string',
+      required: false,
+      size: 45
+    },
+    description: {
+      type: 'text',
+      required: false
     }
   }
 };

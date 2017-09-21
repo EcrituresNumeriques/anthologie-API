@@ -16,7 +16,7 @@ export default class editAlignTextsEntity extends Component {
     let placeholder = {"texts":[],"scholies":[],"references":[],"notes":[],"motifs":[],"manuscripts":[],"keywords":[],"images":[],"authors":[],"id_user":{"id_user":1,"displayName":"admin","institution":"API"},"id_entity":1,"title":"title","date":null,"date_range":null,"createdAt":"2017-05-29T03:26:39.000Z","updatedAt":"2017-05-29T03:26:39.000Z"};
     this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
-    this.translations = [];
+    this.versions = [];
     this.highlight.bind(this);
     this.resetHighlight.bind(this);
     this.hardSelect.bind(this);
@@ -37,9 +37,9 @@ export default class editAlignTextsEntity extends Component {
       })
       .then(function(json){
         that.json = json.json;
-        that.translation = [];
-        that.translations.push(json.source);
-        that.translations.push(json.target);
+        that.version = [];
+        that.versions.push(json.source);
+        that.versions.push(json.target);
         //that.refs.city_born = json.city_born;
         that.forceUpdate();
         return null;
@@ -89,7 +89,7 @@ export default class editAlignTextsEntity extends Component {
       if(this.select.firstText === null){
         this.select.firstText = el.parent;
         this.select.currentHL = [];
-        for(let t=0;t<this.translations.length;t++){
+        for(let t=0;t<this.versions.length;t++){
           this.select.currentHL.push([]);
         }
       }
@@ -119,7 +119,7 @@ export default class editAlignTextsEntity extends Component {
     this.select.secondText = false;
     this.select.currentHL = [];
     this.select.firstText = null;
-    for(let t=0;t<this.translations.length;t++){
+    for(let t=0;t<this.versions.length;t++){
       this.select.currentHL.push([]);
     }
 
@@ -130,10 +130,10 @@ export default class editAlignTextsEntity extends Component {
     this.resetHardSelect();
     let corps = {
       id_entity:this.props.params.id,
-      source:this.translations[0].id_entity_translation,
-      source_lang:this.translations[0].id_language,
-      target:this.translations[1].id_entity_translation,
-      target_lang:this.translations[1].id_language,
+      source:this.versions[0].id_entity_version,
+      source_lang:this.versions[0].id_language,
+      target:this.versions[1].id_entity_version,
+      target_lang:this.versions[1].id_language,
       json:this.json
     }
     let that = this;

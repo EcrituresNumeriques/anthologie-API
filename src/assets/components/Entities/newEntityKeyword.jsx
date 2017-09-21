@@ -46,7 +46,7 @@ export default class newEntityKeyword extends Component {
          if(!res.ok){throw res.json();}
          return res.json()})
        .then(function(data){
-         return fetch("/api/v1/keywords/"+data.keywords[data.keywords.length - 1].id_keyword+"/translations",
+         return fetch("/api/v1/keywords/"+data.keywords[data.keywords.length - 1].id_keyword+"/versions",
          {
              method: "POST",
              body: JSON.stringify(corps),
@@ -88,12 +88,12 @@ export default class newEntityKeyword extends Component {
           <h3>Select keyword to be associated</h3>
           <select ref="author">
             <option value="0">Undefined</option>
-            {store.getState().keywords.map((keyword)=>(<option key={'keywordSelect'+keyword.id_keyword} value={keyword.id_keyword}>[{keyword.id_keyword}] {keyword.translations.map((translation,i)=>(translation.title)).join(" / ")}</option>))}
+            {store.getState().keywords.map((keyword)=>(<option key={'keywordSelect'+keyword.id_keyword} value={keyword.id_keyword}>[{keyword.id_keyword}] {keyword.versions.map((version,i)=>(version.title)).join(" / ")}</option>))}
           </select>
           <h4> Or create one :</h4>
           <input type="text" placeholder="Name" name="name" ref="name"/>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)} </option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageVersion'+lang.id_language} value={lang.id_language}>{displayLang(lang)} </option>))}
           </select>
           <input type="submit" value="send"/>
         </form>

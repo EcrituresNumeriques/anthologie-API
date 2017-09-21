@@ -10,7 +10,7 @@ export default class mainNotes extends Component {
 
   constructor(props) {
     super(props);
-    let placeholder = [{title:"loading",translations:[{name:'loading'}]}];
+    let placeholder = [{title:"loading",versions:[{name:'loading'}]}];
     this.notes = _.get(store.getState(),'notes',placeholder);
     this.fetchNotes();
   }

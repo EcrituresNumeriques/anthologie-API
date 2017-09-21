@@ -21,8 +21,8 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    translations:{
-      collection:'Scholie_translations',
+    versions:{
+      collection:'Scholie_versions',
       via:"id_scholie"
     },
     title:{

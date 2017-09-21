@@ -8,7 +8,7 @@
 module.exports = {
 
   deleteFromCollection: function (req, res) {
-    Author_translations.destroy({id_author_translation:req.param('id'),id_author:req.param('parentid')}).exec(function(err){
+    Author_versions.destroy({id_author_version:req.param('id'),id_author:req.param('parentid')}).exec(function(err){
       if(err){return res.badRequest({success:false});}
       return res.ok({success:true});
     })

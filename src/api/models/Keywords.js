@@ -28,8 +28,8 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    translations:{
-      collection:'Keyword_translations',
+    versions:{
+      collection:'Keyword_versions',
       via:'id_keyword'
     },
     images:{

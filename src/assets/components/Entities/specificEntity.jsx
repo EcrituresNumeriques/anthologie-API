@@ -19,7 +19,7 @@ export default class specificEntity extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.moveToEntity = this.moveToEntity.bind(this);
     this.accordeon = this.accordeon.bind(this);
-    this.translationSelected = [];
+    this.versionSelected = [];
     this.state = {alignThem:'Select 2 texts to align',loaded:false}
   }
 
@@ -69,7 +69,7 @@ export default class specificEntity extends Component {
 
   deleteName = function(author){
     if (confirm('Are you sure you want to unlink this author?')) {
-      //console.log('clicked',this,translation);
+      //console.log('clicked',this,version);
       let that = this;
       fetch('/api/v1/entities/'+that.props.params.id+'/authors/'+author.id_author,    {
               method: "DELETE",
@@ -83,7 +83,7 @@ export default class specificEntity extends Component {
   }
   deleteUri = function(uri){
     if (confirm('Are you sure you want to delete this URI?')) {
-      //console.log('clicked',this,translation);
+      //console.log('clicked',this,version);
       let that = this;
       fetch('/api/v1/entities/'+that.props.params.id+'/uris/'+uri.id_urid,    {
               method: "DELETE",
@@ -95,11 +95,11 @@ export default class specificEntity extends Component {
           });
     }
   }
-  deleteTranslation = function(translation){
+  deleteVersion = function(version){
         if (confirm('Are you sure you want to delete this version?')) {
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
-    fetch('/api/v1/entities/'+that.props.params.id+'/translations/'+translation.id_entity_translation,    {
+    fetch('/api/v1/entities/'+that.props.params.id+'/versions/'+version.id_entity_version,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
@@ -137,25 +137,25 @@ export default class specificEntity extends Component {
       }
   }
 
-  addToAlignId = function(e,translation){
+  addToAlignId = function(e,version){
     let that = this;
-    //console.log(e,translation)
+    //console.log(e,version)
     if(e.target.checked){
-      that.translationSelected.push(translation.id_entity_translation);
+      that.versionSelected.push(version.id_entity_version);
     }
     else{
-      let index = that.translationSelected.indexOf(translation.id_entity_translation);
+      let index = that.versionSelected.indexOf(version.id_entity_version);
       if (index > -1) {
-          that.translationSelected.splice(index, 1);
+          that.versionSelected.splice(index, 1);
       }
     }
-    if(that.translationSelected.length<2){
+    if(that.versionSelected.length<2){
       that.setState({alignThem:"Select 2 texts to align"});
     }
     else{
-      if(that.translationSelected.length>2){
-        that.refs['checkboxTranslation'+that.translationSelected[0]].checked = false;
-        that.translationSelected.splice(0,1);
+      if(that.versionSelected.length>2){
+        that.refs['checkboxVersion'+that.versionSelected[0]].checked = false;
+        that.versionSelected.splice(0,1);
       }
       that.setState({alignThem:"Align those 2 texts"});
     }
@@ -163,8 +163,8 @@ export default class specificEntity extends Component {
   sendToAlign = function(e){
     e.preventDefault();
     let that = this;
-    if(that.translationSelected.length == 2){
-      browserHistory.push('/entities/'+that.props.params.id+"/aligntexts/"+that.translationSelected.sort().join("/"));
+    if(that.versionSelected.length == 2){
+      browserHistory.push('/entities/'+that.props.params.id+"/aligntexts/"+that.versionSelected.sort().join("/"));
     }
   }
   moveToAuthor = function(author){
@@ -179,7 +179,7 @@ export default class specificEntity extends Component {
     browserHistory.push('/keywords/'+keyword);
   }
   deleteKeyword = function(keyword){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/entities/'+that.props.params.id+'/keywords/'+keyword.id_keyword,    {
             method: "DELETE",
@@ -194,7 +194,7 @@ export default class specificEntity extends Component {
     browserHistory.push('/scholies/'+scholie);
   }
   deleteScholie = function(scholie){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/scholies/'+scholie.id_scholie+'/entity/'+that.props.params.id,    {
             method: "DELETE",
@@ -209,7 +209,7 @@ export default class specificEntity extends Component {
     browserHistory.push('/notes/'+note);
   }
   deleteNote = function(note){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/notes/'+note.id_note+'/entity/'+that.props.params.id,    {
             method: "DELETE",
@@ -221,7 +221,7 @@ export default class specificEntity extends Component {
         });
   }
   deleteRef = function(ref){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/entities/'+that.props.params.id+'/internalref/'+ref.id_entity,    {
             method: "DELETE",
@@ -232,7 +232,7 @@ export default class specificEntity extends Component {
         });
   }
   deleteExRef = function(ref){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/entities/'+that.props.params.id+'/externalref/'+ref.id_entity_external,    {
             method: "DELETE",
@@ -288,7 +288,7 @@ export default class specificEntity extends Component {
             {_.get(this.entity,'authors',[]).map((author,i)=>(
               <div className="inputContainerLanguage" key={'authorEntity'+author.id_author}>
                 <label>{i?'':'Authors : '}</label>
-                <p onClick={()=>this.moveToAuthor(author.id_author)}>{store.getState().authorsLookup[author.id_author].translations.map((translation)=>(translation.name)).join(" / ")}</p>
+                <p onClick={()=>this.moveToAuthor(author.id_author)}>{store.getState().authorsLookup[author.id_author].versions.map((version)=>(version.name)).join(" / ")}</p>
                 {!readOnly && <button type="button" onClick={()=>this.deleteName(author)} >X</button>}
               </div>
             ))}
@@ -328,19 +328,19 @@ export default class specificEntity extends Component {
             {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newdraft/'+this.props.params.id}>Add a Draft </Link></div>}
 
 
-            {_.get(this.entity,'translations',[]).map((translation,i)=>(
-              <div className="inputContainerLanguage" key={'translationEntity'+translation.id_entity_translation}>
-                <label>{i?'':'Translations : '}</label>
-                <input type="checkbox" className="noFlex" ref={"checkboxTranslation"+translation.id_entity_translation} onChange={(e)=>this.addToAlignId(e,translation)}/>
-                <p ref={'translationParagraphEntity'+translation.id_entity_translation} onDoubleClick={()=>this.accordeon('translationParagraphEntity'+translation.id_entity_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}{translation.edition?' ('+translation.edition+')':''}] by {store.getState().usersLookup[translation.id_user].displayName}
-                  {translation.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+translation.id_entity_translation+"-"+i}><br/>{item}</span>))}</p>
-                {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
+            {_.get(this.entity,'versions',[]).map((version,i)=>(
+              <div className="inputContainerLanguage" key={'versionEntity'+version.id_entity_version}>
+                <label>{i?'':'Versions : '}</label>
+                <input type="checkbox" className="noFlex" ref={"checkboxVersion"+version.id_entity_version} onChange={(e)=>this.addToAlignId(e,version)}/>
+                <p ref={'versionParagraphEntity'+version.id_entity_version} onDoubleClick={()=>this.accordeon('versionParagraphEntity'+version.id_entity_version)} className="limited">[{displayLang(store.getState().languagesLookup[version.id_language])}{version.edition?' ('+version.edition+')':''}] by {store.getState().usersLookup[version.id_user].displayName}
+                  {version.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+version.id_entity_version+"-"+i}><br/>{item}</span>))}</p>
+                {!readOnly && <button type="button" onClick={()=>(this.deleteVersion(version))} >X</button>}
               </div>
             ))}
 
             {!readOnly && <div className="inputContainerLanguage">
               <Link className="addToCollection" onClick={(e)=>(this.sendToAlign(e))}>{this.state.alignThem}</Link>
-              <Link className="addToCollectionSide" to={'/entities/newTranslation/'+this.props.params.id}>Add a translation</Link>
+              <Link className="addToCollectionSide" to={'/entities/newVersion/'+this.props.params.id}>Add a version</Link>
             </div>}
 
             {_.get(this.entity,'alignements',[]).map((alignement,i)=>(
@@ -354,7 +354,7 @@ export default class specificEntity extends Component {
             {_.get(this.entity,'keywords',[]).map((keyword,i)=>(
               <div className="inputContainerLanguage" key={'keywordEntity'+keyword.id_keyword}>
                 <label>{i?'':'Keywords : '}</label>
-                <p onClick={()=>this.moveToKeyword(keyword.id_keyword)}>{_.get(store.getState().keywordsLookup[keyword.id_keyword],'translations',[]).map((translation)=>(translation.title)).join(" / ")}</p>
+                <p onClick={()=>this.moveToKeyword(keyword.id_keyword)}>{_.get(store.getState().keywordsLookup[keyword.id_keyword],'versions',[]).map((version)=>(version.title)).join(" / ")}</p>
                 {!readOnly && <button type="button" onClick={()=>this.deleteKeyword(keyword)} >X</button>}
               </div>
             ))}

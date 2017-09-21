@@ -6,7 +6,7 @@ import {store} from '../../Redux/store'
 import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
-export default class newKeywordTranslation extends Component {
+export default class newKeywordVersion extends Component {
 
 
   constructor(props) {
@@ -18,7 +18,7 @@ export default class newKeywordTranslation extends Component {
     e.preventDefault();
     //get email and password
     let corps = {id_author:this.refs.keyword.value,title:this.refs.title.value,id_language:this.refs.language.value}
-    fetch("/api/v1/keywords/"+corps.id_author+"/translations",
+    fetch("/api/v1/keywords/"+corps.id_author+"/versions",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -44,14 +44,14 @@ export default class newKeywordTranslation extends Component {
 
     return (
       <main>
-        <h1>Add keyword title translation</h1>
+        <h1>Add keyword title version</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <select ref="keyword" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
-            {store.getState().keywords.map((keyword)=>(<option key={'keywordSelect'+keyword.id_keyword} value={keyword.id_keyword}>[{keyword.id_keyword}] {keyword.translations.map((translation,i)=>(translation.title)).join(" / ")}</option>))}
+            {store.getState().keywords.map((keyword)=>(<option key={'keywordSelect'+keyword.id_keyword} value={keyword.id_keyword}>[{keyword.id_keyword}] {keyword.versions.map((version,i)=>(version.title)).join(" / ")}</option>))}
           </select>
           <input type="text" placeholder="Title" name="title" ref="title"/>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageVersion'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
           <input type="submit" value="send"/>
         </form>

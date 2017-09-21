@@ -21,8 +21,8 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    translations:{
-      collection:'Note_translations',
+    versions:{
+      collection:'Note_versions',
       via:'id_note'
     },
     title:{

@@ -31,8 +31,8 @@ module.exports = {
       via:'cities',
       dominant:true
     },
-    translations: {
-      collection:'Cities_translations',
+    versions: {
+      collection:'Cities_versions',
       via: 'id_city'
     }
   }

@@ -42,7 +42,7 @@ export default class newScholieEntity extends Component {
 
     return (
       <main><div>
-        <h1>Add scholie translation</h1>
+        <h1>Add scholie version</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
           <select ref="scholie" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
             {store.getState().scholiesLookup.map((scholie)=>(<option key={'ScholieSelect'+scholie.id_scholie} value={scholie.id_scholie}>[{scholie.id_scholie}] {scholie.title}</option>))}

@@ -1,22 +1,22 @@
 /**
- * Author_translations.js
+ * Scholies_s.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
 module.exports = {
-  tableName: 'author_translations',
+  tableName: 'scholies_versions',
   autoPK: false,
   attributes: {
-    id_author_translation: {
+    id_scholie_version: {
       type: 'integer',
       autoIncrement: true,
       primaryKey: true,
       size: 11
     },
-    id_author: {
-      model:'Authors'
+    id_scholie: {
+      model:'Scholies'
     },
     id_user: {
       model:'Users'
@@ -27,12 +27,11 @@ module.exports = {
     id_language: {
       model:'Languages'
     },
-    name: {
-      type: 'string',
-      required: true,
-      size: 45
+    text: {
+      type: 'text',
+      required: false
     },
-    about: {
+    edition: {
       type: 'text',
       required: false
     }

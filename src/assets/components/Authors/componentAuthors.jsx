@@ -5,7 +5,7 @@ import { Router, Route, Link, browserHistory, IndexRoute, IndexRedirect } from '
 import AsideAuthors from 'components/Authors/asideAuthors';
 import MainAuthors from 'components/Authors/mainAuthors';
 import newAuthor from 'components/Authors/newAuthor';
-import newAuthorTranslation from 'components/Authors/newAuthorTranslation';
+import newAuthorVersion from 'components/Authors/newAuthorVersion';
 import specificAuthor from 'components/Authors/specificAuthor';
 
 

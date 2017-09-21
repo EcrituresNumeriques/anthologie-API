@@ -45,12 +45,8 @@ module.exports = {
       required: false,
       size: 6
     },
-    texts:{
-      collection:'Texts',
-      via:'id_entity'
-    },
-    translations:{
-      collection:'Entity_translations',
+    versions:{
+      collection:'Entity_versions',
       via:'id_entity',
       dominant:true
     },
@@ -60,7 +56,7 @@ module.exports = {
       dominant:true
     },
     alignements:{
-      collection:'Entity_translations_align',
+      collection:'Entity_versions_align',
       via:'id_entity',
       dominant:true
     },

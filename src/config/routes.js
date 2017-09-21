@@ -25,13 +25,13 @@ module.exports.routes = {
   // NOTE all routes defined before the 'GET /*' will override
 
   //Collection management
-  'POST /api/v1/cities/:parentid/translations':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'cities',alias:'translations'}],
-  'DELETE /api/v1/cities/:parentid/translations/:id':'CitiesController.deleteFromCollection',
-  //'DELETE /api/v1/cities/:parentid/translations/:id':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'cities_translations'}],
+  'POST /api/v1/cities/:parentid/versions':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'cities',alias:'versions'}],
+  'DELETE /api/v1/cities/:parentid/versions/:id':'CitiesController.deleteFromCollection',
+  //'DELETE /api/v1/cities/:parentid/versions/:id':[{model:"cities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'cities_versions'}],
 
-  'POST /api/v1/authors/:parentid/translations':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'authors',alias:'translations'}],
-  'DELETE /api/v1/authors/:parentid/translations/:id':'AuthorsController.deleteFromCollection',
-  //'DELETE /api/v1/authors/:parentid/translations/:id':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'author_translations'}],
+  'POST /api/v1/authors/:parentid/versions':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'authors',alias:'versions'}],
+  'DELETE /api/v1/authors/:parentid/versions/:id':'AuthorsController.deleteFromCollection',
+  //'DELETE /api/v1/authors/:parentid/versions/:id':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'author_versions'}],
 
   'POST /api/v1/entities/:parentid/authors':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'authors'}],
   'POST /api/v1/entities/:parentid/authors/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'authors'}],
@@ -41,15 +41,15 @@ module.exports.routes = {
   'POST /api/v1/entities/:parentid/keywords/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'keywords'}],
   'DELETE /api/v1/entities/:parentid/keywords/:id':'EntitiesController.RemoveKeyword',
 
-  'POST /api/v1/keywords/:parentid/translations':[{model:"keywords"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'keywords',alias:'translations'}],
-  'DELETE /api/v1/keywords/:parentid/translations/:id':'KeywordsController.deleteFromCollection',
+  'POST /api/v1/keywords/:parentid/versions':[{model:"keywords"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'keywords',alias:'versions'}],
+  'DELETE /api/v1/keywords/:parentid/versions/:id':'KeywordsController.deleteFromCollection',
 
 
   'POST /api/v1/entities/:parentid/uris':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'uris'}],
   'DELETE /api/v1/entities/:parentid/uris/:id':'EntitiesController.destroyUri',
 
-  'POST /api/v1/entities/:parentid/translations':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'translations'}],
-  'DELETE /api/v1/entities/:parentid/translations/:id':'EntitiesController.destroyTranslation',
+  'POST /api/v1/entities/:parentid/versions':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'versions'}],
+  'DELETE /api/v1/entities/:parentid/versions/:id':'EntitiesController.destroyVersion',
 
   'POST /api/v1/entities/:parentid/drafts':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'drafts'}],
   'DELETE /api/v1/entities/:parentid/drafts/:id':'EntitiesController.destroyDraft',
@@ -118,11 +118,11 @@ module.exports.routes = {
   'POST /api/v1/entities/:id':'EntitiesController.update',
 
   //Entities
-  'GET /api/v1/alignements':'Entity_translations_alignController.find',
-  'POST /api/v1/alignements':'Entity_translations_alignController.create',
-  'GET /api/v1/alignements/:id':'Entity_translations_alignController.findOne',
-  'POST /api/v1/alignements/:id':'Entity_translations_alignController.update',
-  'DELETE /api/v1/alignements/:id':'Entity_translations_alignController.destroy',
+  'GET /api/v1/alignements':'Entity_versions_alignController.find',
+  'POST /api/v1/alignements':'Entity_versions_alignController.create',
+  'GET /api/v1/alignements/:id':'Entity_versions_alignController.findOne',
+  'POST /api/v1/alignements/:id':'Entity_versions_alignController.update',
+  'DELETE /api/v1/alignements/:id':'Entity_versions_alignController.destroy',
 
 
 
@@ -181,8 +181,8 @@ module.exports.routes = {
   'POST /api/v1/notes/:id':'NotesController.update',
   'POST /api/v1/notes/:parentid/entity/:id':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'notes',alias:'entities'}],
   'DELETE /api/v1/notes/:parentid/entity/:id':'NotesController.removeEntity',
-  'POST /api/v1/notes/:parentid/translations':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'notes',alias:'translations'}],
-  'DELETE /api/v1/notes/:parentid/translations/:id':'NotesController.deleteTranslation',
+  'POST /api/v1/notes/:parentid/versions':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'notes',alias:'versions'}],
+  'DELETE /api/v1/notes/:parentid/versions/:id':'NotesController.deleteVersion',
 
   //Scholies
   'GET /api/v1/scholies':'ScholiesController.find',
@@ -191,8 +191,8 @@ module.exports.routes = {
   'POST /api/v1/scholies/:id':'ScholiesController.update',
   'POST /api/v1/scholies/:parentid/entity/:id':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'scholies',alias:'entities'}],
   'DELETE /api/v1/scholies/:parentid/entity/:id':'ScholiesController.removeEntity',
-  'POST /api/v1/scholies/:parentid/translations':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'scholies',alias:'translations'}],
-  'DELETE /api/v1/scholies/:parentid/translations/:id':'ScholiesController.deleteTranslation',
+  'POST /api/v1/scholies/:parentid/versions':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'scholies',alias:'versions'}],
+  'DELETE /api/v1/scholies/:parentid/versions/:id':'ScholiesController.deleteVersion',
 
   //Texts
   'GET /api/v1/texts':'TextsController.find',
@@ -206,7 +206,7 @@ module.exports.routes = {
   'GET /api/v1/authorities/:id':'URI_sourceController.findOne',
   'POST /api/v1/authorities/:id':'URI_sourceController.update',
 
-  //URId_categories (ex: 'source', 'revised', 'translation', not sure if we want to keep it)
+  //URId_categories (ex: 'source', 'revised', 'version', not sure if we want to keep it)
   'GET /api/v1/uris_categories':'URId_categoriesController.find',
   'POST /api/v1/uris_categories':'URId_categoriesController.create',
   'GET /api/v1/uris_categories/:id':'URId_categoriesController.findOne',
@@ -221,7 +221,7 @@ module.exports.routes = {
 
   //Get all Contributions
   'GET /api/v1/contrib/entities':'ContribController.entities',
-  'GET /api/v1/contrib/translations':'ContribController.translations',
+  'GET /api/v1/contrib/versions':'ContribController.versions',
   'GET /api/v1/contrib/aligns':'ContribController.aligns',
   'GET /api/v1/contrib/scholies':'ContribController.scholies',
   'GET /api/v1/contrib/notes':'ContribController.notes',

@@ -26,8 +26,8 @@ module.exports = {
       size:45,
       unique:true
     },
-    translations:{
-      collection: 'Keyword_category_translations',
+    versions:{
+      collection: 'Keyword_category_versions',
       via:'id_keyword_category'
     },
     keywords:{

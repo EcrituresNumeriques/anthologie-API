@@ -16,7 +16,7 @@ export default class alignTextsEntity extends Component {
     let placeholder = {"texts":[],"scholies":[],"references":[],"notes":[],"motifs":[],"manuscripts":[],"keywords":[],"images":[],"authors":[],"id_user":{"id_user":1,"displayName":"admin","institution":"API"},"id_entity":1,"title":"title","date":null,"date_range":null,"createdAt":"2017-05-29T03:26:39.000Z","updatedAt":"2017-05-29T03:26:39.000Z"};
     this.entity = _.get(store.getState(),'entitiesLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
-    this.translations = [];
+    this.versions = [];
     this.highlight.bind(this);
     this.resetHighlight.bind(this);
     this.hardSelect.bind(this);
@@ -86,7 +86,7 @@ export default class alignTextsEntity extends Component {
       if(this.select.firstText === null){
         this.select.firstText = el.parent;
         this.select.currentHL = [];
-        for(let t=0;t<this.translations.length;t++){
+        for(let t=0;t<this.versions.length;t++){
           this.select.currentHL.push([]);
         }
       }
@@ -116,7 +116,7 @@ export default class alignTextsEntity extends Component {
     this.select.secondText = false;
     this.select.currentHL = [];
     this.select.firstText = null;
-    for(let t=0;t<this.translations.length;t++){
+    for(let t=0;t<this.versions.length;t++){
       this.select.currentHL.push([]);
     }
 
@@ -127,10 +127,10 @@ export default class alignTextsEntity extends Component {
     this.resetHardSelect();
     let corps = {
       id_entity:this.props.params.id,
-      source:this.translations[0].id_entity_translation,
-      source_lang:this.translations[0].id_language,
-      target:this.translations[1].id_entity_translation,
-      target_lang:this.translations[1].id_language,
+      source:this.versions[0].id_entity_version,
+      source_lang:this.versions[0].id_language,
+      target:this.versions[1].id_entity_version,
+      target_lang:this.versions[1].id_language,
       json:this.json
     }
     let that = this;
@@ -174,14 +174,14 @@ export default class alignTextsEntity extends Component {
   }
 
   render() {
-    this.translations = [];
+    this.versions = [];
     let i;
-    for(i=0;i<this.entity.translations.length;i++){
-      if(this.entity.translations[i].id_entity_translation === Number(this.props.params.first)){
-        this.translations.push(this.entity.translations[i]);
+    for(i=0;i<this.entity.versions.length;i++){
+      if(this.entity.versions[i].id_entity_version === Number(this.props.params.first)){
+        this.versions.push(this.entity.versions[i]);
       }
-      if(this.entity.translations[i].id_entity_translation === Number(this.props.params.second)){
-        this.translations.push(this.entity.translations[i]);
+      if(this.entity.versions[i].id_entity_version === Number(this.props.params.second)){
+        this.versions.push(this.entity.versions[i]);
       }
     }
 
@@ -192,16 +192,16 @@ export default class alignTextsEntity extends Component {
       this.json = [];
       let words,pos,index,match,thisEntity,h,hDefault=[];
       //Create the default canvas for hightlighted text
-      for(i=0;i<this.translations.length;i++){
+      for(i=0;i<this.versions.length;i++){
         hDefault.push([]);
       }
       console.log(hDefault);
-      for(i=0;i<this.translations.length;i++){
+      for(i=0;i<this.versions.length;i++){
         words = [];
         pos = 0;
         index = 0;
         _.set(this.json,'['+i+']',[]);
-      _.get(this.translations,'['+i+'].text_translated',"").split("\n")
+      _.get(this.versions,'['+i+'].text_translated',"").split("\n")
       .map(function(paragraphe,j){
         _.set(words,'['+j+']',[]);
         index = 0;

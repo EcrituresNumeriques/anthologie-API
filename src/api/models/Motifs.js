@@ -21,8 +21,8 @@ module.exports = {
     id_group: {
       model:'User_Groups'
     },
-    translations:{
-      collection:'Motif_translations',
+    versions:{
+      collection:'Motif_versions',
       via:'id_motif'
     },
     id_entity:{

@@ -41,7 +41,7 @@ module.exports.policies = {
     'RemoveKeyword':['isLoggedIn','ownsThis'],
     'RemoveReference':['isLoggedIn','ownsThis'],
     'destroyUri':['isLoggedIn','ownsThis'],
-    'destroyTranslation':['isLoggedIn','ownsThis'],
+    'destroyVersion':['isLoggedIn','ownsThis'],
     'destroyDraft':['isLoggedIn','ownsThis'],
     'destroyReference':['isLoggedIn','ownsThis'],
   },
@@ -76,7 +76,7 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'removeEntity':['isLoggedIn','ownsThis'],
-    'deleteTranslation':['isLoggedIn','ownsThis'],
+    'deleteVersion':['isLoggedIn','ownsThis'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   ScholiesController:{
@@ -85,7 +85,7 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'removeEntity':['isLoggedIn','ownsThis'],
-    'deleteTranslation':['isLoggedIn','ownsThis'],
+    'deleteVersion':['isLoggedIn','ownsThis'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   LanguagesController:{
@@ -94,7 +94,7 @@ module.exports.policies = {
     'create':['isLoggedIn','isAdmin','populateUserInfos'],
     'update':['isLoggedIn','isAdmin','ownsThis']
   },
-  Entity_translations_alignController:{
+  Entity_versions_alignController:{
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
@@ -125,7 +125,7 @@ module.exports.policies = {
   },
   ContribController:{
     'entities':['isLoggedIn'],
-    'translations':['isLoggedIn'],
+    'versions':['isLoggedIn'],
     'aligns':['isLoggedIn'],
     'scholies':['isLoggedIn'],
     'notes':['isLoggedIn'],
@@ -133,7 +133,7 @@ module.exports.policies = {
   User_updateCredentialController:{
     updatePassword:['isLoggedIn']
   },
-ImagesController:{
+  ImagesController:{
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],

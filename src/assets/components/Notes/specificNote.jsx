@@ -62,10 +62,10 @@ export default class specificNote extends Component {
     .then(function(error){if(error != null){alert(error.message)};}.bind(this));
   }
 
-  deleteTranslation = function(translation){
-    //console.log('clicked',this,translation);
+  deleteVersion = function(version){
+    //console.log('clicked',this,version);
     let that = this;
-    fetch('/api/v1/notes/'+that.props.params.id+'/translations/'+translation.id_note_translation,    {
+    fetch('/api/v1/notes/'+that.props.params.id+'/versions/'+version.id_note_version,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
@@ -75,7 +75,7 @@ export default class specificNote extends Component {
         });
   }
   deleteEntities = function(entity){
-    //console.log('clicked',this,translation);
+    //console.log('clicked',this,version);
     let that = this;
     fetch('/api/v1/notes/'+that.props.params.id+'/entity/'+entity.id_entity,    {
             method: "DELETE",
@@ -141,16 +141,16 @@ export default class specificNote extends Component {
                 </div>
               </div>
 
-              {_.get(this.note,'translations',[]).map((translation,i)=>(
-                <div className="inputContainerLanguage" key={'translationNote'+translation.    id_note_translation}>
+              {_.get(this.note,'versions',[]).map((version,i)=>(
+                <div className="inputContainerLanguage" key={'versionNote'+version.    id_note_version}>
                   <label>{i?'':'Versions : '}</label>
-                  <p ref={'translationParagraphNote'+translation.id_note_translation} onDoubleClick={()=>this.accordeon('translationParagraphNote'+translation.id_note_translation)} className="limited">[{displayLang(store.getState().languagesLookup[translation.id_language])}] by {store.getState().usersLookup[translation.id_user].displayName} {nl2br(translation.text)}</p>
-                  {!readOnly && <button type="button" onClick={()=>(this.deleteTranslation(translation))} >X</button>}
+                  <p ref={'versionParagraphNote'+version.id_note_version} onDoubleClick={()=>this.accordeon('versionParagraphNote'+version.id_note_version)} className="limited">[{displayLang(store.getState().languagesLookup[version.id_language])}] by {store.getState().usersLookup[version.id_user].displayName} {nl2br(version.text)}</p>
+                  {!readOnly && <button type="button" onClick={()=>(this.deleteVersion(version))} >X</button>}
                 </div>
               ))}
 
               {!readOnly && <div className="inputContainerLanguage">
-                <Link className="addToCollection" to={'/notes/newTranslation/'+this.props.params.id}>Add a translation</Link>
+                <Link className="addToCollection" to={'/notes/newVersion/'+this.props.params.id}>Add a version</Link>
               </div>}
 
 

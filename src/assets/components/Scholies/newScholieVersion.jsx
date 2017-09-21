@@ -6,7 +6,7 @@ import {store} from '../../Redux/store'
 import {displayLang} from 'helpers/displayLang.jsx'
 // components
 
-export default class newCityTranslation extends Component {
+export default class newScholieVersion extends Component {
 
 
   constructor(props) {
@@ -17,8 +17,8 @@ export default class newCityTranslation extends Component {
   handleSubmit = function (e) {
     e.preventDefault();
     //get email and password
-    let corps = {id_city:this.refs.city.value,name:this.refs.name.value,id_language:this.refs.language.value}
-    fetch("/api/v1/cities/"+corps.id_city+"/translations",
+    let corps = {id_scholie:this.refs.scholie.value,text:this.refs.text.value,id_language:this.refs.language.value}
+    fetch("/api/v1/scholies/"+corps.id_scholie+"/versions",
       {
           method: "POST",
           body: JSON.stringify(corps),
@@ -29,32 +29,32 @@ export default class newCityTranslation extends Component {
         return res.json()
       })
       .then(function(data){
-        browserHistory.push('/cities/'+corps.id_city);
+        browserHistory.push('/scholies/'+corps.id_scholie);
         return null;
       });
   }
 
   componentWillMount(){
-    document.title = "Add new city name | anthologie";
+    document.title = "Add new scholie name | anthologie";
   }
 
 
   render() {
 
     return (
-      <main>
-        <h1>Add city name translation</h1>
+      <main><div>
+        <h1>Add scholie version</h1>
         <form onSubmit={this.handleSubmit} id="languageForm">
-          <select ref="city" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
-            {store.getState().cities.map((city)=>(<option key={'CitySelect'+city.id_city} value={city.id_city}>[{city.id_city}] {city.translations.map((translation,i)=>(translation.name)).join(" / ")}</option>))}
+          <select ref="scholie" defaultValue={this.props.params.id?this.props.params.id:null} disabled={!!this.props.params.id}>
+            {store.getState().scholiesLookup.map((scholie)=>(<option key={'ScholieSelect'+scholie.id_scholie} value={scholie.id_scholie}>[{scholie.id_scholie}] {scholie.title}</option>))}
           </select>
-          <input type="text" placeholder="Name" name="name" ref="name"/>
+          <textarea ref="text"></textarea>
           <select ref="language">
-            {store.getState().languages.map((lang)=>(<option key={'languageTranslation'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
+            {store.getState().languages.map((lang)=>(<option key={'languageVersion'+lang.id_language} value={lang.id_language}>{displayLang(lang)}</option>))}
           </select>
           <input type="submit" value="send"/>
         </form>
-      </main>
+      </div></main>
     );
   }
 }
