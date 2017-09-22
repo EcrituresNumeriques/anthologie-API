@@ -56,6 +56,7 @@ module.exports.policies = {
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
+    'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   AuthorsController:{
     'find':true,

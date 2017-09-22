@@ -40,7 +40,7 @@ export default class specificKeyword extends Component {
   deleteName = function(version){
     //console.log('clicked',this,version);
     let that = this;
-    fetch('/api/v1/keywords/'+version.id_keyword+'/versions/'+version.id_keyword_version,    {
+    fetch('/api/v1/keywords/'+version.id_keyword+'/versions/'+version.id,    {
             method: "DELETE",
             credentials: 'same-origin'
         })
