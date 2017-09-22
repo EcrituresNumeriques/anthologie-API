@@ -165,7 +165,8 @@ export default class specificScholie extends Component {
               {_.get(this.scholie,'versions',[]).map((version,i)=>(
                 <div className="inputContainerLanguage" key={'versionScholie'+version.    id_scholie_version}>
                   <label>{i?'':'Versions : '}</label>
-                  <p ref={'versionParagraphScholie'+version.id_scholie_version} onDoubleClick={()=>this.accordeon('versionParagraphScholie'+version.id_scholie_version)} className="limited">[{displayLang(store.getState().languagesLookup[version.id_language])}] by {store.getState().usersLookup[version.id_user].displayName} {nl2br(version.text)}</p>
+                  <p ref={'versionParagraphScholie'+version.id_scholie_version} onDoubleClick={()=>this.accordeon('versionParagraphScholie'+version.id_scholie_version)} className="limited"><Link to={"/scholies/editversion/"+version.id_scholie_version}>Edit this text</Link><br/>
+                  [{displayLang(store.getState().languagesLookup[version.id_language])}] by {store.getState().usersLookup[version.id_user].displayName} {nl2br(version.text)}</p>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteVersion(version))} >X</button>}
                 </div>
               ))}

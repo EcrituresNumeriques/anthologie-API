@@ -164,7 +164,8 @@ export default class specificNote extends Component {
               {_.get(this.note,'versions',[]).map((version,i)=>(
                 <div className="inputContainerLanguage" key={'versionNote'+version.    id_note_version}>
                   <label>{i?'':'Versions : '}</label>
-                  <p ref={'versionParagraphNote'+version.id_note_version} onDoubleClick={()=>this.accordeon('versionParagraphNote'+version.id_note_version)} className="limited">[{displayLang(store.getState().languagesLookup[version.id_language])}] by {store.getState().usersLookup[version.id_user].displayName} {nl2br(version.text)}</p>
+                  <p ref={'versionParagraphNote'+version.id_note_version} onDoubleClick={()=>this.accordeon('versionParagraphNote'+version.id_note_version)} className="limited"><Link to={"/notes/editversion/"+version.id_note_version}>Edit this text</Link><br/>
+                    [{displayLang(store.getState().languagesLookup[version.id_language])}] by {store.getState().usersLookup[version.id_user].displayName} {nl2br(version.text)}</p>
                   {!readOnly && <button type="button" onClick={()=>(this.deleteVersion(version))} >X</button>}
                 </div>
               ))}

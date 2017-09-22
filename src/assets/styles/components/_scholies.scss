@@ -48,6 +48,10 @@ Entities component
   @extend .inputStandard;
   @extend .centeredBlock;
 }
+#page > main#scholiesView > main > div > form > textarea{
+  width:100%;
+  height:8em;
+}
 #page > main#scholiesView > main > div > form > div.inputContainerLanguage{
   @extend .inputContainer;
 }

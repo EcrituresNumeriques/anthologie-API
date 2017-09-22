@@ -186,6 +186,11 @@ module.exports.routes = {
   'POST /api/v1/notes/:parentid/versions':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'notes',alias:'versions'}],
   'DELETE /api/v1/notes/:parentid/versions/:id':'NotesController.deleteVersion',
 
+  //Note_versions
+  'GET /api/v1/noteVersions':{model:'note_versions',blueprint:'find',populate:false},
+  'GET /api/v1/noteVersions/:id':{model:'note_versions',blueprint:'findone',populate:false},
+  'POST /api/v1/noteVersions/:id':'Note_versionsController.update',
+
   //Scholies
   'GET /api/v1/scholies':'ScholiesController.find',
   'POST /api/v1/scholies':'ScholiesController.create',
@@ -197,11 +202,10 @@ module.exports.routes = {
   'POST /api/v1/scholies/:parentid/versions':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'scholies',alias:'versions'}],
   'DELETE /api/v1/scholies/:parentid/versions/:id':'ScholiesController.deleteVersion',
 
-  //Texts
-  'GET /api/v1/texts':'TextsController.find',
-  'POST /api/v1/texts':'TextsController.create',
-  'GET /api/v1/texts/:id':'TextsController.findOne',
-  'POST /api/v1/texts/:id':'TextsController.update',
+  //scholie_versions
+  'GET /api/v1/scholieVersions':{model:'scholie_versions',blueprint:'findone',populate:false},
+  'GET /api/v1/scholieVersions/:id':{model:'scholie_versions',blueprint:'findone',populate:false},
+  'POST /api/v1/scholieVersions/:id':'Scholie_versionsController.update',
 
   //URI_source (who provides the URI, ex: perseus)
   'GET /api/v1/authorities':'URI_sourceController.find',

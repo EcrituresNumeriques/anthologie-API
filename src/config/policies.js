@@ -81,6 +81,11 @@ module.exports.policies = {
     'deleteVersion':['isLoggedIn','ownsThis'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
+  Note_versionsController:{
+    'find':true,
+    'findOne':true,
+    'update':['isLoggedIn','ownsThis'],
+  },
   ScholiesController:{
     'find':true,
     'findOne':true,
@@ -90,6 +95,11 @@ module.exports.policies = {
     'removeEntity':['isLoggedIn','ownsThis'],
     'deleteVersion':['isLoggedIn','ownsThis'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
+  },
+  Scholie_versionsController:{
+    'find':true,
+    'findOne':true,
+    'update':['isLoggedIn','ownsThis'],
   },
   LanguagesController:{
     'find':true,

@@ -73,15 +73,17 @@ import AsideNotes from 'components/Notes/asideNotes';
 import MainNotes from 'components/Notes/mainNotes';
 import newNote from 'components/Notes/newNote';
 import newNoteVersion from 'components/Notes/newNoteVersion';
+import editNoteVersion from 'components/Notes/editNoteVersion';
 import newNoteEntity from 'components/Notes/newNoteEntity';
 import newNoteImage from 'components/Notes/newNoteImage';
 import specificNote from 'components/Notes/specificNote';
 
-//Notes
+//Scholies
 import AsideScholies from 'components/Scholies/asideScholies';
 import MainScholies from 'components/Scholies/mainScholies';
 import newScholie from 'components/Scholies/newScholie';
 import newScholieVersion from 'components/Scholies/newScholieVersion';
+import editScholieVersion from 'components/Scholies/editScholieVersion';
 import newScholieEntity from 'components/Scholies/newScholieEntity';
 import newScholieImage from 'components/Scholies/newScholieImage';
 import specificScholie from 'components/Scholies/specificScholie';
@@ -123,6 +125,7 @@ export const routes = (
       <Route path="/notes/new" component={newNote} />
       <Route path="/notes/newversion" component={newNoteVersion} />
       <Route path="/notes/newversion/:id" component={newNoteVersion} />
+      <Route path="/notes/editversion/:noteversion" component={editNoteVersion} />
       <Route path="/notes/newentity/:id" component={newNoteEntity} />
       <Route path="/notes/newimage" component={newNoteImage} />
       <Route path="/notes/newimage/:id" component={newNoteImage} />
@@ -133,6 +136,7 @@ export const routes = (
       <Route path="/scholies/new" component={newScholie} />
       <Route path="/scholies/newversion" component={newScholieVersion} />
       <Route path="/scholies/newversion/:id" component={newScholieVersion} />
+      <Route path="/scholies/editversion/:scholieversion" component={editScholieVersion} />
       <Route path="/scholies/newentity/:id" component={newScholieEntity} />
       <Route path="/scholies/newimage" component={newScholieImage} />
       <Route path="/scholies/newimage/:id" component={newScholieImage} />
