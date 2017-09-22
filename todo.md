@@ -45,7 +45,7 @@
 - ~~possibilité d'afficher le scholie et de l'éditer - on ne peut pas afficher le texte iDEM POUR NOTES (1h) P1~~
 - ~~possibilité d'effacer (1h) P1~~
 ### Keywords
-- impossibilité d'effacer le titre du keyword(30min) P1
+- ~~impossibilité d'effacer le titre du keyword(30min) P1~~
 - ~~* Catégories de mots-clés : genre, mètre, personnes citées, personnages, thème, ville, ... Famille de mots-clés et catégories de mots-clés --> à y réfléchir~~
 - lister par catégorie et puis ordre alphabétique. Peut-être catégories qui s'ouvrent seulement si on clique (donc on voit d'abord la liste des catégories et si on clique on ouvre la liste des mots) (4h) P1
 - ~~admin: crée familles~~
