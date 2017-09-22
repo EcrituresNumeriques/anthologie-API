@@ -45,7 +45,6 @@ export let perseus = function(){
                 return res.json()
               })
               .then(function(data){
-
                 let resolveFirst = []
                 //add text
                 let corpsText = {id_entity:data.id_entity,text_translated:text,id_language:8}
@@ -75,17 +74,20 @@ export let perseus = function(){
                       return res.json()
                     })
                     .then(function(data){
-                      browserHistory.push('/entities/'+corps.id_entity);
                       return null;
                     })
                 )
-
-                browserHistory.push('/entities/'+data.id_entity);
-                return null;
+                Promise.all(resolveFirst).then(function(){
+                  browserHistory.push('/entities/'+data.id_entity);
+                  return null;
+                });
+                return data;
               })
-
-
-            console.log(title,text);
+              .then(
+                function(data){
+                  console.log(data,title,text)
+                  return null;
+                })
           })
         }
         else{
