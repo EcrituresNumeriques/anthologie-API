@@ -19,6 +19,7 @@ export default class specificEntity extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.moveToEntity = this.moveToEntity.bind(this);
     this.accordeon = this.accordeon.bind(this);
+    this.deleteEntity = this.deleteEntity.bind(this);
     this.versionSelected = [];
     this.state = {alignThem:'Select 2 texts to align',loaded:false}
   }
@@ -40,6 +41,27 @@ export default class specificEntity extends Component {
       });
   }
 
+ deleteEntity = function(e){
+   e.preventDefault();
+   let that = this;
+   if(this.refs.confirmDelete.value == "DELETE"){
+     fetch('/api/v1/entities/'+that.props.params.id,{
+       method:'DELETE',
+       credentials: 'same-origin'
+     })
+     .then(function(response){
+       return response.json();
+     })
+     .then(function(json){
+       browserHistory.push('/entities');
+       //that.refs.city_born = json.city_born;
+       return null;
+     });
+   }
+   else{
+     alert('We just saved this entity from deletion!');
+   }
+ }
   accordeon = function(e){
     let that = this;
     this.refs[e].classList.toggle("limited");
@@ -412,6 +434,12 @@ export default class specificEntity extends Component {
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.entity.updatedAt} disabled="true"/></div>
             {this.entity.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.entity.id_user.institution+'] ' + this.entity.id_user.displayName} disabled="true"/></div>}
             {update}
+            {store.getState().user && store.getState().user.admin &&
+              <div className="alertBlock">
+                <p>Deleting this entity is an operation that cannot be recover, are you sure you want to delete it?</p>
+                <input placeholder="Write 'DELETE' here to confirm you want to delete this entity" ref="confirmDelete"/>
+              <button onClick={this.deleteEntity}>Delete</button>
+            </div>}
           </form>
         </main>
     );

@@ -116,6 +116,7 @@ module.exports.routes = {
   'POST /api/v1/entities':'EntitiesController.create',
   'GET /api/v1/entities/:id':'EntitiesController.findOne',
   'POST /api/v1/entities/:id':'EntitiesController.update',
+  'DELETE /api/v1/entities/:id':'EntitiesController.destroy',
 
   //Entities
   'GET /api/v1/alignements':'Entity_versions_alignController.find',

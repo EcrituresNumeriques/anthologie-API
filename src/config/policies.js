@@ -44,6 +44,7 @@ module.exports.policies = {
     'destroyVersion':['isLoggedIn','ownsThis'],
     'destroyDraft':['isLoggedIn','ownsThis'],
     'destroyReference':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
   },
   Entity_draftsController:{
     'find':true,

@@ -26,6 +26,22 @@ html, body, #pageMeta ,#app {
   margin:0;
 }
 
+.alertBlock{
+   background-color: red;
+   color:white;
+   padding:1em;
+   input,button{
+     color:red;
+     padding:0.5em 1em;
+     display:block;
+     box-shadow: 0 1px 1px #f0f0f0;
+     background-color:white;
+     text-align: left;
+     border:1px solid #f0f0f0;
+     margin:0 auto 0.5em auto;
+   }
+ }
+
 /* Display full width element (ex header and footer) */
 .fullWidth {
   display:grid;
