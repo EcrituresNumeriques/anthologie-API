@@ -4,7 +4,7 @@
 - ajouter uri pour villes, auteurs, mots-clés etc. (1j) P3
 
 ## general
-- translation => versions sur toute la plateforme + api (4h) P1
+- ~~translation => versions sur toute la plateforme + api (4h) P1~~
 - ~~Preload UI~~
 - passer tous les fetchs dans les states de components
 - ajouter tous les fetchs au store redux (pre-étape nécessaire pour regler tous les problemes d'ajouts non pris en compte immediatement par la plateforme).
@@ -22,10 +22,10 @@
 ### Entities
 - recherche dans la page entités (la même que dans la home) (2h) P2
 
-- possibilité d'effacer les entités? (3h) P1
-
+- ~~possibilité d'effacer les entités? (3h) P1~~
+- suprimer toutes les relations de l'entité (URI, etc) lors de l'effacement de l'entité.
 - ~~classer par défault les entités par ordre alphabétique~~
-- add draft: il faut pouvoir spécifier l'édition et il faut ensuite afficher l'auteur (user qui a créé le texte) (2h) P1
+- ~~add draft: il faut pouvoir spécifier l'édition et il faut ensuite afficher l'auteur (user qui a créé le texte) (2h) P1~~
 - Pour "add draft", ce serait pas mal d'avoir le texte grec à côté, sur la droite X (4h) P3
 - add keyword autocompletion (select keyword) - ou liste par famille, ou mieux: les deux: d'abord je choisi la famille et puis autocomplétion ou liste compl;ete si je n'cris rien (3h) P1
 

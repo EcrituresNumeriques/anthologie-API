@@ -340,7 +340,9 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <label>{i?'':'Drafts : '}</label>}
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user &&
-                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">[{displayLang(store.getState().languagesLookup[draft.id_language])}{draft.edition?' ('+draft.edition+')':''}] <Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link>
+                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">
+                    <Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link><br/>
+                    [{displayLang(store.getState().languagesLookup[draft.id_language])}{draft.edition?' ('+draft.edition+')':''}] by {store.getState().usersLookup[draft.id_user].displayName}
                   {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
                   </p>}
                 {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
