@@ -40,9 +40,10 @@
 
 ### Scholies
 - possibilité d'afficher le scholie et de l'éditer - on ne peut pas afficher le texte iDEM POUR NOTES (1h) P1
-- possibilité d'effacer (2h) P1
+- ~~possibilité d'effacer (2h) P1~~
 ### Notes
 - possibilité d'afficher le scholie et de l'éditer - on ne peut pas afficher le texte iDEM POUR NOTES (1h) P1
+- ~~possibilité d'effacer (1h) P1~~
 ### Keywords
 - impossibilité d'effacer le titre du keyword(30min) P1
 - ~~* Catégories de mots-clés : genre, mètre, personnes citées, personnages, thème, ville, ... Famille de mots-clés et catégories de mots-clés --> à y réfléchir~~

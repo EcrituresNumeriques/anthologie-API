@@ -18,6 +18,7 @@ export default class specificNote extends Component {
     this.fetchAPI = this.fetchAPI.bind(this);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
   }
 
   fetchAPI(){
@@ -39,7 +40,26 @@ export default class specificNote extends Component {
         return null;
       });
   }
-
+  deleteNote = function(e){
+    e.preventDefault();
+    let that = this;
+    if(this.refs.confirmDelete.value == "DELETE"){
+      fetch('/api/v1/notes/'+that.props.params.id,{
+        method:'DELETE',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        browserHistory.push('/notes');
+        return null;
+      });
+    }
+    else{
+      alert('Type "DELETE" if you want to delete this note');
+    }
+  }
   handleSubmit = function (e) {
     e.preventDefault();
     let that = this;
@@ -160,6 +180,12 @@ export default class specificNote extends Component {
               {this.note.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.note.id_user.institution+'] ' + this.note.id_user.displayName} disabled="true"/></div>}
               {update}
             </form>
+            {store.getState().user && store.getState().user.admin &&
+              <div className="alertBlock">
+                <p>Deleting this note is an operation that cannot be recovered, are you sure you want to delete it?</p>
+                <input placeholder="Write 'DELETE' here to confirm you want to delete this scholie" ref="confirmDelete"/>
+              <button onClick={this.deleteNote}>Delete</button>
+            </div>}
           </div>
       )
     }

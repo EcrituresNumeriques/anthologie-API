@@ -59,7 +59,7 @@ export default class specificEntity extends Component {
      });
    }
    else{
-     alert('We just saved this entity from deletion!');
+     alert('Type "DELETE" if you want to delete this entity');
    }
  }
   accordeon = function(e){
@@ -438,7 +438,7 @@ export default class specificEntity extends Component {
             {update}
             {store.getState().user && store.getState().user.admin &&
               <div className="alertBlock">
-                <p>Deleting this entity is an operation that cannot be recover, are you sure you want to delete it?</p>
+                <p>Deleting this entity is an operation that cannot be recovered, are you sure you want to delete it?</p>
                 <input placeholder="Write 'DELETE' here to confirm you want to delete this entity" ref="confirmDelete"/>
               <button onClick={this.deleteEntity}>Delete</button>
             </div>}

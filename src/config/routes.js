@@ -118,7 +118,7 @@ module.exports.routes = {
   'POST /api/v1/entities/:id':'EntitiesController.update',
   'DELETE /api/v1/entities/:id':'EntitiesController.destroy',
 
-  //Entities
+  //Entities alignements
   'GET /api/v1/alignements':'Entity_versions_alignController.find',
   'POST /api/v1/alignements':'Entity_versions_alignController.create',
   'GET /api/v1/alignements/:id':'Entity_versions_alignController.findOne',
@@ -180,6 +180,7 @@ module.exports.routes = {
   'POST /api/v1/notes':'NotesController.create',
   'GET /api/v1/notes/:id':'NotesController.findOne',
   'POST /api/v1/notes/:id':'NotesController.update',
+  'DELETE /api/v1/notes/:id':'NotesController.destroy',
   'POST /api/v1/notes/:parentid/entity/:id':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'notes',alias:'entities'}],
   'DELETE /api/v1/notes/:parentid/entity/:id':'NotesController.removeEntity',
   'POST /api/v1/notes/:parentid/versions':[{model:"notes"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'notes',alias:'versions'}],
@@ -190,6 +191,7 @@ module.exports.routes = {
   'POST /api/v1/scholies':'ScholiesController.create',
   'GET /api/v1/scholies/:id':'ScholiesController.findOne',
   'POST /api/v1/scholies/:id':'ScholiesController.update',
+  'DELETE /api/v1/scholies/:id':'ScholiesController.destroy',
   'POST /api/v1/scholies/:parentid/entity/:id':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'scholies',alias:'entities'}],
   'DELETE /api/v1/scholies/:parentid/entity/:id':'ScholiesController.removeEntity',
   'POST /api/v1/scholies/:parentid/versions':[{model:"scholies"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'scholies',alias:'versions'}],
