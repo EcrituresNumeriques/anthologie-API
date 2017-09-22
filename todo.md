@@ -53,7 +53,7 @@
 
 
 ## bugs
-- il faut sortir et rentrer pour afficher l'épigramme quand on l'importe(1h) P1
+- ~~il faut sortir et rentrer pour afficher l'épigramme quand on l'importe(1h) P1~~
 - pour l'épigramme 7.2, par exemple, la plateforme ne recupère pas l'auteur depuis perseus (elle le faisait avant mais maintenant ca ne semble plus marcher) (1j a voir avec Gregory Crane) P3
 
 
