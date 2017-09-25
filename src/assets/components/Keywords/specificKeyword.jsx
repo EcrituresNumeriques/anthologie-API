@@ -73,9 +73,7 @@ export default class specificKeyword extends Component {
       return response.json();
     })
     .then(function(json){
-      that.keyword = json;
-      //that.refs.city_born = json.city_born;
-      that.forceUpdate();
+      browserHistory.push('/keywordCategories');
       return null;
     });
   }
@@ -100,7 +98,7 @@ export default class specificKeyword extends Component {
             {this.keyword.entities.map((entity,i)=>(<div className="inputContainerLanguage" key={'entity'+entity.id_entity}><label>{i?'':'Keyword of : '}</label><p  onClick={()=>this.moveToEntity(entity.id_entity)}>{entity.title}</p></div>))}
 
             <div className="inputContainerLanguage"><label>Keyword Category :</label><div>
-              <label><input id="unassign" type="radio" value={undefined} name="category" defaultChecked={!this.keyword.category}/>not assigned</label>
+              <label><input id="unassign" type="radio" value={0} name="category" defaultChecked={!this.keyword.category}/>not assigned</label>
               {store.getState().keywordCategory.map((category,i)=>(<label key={"selectCategory"+category.id_keyword_category}><input type="radio" name="category" value={category.id_keyword_category} defaultChecked={!!(this.keyword.category && (this.keyword.category.id_keyword_category==category.id_keyword_category))}/>{store.getState().keywordCategoryLookup[category.id_keyword_category].title}</label>))}
               </div>
             </div>

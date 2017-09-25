@@ -146,7 +146,7 @@ module.exports.routes = {
   'POST /api/v1/images/:id':'ImagesController.update',
 
   //Keyword_categories
-  'GET /api/v1/keyword_categories':{model:'keyword_categories',blueprint:'find',populate:false},
+  'GET /api/v1/keyword_categories':{model:'keyword_categories',blueprint:'find',populate:true},
   'POST /api/v1/keyword_categories':{model:'keyword_categories',blueprint:'create',populate:false},
   'GET /api/v1/keyword_categories/:id':{model:'keyword_categories',blueprint:'findone',populate:false},
   'POST /api/v1/keyword_categories/:id':{model:'keyword_categories',blueprint:'update',populate:false},

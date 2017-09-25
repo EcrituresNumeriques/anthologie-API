@@ -67,6 +67,7 @@ export function login(state = initialState, action) {
 
     case 'UPDATE_KEYWORDCAT':
     console.log(action.type);
+    action.payload.sort(sortByTitle);
     for (var i = 0, len = action.payload.length; i < len; i++) {
       lookup[action.payload[i].id_keyword_category] = action.payload[i];
     }
@@ -75,10 +76,14 @@ export function login(state = initialState, action) {
 
     case 'UPDATE_KEYWORDS':
     console.log(action.type);
+    let unassignedKeywords = [];
     for (var i = 0, len = action.payload.length; i < len; i++) {
       lookup[action.payload[i].id_keyword] = action.payload[i];
+      if(!action.payload[i].category){
+        unassignedKeywords.push(action.payload[i].id_keyword);
+      }
     }
-    return Object.assign({},state,{keywords:action.payload,keywordsLookup:lookup})
+    return Object.assign({},state,{keywords:action.payload,keywordsLookup:lookup,unassignedKeywords:unassignedKeywords})
     break;
 
     case 'UPDATE_USERS':
