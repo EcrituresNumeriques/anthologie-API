@@ -6,7 +6,6 @@
  */
 
 cleanURIs = function(destroyedRecords, cb){
-  console.log(destroyedRecords.map((entity)=>(entity.id_entity)));
   URId.destroy({id_entity:destroyedRecords.map((entity)=>(entity.id_entity))}).exec(function(err){
       cb();
     })
