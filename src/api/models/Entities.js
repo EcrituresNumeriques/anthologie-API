@@ -5,6 +5,13 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
+cleanURIs = function(destroyedRecords, cb){
+  console.log(destroyedRecords.map((entity)=>(entity.id_entity)));
+  URId.destroy({id_entity:destroyedRecords.map((entity)=>(entity.id_entity))}).exec(function(err){
+      cb();
+    })
+}
+
 module.exports = {
   tableName: 'entities',
   autoPK: false,
@@ -115,5 +122,6 @@ module.exports = {
      via:'id_entity',
      dominant:true,
    }
-  }
+ },
+ afterDestroy: cleanURIs
 };
