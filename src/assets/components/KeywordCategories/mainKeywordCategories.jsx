@@ -52,7 +52,9 @@ export default class mainKeywordCategories extends Component {
       //there is a search, return the correct amount of success
       let versions = keyword.versions.map((v)=>(v.title));
       search = search.split(" ").filter((word)=>(word.length));
+      //look into each term in the search, and see if there is a version that contains it, return number of time a term has been matched
       let n = search.map((term)=>(Boolean(versions.map((chain)=>(chain.toLowerCase().includes(term.toLowerCase()))).filter(v=>v).length))).filter(v=>v).length;
+      //transforms to percentage
       match = Math.round((n / search.length)*100);
     }
     return match;
