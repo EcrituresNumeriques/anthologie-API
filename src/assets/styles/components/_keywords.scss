@@ -21,6 +21,7 @@ Authors component
       font-weight: 400;
       padding: 0.5em 1em;
       border-bottom: 1px solid #f0f0f0;
+      user-select: none;
       @extend .clickable;
       a{
         float:right;
@@ -36,6 +37,12 @@ Authors component
         border-bottom: 1px solid #f0f0f0;
         @extend .clickable;
       }
+    }
+    ul.closed{
+      display:none;
+    }
+    ul.search{
+      display:block;
     }
   }
   input.search{
