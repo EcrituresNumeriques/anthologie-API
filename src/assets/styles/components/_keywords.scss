@@ -38,6 +38,10 @@ Authors component
       }
     }
   }
+  input.search{
+    @extend .paddedBlock;
+    width:100%;
+  }
 }
 
 #page > main#keywordsView > main > a,#page > main#keywordsView > aside > section > a {
