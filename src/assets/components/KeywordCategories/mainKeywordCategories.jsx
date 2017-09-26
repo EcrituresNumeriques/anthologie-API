@@ -48,9 +48,9 @@ export default class mainKeywordCategories extends Component {
 
    search = function(keyword,search){
     let match = 1;
-    let versions = keyword.versions.map((v)=>(v.title));
     if(search){
       //there is a search, return the correct amount of success
+      let versions = keyword.versions.map((v)=>(v.title));
       search = search.split(" ").filter((word)=>(word.length));
       let n = search.map((term)=>(Boolean(versions.map((chain)=>(chain.toLowerCase().includes(term.toLowerCase()))).filter(v=>v).length))).filter(v=>v).length;
       match = Math.round((n / search.length)*100);
