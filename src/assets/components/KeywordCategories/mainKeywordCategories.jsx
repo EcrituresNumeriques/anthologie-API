@@ -46,15 +46,15 @@ export default class mainKeywordCategories extends Component {
      this.setState({search: e.target.value});
      //toggle search className is there is a search
      if(e.target.value.length > 0){
-       document.querySelector("ul.keywords").classList.add("search");
+       document.querySelectorAll("section.keywords").forEach(function(el){el.classList.add("search")});
      }
      else{
-       document.querySelector("ul.keywords").classList.remove("search");
+       document.querySelectorAll("section.keywords").forEach(function(el){el.classList.remove("search")});
      }
    }
    toggleDisplay = function(e){
      //TODO : add react subcomponents
-     e.target.nextSibling.classList.toggle("closed");
+     e.target.parentElement.classList.toggle("closed");
    }
 
    search = function(keyword,search){
@@ -83,9 +83,9 @@ export default class mainKeywordCategories extends Component {
         {store.getState().loggedIn && store.getState().user.admin && <Link to="/keywordCategories/new" className="addto" activeStyle={{ color: 'black' }}>add new Category</Link>}
         <input className="search" placeholder="search keyword" value={this.state.search} onChange={this.handleSearch}/>
         {unassignedKeywords.length > 0 &&
-          <section>
+          <section className="keywords closed">
             <h1 onClick={this.toggleDisplay}>Unassigned Keywords ({unassignedKeywords.length})</h1>
-            <ul className="keywords closed">
+            <ul>
               {unassignedKeywords.map((keyword)=>( this.search(lookupKeywords[keyword],this.state.search) > 0 &&
                 <li key={"unassignedKeyword"+keyword} onClick={()=>this.goToKeyword(keyword)}>
                   {lookupKeywords[keyword].versions.map((version)=>(version.title)).join(' / ')}
@@ -96,11 +96,11 @@ export default class mainKeywordCategories extends Component {
         }
 
         {listKeywordCat.map((keywordCat,i)=>(
-          <section key={"keyword"+keywordCat.id_keyword_category}>
+          <section key={"keyword"+keywordCat.id_keyword_category} className="keywords closed">
             <h1 onClick={this.toggleDisplay}>{keywordCat.title} ({keywordCat.keywords?keywordCat.keywords.length:'0'})
               {store.getState().loggedIn && store.getState().user.admin && <Link to={"/keywordCategories/"+keywordCat.id_keyword_category} id={keywordCat.id_keyword_category}>edit</Link>}
             </h1>
-            <ul className="keywords closed">
+            <ul>
               {keywordCat.keywords && keywordCat.keywords.map((keyword)=>(this.search(lookupKeywords[keyword.id_keyword],this.state.search) > 0 && <li key={"assignedKeyword"+keyword.id_keyword} onClick={()=>this.goToKeyword(keyword.id_keyword)}>{lookupKeywords[keyword.id_keyword].versions.map((version)=>(version.title)).join(' / ')}</li>))}
             </ul>
 
