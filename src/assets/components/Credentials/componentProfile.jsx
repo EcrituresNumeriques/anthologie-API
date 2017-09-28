@@ -212,9 +212,13 @@ export default class ComponentProfile extends Component {
           <h2>Entities</h2>
           {this.contrib.entities.map((entity,i)=>(<Link key={"contribEntity"+entity.id_entity} to={"/entities/"+entity.id_entity}>{entity.title}</Link>))}
           <h2>Versions</h2>
-          {this.contrib.versions.map((version,i)=>(<Link key={"contribVersion"+version.id_entity_version} to={"/entities/"+version.id_entity}>[{displayLang(store.getState().languagesLookup[version.id_language])}] {store.getState().entitiesLookup[version.id_entity].title}</Link>))}
+          {this.contrib.versions.map((version,i)=>(store.getState().entitiesLookup[version.id_entity] &&
+            <Link key={"contribVersion"+version.id_entity_version} to={"/entities/"+version.id_entity}>[{displayLang(store.getState().languagesLookup[version.id_language])}] {store.getState().entitiesLookup[version.id_entity].title}</Link>
+          ))}
           <h2>Alignements</h2>
-          {this.contrib.aligns.map((align,i)=>(<Link key={"contribAlign"+align.id_align} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{displayLang(store.getState().languagesLookup[align.source_lang])}] => [{displayLang(store.getState().languagesLookup[align.target_lang])}] {store.getState().entitiesLookup[align.id_entity].title}</Link>))}
+          {this.contrib.aligns.map((align,i)=>(store.getState().entitiesLookup[align.id_entity] &&
+            <Link key={"contribAlign"+align.id_align} to={"/entities/"+align.id_entity+'/showalign/'+align.id_align}>[{displayLang(store.getState().languagesLookup[align.source_lang])}] => [{displayLang(store.getState().languagesLookup[align.target_lang])}] {store.getState().entitiesLookup[align.id_entity].title}</Link>
+          ))}
           <h2>Scholies</h2>
           {this.contrib.scholies.map((scholie,i)=>(<Link key={"contribScholie"+scholie.id_scholie} to={"/entities/"+scholie.id_entity+'/showScholie/'+scholie.id_scholie}>{scholie.title}</Link>))}
           <h2>Notes</h2>

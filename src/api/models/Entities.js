@@ -5,10 +5,14 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
-cleanURIs = function(destroyedRecords, cb){
+cleanAssoc = function(destroyedRecords, cb){
   URId.destroy({id_entity:destroyedRecords.map((entity)=>(entity.id_entity))}).exec(function(err){
       cb();
-    })
+  })
+  //destroy versions
+  //scholies
+  //notes
+  //alignements  
 }
 
 module.exports = {
@@ -122,5 +126,5 @@ module.exports = {
      dominant:true,
    }
  },
- afterDestroy: cleanURIs
+ afterDestroy: cleanAssoc
 };
