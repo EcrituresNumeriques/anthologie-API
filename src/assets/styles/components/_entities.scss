@@ -14,6 +14,57 @@ Entities component
 #page > main#entitiesView > main {
   @extend .whiteBox;
   grid-area: content;
+  section{
+    h1{
+      background-color: #f0f0f0;
+      font-size: 1em;
+      font-weight: 400;
+      padding: 0.5em 1em;
+      border-bottom: 1px solid white;
+      user-select: none;
+      @extend .clickable;
+      a{
+        float:right;
+        display:block;
+      }
+    }
+    h1:before{
+      display:inline-block;
+      font-weight: bolder;
+      margin-right: 1em;
+      content:"-";
+    }
+    ul{
+      padding:0;
+      margin:0;
+      list-style: none;
+      li{
+        padding: 0.5em 1em;
+        border-bottom: 1px solid #f0f0f0;
+        @extend .clickable;
+      }
+    }
+  }
+  section.closed{
+    ul{
+      display:none;
+    }
+    h1:before{
+      content:"+";
+    }
+  }
+  section.search{
+    ul{
+      display:block;
+    }
+    h1:before{
+      content:"-";
+    }
+  }
+  input.search{
+    @extend .paddedBlock;
+    width:100%;
+  }
 }
 #page > main#entitiesView > main > a,#page > main#entitiesView > aside > section > a {
   @extend .linklist;
