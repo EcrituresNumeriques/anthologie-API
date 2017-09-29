@@ -79,3 +79,32 @@ Question: comment tu l'avais importées?
 - Possibilité d'ajouter des enregistrement (4h) P3
 
 - possibilité de monitorer l'activité - qui a fait quoi dernièrement pour admin (2 j) P3
+
+## Problèmes d'affichage
+- le uri ne peut pas être visualisé (des entités) p4
+
+## Page auteurs
+- il faudrait ajouter un champ uri
+- il faudrait ajouter un champ de texte (genre biographie)
+- effacer authors
+- liste epigrammes
+
+## Mots-clés
+- il faudrait être obligé de classer tout mot-clé créé dans une catégorie (pas de unassigned)
+
+- personnes citées important d'ajouter un champ pour - existant ou pas réélles- historiques-mythologiques- personnages
+
+création
+## Varia
+- il faudrait pouvoir éditer l'édition des textes - même sans pouvoir changer les textes eux-mêmes
+
+### notes
+enlever titre
+
+## villes nommées dans les épigrammes, ajouter
+
+## ajouter édition au scholies
+
+## effacer tout ce qu'on crée
+
+## allignement: ajouter titre entité
