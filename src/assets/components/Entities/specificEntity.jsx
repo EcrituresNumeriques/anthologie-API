@@ -6,6 +6,7 @@ import {store} from '../../Redux/store'
 import _ from 'lodash'
 
 import {displayLang} from 'helpers/displayLang.jsx'
+import {acl} from 'helpers/acl.jsx'
 // components
 
 export default class specificEntity extends Component {
@@ -290,6 +291,7 @@ export default class specificEntity extends Component {
       update = <input type="submit" value="Update"/>;
       readOnly = false;
     }
+
     return (
       <main>
         <h1>{this.entity.title}</h1>
@@ -315,7 +317,7 @@ export default class specificEntity extends Component {
               </div>
             ))}
 
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newAuthor/'+this.props.params.id}>Add an author </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newAuthor/'+this.props.params.id}>Add an author </Link></div>}
 
             {_.get(this.entity,'uris',[]).map((uri,i)=>(
               <div className="inputContainerLanguage" key={'uriEntity'+uri.id_urid}>
