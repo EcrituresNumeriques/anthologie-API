@@ -327,14 +327,14 @@ export default class specificEntity extends Component {
               </div>
             ))}
 
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newURI/'+this.props.params.id}>Add an URI </Link></div>}
 
             <div className="inputContainerLanguage">
               <label>Manuscripts :</label>
               <div className="collection">
 
                 {_.get(this.entity,'imagesManuscript',[]).map((image)=>(<a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
-                {!readOnly && <Link className="addToCollectionSide" to={'/entities/newImageManuscript/'+this.props.params.id}>Add an image </Link>}
+                {acl('isLogedin') && <Link className="addToCollectionSide" to={'/entities/newImageManuscript/'+this.props.params.id}>Add an image </Link>}
               </div>
             </div>
 
@@ -351,7 +351,7 @@ export default class specificEntity extends Component {
               </div>
             ))}
 
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newdraft/'+this.props.params.id}>Add a Draft </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newdraft/'+this.props.params.id}>Add a Draft </Link></div>}
 
 
             {_.get(this.entity,'versions',[]).map((version,i)=>(
@@ -364,7 +364,7 @@ export default class specificEntity extends Component {
               </div>
             ))}
 
-            {!readOnly && <div className="inputContainerLanguage">
+            {acl('isLogedin') && <div className="inputContainerLanguage">
               <Link className="addToCollection" onClick={(e)=>(this.sendToAlign(e))}>{this.state.alignThem}</Link>
               <Link className="addToCollectionSide" to={'/entities/newVersion/'+this.props.params.id}>Add a version</Link>
             </div>}
@@ -385,14 +385,14 @@ export default class specificEntity extends Component {
               </div>
             ))}
 
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newKeyword/'+this.props.params.id}>Add a Keyword </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newKeyword/'+this.props.params.id}>Add a Keyword </Link></div>}
 
             <div className="inputContainerLanguage">
               <label>Images :</label>
               <div className="collection">
 
                 {_.get(this.entity,'images',[]).map((image)=>(<a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
-                {!readOnly && <Link className="addToCollectionSide" to={'/entities/newImage/'+this.props.params.id}>Add an image </Link>}
+                {acl('isLogedin') && <Link className="addToCollectionSide" to={'/entities/newImage/'+this.props.params.id}>Add an image </Link>}
               </div>
             </div>
 
@@ -403,7 +403,7 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteScholie(scholie)} >X</button>}
               </div>
             ))}
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newScholie/'+this.props.params.id}>Add a scholie </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newScholie/'+this.props.params.id}>Add a scholie </Link></div>}
 
             {_.get(this.entity,'notes',[]).map((note,i)=>(
               <div className="inputContainerLanguage" key={'noteEntity'+note.id_note}>
@@ -412,7 +412,7 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteNote(note)} >X</button>}
               </div>
             ))}
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newNote/'+this.props.params.id}>Add a note </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newNote/'+this.props.params.id}>Add a note </Link></div>}
 
 
             {_.get(this.entity,'internalRef_targets',[]).map((ref,i)=>(
@@ -422,7 +422,7 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteRef(ref)} >X</button>}
               </div>
             ))}
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newInternalRef/'+this.props.params.id}>Add an internal reference </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newInternalRef/'+this.props.params.id}>Add an internal reference </Link></div>}
 
             {_.get(this.entity,'externalRef',[]).map((ref,i)=>(
               <div className="inputContainerLanguage" key={'refExEntity'+ref.id_entity}>
@@ -431,7 +431,7 @@ export default class specificEntity extends Component {
                 {!readOnly && <button type="button" onClick={()=>this.deleteExRef(ref)} >X</button>}
               </div>
             ))}
-            {!readOnly && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newExternalRef/'+this.props.params.id}>Add an external reference </Link></div>}
+            {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newExternalRef/'+this.props.params.id}>Add an external reference </Link></div>}
 
 
             <div className="inputContainerLanguage"><label>created at : </label><input type="text" value={this.entity.createdAt} disabled="true"/></div>

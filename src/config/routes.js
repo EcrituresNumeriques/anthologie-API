@@ -33,33 +33,34 @@ module.exports.routes = {
   'DELETE /api/v1/authors/:parentid/versions/:id':'AuthorsController.deleteFromCollection',
   //'DELETE /api/v1/authors/:parentid/versions/:id':[{model:"authors"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'destroy', model:'author_versions'}],
 
-  'POST /api/v1/entities/:parentid/authors':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'authors'}],
-  'POST /api/v1/entities/:parentid/authors/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'authors'}],
+
+  'POST /api/v1/entities/:parentid/authors':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'authors'}],
+  'POST /api/v1/entities/:parentid/authors/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'authors'}],
   'DELETE /api/v1/entities/:parentid/authors/:id':'EntitiesController.RemoveAuthor',
 
-  'POST /api/v1/entities/:parentid/keywords':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'keywords'}],
-  'POST /api/v1/entities/:parentid/keywords/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'keywords'}],
+  'POST /api/v1/entities/:parentid/keywords':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'keywords'}],
+  'POST /api/v1/entities/:parentid/keywords/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'keywords'}],
   'DELETE /api/v1/entities/:parentid/keywords/:id':'EntitiesController.RemoveKeyword',
 
-  'POST /api/v1/keywords/:parentid/versions':[{model:"keywords"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'keywords',alias:'versions'}],
+  'POST /api/v1/keywords/:parentid/versions':[{model:"keywords"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'keywords',alias:'versions'}],
   'DELETE /api/v1/keywords/:parentid/versions/:id':'KeywordsController.deleteFromCollection',
 
 
-  'POST /api/v1/entities/:parentid/uris':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'uris'}],
+  'POST /api/v1/entities/:parentid/uris':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'uris'}],
+  'POST /api/v1/entities/:parentid/versions':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'versions'}],
   'DELETE /api/v1/entities/:parentid/uris/:id':'EntitiesController.destroyUri',
 
-  'POST /api/v1/entities/:parentid/versions':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'versions'}],
   'DELETE /api/v1/entities/:parentid/versions/:id':'EntitiesController.destroyVersion',
 
-  'POST /api/v1/entities/:parentid/drafts':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'drafts'}],
+  'POST /api/v1/entities/:parentid/drafts':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'drafts'}],
   'DELETE /api/v1/entities/:parentid/drafts/:id':'EntitiesController.destroyDraft',
 
   //Internal references
-  'POST /api/v1/entities/:parentid/internalref/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'internalRef_targets'}],
+  'POST /api/v1/entities/:parentid/internalref/:id':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'internalRef_targets'}],
   'DELETE /api/v1/entities/:parentid/internalref/:id':'EntitiesController.RemoveReference',
 
   //External references
-  'POST /api/v1/entities/:parentid/externalref':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{policy:'ownsThis'},{blueprint:'add', model:'entities',alias:'externalRef'}],
+  'POST /api/v1/entities/:parentid/externalref':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'externalRef'}],
   'DELETE /api/v1/entities/:parentid/externalref/:id':'EntitiesController.destroyReference',
 
   //drafts
