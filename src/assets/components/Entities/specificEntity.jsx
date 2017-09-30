@@ -313,7 +313,7 @@ export default class specificEntity extends Component {
               <div className="inputContainerLanguage" key={'authorEntity'+author.id_author}>
                 <label>{i?'':'Authors : '}</label>
                 <p onClick={()=>this.moveToAuthor(author.id_author)}>{store.getState().authorsLookup[author.id_author].versions.map((version)=>(version.name)).join(" / ")}</p>
-                {!readOnly && <button type="button" onClick={()=>this.deleteName(author)} >X</button>}
+                {acl('isOwner',this.entity.id_user.id_user) && <button type="button" onClick={()=>this.deleteName(author)} >X</button>}
               </div>
             ))}
 
@@ -338,17 +338,16 @@ export default class specificEntity extends Component {
               </div>
             </div>
 
-            {_.get(this.entity,'drafts',[]).map((draft,i)=>(
+            {_.get(this.entity,'drafts',[]).map((draft,i)=>(acl('isOwner',draft.id_user)?
               <div className="inputContainerLanguage" key={'draftEntity'+draft.id_entity_draft}>
-                {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <label>{i?'':'Drafts : '}</label>}
-                {_.get(store.getState(),'user.id_user',-1) === draft.id_user &&
-                  <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">
+                <label>{i?'':'Drafts : '}</label>
+                <p ref={'draftParagraphEntity'+draft.id_entity_draft} onDoubleClick={()=>this.accordeon('draftParagraphEntity'+draft.id_entity_draft)} className="limited">
                     <Link to={"/entities/draft/"+draft.id_entity_draft} className>Edit this draft</Link><br/>
                     [{displayLang(store.getState().languagesLookup[draft.id_language])}{draft.edition?' ('+draft.edition+')':''}] by {store.getState().usersLookup[draft.id_user].displayName}
                   {draft.text_translated.split('\n').map((item,i)=>(<span key={"lineForText"+draft.id_entity_draft+"-"+i}><br/>{item}</span>))}
-                  </p>}
-                {_.get(store.getState(),'user.id_user',-1) === draft.id_user && <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>}
-              </div>
+                  </p>
+                <button type="button" onClick={()=>(this.deleteDraft(draft))} >X</button>
+              </div>:null
             ))}
 
             {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newdraft/'+this.props.params.id}>Add a Draft </Link></div>}

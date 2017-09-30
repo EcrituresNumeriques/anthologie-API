@@ -16,6 +16,7 @@ export let acl = function(condition = 'isLogedin',objectOwner = 0){
     }
     //isOwner (or Admin)
     else if(condition == conditionExpected[1]){
+      console.log(currentUser.id_user,objectOwner,currentUser.admin);
       if(currentUser.id_user == objectOwner || currentUser.admin == true){
         return true;
       }
