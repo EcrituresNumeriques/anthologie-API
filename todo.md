@@ -1,5 +1,15 @@
 ## à faire plateforme
 
+## Priorité Enrico
+
+ - supprimer auteurs vides
+ - ajouter les scholies (apapi.ecrituresnumeriques.ca)
+ - notes auteurs/personnages apapi
+ - effacer personnes cités Erina/
+ - ordres alphabétique
+ - ordres logique pour les entités
+
+
 - allignement avec semantic web (version 2.0)
 - ajouter uri pour villes, auteurs, mots-clés etc. (1j) P5
 
