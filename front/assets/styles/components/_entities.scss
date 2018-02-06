@@ -1,0 +1,188 @@
+/*
+Entities component
+*/
+#page > main#entitiesView{
+  @extend .mainInside;
+}
+#page > main#entitiesView > aside {
+  grid-area: aside;
+}
+#page > main#entitiesView > aside > section {
+  @extend .whiteBox;
+  margin-bottom: 15px;
+}
+#page > main#entitiesView > main {
+  @extend .whiteBox;
+  grid-area: content;
+  section{
+    h1{
+      background-color: #f0f0f0;
+      font-size: 1em;
+      font-weight: 400;
+      padding: 0.5em 1em;
+      border-bottom: 1px solid white;
+      user-select: none;
+      @extend .clickable;
+      a{
+        float:right;
+        display:block;
+      }
+    }
+    h1:before{
+      display:inline-block;
+      font-weight: bolder;
+      margin-right: 1em;
+      content:"-";
+    }
+    ul{
+      padding:0;
+      margin:0;
+      list-style: none;
+      li{
+        padding: 0.5em 1em;
+        border-bottom: 1px solid #f0f0f0;
+        @extend .clickable;
+      }
+    }
+  }
+  section.closed{
+    ul{
+      display:none;
+    }
+    h1:before{
+      content:"+";
+    }
+  }
+  section.search{
+    ul{
+      display:block;
+    }
+    h1:before{
+      content:"-";
+    }
+  }
+  input.search{
+    @extend .paddedBlock;
+    width:100%;
+  }
+}
+#page > main#entitiesView > main > a,#page > main#entitiesView > aside > section > a {
+  @extend .linklist;
+}
+#page > main#entitiesView > main > a.addto,#page > main#entitiesView > aside > section > a.addto {
+  @extend .linklist;
+  @extend .addTo;
+}
+#page > main#entitiesView > main > h1 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#entitiesView > main > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#entitiesView > main > form>  h3 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#entitiesView > main > form>  h4 {
+  @extend .centeredBlock;
+  @extend .centeredInside;
+}
+#page > main#entitiesView > main > form {
+  @extend .centeredBlock;
+}
+#page > main#entitiesView > main > div#fetchPerseus > input {
+  @extend .inputStandardInline;
+  @extend .centeredBlock;
+  width: 100%;
+}
+#page > main#entitiesView > main > div#fetchPerseus > button {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
+#page > main#entitiesView > main > p.disclaimer {
+  margin:2em 0;
+}
+#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > button,#page > main#entitiesView > main > form > button {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
+#page > main#entitiesView > main > form > input.expanded{
+  width:100%;
+}
+#page > main#entitiesView > main > form > textarea{
+  @extend .inputStandard;
+  @extend .centeredBlock;
+  width:100%;
+  min-height:8em;
+}
+#page > main#entitiesView > main > form > div.inputContainerLanguage{
+  @extend .inputContainer;
+}
+#page > main#entitiesView > main > form > div.inputContainerLanguage > label:not(.smallLabel){
+  @extend .labelInput;
+}
+#page > main#entitiesView > main > form > div.inputContainerLanguage > input,#page > main#entitiesView > main > form > div.inputContainerLanguage > select,#page > main#entitiesView > main > form > div.inputContainerLanguage > a{
+  @extend .textboxInput;
+}
+#page > main#entitiesView > main > form > div.inputContainerLanguage > p{
+  @extend .textboxInput;
+  @extend .clickable;
+}
+#page > main#entitiesView > main > form > div.inputContainerLanguage > p.limited{
+  max-height: 3.5em;
+  overflow: hidden;
+}
+#page > main#entitiesView > main > form > div.inputContainerLanguage > input.noFlex{
+  @extend .noFlexInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > a.addToCollection {
+   @extend .noLabelInput;
+   @extend .textboxInput;
+ }
+#page main#entitiesView > main > form > div.inputContainerLanguage > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection {
+  @extend .textboxInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem{
+  @extend .clickable;
+  @extend .paddedBlock;
+  flex:1 1 33%;
+}
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
+  max-height: 64px;
+  max-width: 64px;
+}
+#page > main#entitiesView > main > form > p.legend,#page > main#entitiesView > main > form > input,#page > main#entitiesView > main > form > select,#page > main#entitiesView > main > button {
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#entitiesView > main > div.text{
+  margin-bottom:1em;
+}
+#page > main#entitiesView > main > div.text > p > span > span {
+  display:inline-block;
+  padding:0.125em 0.25em;
+  cursor:pointer;
+}
+#page > main#entitiesView > main > div.text > p > span > span.highlighted {
+  background-color:#F4FA58;
+}
+#page > main#entitiesView > main > div.text > p > span > span.select {
+  background-color:#82FA58;
+}
+#page > main#entitiesView > main > div > button {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}

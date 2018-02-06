@@ -1,0 +1,116 @@
+/*
+Entities component
+*/
+#page > main#scholiesView{
+  @extend .mainInside;
+}
+#page > main#scholiesView > aside {
+  grid-area: aside;
+}
+#page > main#scholiesView > aside > section{
+  @extend .whiteBox;
+  margin-bottom: 15px;
+}
+#page > main#scholiesView > main {
+  @extend .whiteBox;
+  grid-area: content;
+}
+#page > main#scholiesView > main > div > a,#page > main#scholiesView > aside > section > a {
+  @extend .linklist;
+}
+#page > main#scholiesView > main > div > a.addto,#page > main#scholiesView > aside > section > a.addto {
+  @extend .linklist;
+  @extend .addTo;
+}
+#page > main#scholiesView > main > div > h1 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#scholiesView > main > div > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#scholiesView > main > div > form>  h3 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#scholiesView > main > div > form>  h4 {
+  @extend .centeredBlock;
+  @extend .centeredInside;
+}
+#page > main#scholiesView > main > div > form {
+  @extend .centeredBlock;
+}
+#page > main#scholiesView > main > div > form > input,#page > main#scholiesView > main > div > form > select,#page > main#scholiesView > main > div > form > textarea,#page > main#scholiesView > main > div > button {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
+#page > main#scholiesView > main > div > form > textarea{
+  width:100%;
+  height:8em;
+}
+#page > main#scholiesView > main > div > form > div.inputContainerLanguage{
+  @extend .inputContainer;
+}
+#page > main#scholiesView > main > div > form > div.inputContainerLanguage > label:not(.smallLabel){
+  @extend .labelInput;
+}
+#page > main#scholiesView > main > div > form > div.inputContainerLanguage > input,#page > main#scholiesView > main > div > form > div.inputContainerLanguage > select,#page > main#scholiesView > main > div > form > div.inputContainerLanguage > a{
+  @extend .textboxInput;
+}
+#page > main#scholiesView > main > div > form > div.inputContainerLanguage > p{
+  @extend .textboxInput;
+  @extend .clickable;
+}
+#page > main#scholiesView > main > div > form > div.inputContainerLanguage > input.noFlex{
+  @extend .noFlexInput;
+}
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > a.addToCollection {
+   @extend .noLabelInput;
+   @extend .textboxInput;
+ }
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > div.collection {
+  @extend .textboxInput;
+}
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > div.collection > a.addToCollectionSide {
+  @extend .textboxInput;
+  @extend .secondNoLabelInput;
+}
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > div.collection > a.collectionItem{
+  @extend .clickable;
+  @extend .paddedBlock;
+  flex:1 1 33%;
+}
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > p.limited{
+  max-height: 3.5em;
+  overflow: hidden;
+}
+#page main#scholiesView > main > div > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
+  max-height: 64px;
+  max-width: 64px;
+}
+#page > main#scholiesView > main > div > form > p.legend,#page > main#scholiesView > main > div > form > input,#page > main#scholiesView > main > div > form > select,#page > main#scholiesView > main > div > button {
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#scholiesView > main > div > div.text{
+  margin-bottom:1em;
+}
+#page > main#scholiesView > main > div > div.text > p > span > span {
+  display:inline-block;
+  padding:0.125em 0.25em;
+  cursor:pointer;
+}
+#page > main#scholiesView > main > div > div.text > p > span > span.highlighted {
+  background-color:#F4FA58;
+}
+#page > main#scholiesView > main > div > div.text > p > span > span.select {
+  background-color:#82FA58;
+}

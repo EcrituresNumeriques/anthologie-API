@@ -1,0 +1,127 @@
+/*
+Authors component
+*/
+#page > main#keywordsView{
+  @extend .mainInside;
+}
+#page > main#keywordsView > aside {
+  grid-area: aside;
+}
+#page > main#keywordsView > aside > section {
+  @extend .whiteBox;
+  margin-bottom: 15px;
+}
+#page > main#keywordsView > main {
+  @extend .whiteBox;
+  grid-area: content;
+  section{
+    h1{
+      background-color: #f0f0f0;
+      font-size: 1em;
+      font-weight: 400;
+      padding: 0.5em 1em;
+      border-bottom: 1px solid white;
+      user-select: none;
+      @extend .clickable;
+      a{
+        float:right;
+        display:block;
+      }
+    }
+    h1:before{
+      display:inline-block;
+      font-weight: bolder;
+      margin-right: 1em;
+      content:"-";
+    }
+    ul{
+      padding:0;
+      margin:0;
+      list-style: none;
+      li{
+        padding: 0.5em 1em;
+        border-bottom: 1px solid #f0f0f0;
+        @extend .clickable;
+      }
+    }
+  }
+  section.closed{
+    ul{
+      display:none;
+    }
+    h1:before{
+      content:"+";
+    }
+  }
+  section.search{
+    ul{
+      display:block;
+    }
+    h1:before{
+      content:"-";
+    }
+  }
+  input.search{
+    @extend .paddedBlock;
+    width:100%;
+  }
+}
+
+#page > main#keywordsView > main > a,#page > main#keywordsView > aside > section > a {
+  @extend .linklist;
+}
+#page > main#keywordsView > main > a.addto,#page > main#keywordsView > aside > section > a.addto {
+  @extend .linklist;
+  @extend .addTo;
+}
+#page > main#keywordsView > main > h1 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#keywordsView > main > h6 {
+  @extend .centeredBlock;
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#keywordsView > main > form {
+  @extend .centeredBlock;
+}
+#page > main#keywordsView > main > form > input,#page > main#keywordsView > main > form > select {
+  @extend .inputStandard;
+  @extend .centeredBlock;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage{
+  @extend .inputContainer;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > label:not(.smallLabel){
+  @extend .labelInput;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > input:not(.double),#page > main#keywordsView > main > form > div.inputContainerLanguage > select{
+  @extend .textboxInput;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > p{
+  @extend .textboxInput;
+  @extend .clickable;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > input.double{
+  @extend .smallTextboxInput;
+}
+#page main#keywordsView > main > form > div.inputContainerLanguage > a {
+   @extend .noLabelInput;
+   @extend .textboxInput;
+ }
+#page > main#keywordsView > main > form > p.legend,#page > main#keywordsView > main > form > input,#page > main#keywordsView > main > form > select {
+  @extend .paddedBlock;
+  @extend .centeredInside;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > div {
+  flex:1 1 50%;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > div > label {
+  @extend .clickable;
+  @extend .textboxInput;
+}
+#page > main#keywordsView > main > form > div.inputContainerLanguage > div > label > input{
+  margin-right:0.5em;
+}

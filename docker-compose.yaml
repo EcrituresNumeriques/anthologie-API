@@ -1,0 +1,35 @@
+version: "2"
+
+services:
+  sails-anthologie:
+    restart: always
+    build: .
+    links:
+      - mysql-anthologie
+      - redis-anthologie
+    environment:
+      - NODE_ENV=production
+      - VIRTUAL_HOST=anthologia.14159.ninja
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=santhologia.14159.ninja
+      - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
+  mysql-anthologie:
+    image: mysql
+    container_name: database
+    command: mysqld --user=root --verbose
+    volumes:
+      - /opt/mysqlAnthologie:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: "anthologieAPI"
+      MYSQL_USER: "anthologieAPI"
+      MYSQL_PASSWORD: "doesntreallymatter"
+      MYSQL_ROOT_PASSWORD: "doesntreallymatter"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+  redis-anthologie:
+    restart: always
+    image: redis
+networks:
+  default:
+    external:
+      name: root_default

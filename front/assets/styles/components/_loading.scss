@@ -1,0 +1,31 @@
+#appload{
+  display:grid;
+  grid-gap: 0;
+  grid-template-columns:1fr auto 1fr;
+  grid-template-rows:1fr auto 1fr;
+  grid-template-areas:
+  ".. .. .."
+  ".. list .."
+  ".. .. .. ";
+  min-height: 100%;
+  text-align: center;
+  h1{
+    margin-bottom: 1em;
+  }
+  ul{
+    grid-area:list;
+    list-style: none;
+    padding:3em;
+    margin:0;
+    @extend .whiteBox;
+    li.waiting{
+      color:orange;
+    }
+    li.error{
+      color:red;
+    }
+    li.success{
+      color:green;
+    }
+  }
+}
