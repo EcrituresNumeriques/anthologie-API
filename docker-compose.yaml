@@ -7,6 +7,8 @@ services:
     links:
       - mysql-anthologie
       - redis-anthologie
+    ports:
+      - "8080:80"
     environment:
       - NODE_ENV=production
       - VIRTUAL_HOST=anthologia.14159.ninja
@@ -16,7 +18,7 @@ services:
       - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
   mysql-anthologie:
     image: mysql
-    container_name: database
+    container_name: mysql-anthologie
     command: mysqld --user=root --verbose
     volumes:
       - /opt/mysqlAnthologie:/var/lib/mysql

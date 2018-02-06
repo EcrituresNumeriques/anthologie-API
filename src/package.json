@@ -48,9 +48,7 @@
   "scripts": {
     "start": "nf start --wrap",
     "dev": "node webpackDevServer",
-    "dist": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
-    "postinstall": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
-    "prod": "forever start app.js",
+    "prod": "sails lift",
     "restart": "forever restart app.js"
   },
   "main": "app.js",

@@ -24,7 +24,7 @@ module.exports = {
   ],
 
   output: {
-    path: '../public/dist/',
+    path: 'public/dist/',
     pathInfo: true,
     publicPath: '/dist/',
     filename: 'bundle.min.js',
