@@ -7,11 +7,8 @@ services:
     links:
       - mysql-anthologie
       - redis-anthologie
-#
-# Dev
-#
-#    ports:
-#      - "8080:80"
+    ports:
+      - "8080:80"
     environment:
       - NODE_ENV=production
       - VIRTUAL_HOST=anthologia.14159.ninja
@@ -34,17 +31,14 @@ services:
   redis-anthologie:
     restart: always
     image: redis
-#
-# Dev
-#
-# phpmyadmin-anthologie:
-#      image: phpmyadmin/phpmyadmin
-#      links:
-#        - mysql-anthologie:db
-#      ports:
-#        - 8181:80
-#      environment:
-#        MYSQL_USERNAME: root
+  phpmyadmin-anthologie:
+      image: phpmyadmin/phpmyadmin
+      links:
+        - mysql-anthologie:db
+      ports:
+        - 8181:80
+      environment:
+        MYSQL_USERNAME: root
 networks:
   default:
     external:
