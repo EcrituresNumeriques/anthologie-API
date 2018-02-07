@@ -5064,22 +5064,6 @@ CREATE TABLE `user_credentials` (
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Déchargement des données de la table `user_credentials`
---
-
-INSERT INTO `user_credentials` (`id_credential`, `id_user`, `username`, `email`, `enabled`, `token`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `createdAt`, `updatedAt`) VALUES
-
---
--- Edited, no need for Github
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user_groups`
---
-
 CREATE TABLE `user_groups` (
   `id_group` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

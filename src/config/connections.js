@@ -49,6 +49,15 @@ module.exports.connections = {
     charset   : 'utf8',
     collation : 'utf8_unicode_ci'
   },
+  anthologieDocker: {
+    adapter: 'sails-mysql',
+    host: 'mysql-anthologie',
+    user: 'anthologieAPI',
+    password: 'doesntreallymatter',
+    database: 'anthologieAPI',
+    charset   : 'utf8',
+    collation : 'utf8_unicode_ci'
+  },
 
   /***************************************************************************
   *                                                                          *

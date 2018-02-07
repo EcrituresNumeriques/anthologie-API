@@ -21,7 +21,7 @@ services:
     container_name: mysql-anthologie
     command: mysqld --user=root --verbose
     volumes:
-      - /opt/mysqlAnthologie:/var/lib/mysql
+      - /opt/mysqlAnthologie-test:/var/lib/mysql
     environment:
       MYSQL_DATABASE: "anthologieAPI"
       MYSQL_USER: "anthologieAPI"
@@ -31,6 +31,14 @@ services:
   redis-anthologie:
     restart: always
     image: redis
+  phpmyadmin-anthologie:
+      image: phpmyadmin/phpmyadmin
+      links:
+        - mysql-anthologie:db
+      ports:
+        - 8181:80
+      environment:
+        MYSQL_USERNAME: root
 networks:
   default:
     external:
