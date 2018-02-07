@@ -114,7 +114,7 @@ module.exports.routes = {
 
   //Entities
   'GET /api/v1/entities':'EntitiesController.find',
-  'GET /api/v1/load-entities':{model:'entities',blueprint:'find',populate:false},
+  'GET /api/v1/preload-entities':{model:'entities',blueprint:'find',populate:false},
   'POST /api/v1/entities':'EntitiesController.create',
   'GET /api/v1/entities/:id':'EntitiesController.findOne',
   'POST /api/v1/entities/:id':'EntitiesController.update',
