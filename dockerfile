@@ -1,12 +1,12 @@
 FROM node:9.0
 
 # fast build
-ADD src/package.json /src/package.json
-RUN cd /src; npm i
 
 ADD front/package.json /front/package.json
 RUN cd /front; npm i
 
+ADD src/package.json /src/package.json
+RUN cd /src; npm i
 
 # add source
 ADD src /src
