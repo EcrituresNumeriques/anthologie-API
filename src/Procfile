@@ -1,2 +1,0 @@
-frontend: node webpackDevServer
-backend: PORT=3000 NODE_ENV=live nodemon app.js

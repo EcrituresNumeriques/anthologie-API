@@ -14,7 +14,6 @@
     "boilerplate"
   ],
   "dependencies": {
-    "assets-webpack-plugin": "^3.4.0",
     "bcrypt": "^1.0.3",
     "colors": "^1.1.2",
     "connect-redis": "^3.3.3",
