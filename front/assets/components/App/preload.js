@@ -29,7 +29,7 @@ resolveFirst.push(fetch('/api/v1/Languages',{
   store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/scities',{
+resolveFirst.push(fetch('/api/v1/cities',{
   method:'GET',
   credentials: 'same-origin'
 })
