@@ -29,7 +29,7 @@ resolveFirst.push(fetch('/api/v1/Languages',{
   store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/cities',{
+resolveFirst.push(fetch('/api/v1/scities',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -92,7 +92,7 @@ resolveFirst.push(fetch('/api/v1/users',{
   return null;
 }));
 
-resolveFirst.push(fetch('/api/v1/keyword_categories',{
+resolveFirst.push(fetch('/api/v1/preload-keyword_categories',{
   method:'GET',
   credentials: 'same-origin'
 })

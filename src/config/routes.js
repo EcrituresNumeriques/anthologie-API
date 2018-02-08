@@ -70,6 +70,7 @@ module.exports.routes = {
 
   //Authors
   'GET /api/v1/authors':'AuthorsController.find',
+  'GET /api/v1/preload-authors':{model:'authors',blueprint:'find',populate:false},
   'POST /api/v1/authors':'AuthorsController.create',
   'GET /api/v1/authors/:id':'AuthorsController.findOne',
   'POST /api/v1/authors/:id':'AuthorsController.update',
@@ -107,6 +108,7 @@ module.exports.routes = {
 
   //Cities
   'GET /api/v1/cities':'CitiesController.find',
+  'GET /api/v1/preload-cities':{model:'cities',blueprint:'find',populate:false},
   'POST /api/v1/cities':'CitiesController.create',
   'GET /api/v1/cities/:id':'CitiesController.findOne',
   'POST /api/v1/cities/:id':'CitiesController.update',
@@ -149,6 +151,7 @@ module.exports.routes = {
 
   //Keyword_categories
   'GET /api/v1/keyword_categories':{model:'keyword_categories',blueprint:'find',populate:true},
+  'GET /api/v1/preload-keyword_categories':{model:'keyword_categories',blueprint:'find',populate:false},
   'POST /api/v1/keyword_categories':{model:'keyword_categories',blueprint:'create',populate:false},
   'GET /api/v1/keyword_categories/:id':{model:'keyword_categories',blueprint:'findone',populate:false},
   'POST /api/v1/keyword_categories/:id':{model:'keyword_categories',blueprint:'update',populate:false},
@@ -161,6 +164,7 @@ module.exports.routes = {
 
   //Keywords
   'GET /api/v1/keywords':'KeywordsController.find',
+  'GET /api/v1/preload-keywords':{model:'keywords',blueprint:'find',populate:true},
   'POST /api/v1/keywords':'KeywordsController.create',
   'GET /api/v1/keywords/:id':'KeywordsController.findOne',
   'POST /api/v1/keywords/:id':'KeywordsController.update',

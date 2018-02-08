@@ -5,7 +5,7 @@ API for translating old texts, using :
 - react as frontend
 
 # how to deploy
-###### The API is not yet dockerized, so you'll need docker/docker-compose and node/npm on your machine for a little while (this is comming guys!)
+###### anthologia is now dockerized, to deploy, follow the steps behind
 
 ## Clone the repo
 - using SSH
@@ -18,31 +18,21 @@ API for translating old texts, using :
 
 ## modify secret and passwords
 - config/session.js (secret and redis connection, if changed)
-- config/connections.js (mysql password/user)
-- in docker-compose.yaml (mysql password/user)
-
-## It's recommended to block mysql/redis ports so nobody can mess with your data
-```
-chmod +x iptables.sh
-sudo bash iptables.sh
-```
+- config/connections.js (mysql password/user, optionnal)
+- in docker-compose.yaml (mysql password/user, optionnal)
 
 ## Launch docker instances
-###### this will spin up database for the API and redis for session management
+###### this will spin up database for the API and redis for session management, and build the anthologia
 `docker-compose up -d`
 
-## install npm dependencies
-`npm install`
-
-## launch sails instance
-```
-npm run dist
-npm run postinstall
-```
-
 ## You're done!!
+Providing you use a reverse dns and a letsencrypt cerbot container
+
+###### you still need to load data and scheme into the database. we'll try to keep an updated version of the production database on the repo.
+to make it easier, you can use `docker-compose -f docker-compose.dev.yaml up -d` to spawn a phpmyadmin container and the anthologia on port 8181 and 8080 respectively.
+
+
 
 # developpement
-If you want to develop, the best way is to change de last step and use
-`npm run start` instead of `npm run postinstall`
-you'll get a nice autoreload environnement for react/sails, don't forget to `npm run dist` if you plan on keeping the compiled files up to date (so the server just needs `npm run restart` after a git pull or something)
+If you want to develop, the best way is to change de last step and use the docker-compose inside src/ to spin mysql/redis, and sails lift for the backend.
+TODO : add autoreload etc to the dev env
