@@ -29,7 +29,7 @@ resolveFirst.push(fetch('/api/v1/Languages',{
   store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/preload-cities?populate=versions',{
+resolveFirst.push(fetch('/api/v2/cities?populate=versions',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -41,7 +41,7 @@ resolveFirst.push(fetch('/api/v1/preload-cities?populate=versions',{
   store.dispatch({type:'UPDATE_CITIES',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/preload-authors?populate=versions',{
+resolveFirst.push(fetch('/api/v2/authors?populate=versions',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -53,7 +53,7 @@ resolveFirst.push(fetch('/api/v1/preload-authors?populate=versions',{
   store.dispatch({type:'UPDATE_AUTHORS',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/preload-entities',{
+resolveFirst.push(fetch('/api/v2/entities',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -92,7 +92,7 @@ resolveFirst.push(fetch('/api/v1/users',{
   return null;
 }));
 
-resolveFirst.push(fetch('/api/v1/preload-keyword_categories',{
+resolveFirst.push(fetch('/api/v2/keyword_categories',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -106,7 +106,7 @@ resolveFirst.push(fetch('/api/v1/preload-keyword_categories',{
 })
 );
 
-resolveFirst.push(fetch('/api/v1/preload-keywords?populate=versions',{
+resolveFirst.push(fetch('/api/v2/keywords?populate=versions',{
   method:'GET',
   credentials: 'same-origin'
 })
