@@ -15,24 +15,13 @@
   ],
   "dependencies": {
     "bcrypt": "^1.0.3",
-    "colors": "^1.1.2",
     "connect-redis": "^3.3.3",
-    "create-react-class": "^15.6.3",
-    "ejs": "^2.3.4",
-    "include-all": "~0.1.6",
-    "prop-types": "^15.6.0",
-    "rc": "1.0.1",
     "sails": "^0.12.14",
-    "sails-disk": "~0.10.9",
-    "sails-mysql": "^0.11.5",
-    "webpack": "^1.13.0",
-    "xregexp": "^3.2.0"
+    "sails-mysql": "^0.11.5"
   },
   "scripts": {
-    "start": "nf start --wrap",
-    "dev": "node webpackDevServer",
-    "prod": "sails lift",
-    "restart": "forever restart app.js"
+    "dev": "node app.js",
+    "prod": "sails lift"
   },
   "main": "app.js",
   "repository": {
@@ -41,6 +30,5 @@
   },
   "author": "Arthur Juchereau <arthur.juchereau@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

@@ -29,7 +29,7 @@ resolveFirst.push(fetch('/api/v1/Languages',{
   store.dispatch({type:'UPDATE_LANGUAGES',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/cities',{
+resolveFirst.push(fetch('/api/v1/preload-cities?populate=versions',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -41,7 +41,7 @@ resolveFirst.push(fetch('/api/v1/cities',{
   store.dispatch({type:'UPDATE_CITIES',payload:json});
   return null;
 }));
-resolveFirst.push(fetch('/api/v1/authors',{
+resolveFirst.push(fetch('/api/v1/preload-authors?populate=versions',{
   method:'GET',
   credentials: 'same-origin'
 })
@@ -106,7 +106,7 @@ resolveFirst.push(fetch('/api/v1/preload-keyword_categories',{
 })
 );
 
-resolveFirst.push(fetch('/api/v1/keywords',{
+resolveFirst.push(fetch('/api/v1/preload-keywords?populate=versions',{
   method:'GET',
   credentials: 'same-origin'
 })
