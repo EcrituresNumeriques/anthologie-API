@@ -8,16 +8,15 @@ RUN cd /front; npm i
 ADD src/package.json /src/package.json
 RUN cd /src; npm i
 
+# Working on backend
+ADD src /src
+
 # add source
 ADD front /front
 
 # build front end
 RUN cd /front;npm run dist
 RUN cd /front;mv public /src/
-
-# Working on backend
-ADD src /src
-
 
 WORKDIR /src
 

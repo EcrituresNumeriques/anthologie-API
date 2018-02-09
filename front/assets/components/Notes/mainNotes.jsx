@@ -16,6 +16,13 @@ export default class mainNotes extends Component {
   }
 
    fetchNotes(){
+       let sortByTitle = function(a, b) {
+         var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+         var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+         if (nameA < nameB) {return -1;}
+         if (nameA > nameB) {return 1;}
+         return 0;
+       }
      let that = this;
      fetch('/api/v1/notes')
      .then(function(response){
@@ -23,7 +30,7 @@ export default class mainNotes extends Component {
      })
      .then(function(json){
        //console.log(json)
-       that.notes = json;
+       that.notes = json.sort(sortByTitle);
        that.forceUpdate();
      });
    }

@@ -7,6 +7,23 @@ let sortByTitle = function(a, b) {
   if (nameA > nameB) {return 1;}
   return 0;
 }
+let sortByFamily = function(a, b) {
+  var nameA = a.family.toUpperCase(); // ignore upper and lowercase
+  var nameB = b.family.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {return -1;}
+  if (nameA > nameB) {return 1;}
+  return 0;
+}
+let sortVersions = function(a, b) {
+    const familyPrio = [3,4,1,2];
+    var familyA = familyPrio.indexOf(a.id_language);
+    var familyB = familyPrio.indexOf(b.id_language);
+    if(familyB == -1){return -1}
+    if(familyA == -1){return 1}
+    if (familyA < familyB) {return -1;}
+    if (familyA > familyB) {return 1;}
+  return 0;
+}
 
 
 export function login(state = initialState, action) {
@@ -28,7 +45,10 @@ export function login(state = initialState, action) {
     console.log(action.type);
       for (var i = 0, len = action.payload.length; i < len; i++) {
         lookup[action.payload[i].id_author] = action.payload[i];
+        action.payload[i].versions.sort(sortVersions);
+        action.payload[i].title = action.payload[i].versions.map(i=>i.name).join(' / ');
       }
+      action.payload.sort(sortByTitle);
       return Object.assign({},state,{authors:action.payload,authorsLookup:lookup})
     break;
 
@@ -36,7 +56,10 @@ export function login(state = initialState, action) {
     console.log(action.type);
       for (var i = 0, len = action.payload.length; i < len; i++) {
         lookup[action.payload[i].id_city] = action.payload[i];
+        action.payload[i].versions.sort(sortVersions);
+        action.payload[i].title = action.payload[i].versions.map(i=>i.name).join(' / ');
       }
+      action.payload.sort(sortByTitle);
       return Object.assign({},state,{cities:action.payload, citiesLookup:lookup})
     break;
 
@@ -45,6 +68,7 @@ export function login(state = initialState, action) {
       for (var i = 0, len = action.payload.length; i < len; i++) {
         lookup[action.payload[i].id_language] = action.payload[i];
       }
+      action.payload.sort(sortByFamily);
       return Object.assign({},state,{languages:action.payload,languagesLookup:lookup})
       break;
 
@@ -71,6 +95,7 @@ export function login(state = initialState, action) {
     for (var i = 0, len = action.payload.length; i < len; i++) {
       lookup[action.payload[i].id_keyword_category] = action.payload[i];
     }
+    action.payload.sort(sortByTitle);
     return Object.assign({},state,{keywordCategory:action.payload,keywordCategoryLookup:lookup})
     break;
 
@@ -78,11 +103,14 @@ export function login(state = initialState, action) {
     console.log(action.type);
     let unassignedKeywords = [];
     for (var i = 0, len = action.payload.length; i < len; i++) {
-      lookup[action.payload[i].id_keyword] = action.payload[i];
-      if(!action.payload[i].category){
-        unassignedKeywords.push(action.payload[i].id_keyword);
-      }
+        action.payload[i].versions.sort(sortVersions);
+        action.payload[i].title = action.payload[i].versions.map(i=>i.title).join(' / ');
+        lookup[action.payload[i].id_keyword] = action.payload[i];
+        if(!action.payload[i].category){
+            unassignedKeywords.push(action.payload[i].id_keyword);
+        }
     }
+    action.payload.sort(sortByTitle);
     return Object.assign({},state,{keywords:action.payload,keywordsLookup:lookup,unassignedKeywords:unassignedKeywords})
     break;
 

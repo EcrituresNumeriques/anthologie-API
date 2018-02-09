@@ -171,6 +171,7 @@ module.exports.routes = {
 
   //Languages
   'GET /api/v1/languages':'Languages.find',
+  'GET /api/v2/languages':{model:'languages',blueprint:'find',populate:false},
   'POST /api/v1/languages':'Languages.create',
   'GET /api/v1/languages/:id':'Languages.findOne',
   'POST /api/v1/languages/:id':'Languages.update',

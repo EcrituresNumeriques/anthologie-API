@@ -38,7 +38,7 @@ export default class mainKeywords extends Component {
         <h6>anthologia.ecrituresnumeriques.ca/api/v1/keywords</h6>
 
         {store.getState().loggedIn && <Link to="/keywords/new" className="addto" activeStyle={{ color: 'black' }}>add new keyword</Link>}
-        {this.keywords.map((keyword,i)=>(<Link to={"/keywords/"+keyword.id_keyword} key={"keyword"+keyword.id_keyword} id={keyword.id_keyword}>{keyword.versions.map(a => a.title).join(" / ")}</Link>))}
+        {this.keywords.map((keyword,i)=>(<Link to={"/keywords/"+keyword.id_keyword} key={"keyword"+keyword.id_keyword} id={keyword.id_keyword}>{keyword.title}</Link>))}
         </main>
     );
   }

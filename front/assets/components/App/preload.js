@@ -17,7 +17,7 @@ resolveFirst.push(fetch("/api/v1/status",
   return null})
 .catch(()=>(null)));
 
-resolveFirst.push(fetch('/api/v1/Languages',{
+resolveFirst.push(fetch('/api/v2/languages',{
   method:'GET',
   credentials: 'same-origin'
 })

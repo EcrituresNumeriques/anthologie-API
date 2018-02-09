@@ -17,13 +17,20 @@ export default class mainScholies extends Component {
 
    fetchScholies(){
      let that = this;
+     let sortByTitle = function(a, b) {
+          var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {return -1;}
+          if (nameA > nameB) {return 1;}
+          return 0;
+     }
      fetch('/api/v1/scholies')
      .then(function(response){
        return response.json();
      })
      .then(function(json){
        //console.log(json)
-       that.scholies = json;
+       that.scholies = json.sort(sortByTitle);
        that.forceUpdate();
      });
    }
