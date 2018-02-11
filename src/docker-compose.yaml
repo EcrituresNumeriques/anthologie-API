@@ -11,8 +11,8 @@ services:
     environment:
       MYSQL_DATABASE: "anthologieAPI"
       MYSQL_USER: "anthologieAPI"
-      MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
-      MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
+      MYSQL_PASSWORD: "MySQLPassword"
+      MYSQL_ROOT_PASSWORD: "MySQLPassword"
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
   backup:
     build: ./mysql_backup
@@ -22,7 +22,7 @@ services:
         - database:mysql
     environment:
         MYSQL_USER: "anthologieAPI"
-        MYSQL_PASSWORD: "3xEWiLeFI6WznAes"
+        MYSQL_PASSWORD: "MySQLPassword"
     restart: "no"
   #For Local developpement
 #  phpmyadmin:

@@ -44,7 +44,7 @@ module.exports.connections = {
     adapter: 'sails-mysql',
     host: 'localhost',
     user: 'anthologieAPI',
-    password: '3xEWiLeFI6WznAes',
+    password: 'MySQLPassword',
     database: 'anthologieAPI',
     charset   : 'utf8',
     collation : 'utf8_unicode_ci'
@@ -53,7 +53,7 @@ module.exports.connections = {
     adapter: 'sails-mysql',
     host: 'mysql-anthologie',
     user: 'anthologieAPI',
-    password: 'doesntreallymatter',
+    password: 'MySQLPassword',
     database: 'anthologieAPI',
     charset   : 'utf8',
     collation : 'utf8_unicode_ci'
