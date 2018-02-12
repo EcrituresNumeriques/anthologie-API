@@ -57,12 +57,14 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'deleteFromCollection':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
   },
   AuthorsController:{
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   CitiesController:{
@@ -71,6 +73,7 @@ module.exports.policies = {
     'create':['isLoggedIn','populateUserInfos'],
     'update':['isLoggedIn','ownsThis'],
     'deleteFromCollection':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
   },
   NotesController:{
     'find':true,
@@ -86,6 +89,7 @@ module.exports.policies = {
     'find':true,
     'findOne':true,
     'update':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
   },
   ScholiesController:{
     'find':true,
@@ -95,6 +99,7 @@ module.exports.policies = {
     'destroy':['isLoggedIn','isAdmin'],
     'removeEntity':['isLoggedIn','ownsThis'],
     'deleteVersion':['isLoggedIn','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
     //'deleteFromCollection':['isLoggedIn','ownsThis'],
   },
   Scholie_versionsController:{
@@ -106,7 +111,8 @@ module.exports.policies = {
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','isAdmin','populateUserInfos'],
-    'update':['isLoggedIn','isAdmin','ownsThis']
+    'update':['isLoggedIn','isAdmin','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
   },
   Entity_versions_alignController:{
     'find':true,
@@ -162,7 +168,8 @@ module.exports.policies = {
     'find':true,
     'findOne':true,
     'create':['isLoggedIn','isAdmin','populateUserInfos'],
-    'update':['isLoggedIn','isAdmin','ownsThis']
+    'update':['isLoggedIn','isAdmin','ownsThis'],
+    'destroy':['isLoggedIn','isAdmin'],
   }
 
 };

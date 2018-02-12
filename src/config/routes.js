@@ -74,6 +74,8 @@ module.exports.routes = {
   'POST /api/v1/authors':'AuthorsController.create',
   'GET /api/v1/authors/:id':'AuthorsController.findOne',
   'POST /api/v1/authors/:id':'AuthorsController.update',
+  'DELETE /api/v1/authors/:id':'AuthorsController.destroy',
+
 
   //Users (a supprimer)
   //'GET /api/v1/users':'UsersController.find',
@@ -112,6 +114,7 @@ module.exports.routes = {
   'POST /api/v1/cities':'CitiesController.create',
   'GET /api/v1/cities/:id':'CitiesController.findOne',
   'POST /api/v1/cities/:id':'CitiesController.update',
+  'DELETE /api/v1/cities/:id':'CitiesController.destroy',
 
 
   //Entities

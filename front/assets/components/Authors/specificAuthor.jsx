@@ -17,6 +17,7 @@ export default class specificAuthor extends Component {
     this.author = _.get(store.getState(),'authorsLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteAuthor = this.deleteAuthor.bind(this);
   }
 
   fetchAPI(){
@@ -34,6 +35,28 @@ export default class specificAuthor extends Component {
         that.forceUpdate();
         return null;
       });
+  }
+
+  deleteAuthor = function(e){
+    e.preventDefault();
+    let that = this;
+    if(this.refs.confirmDelete.value == "DELETE"){
+      fetch('/api/v1/authors/'+that.props.params.id,{
+        method:'DELETE',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        browserHistory.push('/authors');
+        //that.refs.city_born = json.city_born;
+        return null;
+      });
+    }
+    else{
+      alert('Type "DELETE" if you want to delete this author');
+    }
   }
 
   handleSubmit = function (e) {
@@ -171,6 +194,12 @@ export default class specificAuthor extends Component {
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.author.updatedAt} disabled="true"/></div>
             {this.author.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.author.id_user.institution+'] ' + this.author.id_user.displayName} disabled="true"/></div>}
             {update}
+            {store.getState().user && store.getState().user.admin &&
+              <div className="alertBlock">
+                <p>Deleting this author is an operation that cannot be recovered, are you sure you want to delete it?</p>
+                <input placeholder="Write 'DELETE' here to confirm you want to delete this author" ref="confirmDelete"/>
+              <button onClick={this.deleteAuthor}>Delete</button>
+            </div>}
           </form>
         </main>
     );
