@@ -19,7 +19,7 @@ sed -i -E "s/MYSQL_ROOT_PASSWORD: \".+\"/MYSQL_ROOT_PASSWORD: \"$password\"/g" d
 sed -i -E "s/MYSQL_PASSWORD: \".+\"/MYSQL_PASSWORD: \"$password\"/g" src/docker-compose.yaml
 sed -i -E "s/MYSQL_ROOT_PASSWORD: \".+\"/MYSQL_ROOT_PASSWORD: \"$password\"/g" src/docker-compose.yaml
 
-sed -i "s/password: '.+'/password: '$password'/g" src/config/connections.js
+sed -i -E "s/password: '.+'/password: '$password'/g" src/config/connections.js
 
 #Replace secret for sails sessions
 
