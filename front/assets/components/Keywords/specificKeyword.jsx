@@ -17,6 +17,7 @@ export default class specificKeyword extends Component {
     this.keyword = _.get(store.getState(),'keywordsLookup['+this.props.params.id+']',placeholder);
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteKeyword = this.deleteKeyword.bind(this);
   }
 
   fetchAPI(){
@@ -48,6 +49,28 @@ export default class specificKeyword extends Component {
           browserHistory.push('/keywords');
           browserHistory.push('/keywords/'+that.props.params.id);
         });
+  }
+
+  deleteKeyword = function(e){
+    e.preventDefault();
+    let that = this;
+    if(this.refs.confirmDelete.value == "DELETE"){
+      fetch('/api/v1/keywords/'+that.props.params.id,{
+        method:'DELETE',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        browserHistory.push('/keywordCategories');
+        //that.refs.city_born = json.city_born;
+        return null;
+      });
+    }
+    else{
+      alert('Type "DELETE" if you want to delete this keyword');
+    }
   }
 
   moveToEntity = function(entity){
@@ -107,6 +130,12 @@ export default class specificKeyword extends Component {
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.keyword.updatedAt} disabled="true"/></div>
             {this.keyword.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.keyword.id_user.institution+'] ' + this.keyword.id_user.displayName} disabled="true"/></div>}
             {update}
+            {store.getState().user && store.getState().user.admin &&
+              <div className="alertBlock">
+                <p>Deleting this keyword is an operation that cannot be recovered, are you sure you want to delete it?</p>
+                <input placeholder="Write 'DELETE' here" ref="confirmDelete"/>
+              <button onClick={this.deleteKeyword}>Delete</button>
+            </div>}
           </form>
         </main>
     );

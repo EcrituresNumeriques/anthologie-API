@@ -171,6 +171,7 @@ module.exports.routes = {
   'POST /api/v1/keywords':'KeywordsController.create',
   'GET /api/v1/keywords/:id':'KeywordsController.findOne',
   'POST /api/v1/keywords/:id':'KeywordsController.update',
+  'DELETE /api/v1/keywords/:id':'KeywordsController.destroy',
 
   //Languages
   'GET /api/v1/languages':'Languages.find',

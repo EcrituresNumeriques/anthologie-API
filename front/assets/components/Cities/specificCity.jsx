@@ -16,6 +16,7 @@ export default class specificCity extends Component {
     this.city = _.get(store.getState(),'citiesLookup['+this.props.params.id+']',placeholder)
     this.fetchAPI();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteCity = this.deleteCity.bind(this);
   }
 
   fetchAPI(){
@@ -72,6 +73,28 @@ export default class specificCity extends Component {
         });
   }
 
+  deleteCity = function(e){
+    e.preventDefault();
+    let that = this;
+    if(this.refs.confirmDelete.value == "DELETE"){
+      fetch('/api/v1/cities/'+that.props.params.id,{
+        method:'DELETE',
+        credentials: 'same-origin'
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        browserHistory.push('/cities');
+        //that.refs.city_born = json.city_born;
+        return null;
+      });
+    }
+    else{
+      alert('Type "DELETE" if you want to delete this city');
+    }
+  }
+
 
   render() {
     let update = <p className="legend">You can't update this record.</p>
@@ -95,6 +118,12 @@ export default class specificCity extends Component {
             <div className="inputContainerLanguage"><label>updated at : </label><input type="text" value={this.city.updatedAt} disabled="true"/></div>
             {this.city.id_user && <div className="inputContainerLanguage"><label>Owner : </label><input type="text" value={'['+this.city.id_user.institution+'] ' + this.city.id_user.displayName} disabled="true"/></div>}
             {update}
+            {store.getState().user && store.getState().user.admin &&
+              <div className="alertBlock">
+                <p>Deleting this city is an operation that cannot be recovered, are you sure you want to delete it?</p>
+                <input placeholder="Write 'DELETE' here to confirm you want to delete this city" ref="confirmDelete"/>
+              <button onClick={this.deleteCity}>Delete</button>
+            </div>}
           </form>
         </main>
     );
