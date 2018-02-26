@@ -2,12 +2,12 @@
 
 ## Priorité Enrico
 
- - supprimer auteurs vides
- - ajouter les scholies (apapi.ecrituresnumeriques.ca)
- - notes auteurs/personnages apapi
- - effacer personnes cités Erina/
- - ordres alphabétique
- - ordres logique pour les entités
+ - ~supprimer auteurs vides~
+ - ~ajouter les scholies (apapi.ecrituresnumeriques.ca)~
+ - ~notes auteurs/personnages apapi~
+ - ~effacer personnes cités Erina/~
+ - ~ordres alphabétique~
+ - ~ordres logique pour les entités~
 
 
 - allignement avec semantic web (version 2.0)
@@ -16,9 +16,9 @@
 ## general
 - ~~translation => versions sur toute la plateforme + api (4h) P1~~
 - ~~Preload UI~~
-- passer tous les fetchs dans les states de components
-- ajouter tous les fetchs au store redux (pre-étape nécessaire pour regler tous les problemes d'ajouts non pris en compte immediatement par la plateforme).
-- ajouter une UI pour fetch
+- ~passer tous les fetchs dans les states de components~
+- ~ajouter tous les fetchs au store redux (pre-étape nécessaire pour regler tous les problemes d'ajouts non pris en compte immediatement par la plateforme).~
+- ~ajouter une UI pour fetch~
 - fractionner tous les components "specific" en meta components plus restreints (notes, versions, etc etc) pour faciliter la maintenance du code
 - ajouter une policy pour log toute l'activité de l'API
 - ajouter les collections de translations, entities, etc dans le model Users
@@ -44,9 +44,9 @@
 - améliorer allignement des vers (pas trop grave)(2j) P7
 
 ## Authors
-- ordre alphabétique (4h) P2
-- possibilité d'effacer (3h) P2
-- quand je créé l'auteur il ne l'associe pas tout de suite... donc j'en créé un deuxième... (1h) P2
+- ~ordre alphabétique (4h) P2~
+- ~possibilité d'effacer (3h) P2~
+- ~quand je créé l'auteur il ne l'associe pas tout de suite... donc j'en créé un deuxième... (1h) P2~
 
 ### Scholies
 - ~~possibilité d'afficher le scholie et de l'éditer - on ne peut pas afficher le texte iDEM POUR NOTES (1h) P1~~
@@ -69,7 +69,7 @@
 
 ### Langues
 - ~~Séparer langues et versions --> langues et occurences X~~
-- possibilité d'effacer (1h) P2
+- ~possibilité d'effacer (1h) P2~
 - ~~reprendre d'une liste~~
 - ~~pas possibilité de créer pour utilisateur normal~~
 - ~~possibilité de créer édition pour user normal mais pas langue~~
@@ -77,26 +77,26 @@
 - Est-ce qu'on aligne le manuscrit et le texte X? P7
 
 ### Manuscrit
-- possibilité d'éditer les manuscrits ajoutés P7
+- ~possibilité d'éditer les manuscrits ajoutés P7~
 ### Contributions
 - Possibilité d'effacer depuis la page des contributions (4h) P7
 ### Cities
 Question: comment tu l'avais importées?
-- problèmes coordonnées gps... il n'y a pas NSEW!
+- ~problèmes coordonnées gps... il n'y a pas NSEW!~
 
 ### Champs à ajouter
 - ~~images manuscrit~~
-- Possibilité d'ajouter des enregistrement (4h) P6
+- Possibilité d'ajouter des enregistrement audio (4h) P6
 
 - possibilité de monitorer l'activité - qui a fait quoi dernièrement pour admin (2 j) P5
 
 ## Problèmes d'affichage
-- le uri ne peut pas être visualisé (des entités) p5
+- ~le uri ne peut pas être visualisé (des entités) p5~
 
 ## Page auteurs
 - il faudrait ajouter un champ uri p5
 - il faudrait ajouter un champ de texte (genre biographie) p4
-- effacer authors p4
+- ~effacer authors p4~
 
 
 ## Mots-clés
@@ -109,7 +109,7 @@ Question: comment tu l'avais importées?
 - il faudrait pouvoir éditer l'édition des textes - même sans pouvoir changer les textes eux-mêmes p5
 
 ### notes
-enlever titre p4
+~enlever titre p4~
 
 ## villes nommées dans les épigrammes, ajouter p5
 
