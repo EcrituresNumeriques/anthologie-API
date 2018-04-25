@@ -48,6 +48,8 @@ module.exports.cors = {
   ***************************************************************************/
 
   // origin: '*',
+  allRoutes: true,
+  allowOrigins: ['http://localhost/','https://localhost/','https://anthologia.ecrituresnumeriques.ca']
 
   /***************************************************************************
   *                                                                          *
