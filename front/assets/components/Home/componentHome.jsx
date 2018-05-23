@@ -37,8 +37,21 @@ export default class ComponentHome extends Component {
         <main>
           <section id="welcome">
             <h1>Welcome to the Anthologia</h1>
-            <p>You can find the source code and contribute on <a href="https://github.com/EcrituresNumeriques/anthologie-API" target="_blank">Github</a>.</p>
-            <p>You can also contribute by importing texts from perseus and adding/aligning versions.</p>
+            <i>Anthologia</i> is a collaborative edition and translation platform for classic texts (mainly Greek and Latin). The core of the project is the collaborative edition and multilingual translation of the Greek Anthology (Codex Palatinus 23).
+
+You can add a text or import it from Perseus, add versions and translations, align them add keywords and other information (scholia, notes, pictures...).
+
+The database is open and queryable via an API.
+
+This project is realized by the <a href="http://digitaltextualities.ca">Canada Research Chair on digital textualities</a> directed by Marcello Vitali-Rosati and it is financed by the SSHRC.
+
+Feel free to collaborate!
+<ul>
+<li> <a href="http://anthologia-doc.ecrituresnumeriques.ca">More information about the project</a></li>
+<li> <a href="http://anthologia-doc.ecrituresnumeriques.ca/fr_FR/#!pages/documentation.md">How to use this platform (documentation and tutorials)</a></li>
+<li> <a href="https://github.com/EcrituresNumeriques/anthologie-API">API documentation</a></li>
+<li> <a href="http://anthologia-doc.ecrituresnumeriques.ca/fr_FR/#!pages/contacts.md">Contacts</a></li>
+</ul>
           </section>
           <section id="find">
             <h1>Find something on the platform</h1>
