@@ -19,7 +19,7 @@ services:
     container_name: mysql-anthologie
     command: mysqld --user=root --verbose
     volumes:
-      - /opt/mysqlAnthologie-API:/var/lib/mysql
+      - /home/backup/mysqlAnthologie-API:/var/lib/mysql
     environment:
       MYSQL_DATABASE: "anthologieAPI"
       MYSQL_USER: "anthologieAPI"
