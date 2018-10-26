@@ -424,7 +424,7 @@ export default class specificEntity extends Component {
             {acl('isLogedin') && <div className="inputContainerLanguage"><Link className="addToCollection" to={'/entities/newInternalRef/'+this.props.params.id}>Add an internal reference </Link></div>}
 
             {_.get(this.entity,'externalRef',[]).map((ref,i)=>(
-              <div className="inputContainerLanguage" key={'refExEntity'+ref.id_entity}>
+              <div className="inputContainerLanguage" key={'refExEntity'+ref.id_entity_external}>
                 <label>{i?'':'External References : '}</label>
                 <a href={ref.url} target="_blank">{ref.title} ({ref.url})</a>
                 {!readOnly && <button type="button" onClick={()=>this.deleteExRef(ref)} >X</button>}
