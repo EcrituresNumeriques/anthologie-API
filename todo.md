@@ -12,6 +12,7 @@
 - Marcello/enrico :  page couverture avec texte de welcome : dans `front/assets/components/home/componentHome... ` et `front/assets/components/layout/header... `
 - Marcello/enrico : doublon de personnes citées ? envoyer les identifiants à arthur qui fera un collapse.
 - pour les admin : effacer une catégorie (dont elsa)
+- Actualise les liens Imgur des images qui ne s'affichent plus
 
 ## priorité 2
 - recherche à la volée dans les entités
