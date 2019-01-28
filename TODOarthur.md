@@ -2,7 +2,10 @@
 
 # Choses très urgentes :
 
-- Margot administratrice dans le site anthologia.ecrituresnumeriques.ca
+- Images : association d'images aux parcours : @Arthur ajout dans la keyword d'un champs url image
+
+- AF pour @Arthur : Ajouter un champs de texte descriptif des mots-clefs
+
 
 ## Priorité 0 = 1 journée de travail
 ### External reference
