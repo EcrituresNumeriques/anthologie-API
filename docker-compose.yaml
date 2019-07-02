@@ -15,7 +15,7 @@ services:
       - LETSENCRYPT_HOST=anthologia.ecrituresnumeriques.ca
       - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
   mysql-anthologie:
-    image: mysql
+    image: mysql:5
     container_name: mysql-anthologie
     command: mysqld --user=root --verbose
     volumes:
