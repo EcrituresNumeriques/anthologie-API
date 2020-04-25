@@ -39,6 +39,7 @@ services:
         - 8181:80
       environment:
         MYSQL_USERNAME: root
+        UPLOAD_LIMIT: 64000000
 networks:
   default:
     external:
