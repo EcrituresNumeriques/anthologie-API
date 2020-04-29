@@ -1,0 +1,54 @@
+version: "2"
+
+services:
+  # traefik:
+  #   image: "traefik:v2.2"
+  #   container_name: "traefik"
+  #   command:
+  #     #- "--log.level=DEBUG"
+  #     - "--api.insecure=true"
+  #     - "--providers.docker=true"
+  #     - "--providers.docker.exposedbydefault=false"
+  #     - "--entrypoints.web.address=:80"
+  #   ports:
+  #     - "80:80"
+  #     - "8080:8080"
+  #   volumes:
+  #     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  sails-anthologie:
+    restart: always
+    build: .
+    links:
+      - mysql-anthologie
+      - redis-anthologie
+    environment:
+      - NODE_ENV=production
+      # - VIRTUAL_HOST=anthologia.ecrituresnumeriques.ca
+      # - VIRTUAL_NETWORK=nginx-proxy
+      # - VIRTUAL_PORT=80
+      # - LETSENCRYPT_HOST=anthologia.ecrituresnumeriques.ca
+      # - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sails-anthologie.rule=Host(`anthologia.ecrituresnumeriques.ca`)"
+      - "traefik.http.routers.sails-anthologie.entrypoints=web"
+  mysql-anthologie:
+    image: mysql:5
+    container_name: mysql-anthologie
+    command: mysqld --user=root --verbose
+    volumes:
+      - /home/backup/mysqlAnthologie-API:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: "anthologieAPI"
+      MYSQL_USER: "anthologieAPI"
+      MYSQL_PASSWORD: "­­XzEx266jveiV3nJwCUpHEucPjwIxDM"
+      MYSQL_ROOT_PASSWORD: "MySQLPassword"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+  redis-anthologie:
+    restart: always
+    image: redis
+networks:
+  default:
+    external:
+      name: root_default
