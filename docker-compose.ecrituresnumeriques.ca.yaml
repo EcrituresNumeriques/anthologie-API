@@ -19,6 +19,11 @@ services:
   sails-anthologie:
     restart: always
     build: .
+    ports:
+        - "80"
+    networks:
+        - default
+        - traefik
     links:
       - mysql-anthologie
       - redis-anthologie
@@ -30,13 +35,17 @@ services:
       # - LETSENCRYPT_HOST=anthologia.ecrituresnumeriques.ca
       # - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.sails-anthologie.rule=Host(`anthologia-new.ecrituresnumeriques.ca`)"
-      - "traefik.http.routers.sails-anthologie.entrypoints=web"
+      - 'traefik.enable=true'
+      - 'traefik.backend=sails-anthologie'
+      - 'traefik.docker.network=traefik_net'
+      - 'traefik.port=80'
+      - 'traefik.frontend.rule=Host:anthologia-new.ecrituresnumeriques.ca'
   mysql-anthologie:
     image: mysql:5
     container_name: mysql-anthologie
     command: mysqld --user=root --verbose
+    networks:
+      - default
     volumes:
       - /home/backup/mysqlAnthologie-API:/var/lib/mysql
     environment:
@@ -46,9 +55,15 @@ services:
       MYSQL_ROOT_PASSWORD: "MySQLPassword"
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
   redis-anthologie:
+    networks:
+        - default
     restart: always
     image: redis
 networks:
   default:
     external:
       name: anthologie_default
+  traefik:
+    external:
+      name: traefik_net
+
