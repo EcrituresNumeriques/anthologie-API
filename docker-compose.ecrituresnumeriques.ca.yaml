@@ -29,10 +29,10 @@ services:
       # - VIRTUAL_PORT=80
       # - LETSENCRYPT_HOST=anthologia.ecrituresnumeriques.ca
       # - LETSENCRYPT_EMAIL=arthur.juchereau@gmail.com
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.sails-anthologie.rule=Host(`anthologia.ecrituresnumeriques.ca`)"
-    #   - "traefik.http.routers.sails-anthologie.entrypoints=web"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sails-anthologie.rule=Host(`anthologia-new.ecrituresnumeriques.ca`)"
+      - "traefik.http.routers.sails-anthologie.entrypoints=web"
   mysql-anthologie:
     image: mysql:5
     container_name: mysql-anthologie
