@@ -266,6 +266,20 @@ export default class specificEntity extends Component {
         });
   }
 
+  deleteImage = function (image) {
+    let that = this;
+
+    console.log(image)
+    fetch('/api/v1/images/'+image.id_image, {
+            method: "DELETE",
+            credentials: 'same-origin'
+        })
+        .then(function(data){
+          that.setState({loaded:false});
+        });
+
+  }
+
   componentWillMount(){
     document.title = this.entity.title+" | anthologie";
   }
@@ -390,7 +404,12 @@ export default class specificEntity extends Component {
               <label>Images :</label>
               <div className="collection">
 
-                {_.get(this.entity,'images',[]).map((image)=>(<a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>))}
+                {_.get(this.entity,'images',[]).map((image)=>(
+                  <div className="inputContainerLanguage" key={"imageEntitydiv"+image.id_image}>
+                    <a href={image.URL} key={"imageEntity"+image.id_image} target="_blank" className="collectionItem"><img src={image.URL} alt={image.title}/></a>
+                    {!readOnly && <button type="button" onClick={()=>this.deleteImage(image)} >X</button>}
+                  </div>
+                ))}
                 {acl('isLogedin') && <Link className="addToCollectionSide" to={'/entities/newImage/'+this.props.params.id}>Add an image </Link>}
               </div>
             </div>

@@ -44,7 +44,8 @@ module.exports.routes = {
 
   'POST /api/v1/keywords/:parentid/versions':[{model:"keywords"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'keywords',alias:'versions'}],
   'DELETE /api/v1/keywords/:parentid/versions/:id':'KeywordsController.deleteFromCollection',
-
+  
+  
 
   'POST /api/v1/entities/:parentid/uris':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'uris'}],
   'POST /api/v1/entities/:parentid/versions':[{model:"entities"},{policy:'isLoggedIn'},{policy:'populateUserInfos'},{blueprint:'add', model:'entities',alias:'versions'}],
@@ -151,6 +152,8 @@ module.exports.routes = {
   'POST /api/v1/images':'ImagesController.create',
   'GET /api/v1/images/:id':'ImagesController.findOne',
   'POST /api/v1/images/:id':'ImagesController.update',
+  'DELETE /api/v1/images/:id':'ImagesController.destroy',
+
 
   //Keyword_categories
   'GET /api/v1/keyword_categories':{model:'keyword_categories',blueprint:'find',populate:true},
