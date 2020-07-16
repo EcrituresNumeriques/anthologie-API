@@ -14,7 +14,7 @@
     "boilerplate"
   ],
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^4.0.0",
     "connect-redis": "^3.3.3",
     "sails": "^0.12.14",
     "sails-mysql": "^0.11.5"
