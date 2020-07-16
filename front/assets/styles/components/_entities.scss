@@ -160,7 +160,7 @@ Entities component
   @extend .paddedBlock;
   flex:1 1 33%;
 }
-#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > a.collectionItem > img{
+#page main#entitiesView > main > form > div.inputContainerLanguage > div.collection > div.inputContainerLanguage > a.collectionItem > img{
   max-height: 64px;
   max-width: 64px;
 }
